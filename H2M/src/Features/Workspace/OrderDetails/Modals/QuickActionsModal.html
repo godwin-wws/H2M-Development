@@ -1,0 +1,41 @@
+<!-- Quick Actions Modal Component -->
+<div id="quick-actions-modal" class="modal-backdrop hidden" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 class="modal-title">Quick Actions</h3>
+      <button id="modal-close-btn" class="modal-close" type="button" aria-label="Close modal">✕</button>
+    </div>
+    
+    <div class="modal-banner">
+      <span class="banner-order" id="modal-order-text">Active Order: ORD-000869</span>
+      <span class="banner-status">Status: Review Required</span>
+    </div>
+
+    <div class="modal-section-label">Operational Actions</div>
+
+    <div class="modal-actions-list">
+      <button class="modal-action-row" type="button" data-action="accept">
+        <span class="action-icon">✓</span>
+        <span class="action-text">Accept Order</span>
+      </button>
+
+      <button class="modal-action-row" type="button" data-action="reject">
+        <span class="action-icon">✕</span>
+        <span class="action-text">Reject Order</span>
+        <span class="action-badge">Reason Required</span>
+      </button>
+
+      <button class="modal-action-row" type="button" data-action="return">
+        <span class="action-icon">↺</span>
+        <span class="action-text">Return Order to Intake</span>
+        <span class="action-badge">Reason Required</span>
+      </button>
+
+      <button class="modal-action-row" type="button" data-action="regenerate">
+        <span class="action-icon">🔄</span>
+        <span class="action-text">Regenerate Order Document</span>
+        <span class="action-badge">Reason Required</span>
+      </button>
+    </div>
+  </div>
+</div>

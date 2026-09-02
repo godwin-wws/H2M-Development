@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Details | H2M BRIDGE Workspace</title>
+  
+  <!-- Explicit Google Fonts Import for Roboto & Roboto Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Roboto', 'sans-serif'],
+            mono: ['"Roboto Mono"', 'monospace']
+          },
+          colors: {
+            surface: '#FEF7FF',
+            primary: '#6750A4',
+            'primary-soft': '#EADDFF',
+            line: '#CAC4D0',
+            text: '#1D1B20',
+            muted: '#79747E',
+            'blue-bg': '#E8F0FE',
+            blue: '#174EA6',
+            'amber-bg': '#FEF7E0',
+            amber: '#6D4200',
+            'purple-bg': '#EADDFF',
+            purple: '#4F378A',
+            'green-bg': '#E6F4EA',
+            green: '#0D652D',
+            'red-bg': '#F9DEDC',
+            red: '#B3261E',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-surface text-text font-sans min-h-screen relative overflow-x-hidden">
+
+  <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
+    
+    <!-- Side Navigation -->
+    <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+      <div class="w-[58px] h-[58px]">
+        <img src="https://www.figma.com/api/mcp/asset/344953eb-406f-498c-b60f-e17d785f92f3.png" alt="Help to Moms logo" class="w-full h-full object-contain">
+      </div>
+      <nav class="w-full flex flex-col gap-2">
+        <a class="h-10 px-3.5 rounded-full flex items-center gap-3 text-[#49454f] text-sm font-medium leading-[19.5px] hover:bg-[#F3EDF7] transition" href="../Dashboard.html">
+          <svg class="w-4 h-4 shrink-0 text-[#49454f]" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          <span>Dashboard</span>
+        </a>
+        <a class="h-10 px-3.5 rounded-full flex items-center gap-3 bg-primary-soft text-primary font-medium text-sm leading-[19.5px] transition" href="../WorkQueue.html">
+          <svg class="w-4 h-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+          <span>Work Queues</span>
+        </a>
+        <a class="h-10 px-3.5 rounded-full flex items-center gap-3 text-[#49454f] text-sm font-medium leading-[19.5px] hover:bg-[#F3EDF7] transition" href="../OrderSearch.html">
+          <svg class="w-4 h-4 shrink-0 text-[#49454f]" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/></svg>
+          <span>Order Search</span>
+        </a>
+        <a class="h-10 px-3.5 rounded-full flex items-center gap-3 text-[#49454f] text-sm font-medium leading-[19.5px] hover:bg-[#F3EDF7] transition" href="../Alerts.html">
+          <svg class="w-4 h-4 shrink-0 text-[#49454f]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+          <span>Alerts &amp; Exceptions</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <section class="flex-1 p-8 pb-12 flex flex-col gap-6 overflow-hidden">
+      
+      <!-- Top Navigation Header -->
+      <header class="h-[58px] flex items-center justify-between">
+        <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
+          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium" href="Dashboard.html">Workspace</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="Alerts.html">Review</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="#">Audit</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="#">Provider Directory</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="#">Administration</a>
+        </nav>
+        
+        <div class="flex items-center gap-6">
+          <div class="relative w-10 h-10 flex items-center justify-center cursor-pointer">
+            <img src="https://www.figma.com/api/mcp/asset/0e022744-e0d6-4c6f-8546-51c31cf743c4.svg" alt="Notifications" class="w-5 h-5">
+            <span class="absolute top-0 right-0 w-4 h-4 border border-white rounded-full bg-red text-white flex items-center justify-center text-[9px] font-bold">14</span>
+          </div>
+
+          <!-- Role Switcher -->
+          <div class="relative inline-block text-left" id="role-switcher-container">
+            <button
+              id="role-switcher-btn"
+              type="button"
+              class="flex items-center gap-2 h-9 pl-1 pr-3 rounded-full border border-[#e8def8] bg-white hover:bg-[#f3edf7] cursor-pointer transition-colors outline-none focus:ring-2 focus:ring-[#6750a4]"
+            >
+              <div id="active-avatar" class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold text-white flex-shrink-0 bg-[#6750a4]">
+                J
+              </div>
+              <div class="text-left hidden sm:block">
+                <p id="active-name" class="text-[12px] font-medium text-[#1C1B1F] m-0 leading-none">Jane Doe</p>
+                <p id="active-label" class="text-[10px] m-0 font-bold text-[#6750a4] mt-0.5">Operations</p>
+              </div>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="shrink-0">
+                <path d="M6 9l6 6 6-6" stroke="#79747e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <div
+              id="role-switcher-dropdown"
+              class="hidden absolute right-0 top-[calc(100%+6px)] bg-white rounded-[12px] border border-[#e8def8] z-50 w-[260px] overflow-hidden shadow-[0px_4px_16px_rgba(0,0,0,0.12)]"
+            >
+              <div class="px-4 py-2.5 border-b border-[#f3edf7]">
+                <p class="text-[10px] font-bold uppercase tracking-[0.5px] text-[#79747e] m-0">Switch Account / Role View</p>
+              </div>
+              
+              <button
+                type="button"
+                onclick="selectRole('operations')"
+                id="role-opt-operations"
+                class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]"
+              >
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white flex-shrink-0 bg-[#6750a4]">J</div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Jane Doe</p>
+                  <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">jane.doe@h2m.org</p>
+                  <p class="text-[10px] font-bold m-0 text-[#6750a4]">
+                    Operations · <span class="font-normal text-[#79747e]">Queues · Provider edits · Fax retries</span>
+                  </p>
+                </div>
+                <svg id="check-operations" width="14" height="14" viewBox="0 0 24 24" fill="none" class="shrink-0">
+                  <path d="M20 6L9 17l-5-5" stroke="#6750a4" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+
+              <button
+                type="button"
+                onclick="selectRole('administrator')"
+                id="role-opt-administrator"
+                class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]"
+              >
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white flex-shrink-0 bg-[#1967D2]">P</div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Priya Patel</p>
+                  <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">p.patel@h2m.org</p>
+                  <p class="text-[10px] font-bold m-0 text-[#1967D2]">
+                    Administrator · <span class="font-normal text-[#79747e]">System config · Templates · Intake reprocess</span>
+                  </p>
+                </div>
+                <svg id="check-administrator" width="14" height="14" viewBox="0 0 24 24" fill="none" class="shrink-0 hidden">
+                  <path d="M20 6L9 17l-5-5" stroke="#6750a4" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Breadcrumbs & Heading -->
+      <div>
+        <div class="text-xs text-muted">
+          <a href="../Dashboard.html" class="text-primary hover:underline font-medium">Workspace</a> / <span id="crumb-id" class="font-mono font-bold text-text">ORD-000886</span>
+        </div>
+        <h1 class="text-3xl font-bold text-text tracking-tight mt-1">Order Details</h1>
+      </div>
+
+      <!-- Order Summary Header Card -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden">
+        <div class="p-6 flex items-center gap-4">
+          <div id="patient-avatar" class="w-11 h-11 rounded-xl bg-primary-soft text-purple flex items-center justify-center text-sm font-bold shrink-0">
+            MC
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2.5">
+              <span id="order-id" class="font-mono font-bold text-base text-text">ORD-000886</span>
+              <span id="source-status-badge" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-bg text-red">
+                <span class="w-1.5 h-1.5 rounded-full bg-current"></span> Missing Fax Number
+              </span>
+              <span id="bridge-status-badge" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-green-bg text-green">
+                <span class="w-1.5 h-1.5 rounded-full bg-current"></span> Accepted
+              </span>
+            </div>
+            <div id="patient-name" class="text-sm font-bold text-text mt-1">Madison Chilcutt</div>
+            <div id="order-meta" class="text-xs text-muted mt-0.5">BlueGoose · Henderson, TN</div>
+          </div>
+          <div class="flex items-center gap-3">
+            <button id="btn-quick-action" type="button" class="h-9 px-4 border border-line rounded-full bg-white text-text font-medium text-xs flex items-center gap-2 hover:border-primary hover:bg-surface transition">
+              ⚡ Quick Action
+            </button>
+            <button type="button" class="h-9 px-4 bg-[#F3EDF7] text-primary font-medium text-xs rounded-full hover:bg-primary-soft transition flex items-center gap-1.5">
+              Open in Review ↗
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-4 border-t border-line p-4 px-6 gap-4 bg-surface/30">
+          <div>
+            <span class="text-[10px] font-bold text-muted uppercase tracking-wider block">Due Date</span>
+            <span id="meta-due-date" class="text-xs font-semibold text-text font-mono mt-1 block">9/16/2025</span>
+          </div>
+          <div>
+            <span class="text-[10px] font-bold text-muted uppercase tracking-wider block">Insurance</span>
+            <span id="meta-insurance" class="text-xs font-semibold text-text mt-1 block">United Healthcare Community Plan</span>
+          </div>
+          <div>
+            <span class="text-[10px] font-bold text-muted uppercase tracking-wider block">Product</span>
+            <span id="meta-product" class="text-xs font-semibold text-text mt-1 block">Pregnancy Support Kit</span>
+          </div>
+          <div>
+            <span class="text-[10px] font-bold text-muted uppercase tracking-wider block">Created At</span>
+            <span id="meta-created-at" class="text-xs font-semibold text-text font-mono mt-1 block">7/22/2026 15:19:14</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Outer Unified Container -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col">
+        
+        <!-- Header Sub-Navigation Tabs Container (With Light Vertical Separators) -->
+        <div class="border-b border-line bg-white">
+          <div class="flex items-center overflow-x-auto">
+            <button onclick="switchTab('order')" class="detail-nav-tab px-6 py-3.5 text-xs font-bold text-primary border-b-2 border-primary transition whitespace-nowrap" data-tab="order">
+              Order
+            </button>
+            <button onclick="switchTab('patient')" class="detail-nav-tab px-6 py-3.5 text-xs font-medium text-muted hover:text-text border-b-2 border-transparent transition whitespace-nowrap" data-tab="patient">
+              Patient
+            </button>
+            <button onclick="switchTab('provider')" class="detail-nav-tab px-6 py-3.5 text-xs font-medium text-muted hover:text-text border-b-2 border-transparent transition whitespace-nowrap" data-tab="provider">
+              Provider
+            </button>
+            <button onclick="switchTab('verification')" class="detail-nav-tab px-6 py-3.5 text-xs font-medium text-muted hover:text-text border-b-2 border-transparent transition whitespace-nowrap" data-tab="verification">
+              Verification
+            </button>
+            <button onclick="switchTab('documents')" class="detail-nav-tab px-6 py-3.5 text-xs font-medium text-muted hover:text-text border-b-2 border-transparent transition whitespace-nowrap" data-tab="documents">
+              Documents
+            </button>
+            <button onclick="switchTab('communications')" class="detail-nav-tab px-6 py-3.5 text-xs font-medium text-muted hover:text-text border-b-2 border-transparent transition whitespace-nowrap" data-tab="communications">
+              Communications
+            </button>
+            <button onclick="switchTab('timeline')" class="detail-nav-tab px-6 py-3.5 text-xs font-medium text-muted hover:text-text border-b-2 border-transparent transition whitespace-nowrap" data-tab="timeline">
+              Activity Timeline
+            </button>
+            <button onclick="switchTab('audit')" class="detail-nav-tab px-6 py-3.5 text-xs font-medium text-muted hover:text-text border-b-2 border-transparent transition whitespace-nowrap" data-tab="audit">
+              Audit
+            </button>
+          </div>
+        </div>
+
+        <!-- Inner Content Area -->
+        <div class="p-6">
+          
+          <!-- Tab 1: Order Panel -->
+          <div id="panel-order" class="tab-panel">
+            <div class="border border-line rounded-xl overflow-hidden  divide-line text-xs bg-white">
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">BRIDGE Order ID</span>
+                <span id="panel-bridge-id" class="font-mono font-bold text-text">ORD-000886</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Source System</span>
+                <span class="font-bold text-text">BlueGoose</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Source Record ID</span>
+                <span class="font-mono text-text">d7e9fa8a8feba20f1e9a51befb5c8b47</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">REI Date</span>
+                <span class="font-mono text-text">11/5/2025 3:39</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Source Status</span>
+                <div>
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-bg text-red">
+                    <span class="w-1.5 h-1.5 rounded-full bg-current"></span> Missing Fax Number
+                  </span>
+                </div>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">BRIDGE Status</span>
+                <div>
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-green-bg text-green">
+                    <span class="w-1.5 h-1.5 rounded-full bg-current"></span> Accepted
+                  </span>
+                </div>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Schema Version</span>
+                <span class="font-mono text-text">v1.0</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Client</span>
+                <span class="font-semibold text-text">Help to Moms</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Uploads</span>
+                <span class="font-mono text-text">0</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Due Date</span>
+                <span class="font-mono text-text">9/16/2025</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Created At</span>
+                <span class="font-mono text-text">7/22/2026 15:19:14</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: Patient Panel -->
+          <div id="panel-patient" class="tab-panel hidden">
+            <div class="border border-line rounded-xl overflow-hidden  divide-line text-xs bg-white">
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Patient Name</span>
+                <span class="font-bold text-text">Madison Chilcutt</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Date of Birth</span>
+                <span class="font-mono text-text">01/12/2004</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Address</span>
+                <span class="text-text">95 Marvin Terry Lane, Henderson, TN 38340</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Insurance Member ID</span>
+                <span class="font-mono text-text">129549692</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 3: Provider Panel -->
+          <div id="panel-provider" class="tab-panel hidden">
+            <h2 class="text-xs font-bold text-muted uppercase tracking-wider mb-3">PROVIDER</h2>
+            <div class="border border-line rounded-xl overflow-hidden divide-line text-xs bg-white mb-4">
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">BRIDGE Provider ID</span>
+                <span class="font-mono font-bold text-text">PROV-000542</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Physician Name</span>
+                <span class="font-bold text-text">Raymond Aldrich, MD</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Practice</span>
+                <span class="font-semibold text-text">Marion Family Health Assoc.</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">NPI</span>
+                <span class="font-mono font-bold text-text">1215048332</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Fax (this order)</span>
+                <span class="font-mono text-text">(740) 555-0199</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Directory status</span>
+                <div>
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-green-bg text-green">
+                    <span class="w-1.5 h-1.5 rounded-full bg-current"></span> Active
+                  </span>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="h-8 px-4 border border-line rounded-lg bg-white text-text font-medium text-xs hover:border-primary hover:bg-surface transition">
+              View full record in Provider Directory →
+            </button>
+          </div>
+
+          <!-- Tab 4: Verification Panel -->
+          <div id="panel-verification" class="tab-panel hidden">
+            <h2 class="text-sm font-bold text-text mb-3">Verification status</h2>
+            <div class="border border-line rounded-xl overflow-hidden  divide-line text-xs bg-white mb-4">
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Status</span>
+                <div>
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-bg text-red">
+                    <span class="w-1.5 h-1.5 rounded-full bg-current"></span> Mismatch found
+                  </span>
+                </div>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Last checked</span>
+                <span class="font-mono text-text">Today, 9:52 AM</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Note</span>
+                <span class="font-medium text-text">Provider NPI on the order does not match the Provider Directory record.</span>
+              </div>
+            </div>
+            <button type="button" class="h-8 px-4 border border-line rounded-lg bg-white text-text font-medium text-xs hover:border-primary hover:bg-surface transition">
+              Open full verification workspace ↗
+            </button>
+          </div>
+
+          <!-- Tab 5: Documents Panel -->
+          <div id="panel-documents" class="tab-panel hidden">
+            <div class="flex items-center justify-between mb-3">
+              <h2 class="text-sm font-bold text-text">Documents on file</h2>
+              <span class="text-[10px] text-muted bg-[#F3EDF7] px-2.5 py-1 rounded-full font-medium">Owned by BRIDGE Documents</span>
+            </div>
+            <div class="border border-line rounded-xl divide-y divide-line text-xs bg-white mb-4">
+              <div class="p-3.5 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-muted shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  <span class="font-medium text-text">Intake fax — page 1–3</span>
+                </div>
+                <span class="text-muted font-mono">Received 9:41 AM</span>
+              </div>
+              <div class="p-3.5 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-muted shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  <span class="font-medium text-text">Insurance verification form</span>
+                </div>
+                <span class="text-muted font-mono">Received 9:44 AM</span>
+              </div>
+              <div class="p-3.5 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <svg class="w-4 h-4 text-amber shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                  <span class="font-medium text-text">Kit authorization — missing</span>
+                </div>
+                <span class="text-red font-bold">Outstanding</span>
+              </div>
+            </div>
+            <button type="button" class="h-8 px-4 border border-line rounded-lg bg-white text-text font-medium text-xs hover:border-primary hover:bg-surface transition">
+              Open full document library ↗
+            </button>
+          </div>
+
+          <!-- Tab 6: Communications Panel -->
+          <div id="panel-communications" class="tab-panel hidden">
+            <h2 class="text-sm font-bold text-text mb-3">Communication history</h2>
+            <div class="border border-line rounded-xl divide-y divide-line text-xs bg-white mb-4">
+              <div class="p-3.5 flex items-center justify-between">
+                <span class="font-mono text-muted w-[140px] shrink-0">Jul 16, 9:45 AM</span>
+                <span class="font-medium text-text flex-1">Fax confirmation sent to Marion Family Health Assoc. — delivered.</span>
+              </div>
+              <div class="p-3.5 flex items-center justify-between">
+                <span class="font-mono text-muted w-[140px] shrink-0">Jul 14, 2:10 PM</span>
+                <span class="font-medium text-text flex-1">Follow-up fax sent requesting kit authorization — delivered, no response yet.</span>
+              </div>
+            </div>
+            <button type="button" class="h-8 px-4 border border-line rounded-lg bg-white text-text font-medium text-xs hover:border-primary hover:bg-surface transition">
+              Open full communication log ↗
+            </button>
+          </div>
+
+          <!-- Tab 7: Activity Timeline Panel -->
+          <div id="panel-timeline" class="tab-panel hidden">
+            <h2 class="text-xs font-bold text-muted uppercase tracking-wider mb-4">ACTIVITY TIMELINE</h2>
+            <div class="relative pl-6 flex flex-col gap-6 text-xs before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-line">
+              
+              <div class="relative flex items-start gap-3">
+                <div class="absolute -left-[30px] top-0 w-5 h-5 rounded-full bg-green text-white flex items-center justify-center text-[10px] font-bold z-10">
+                  ✓
+                </div>
+                <div>
+                  <span class="font-bold text-text text-sm block">Order created from Intake</span>
+                  <span class="text-muted font-mono text-[11px] mt-0.5 block">Jul 16, 9:41 AM</span>
+                </div>
+              </div>
+
+              <div class="relative flex items-start gap-3">
+                <div class="absolute -left-[30px] top-0 w-5 h-5 rounded-full bg-green text-white flex items-center justify-center text-[10px] font-bold z-10">
+                  ✓
+                </div>
+                <div>
+                  <span class="font-bold text-text text-sm block">Assigned to Jane Doe</span>
+                  <span class="text-muted font-mono text-[11px] mt-0.5 block">Jul 16, 9:50 AM</span>
+                </div>
+              </div>
+
+              <div class="relative flex items-start gap-3">
+                <div class="absolute -left-[30px] top-0 w-5 h-5 rounded-full bg-blue text-white flex items-center justify-center text-[8px] font-bold z-10">
+                  ●
+                </div>
+                <div>
+                  <span class="font-bold text-text text-sm block">Flagged — provider verification mismatch</span>
+                  <span class="text-muted text-xs block mt-0.5">Routed to Review; awaiting resolution.</span>
+                  <span class="text-muted font-mono text-[11px] mt-0.5 block">Today, 9:52 AM</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Tab 8: Audit Panel -->
+          <div id="panel-audit" class="tab-panel hidden">
+            <h2 class="text-sm font-bold text-text mb-4">Business Audit History</h2>
+            <div class="border border-line rounded-xl divide-y divide-line text-xs font-mono bg-white mb-4">
+              <div class="p-3.5 flex items-center gap-4">
+                <span class="text-muted">7/22/2026 15:19:14</span>
+                <span class="text-text">System — Order created from Intake record d7e9fa8a8feba20f1e9a51befb5c8b47</span>
+              </div>
+            </div>
+            <button type="button" class="h-8 px-4 border border-line rounded-lg bg-white text-text font-medium text-xs hover:border-primary hover:bg-surface transition">
+              Open full audit trail →
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+    </section>
+  </div>
+
+  <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
+
+  <script>
+    function switchTab(tabKey) {
+      document.querySelectorAll('.detail-nav-tab').forEach(btn => {
+        if (btn.dataset.tab === tabKey) {
+          btn.className = "detail-nav-tab px-6 py-3.5 text-xs font-bold text-primary border-b-2 border-primary transition whitespace-nowrap";
+        } else {
+          btn.className = "detail-nav-tab px-6 py-3.5 text-xs font-medium text-muted hover:text-text border-b-2 border-transparent transition whitespace-nowrap";
+        }
+      });
+
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.add('hidden');
+      });
+
+      const activePanel = document.getElementById('panel-' + tabKey);
+      if (activePanel) activePanel.classList.remove('hidden');
+    }
+
+    // Dynamic Parameter Binding
+    const urlParams = new URLSearchParams(window.location.search);
+    const orderId = urlParams.get('orderId') || 'ORD-000886';
+
+    document.getElementById('crumb-id').innerText = orderId;
+    document.getElementById('order-id').innerText = orderId;
+    document.getElementById('panel-bridge-id').innerText = orderId;
+
+    // Account / Role Switcher Logic
+    let activeRole = 'operations';
+    let roleSwitcherOpen = false;
+
+    const roleData = {
+      operations: { name: 'Jane Doe', email: 'jane.doe@h2m.org', initials: 'J', color: '#6750a4', label: 'Operations' },
+      administrator: { name: 'Priya Patel', email: 'p.patel@h2m.org', initials: 'P', color: '#1967D2', label: 'Administrator' }
+    };
+
+    document.getElementById('role-switcher-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      roleSwitcherOpen = !roleSwitcherOpen;
+      document.getElementById('role-switcher-dropdown').classList.toggle('hidden', !roleSwitcherOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+      const container = document.getElementById('role-switcher-container');
+      if (container && !container.contains(e.target)) {
+        roleSwitcherOpen = false;
+        document.getElementById('role-switcher-dropdown').classList.add('hidden');
+      }
+    });
+
+    function selectRole(role) {
+      activeRole = role;
+      roleSwitcherOpen = false;
+      document.getElementById('role-switcher-dropdown').classList.add('hidden');
+
+      const current = roleData[role];
+      const avatar = document.getElementById('active-avatar');
+      avatar.style.backgroundColor = current.color;
+      avatar.innerText = current.initials;
+
+      document.getElementById('active-name').innerText = current.name;
+      const label = document.getElementById('active-label');
+      label.innerText = current.label;
+      label.style.color = current.color;
+
+      const opsBtn = document.getElementById('role-opt-operations');
+      const adminBtn = document.getElementById('role-opt-administrator');
+      const checkOps = document.getElementById('check-operations');
+      const checkAdmin = document.getElementById('check-administrator');
+
+      if (role === 'operations') {
+        opsBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]";
+        adminBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
+        checkOps.classList.remove('hidden');
+        checkAdmin.classList.add('hidden');
+      } else {
+        adminBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]";
+        opsBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
+        checkAdmin.classList.remove('hidden');
+        checkOps.classList.add('hidden');
+      }
+
+      showToast(`Switched to ${current.label} view — ${current.name}`);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast-notification');
+      toast.innerText = message;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

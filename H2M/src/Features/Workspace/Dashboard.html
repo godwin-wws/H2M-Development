@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workspace Dashboard | H2M BRIDGE</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Roboto', 'sans-serif'],
+            mono: ['"Roboto Mono"', 'monospace']
+          },
+          colors: {
+            surface: '#FEF7FF',
+            primary: '#6750A4',
+            'primary-soft': '#EADDFF',
+            line: '#CAC4D0',
+            text: '#1D1B20',
+            muted: '#79747E',
+            'blue-bg': '#E8F0FE',
+            blue: '#174EA6',
+            'amber-bg': '#FEF7E0',
+            amber: '#6D4200',
+            'purple-bg': '#EADDFF',
+            purple: '#4F378A',
+            'green-bg': '#E6F4EA',
+            green: '#0D652D',
+            'red-bg': '#F9DEDC',
+            red: '#B3261E',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-surface text-text font-sans min-h-screen">
+  <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
+    
+    <!-- Unified Side Navigation -->
+    <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+      <div class="w-[58px] h-[58px]">
+        <img src="https://www.figma.com/api/mcp/asset/344953eb-406f-498c-b60f-e17d785f92f3.png" alt="Help to Moms logo" class="w-full h-full object-contain">
+      </div>
+      <nav class="w-full flex flex-col gap-2">
+        <a class="h-10 px-3.5 rounded-full flex items-center gap-3 bg-primary-soft text-primary font-medium text-sm leading-[19.5px] transition" href="Dashboard.html">
+          <svg class="w-4 h-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          <span>Dashboard</span>
+        </a>
+        <a class="h-10 px-3.5 rounded-full flex items-center gap-3 text-[#49454f] text-sm font-medium leading-[19.5px] hover:bg-[#F3EDF7] transition" href="WorkQueue.html">
+          <svg class="w-4 h-4 shrink-0 text-[#49454f]" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+          <span>Work Queues</span>
+        </a>
+        <a class="h-10 px-3.5 rounded-full flex items-center gap-3 text-[#49454f] text-sm font-medium leading-[19.5px] hover:bg-[#F3EDF7] transition" href="OrderSearch.html">
+          <svg class="w-4 h-4 shrink-0 text-[#49454f]" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/></svg>
+          <span>Order Search</span>
+        </a>
+        <a class="h-10 px-3.5 rounded-full flex items-center gap-3 text-[#49454f] text-sm font-medium leading-[19.5px] hover:bg-[#F3EDF7] transition" href="Alerts.html">
+          <svg class="w-4 h-4 shrink-0 text-[#49454f]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+          <span>Alerts &amp; Exceptions</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <section class="flex-1 p-8 pb-12 flex flex-col gap-6">
+      
+      <!-- Top Bar Tabs -->
+      <header class="h-[58px] flex items-center justify-between">
+        <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
+          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium" href="../Workspace/Dashboard.html">Workspace</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditPage.html">Audit</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectoryPage.html">Provider Directory</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Administration/AdministrationPage.html">Administration</a>
+        </nav>
+        
+        <div class="flex items-center gap-6">
+          <div class="relative w-10 h-10 flex items-center justify-center cursor-pointer">
+            <img src="https://www.figma.com/api/mcp/asset/0e022744-e0d6-4c6f-8546-51c31cf743c4.svg" alt="Notifications" class="w-5 h-5">
+            <span class="absolute top-0 right-0 w-4 h-4 border border-white rounded-full bg-red text-white flex items-center justify-center text-[9px] font-bold">14</span>
+          </div>
+
+          <!-- Account / Role Switcher -->
+          <div class="relative inline-block text-left" id="role-switcher-container">
+            <button
+              id="role-switcher-btn"
+              type="button"
+              class="flex items-center gap-2 h-9 pl-1 pr-3 rounded-full border border-[#e8def8] bg-white hover:bg-[#f3edf7] cursor-pointer transition-colors outline-none focus:ring-2 focus:ring-[#6750a4]"
+            >
+              <div id="active-avatar" class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold text-white flex-shrink-0 bg-[#6750a4]">
+                J
+              </div>
+              <div class="text-left hidden sm:block">
+                <p id="active-name" class="text-[12px] font-medium text-[#1C1B1F] m-0 leading-none">Jane Doe</p>
+                <p id="active-label" class="text-[10px] m-0 font-bold text-[#6750a4] mt-0.5">Operations</p>
+              </div>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="shrink-0">
+                <path d="M6 9l6 6 6-6" stroke="#79747e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div
+              id="role-switcher-dropdown"
+              class="hidden absolute right-0 top-[calc(100%+6px)] bg-white rounded-[12px] border border-[#e8def8] z-50 w-[260px] overflow-hidden shadow-[0px_4px_16px_rgba(0,0,0,0.12)]"
+            >
+              <div class="px-4 py-2.5 border-b border-[#f3edf7]">
+                <p class="text-[10px] font-bold uppercase tracking-[0.5px] text-[#79747e] m-0">Switch Account / Role View</p>
+              </div>
+              
+              <button
+                type="button"
+                onclick="selectRole('operations')"
+                id="role-opt-operations"
+                class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]"
+              >
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white flex-shrink-0 bg-[#6750a4]">J</div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Jane Doe</p>
+                  <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">jane.doe@h2m.org</p>
+                  <p class="text-[10px] font-bold m-0 text-[#6750a4]">
+                    Operations 
+                  </p>
+                </div>
+                <svg id="check-operations" width="14" height="14" viewBox="0 0 24 24" fill="none" class="shrink-0">
+                  <path d="M20 6L9 17l-5-5" stroke="#6750a4" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+
+              <button
+                type="button"
+                onclick="selectRole('administrator')"
+                id="role-opt-administrator"
+                class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]"
+              >
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white flex-shrink-0 bg-[#1967D2]">P</div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Priya Patel</p>
+                  <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">p.patel@h2m.org</p>
+                  <p class="text-[10px] font-bold m-0 text-[#1967D2]">
+                    Administrator
+                  </p>
+                </div>
+                <svg id="check-administrator" width="14" height="14" viewBox="0 0 24 24" fill="none" class="shrink-0 hidden">
+                  <path d="M20 6L9 17l-5-5" stroke="#6750a4" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div>
+        <h1 class="text-3xl font-semibold text-text">Workspace</h1>
+      </div>
+
+      <!-- Updated Stat Cards Grid (Matching Image image_8b8df6.png) -->
+      <section class="grid grid-cols-4 gap-4">
+        <!-- Card 1: All Orders -->
+        <button class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200  hover:shadow-md  hover:bg-[#FDFBFE] cursor-pointer" data-filter="all">
+          <div class="flex items-center justify-between">
+            <div class="w-9 h-9 rounded-xl bg-[#F3EDF7] flex items-center justify-center text-[#6750A4]">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M4 11h6a1 1 0 001-1V4a1 1 0 00-1-1H4a1 1 0 00-1 1v6a1 1 0 001 1zm10 0h6a1 1 0 001-1V4a1 1 0 00-1-1h-6a1 1 0 00-1 1v6a1 1 0 001 1zM4 21h6a1 1 0 001-1v-6a1 1 0 00-1-1H4a1 1 0 00-1 1v6a1 1 0 001 1zm10 0h6a1 1 0 001-1v-6a1 1 0 00-1-1h-6a1 1 0 00-1 1v6a1 1 0 001 1z"/></svg>
+            </div>
+            <span class="text-3xl font-extrabold text-[#4F378A]">20</span>
+          </div>
+          <span class="block mt-4 text-sm font-bold text-text">All Orders</span>
+          <span class="block mt-1 text-[11px] text-muted">Intake Orders - 7/22/2026</span>
+        </button>
+
+        <!-- Card 2: Prescription Requested -->
+        <button class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200  hover:shadow-md  hover:bg-[#FDFBFE] cursor-pointer" data-filter="Prescription Requested">
+          <div class="flex items-center justify-between">
+            <div class="w-9 h-9 rounded-xl bg-blue-bg flex items-center justify-center text-blue">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            </div>
+            <span class="text-3xl font-extrabold text-blue">5</span>
+          </div>
+          <span class="block mt-4 text-sm font-bold text-text">Prescription Requested</span>
+          <span class="block mt-1 text-[11px] text-blue font-medium">Awaiting Rx from provider</span>
+        </button>
+
+        <!-- Card 3: Missing Fax Number -->
+        <button class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200  hover:shadow-md  hover:bg-[#FDFBFE] cursor-pointer" data-filter="Missing Fax Number">
+          <div class="flex items-center justify-between">
+            <div class="w-9 h-9 rounded-xl bg-red-bg flex items-center justify-center text-red">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            </div>
+            <span class="text-3xl font-extrabold text-red">6</span>
+          </div>
+          <span class="block mt-4 text-sm font-bold text-text">Missing Fax Number</span>
+          <span class="block mt-1 text-[11px] text-red font-medium">Action required — hard stop</span>
+        </button>
+
+        <!-- Card 4: Physician Info Requested -->
+        <button class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200  hover:shadow-md  hover:bg-[#FDFBFE] cursor-pointer" data-filter="Physician Info Requested">
+          <div class="flex items-center justify-between">
+            <div class="w-9 h-9 rounded-xl bg-amber-bg flex items-center justify-center text-amber">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            </div>
+            <span class="text-3xl font-extrabold text-[#6D4200]">8</span>
+          </div>
+          <span class="block mt-4 text-sm font-bold text-text">Physician Info Requested</span>
+          <span class="block mt-1 text-[11px] text-[#6D4200] font-medium">Provider details needed</span>
+        </button>
+      </section>
+
+      <!-- Orders Panel -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden">
+        <div class="p-5 border-b border-line flex flex-col gap-3">
+          <h2 class="text-xl font-semibold text-text">Recent Orders</h2>
+          <div class="flex items-center gap-2.5">
+            <div class="h-9 w-64 px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 text-muted border-0 focus:outline-none">
+              <svg class="w-3.5 h-3.5 text-muted shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/></svg>
+              <input id="table-search" type="search" class="w-full bg-transparent border-0 outline-none text-sm text-text placeholder-muted focus:ring-0" placeholder="Search by ID, name, email...">
+            </div>
+            <select id="insurance-filter" class="h-8 px-3 border border-line rounded-lg bg-white text-sm font-medium text-[#49454f] outline-none">
+              <option value="all">Insurance</option>
+              <option>United Healthcare Community Plan</option>
+              <option>Anthem Blue Cross</option>
+              <option>Wellpoint</option>
+            </select>
+            <select id="state-filter" class="h-8 px-3 border border-line rounded-lg bg-white text-sm font-medium text-[#49454f] outline-none">
+              <option value="all">State</option>
+              <option>Tennessee</option>
+              <option>Michigan</option>
+              <option>Ohio</option>
+            </select>
+            <a href="WorkQueue.html" class="ml-auto text-sm font-semibold text-primary hover:underline">View all</a>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm table-fixed min-w-[900px]">
+            <colgroup>
+              <col class="w-[13%]">
+              <col class="w-[16%]">
+              <col class="w-[12%]">
+              <col class="w-[27%]">
+              <col class="w-[18%]">
+              <col class="w-[14%]">
+            </colgroup>
+            <thead>
+              <tr class="bg-primary text-white text-[11px] font-bold tracking-wider">
+                <th class="py-3 px-3">ORDER ID</th>
+                <th class="py-3 px-3">PATIENT NAME</th>
+                <th class="py-3 px-3">DOB</th>
+                <th class="py-3 px-3">PROVIDER</th>
+                <th class="py-3 px-3">STATUS</th>
+                <th class="py-3 px-3">DATE</th>
+              </tr>
+            </thead>
+            <tbody id="order-body">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
+
+  <script>
+    const orders = [
+      { id: 'ORD-000867', firstName: 'Brianna', lastName: 'Treadway', dob: '03/16/2006', provider: 'Diana Health, Springfield Tennessee', product: 'Momcozy Double Wearable Breast Pump', insurance: 'United Healthcare Community Plan', sourceStatus: 'Prescription Requested', statusClass: 'bg-blue-bg text-blue', date: '10/27/2025' },
+      { id: 'ORD-000868', firstName: 'Laura', lastName: 'Mabry', dob: '11/11/1988', provider: 'Provider not listed', product: 'Pregnancy Support Kit', insurance: 'Anthem Blue Cross', sourceStatus: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '07/11/2026' },
+      { id: 'ORD-000869', firstName: 'Madison', lastName: 'Chilcutt', dob: '01/12/2004', provider: 'Provider not listed', product: 'Pregnancy Support Kit', insurance: 'United Healthcare Community Plan', sourceStatus: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '10/21/2025' },
+      { id: 'ORD-000870', firstName: 'Sari', lastName: 'Gutierrez', dob: '03/03/2000', provider: 'Baptist Medical Group Women\'s Health Center of Union City', product: 'Momcozy Double Wearable Breast Pump', insurance: 'United Healthcare Community Plan', sourceStatus: 'Prescription Requested', statusClass: 'bg-blue-bg text-blue', date: '02/05/2026' },
+      { id: 'ORD-000871', firstName: 'Sinthia', lastName: 'Abrego', dob: '11/04/1989', provider: 'Provider not listed', product: 'Pregnancy Support Kit', insurance: 'Wellpoint', sourceStatus: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '03/08/2026' },
+      { id: 'ORD-000872', firstName: 'Suheda', lastName: 'Begum', dob: '06/24/2001', provider: 'KHOSHABA, AUDISHO', product: 'Momcozy Double Wearable Breast Pump', insurance: 'Blue Cross Community Health', sourceStatus: 'Prescription Requested', statusClass: 'bg-blue-bg text-blue', date: '02/12/2026' },
+      { id: 'ORD-000873', firstName: 'Leticia', lastName: 'Delarosa', dob: '10/24/2001', provider: 'Dr Hadeel', product: 'Pregnancy Support Kit', insurance: 'Michigan Medicaid', sourceStatus: 'Prescription Requested', statusClass: 'bg-blue-bg text-blue', date: '01/25/2026' },
+      { id: 'ORD-000874', firstName: 'Hayley', lastName: 'Gow', dob: '11/26/1999', provider: 'Provider not listed', product: 'Pregnancy Support Kit', insurance: 'Wellpoint', sourceStatus: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '04/28/2026' },
+      { id: 'ORD-000875', firstName: 'Doris', lastName: 'Manchame', dob: '04/11/2002', provider: 'Provider not listed', product: 'Pregnancy Support Kit', insurance: '6 Degrees Health', sourceStatus: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '11/04/2025' },
+      { id: 'ORD-000876', firstName: 'Peyton', lastName: 'Tockey', dob: '02/18/1994', provider: 'Dr. Jeremy Avila', product: 'Momcozy Double Wearable Breast Pump', insurance: 'United Healthcare Community Plan', sourceStatus: 'Prescription Requested', statusClass: 'bg-blue-bg text-blue', date: '06/02/2026' },
+      { id: 'ORD-000877', firstName: 'Leah', lastName: 'Garcia', dob: '04/19/1996', provider: 'Crowe, Women\'s OB Nashville', product: 'Momcozy Double Wearable Breast Pump', insurance: 'Anthem Blue Cross', sourceStatus: 'Missing Fax Number', statusClass: 'bg-red-bg text-red', date: '08/01/2026' },
+      { id: 'ORD-000878', firstName: 'Sarah', lastName: 'Albertson', dob: '08/28/2002', provider: 'Dr. Paul Grayson Smith, D.O', product: 'Rumble Tuff EZ Express with Classic', insurance: 'TennCare', sourceStatus: 'Missing Fax Number', statusClass: 'bg-red-bg text-red', date: '05/27/2026' }
+    ];
+
+    let activeFilter = 'all';
+
+    function renderOrders() {
+      const query = document.getElementById('table-search').value.trim().toLowerCase();
+      const insurance = document.getElementById('insurance-filter').value;
+      const state = document.getElementById('state-filter').value;
+      const stateByInsurance = {'United Healthcare Community Plan': 'Tennessee', 'Anthem Blue Cross': 'Ohio', Wellpoint: 'Michigan', 'Blue Cross Community Health': 'Ohio', 'Michigan Medicaid': 'Michigan', '6 Degrees Health': 'Tennessee', TennCare: 'Tennessee'};
+
+      const visible = orders.filter(order => {
+        const matchesFilter = activeFilter === 'all' || order.sourceStatus === activeFilter;
+        const matchesInsurance = insurance === 'all' || order.insurance === insurance;
+        const matchesState = state === 'all' || stateByInsurance[order.insurance] === state;
+        const matchesQuery = !query || Object.values(order).join(' ').toLowerCase().includes(query);
+        return matchesFilter && matchesInsurance && matchesState && matchesQuery;
+      });
+
+      document.getElementById('order-body').innerHTML = visible.length ? visible.map(order => `
+        <tr class="border-b border-line hover:bg-surface transition">
+          <td class="p-3"><a class="font-mono font-bold text-primary hover:underline text-sm" href="OrderDetails/OrderDetailsView.html?orderId=${order.id}">${order.id}</a></td>
+          <td class="p-3 text-text font-medium text-sm">${order.firstName} ${order.lastName}</td>
+          <td class="p-3 text-muted text-sm">${order.dob}</td>
+          <td class="p-3 text-text text-sm truncate" title="${order.provider}">${order.provider}</td>
+          <td class="p-3">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap ${order.statusClass}">
+              <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+              ${order.sourceStatus}
+            </span>
+          </td>
+          <td class="p-3 text-muted text-sm">${order.date}</td>
+        </tr>
+      `).join('') : `<tr><td class="p-8 text-center text-muted text-sm" colspan="6">No orders match the current search and status filter.</td></tr>`;
+    }
+
+    document.querySelectorAll('.stat-card').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.stat-card').forEach(c => {
+          c.classList.remove('border-primary', 'ring-2', 'ring-primary/20', 'bg-[#FDFBFE]');
+          c.classList.add('border-line', 'bg-white');
+        });
+        btn.classList.remove('border-line', 'bg-white');
+        btn.classList.add('border-primary', 'ring-2', 'ring-primary/20', 'bg-[#FDFBFE]');
+        activeFilter = btn.dataset.filter;
+        renderOrders();
+      });
+    });
+
+    document.getElementById('table-search').addEventListener('input', renderOrders);
+    document.getElementById('insurance-filter').addEventListener('change', renderOrders);
+    document.getElementById('state-filter').addEventListener('change', renderOrders);
+
+    // Account / Role Switcher Logic
+    let activeRole = 'operations';
+    let roleSwitcherOpen = false;
+
+    const roleData = {
+      operations: { name: 'Jane Doe', email: 'jane.doe@h2m.org', initials: 'J', color: '#6750a4', label: 'Operations' },
+      administrator: { name: 'Priya Patel', email: 'p.patel@h2m.org', initials: 'P', color: '#1967D2', label: 'Administrator' }
+    };
+
+    document.getElementById('role-switcher-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      roleSwitcherOpen = !roleSwitcherOpen;
+      document.getElementById('role-switcher-dropdown').classList.toggle('hidden', !roleSwitcherOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+      const container = document.getElementById('role-switcher-container');
+      if (container && !container.contains(e.target)) {
+        roleSwitcherOpen = false;
+        document.getElementById('role-switcher-dropdown').classList.add('hidden');
+      }
+    });
+
+    function selectRole(role) {
+      activeRole = role;
+      roleSwitcherOpen = false;
+      document.getElementById('role-switcher-dropdown').classList.add('hidden');
+
+      const current = roleData[role];
+      const avatar = document.getElementById('active-avatar');
+      avatar.style.backgroundColor = current.color;
+      avatar.innerText = current.initials;
+
+      document.getElementById('active-name').innerText = current.name;
+      const label = document.getElementById('active-label');
+      label.innerText = current.label;
+      label.style.color = current.color;
+
+      const opsBtn = document.getElementById('role-opt-operations');
+      const adminBtn = document.getElementById('role-opt-administrator');
+      const checkOps = document.getElementById('check-operations');
+      const checkAdmin = document.getElementById('check-administrator');
+
+      if (role === 'operations') {
+        opsBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]";
+        adminBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
+        checkOps.classList.remove('hidden');
+        checkAdmin.classList.add('hidden');
+      } else {
+        adminBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]";
+        opsBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
+        checkAdmin.classList.remove('hidden');
+        checkOps.classList.add('hidden');
+      }
+
+      showToast(`Switched to ${current.label} view — ${current.name}`);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast-notification');
+      toast.innerText = message;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 3000);
+    }
+
+    renderOrders();
+  </script>
+</body>
+</html>

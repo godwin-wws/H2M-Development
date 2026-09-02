@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alerts &amp; Exceptions | H2M BRIDGE</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Roboto', 'sans-serif'],
+            mono: ['"Roboto Mono"', 'monospace']
+          },
+          colors: {
+            surface: '#FEF7FF',
+            primary: '#6750A4',
+            'primary-soft': '#EADDFF',
+            line: '#CAC4D0',
+            text: '#1D1B20',
+            muted: '#79747E',
+            'blue-bg': '#E8F0FE',
+            blue: '#174EA6',
+            'amber-bg': '#FEF7E0',
+            amber: '#6D4200',
+            'red-bg': '#F9DEDC',
+            red: '#B3261E',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-surface text-text font-sans min-h-screen">
+  <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
+    
+    <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+      <div class="w-[58px] h-[58px]">
+        <img src="https://www.figma.com/api/mcp/asset/344953eb-406f-498c-b60f-e17d785f92f3.png" alt="Help to Moms logo" class="w-full h-full object-contain">
+      </div>
+      <nav class="w-full flex flex-col gap-2">
+        <a class="h-10 px-3.5 rounded-full flex items-center gap-3 text-[#49454f] text-sm font-medium leading-[19.5px] hover:bg-[#F3EDF7] transition" href="Dashboard.html">
+          <svg class="w-4 h-4 shrink-0 text-[#49454f]" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          <span>Dashboard</span>
+        </a>
+        <a class="h-10 px-3.5 rounded-full flex items-center gap-3 text-[#49454f] text-sm font-medium leading-[19.5px] hover:bg-[#F3EDF7] transition" href="WorkQueue.html">
+          <svg class="w-4 h-4 shrink-0 text-[#49454f]" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+          <span>Work Queues</span>
+        </a>
+        <a class="h-10 px-3.5 rounded-full flex items-center gap-3 text-[#49454f] text-sm font-medium leading-[19.5px] hover:bg-[#F3EDF7] transition" href="OrderSearch.html">
+          <svg class="w-4 h-4 shrink-0 text-[#49454f]" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/></svg>
+          <span>Order Search</span>
+        </a>
+        <a class="h-10 px-3.5 rounded-full flex items-center gap-3 bg-primary-soft text-primary font-medium text-sm leading-[19.5px] transition" href="Alerts.html">
+          <svg class="w-4 h-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+          <span>Alerts &amp; Exceptions</span>
+        </a>
+      </nav>
+    </aside>
+
+   <!-- Main Content -->
+    <section class="flex-1 p-8 pb-12 flex flex-col gap-6">
+      
+      <!-- Top Bar Tabs -->
+      <header class="h-[58px] flex items-center justify-between">
+        <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
+          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium" href="Dashboard.html">Workspace</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="#">Audit</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="#">Provider Directory</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="#">Administration</a>
+        </nav>
+        
+        <div class="flex items-center gap-6">
+          <div class="relative w-10 h-10 flex items-center justify-center cursor-pointer">
+            <img src="https://www.figma.com/api/mcp/asset/0e022744-e0d6-4c6f-8546-51c31cf743c4.svg" alt="Notifications" class="w-5 h-5">
+            <span class="absolute top-0 right-0 w-4 h-4 border border-white rounded-full bg-red text-white flex items-center justify-center text-[9px] font-bold">14</span>
+          </div>
+
+          <!-- Account / Role Switcher -->
+          <div class="relative inline-block text-left" id="role-switcher-container">
+            <button
+              id="role-switcher-btn"
+              type="button"
+              class="flex items-center gap-2 h-9 pl-1 pr-3 rounded-full border border-[#e8def8] bg-white hover:bg-[#f3edf7] cursor-pointer transition-colors outline-none focus:ring-2 focus:ring-[#6750a4]"
+            >
+              <div id="active-avatar" class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold text-white flex-shrink-0 bg-[#6750a4]">
+                J
+              </div>
+              <div class="text-left hidden sm:block">
+                <p id="active-name" class="text-[12px] font-medium text-[#1C1B1F] m-0 leading-none">Jane Doe</p>
+                <p id="active-label" class="text-[10px] m-0 font-bold text-[#6750a4] mt-0.5">Operations</p>
+              </div>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="shrink-0">
+                <path d="M6 9l6 6 6-6" stroke="#79747e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div
+              id="role-switcher-dropdown"
+              class="hidden absolute right-0 top-[calc(100%+6px)] bg-white rounded-[12px] border border-[#e8def8] z-50 w-[260px] overflow-hidden shadow-[0px_4px_16px_rgba(0,0,0,0.12)]"
+            >
+              <div class="px-4 py-2.5 border-b border-[#f3edf7]">
+                <p class="text-[10px] font-bold uppercase tracking-[0.5px] text-[#79747e] m-0">Switch Account / Role View</p>
+              </div>
+              
+              <button
+                type="button"
+                onclick="selectRole('operations')"
+                id="role-opt-operations"
+                class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]"
+              >
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white flex-shrink-0 bg-[#6750a4]">J</div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Jane Doe</p>
+                  <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">jane.doe@h2m.org</p>
+                  <p class="text-[10px] font-bold m-0 text-[#6750a4]">
+                    Operations 
+                  </p>
+                </div>
+                <svg id="check-operations" width="14" height="14" viewBox="0 0 24 24" fill="none" class="shrink-0">
+                  <path d="M20 6L9 17l-5-5" stroke="#6750a4" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+
+              <button
+                type="button"
+                onclick="selectRole('administrator')"
+                id="role-opt-administrator"
+                class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]"
+              >
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white flex-shrink-0 bg-[#1967D2]">P</div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Priya Patel</p>
+                  <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">p.patel@h2m.org</p>
+                  <p class="text-[10px] font-bold m-0 text-[#1967D2]">
+                    Administrator
+                  </p>
+                </div>
+                <svg id="check-administrator" width="14" height="14" viewBox="0 0 24 24" fill="none" class="shrink-0 hidden">
+                  <path d="M20 6L9 17l-5-5" stroke="#6750a4" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div>
+        <h1 class="text-3xl font-bold text-text tracking-tight">Alerts &amp; Exceptions</h1>
+      </div>
+
+      <section class="bg-white border border-line rounded-3xl shadow-sm overflow-hidden flex flex-col">
+        <div id="alerts-container" class="divide-y divide-line">
+          </div>
+      </section>
+
+    </section>
+  </div>
+
+  <script>
+    const alertsData = [
+      {
+        orderId: 'ORD-100465',
+        type: 'Duplicate Suspected',
+        description: 'Routed to Review from Intake. Awaiting Resolution',
+        timeAgo: '12 min ago',
+        iconType: 'info',
+        iconBg: 'bg-blue-bg',
+        iconColor: 'text-blue'
+      },
+      {
+        orderId: 'ORD-100478',
+        type: 'Waiting on Provider Response',
+        description: 'No response for 3 days. Consider escalation',
+        timeAgo: '50 min ago',
+        iconType: 'clock',
+        iconBg: 'bg-[#EAE6EE]',
+        iconColor: 'text-[#49454F]'
+      },
+      {
+        orderId: 'ORD-100471',
+        type: 'Verification mismatch',
+        description: 'Provider NPI does not match directory record',
+        timeAgo: '1 hr ago',
+        iconType: 'warning',
+        iconBg: 'bg-amber-bg',
+        iconColor: 'text-amber'
+      },
+      {
+        orderId: 'ORD-100465',
+        type: 'Missing documentation',
+        description: 'Required kit authorization document not yet received',
+        timeAgo: '2 hrs ago',
+        iconType: 'error',
+        iconBg: 'bg-red-bg',
+        iconColor: 'text-red'
+      }
+    ];
+
+    function renderIcons(type, colorClass) {
+      if (type === 'info') {
+        return `<svg class="w-5 h-5 ${colorClass}" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`;
+      } else if (type === 'clock') {
+        return `<svg class="w-5 h-5 ${colorClass}" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`;
+      } else if (type === 'warning') {
+        return `<svg class="w-5 h-5 ${colorClass}" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>`;
+      } else {
+        return `<svg class="w-5 h-5 ${colorClass}" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`;
+      }
+    }
+
+    // Account / Role Switcher Logic
+    let activeRole = 'operations';
+    let roleSwitcherOpen = false;
+
+    const roleData = {
+      operations: { name: 'Jane Doe', email: 'jane.doe@h2m.org', initials: 'J', color: '#6750a4', label: 'Operations' },
+      administrator: { name: 'Priya Patel', email: 'p.patel@h2m.org', initials: 'P', color: '#1967D2', label: 'Administrator' }
+    };
+
+    document.getElementById('role-switcher-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      roleSwitcherOpen = !roleSwitcherOpen;
+      document.getElementById('role-switcher-dropdown').classList.toggle('hidden', !roleSwitcherOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+      const container = document.getElementById('role-switcher-container');
+      if (container && !container.contains(e.target)) {
+        roleSwitcherOpen = false;
+        document.getElementById('role-switcher-dropdown').classList.add('hidden');
+      }
+    });
+
+    function selectRole(role) {
+      activeRole = role;
+      roleSwitcherOpen = false;
+      document.getElementById('role-switcher-dropdown').classList.add('hidden');
+
+      const current = roleData[role];
+      const avatar = document.getElementById('active-avatar');
+      avatar.style.backgroundColor = current.color;
+      avatar.innerText = current.initials;
+
+      document.getElementById('active-name').innerText = current.name;
+      const label = document.getElementById('active-label');
+      label.innerText = current.label;
+      label.style.color = current.color;
+
+      const opsBtn = document.getElementById('role-opt-operations');
+      const adminBtn = document.getElementById('role-opt-administrator');
+      const checkOps = document.getElementById('check-operations');
+      const checkAdmin = document.getElementById('check-administrator');
+
+      if (role === 'operations') {
+        opsBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]";
+        adminBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
+        checkOps.classList.remove('hidden');
+        checkAdmin.classList.add('hidden');
+      } else {
+        adminBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]";
+        opsBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
+        checkAdmin.classList.remove('hidden');
+        checkOps.classList.add('hidden');
+      }
+
+      showToast(`Switched to ${current.label} view — ${current.name}`);
+    }
+
+    function renderAlerts() {
+      const container = document.getElementById('alerts-container');
+      
+      container.innerHTML = alertsData.map(item => `
+        <div class="px-6 py-4 flex items-center justify-between hover:bg-surface/60 transition cursor-pointer group" onclick="navigateToOrderDetails('${item.orderId}')">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full ${item.iconBg} flex items-center justify-center shrink-0">
+              ${renderIcons(item.iconType, item.iconColor)}
+            </div>
+            <div class="flex flex-col gap-0.5">
+              <div class="text-sm font-bold text-text">
+                <span class="font-mono font-bold text-text">${item.orderId}</span> - <span>${item.type}</span>
+              </div>
+              <div class="text-xs text-muted font-normal">
+                ${item.description}
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex items-center gap-3 shrink-0">
+            <span class="text-xs text-muted font-normal">${item.timeAgo}</span>
+            <svg class="w-3.5 h-3.5 text-muted opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function navigateToOrderDetails(orderId) {
+      window.location.href = `OrderDetails/OrderDetailsView.html?orderId=${orderId}`;
+    }
+
+    renderAlerts();
+  </script>
+</body>
+</html>

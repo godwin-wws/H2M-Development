@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review Queue | H2M BRIDGE Workspace</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Roboto', 'sans-serif'],
+            mono: ['"Roboto Mono"', 'monospace']
+          },
+          colors: {
+            surface: '#FEF7FF',
+            primary: '#6750A4',
+            'primary-soft': '#EADDFF',
+            line: '#CAC4D0',
+            text: '#1D1B20',
+            muted: '#79747E',
+            'blue-bg': '#E8F0FE',
+            blue: '#174EA6',
+            'amber-bg': '#FEF7E0',
+            amber: '#6D4200',
+            'purple-bg': '#EADDFF',
+            purple: '#4F378A',
+            'green-bg': '#E6F4EA',
+            green: '#0D652D',
+            'red-bg': '#F9DEDC',
+            red: '#B3261E',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-surface text-text font-sans min-h-screen relative overflow-x-hidden">
+
+  <!-- Step 2: Concurrency Alert Banner -->
+  <div id="concurrency-banner" class="hidden bg-amber-bg border-b border-amber/30 px-6 py-2.5 text-amber text-xs font-medium flex items-center justify-between shadow-sm transition-all duration-300">
+    <div class="flex items-center gap-2">
+      <svg class="w-4 h-4 text-amber shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+      <span>⚠️ <strong>Record <span id="conflict-order-id" class="font-mono font-bold">d12368</span> was just claimed by Sarah Jenkins.</strong> Table updated to reflect latest state.</span>
+    </div>
+    <button onclick="dismissConcurrencyBanner()" class="text-amber hover:underline text-xs font-bold">Dismiss</button>
+  </div>
+
+  <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
+    
+    <!-- Unified Side Navigation (Dashboard Layout & Styling) -->
+    <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+      <div class="w-[58px] h-[58px]">
+        <img src="https://www.figma.com/api/mcp/asset/344953eb-406f-498c-b60f-e17d785f92f3.png" alt="Help to Moms logo" class="w-full h-full object-contain">
+      </div>
+      
+      <div class="w-full">
+      
+        <nav class="w-full flex flex-col gap-1.5">
+          <button onclick="setLifecycleStage('pending')" id="side-pending" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-primary font-medium text-sm leading-[19.5px] transition">
+            <div class="flex items-center gap-2.5">
+              <svg class="w-4 h-4 shrink-0 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>Pending Review</span>
+            </div>
+            <span id="side-pending-badge" class="px-2 py-0.5 rounded-full text-[10px] bg-primary text-white font-bold">244</span>
+          </button>
+
+          <button onclick="setLifecycleStage('in_review')" id="side-in-review" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-[19.5px] hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5">
+              <svg class="w-4 h-4 shrink-0 text-[#49454f]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+              <span>In Review</span>
+            </div>
+            <span id="side-inreview-badge" class="px-2 py-0.5 rounded-full text-[10px] bg-surface text-muted border border-line font-medium">2</span>
+          </button>
+
+          <button onclick="setLifecycleStage('awaiting')" id="side-awaiting" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-[19.5px] hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5">
+              <svg class="w-4 h-4 shrink-0 text-[#49454f]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>Awaiting Info</span>
+            </div>
+            <span id="side-awaiting-badge" class="px-2 py-0.5 rounded-full text-[10px] bg-surface text-muted border border-line font-medium">1</span>
+          </button>
+
+          <button onclick="setLifecycleStage('history')" id="side-history" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-[19.5px] hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5">
+              <svg class="w-4 h-4 shrink-0 text-[#49454f]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 1-2 2v12a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-6 9l2 2 4-4"/></svg>
+              <span>Review History</span>
+            </div>
+            <span id="side-history-badge" class="px-2 py-0.5 rounded-full text-[10px] bg-surface text-muted border border-line font-medium">14</span>
+          </button>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Canvas -->
+    <section class="flex-1 p-8 pb-12 flex flex-col gap-6 overflow-hidden">
+      
+      <!-- Top Navigation Header -->
+      <header class="h-[58px] flex items-center justify-between">
+        <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
+          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium" href="ReviewPage.html">Review</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditPage.html">Audit</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectoryPage.html">Provider Directory</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Administration/AdministrationPage.html">Administration</a>
+        </nav>
+        
+        <div class="flex items-center gap-6">
+          <div class="relative w-10 h-10 flex items-center justify-center cursor-pointer">
+            <img src="https://www.figma.com/api/mcp/asset/0e022744-e0d6-4c6f-8546-51c31cf743c4.svg" alt="Notifications" class="w-5 h-5">
+            <span class="absolute top-0 right-0 w-4 h-4 border border-white rounded-full bg-red text-white flex items-center justify-center text-[9px] font-bold">14</span>
+          </div>
+
+          <!-- Account / Role Switcher -->
+          <div class="relative inline-block text-left" id="role-switcher-container">
+            <button id="role-switcher-btn" type="button" class="flex items-center gap-2 h-9 pl-1 pr-3 rounded-full border border-[#e8def8] bg-white hover:bg-[#f3edf7] cursor-pointer transition-colors outline-none focus:ring-2 focus:ring-[#6750a4]">
+              <div id="active-avatar" class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold text-white shrink-0 bg-[#6750a4]">J</div>
+              <div class="text-left hidden sm:block">
+                <p id="active-name" class="text-[12px] font-medium text-[#1D1B20] m-0 leading-none">Jane Doe</p>
+                <p id="active-label" class="text-[10px] m-0 font-bold text-[#6750a4] mt-0.5">Operations</p>
+              </div>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="shrink-0"><path d="M6 9l6 6 6-6" stroke="#79747e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+
+            <div id="role-switcher-dropdown" class="hidden absolute right-0 top-[calc(100%+6px)] bg-white rounded-[12px] border border-[#e8def8] z-50 w-[260px] overflow-hidden shadow-[0px_4px_16px_rgba(0,0,0,0.12)]">
+              <div class="px-4 py-2.5 border-b border-[#f3edf7]">
+                <p class="text-[10px] font-bold uppercase tracking-[0.5px] text-[#79747e] m-0">Switch Account / Role View</p>
+              </div>
+              <button type="button" onclick="selectRole('operations')" id="role-opt-operations" class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white shrink-0 bg-[#6750a4]">J</div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-[13px] font-medium text-[#1D1B20] m-0">Jane Doe</p>
+                  <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">jane.doe@h2m.org</p>
+                  <p class="text-[10px] font-bold m-0 text-[#6750a4]">Operations</p>
+                </div>
+                <svg id="check-operations" width="14" height="14" viewBox="0 0 24 24" fill="none" class="shrink-0">
+                  <path d="M20 6L9 17l-5-5" stroke="#6750a4" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+              <button type="button" onclick="selectRole('administrator')" id="role-opt-administrator" class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white shrink-0 bg-[#1967D2]">P</div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-[13px] font-medium text-[#1D1B20] m-0">Priya Patel</p>
+                  <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">p.patel@h2m.org</p>
+                  <p class="text-[10px] font-bold m-0 text-[#1967D2]">Administrator</p>
+                </div>
+                <svg id="check-administrator" width="14" height="14" viewBox="0 0 24 24" fill="none" class="shrink-0 hidden">
+                  <path d="M20 6L9 17l-5-5" stroke="#6750a4" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Title Styling -->
+      <div>
+        <h1 class="text-3xl font-semibold text-text" id="canvas-stage-title">Review</h1>
+      </div>
+
+      <!-- Stat Cards Grid (Matching Dashboard Hover Behavior) -->
+      <section class="grid grid-cols-3 gap-4">
+        <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-primary hover:bg-[#FDFBFE] cursor-pointer flex items-start justify-between">
+          <div class="flex flex-col">
+            <span class="block text-sm font-bold text-text">Pending Review Items</span>
+            <span class="text-3xl font-extrabold text-text mt-3" id="stat-pending-count">244</span>
+            <span class="block mt-1 text-[11px] text-muted">Active unresolved items</span>
+          </div>
+          <div class="w-9 h-9 rounded-xl bg-amber-bg text-amber flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+          </div>
+        </div>
+
+        <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-primary hover:bg-[#FDFBFE] cursor-pointer flex items-start justify-between">
+          <div class="flex flex-col">
+            <span class="block text-sm font-bold text-text">Completed Today</span>
+            <span class="text-3xl font-extrabold text-text mt-3">14</span>
+            <span class="block mt-1 text-[11px] text-muted">Resolved in current cycle</span>
+          </div>
+          <div class="w-9 h-9 rounded-xl bg-green-bg text-green flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+          </div>
+        </div>
+
+        <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-primary hover:bg-[#FDFBFE] cursor-pointer flex items-start justify-between">
+          <div class="flex flex-col">
+            <span class="block text-sm font-bold text-text">System Update</span>
+            <span class="text-xl font-bold text-text mt-3">Last Update On</span>
+            <span class="block mt-1 text-[11px] text-muted font-mono">2026-08-06 10:01</span>
+          </div>
+          <div class="w-9 h-9 rounded-xl bg-blue-bg text-blue flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1-2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2z"/></svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Exception Origin Filter Chips -->
+      <section class="rounded-2xl p-1 flex flex-col gap-2.5">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <button onclick="setOriginFilter('all')" class="chip-btn active px-3.5 py-1.5 rounded-full text-xs font-bold bg-primary text-white transition shadow-sm" data-origin="all">
+            <span>All</span> (<span id="chip-count-all">244</span>)
+          </button>
+
+          <button onclick="setOriginFilter('validation')" class="chip-btn px-3.5 py-1.5 rounded-full text-xs font-medium text-muted bg-surface hover:bg-[#F3EDF7] border border-line transition" data-origin="validation">
+            <span>Validation Failed</span> (<span id="chip-count-validation">89</span>)
+          </button>
+
+          <button onclick="setOriginFilter('duplicates')" class="chip-btn px-3.5 py-1.5 rounded-full text-xs font-medium text-muted bg-surface hover:bg-[#F3EDF7] border border-line transition" data-origin="duplicates">
+            <span>Duplicate Suspected</span> (<span id="chip-count-duplicates">58</span>)
+          </button>
+
+          <button onclick="setOriginFilter('provider')" class="chip-btn px-3.5 py-1.5 rounded-full text-xs font-medium text-muted bg-surface hover:bg-[#F3EDF7] border border-line transition" data-origin="provider">
+            <span>Provider Resolution</span> (<span id="chip-count-provider">97</span>)
+          </button>
+
+          <button onclick="setOriginFilter('delivery')" class="chip-btn px-3.5 py-1.5 rounded-full text-xs font-medium text-muted bg-surface hover:bg-[#F3EDF7] border border-line transition" data-origin="delivery">
+            <span>Delivery Failed</span> (<span id="chip-count-delivery">0</span>)
+          </button>
+        </div>
+      </section>
+
+      <!-- Review Queue Table Panel Container -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col flex-1">
+        <div class="p-5 border-b border-line flex items-center justify-between">
+          <h2 class="text-xl font-semibold text-text">Review Queue</h2>
+          
+          <div class="flex items-center gap-2.5">
+            <!-- Search Bar Container (Exact Dashboard Style) -->
+            <div class="h-9 w-64 px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 text-muted border-0 focus:outline-none shrink-0">
+              <svg class="w-3.5 h-3.5 text-muted shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/></svg>
+              <input id="table-search" type="search" class="w-full bg-transparent border-0 outline-none text-sm text-text placeholder-muted focus:ring-0" placeholder="Search by ID, name...">
+            </div>
+
+            <!-- Page Controls (Strict Default: 10 Rows Per Page) -->
+            <div class="flex items-center gap-3 text-xs text-muted pl-2">
+              <span id="pagination-status" class="font-medium text-text">Showing 1-10 of 244</span>
+              <div class="flex items-center gap-1">
+                <button id="prev-page-btn" onclick="changePage(-1)" class="w-7 h-7 rounded-lg border border-line bg-white flex items-center justify-center text-text disabled:opacity-40 disabled:cursor-not-allowed transition">&lt;</button>
+                <button id="next-page-btn" onclick="changePage(1)" class="w-7 h-7 rounded-lg border border-line bg-white flex items-center justify-center text-text disabled:opacity-40 disabled:cursor-not-allowed transition">&gt;</button>
+              </div>
+              <select id="page-size-select" onchange="changePageSize(this.value)" class="h-8 px-2 border border-line rounded-lg bg-white text-xs font-medium text-text outline-none cursor-pointer">
+                <option value="10" selected>10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1000px]">
+            <colgroup>
+              <col class="w-[18%]">
+              <col class="w-[16%]">
+              <col class="w-[22%]">
+              <col class="w-[25%]">
+              <col class="w-[11%]">
+              <col class="w-[8%]">
+            </colgroup>
+            <thead>
+              <tr class="bg-primary text-white text-[11px] font-bold tracking-wider">
+                <th class="py-3 px-4">Source Order ID</th>
+                <th class="py-3 px-4">Patient Name</th>
+                <th class="py-3 px-4">Error Code</th>
+                <th class="py-3 px-4">Error Message</th>
+                <th class="py-3 px-4">Flagged Date</th>
+                <th class="py-3 px-4 text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody id="review-table-body">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </section>
+  </div>
+
+  <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
+
+  <script>
+    // Authentic dataset extracted directly from the Review module specifications
+    let reviewData = [
+      { sourceOrderId: 'c72a5931c291aac09449d1bbb2fa7706', patientName: 'Sari Gutierrez', errorCode: 'ERR_DUPLICATE_RECORD', errorMessage: 'Duplicate record matched on (Order ID / Email / Composite Patient Profile).', flaggedDate: '2026-08-06 09:56', origin: 'duplicates', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 'd1234567', patientName: 'Priya Nair1', errorCode: 'ERR_INVALID_NAME', errorMessage: 'Last Name must contain text characters only. Found: \'Nair1\'', flaggedDate: '2026-08-06 09:56', origin: 'validation', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 'd1234567', patientName: 'Priya Nair', errorCode: 'ERR_MISSING_REQ_FIELD', errorMessage: 'Address is required and cannot be empty.', flaggedDate: '2026-08-06 09:56', origin: 'validation', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 's123', patientName: 'judes bellingam', errorCode: 'ERR_DUPLICATE_RECORD', errorMessage: 'Duplicate record matched on (Order ID / Email / Composite Patient Profile).', flaggedDate: '2026-08-06 09:56', origin: 'duplicates', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '6556263310346000384', patientName: 'Cheyenne Michelle Bailey', errorCode: 'ERR_MISSING_REQ_FIELD', errorMessage: 'Insurance Member ID is required.', flaggedDate: '2026-08-06 10:00', origin: 'validation', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '6603832661914260480', patientName: 'Dorimar Cruz', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician NPI and Fax missing. Match not found in Provider Directory.', flaggedDate: '2026-08-06 10:00', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '6601229201768290304', patientName: 'Karen Taylor', errorCode: 'ERR_DUPLICATE_RECORD', errorMessage: 'Duplicate record matched on (Order ID / Email / Composite Patient Profile).', flaggedDate: '2026-08-06 10:00', origin: 'duplicates', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '6601249464014560256', patientName: 'Maria Carlota Mendez Decena', errorCode: 'ERR_INVALID_CITY', errorMessage: 'City must contain text characters only (no numbers/symbols). Found: \'Cape Coral 01\'', flaggedDate: '2026-08-06 10:00', origin: 'validation', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '6545093223817350144', patientName: 'Alphonso will Harvey', errorCode: 'ERR_DUPLICATE_RECORD', errorMessage: 'Duplicate record matched on (Order ID / Email / Composite Patient Profile).', flaggedDate: '2026-08-06 10:00', origin: 'duplicates', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '6557341286899829760', patientName: 'Sade N Goodluck', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician NPI and Fax missing. Match not found in Provider Directory.', flaggedDate: '2026-08-06 10:00', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '6557976813963110400', patientName: 'Karaline Elizabeth Villarreal', errorCode: 'ERR_MISSING_REQ_FIELD', errorMessage: 'Insurance Member ID is required.', flaggedDate: '2026-08-06 10:00', origin: 'validation', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '6559914426812650496', patientName: 'Corazon De maria Santos', errorCode: 'ERR_INVALID_ZIP', errorMessage: 'ZIP Code must be 5 digits. Found: \'3721037013\'', flaggedDate: '2026-08-06 10:00', origin: 'validation', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 'd1234', patientName: 'Diamond Dotsonss', errorCode: 'ERR_INVALID_UPLOADS', errorMessage: 'Uploads must be an integer count or a valid URL. Found: \'asdfghjkl\'', flaggedDate: '2026-08-06 10:00', origin: 'validation', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 'd12368', patientName: 'Albert Einsten', errorCode: 'ERR_INVALID_UPLOADS', errorMessage: 'Uploads must be an integer count or a valid URL. Found: \'asdfghjkl\'', flaggedDate: '2026-08-06 10:00', origin: 'validation', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 'd1236890', patientName: 'Alphonso tylor', errorCode: 'ERR_INVALID_UPLOADS', errorMessage: 'Uploads must be an integer count or a valid URL. Found: \'asdfghjkl\'', flaggedDate: '2026-08-06 10:00', origin: 'validation', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 'd12368578', patientName: 'tylor jackson', errorCode: 'ERR_INVALID_QUANTITY', errorMessage: 'Quantity must be a valid non-negative integer. Found: \'-1\'', flaggedDate: '2026-08-06 10:00', origin: 'validation', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 'd12368578f', patientName: 'tylor g jackson', errorCode: 'ERR_DUPLICATE_RECORD', errorMessage: 'Duplicate record matched on (Order ID / Email / Composite Patient Profile).', flaggedDate: '2026-08-06 10:00', origin: 'duplicates', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '377585395940', patientName: 'Bonnieooo Bennetteoiiou', errorCode: 'ERR_DUPLICATE_RECORD', errorMessage: 'Duplicate record matched on (Order ID / Email / Composite Patient Profile).', flaggedDate: '2026-08-18 10:14', origin: 'duplicates', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 'e12fdsertdesthds', patientName: 'jr neymar', errorCode: 'ERR_INVALID_DATE', errorMessage: 'Invalid Due Date format (YYYY-MM-DD required). Found: \'E0603\'', flaggedDate: '2026-08-18 12:14', origin: 'validation', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '45757967868685', patientName: 'Rebec Miklens', errorCode: 'ERR_INVALID_CARRIER', errorMessage: 'Carrier \'TennCare\' is invalid for state \'CA\'', flaggedDate: '2026-08-18 13:04', origin: 'validation', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 'ffe683773547e9b', patientName: 'Danielle Egberts', errorCode: 'ERR_INVALID_PHONE', errorMessage: 'Phone number must contain exactly 10 digits. Found: \'61598724251\'', flaggedDate: '2026-08-19 12:18', origin: 'delivery', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '5f9422da44cb50', patientName: 'Mayci Chandler', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician Fax missing. Match not found in Provider Directory.', flaggedDate: '2026-08-21 09:41', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 'b6bdf743693414', patientName: 'Sarah Albertson', errorCode: 'ERR_INVALID_DIAG_CODE', errorMessage: 'Invalid ICD-10 Diagnosis Code format. Found: \'Z391\'', flaggedDate: '2026-08-25 09:59', origin: 'validation', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '65564362036183', patientName: 'Adamaris Lisset Perez Espinosa', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician NPI and Fax is missing.', flaggedDate: '2026-08-25 10:14', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '3091954c8e2a68', patientName: 'Akasha Wormley', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician Fax is missing.', flaggedDate: '2026-08-25 14:56', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '7a39aa68cb5d67', patientName: 'Elizabeth Lyi', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician NPI and Fax is missing.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '29a3904b5bedd1', patientName: 'Jade Blasdell', errorCode: 'ERR_MISSING_REQ_FIELD', errorMessage: 'Physician is required.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '7c522a2184e059', patientName: 'Kaylee Kemp', errorCode: 'ERR_MISSING_REQ_FIELD', errorMessage: 'Physician is required.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 'e437137a06455b', patientName: 'Marian Nicole Evangelista', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician NPI is missing.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 'ba1189f36dc40d', patientName: 'Karmela Hunter', errorCode: 'ERR_MISSING_REQ_FIELD', errorMessage: 'Physician is required.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 'e1c9ef391f7847', patientName: 'Linda Winland', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician NPI and Fax is missing.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '448f2d141e6780', patientName: 'Guadalupe Martinez', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician NPI and Fax is missing.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '3dc11001bc2232', patientName: 'Hanna Smith', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician NPI is missing.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 'eea2503ff2475c', patientName: 'Alexzandria Harwell', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician NPI is missing.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '0c41646e2782b4', patientName: 'Alicia Wooden', errorCode: 'ERR_MISSING_REQ_FIELD', errorMessage: 'Physician is required.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 'b0b1f536456442', patientName: 'Kaitlyn Shultis', errorCode: 'ERR_MISSING_REQ_FIELD', errorMessage: 'Physician is required.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 'd6436b45a69e70', patientName: 'Brittany Hartman', errorCode: 'ERR_MISSING_REQ_FIELD', errorMessage: 'Physician is required.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '65493775470148', patientName: 'Summer michelle Perez', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician NPI and Fax is missing.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '65496531754122', patientName: 'Celia Antonieta De paz diaz', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician NPI and Fax is missing.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '65501260257687', patientName: 'Dalia Llamas Torres', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician NPI and Fax is missing.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '65501374649133', patientName: 'Nancy Clarisa Coc Klahr', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician NPI and Fax is missing.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '65502383906787', patientName: 'wendy carolina ramirez', errorCode: 'ERR_MISSING_REQ_FIELD', errorMessage: 'Insurance Member ID is required.', flaggedDate: '2026-08-26 15:55', origin: 'validation', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '65502432286051', patientName: 'Yeimy Isabel Pérez cordero', errorCode: 'ERR_INVALID_NAME', errorMessage: 'Last Name must contain text characters only.', flaggedDate: '2026-08-26 15:55', origin: 'validation', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '65504058025242', patientName: 'Vanesa Romo', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician NPI and Fax is missing.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '65511199073640', patientName: 'Eden Sophia Santos Ortiz', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician NPI and Fax is missing.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '65514234857787', patientName: 'Brianna Luz Leabaron', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician NPI and Fax is missing.', flaggedDate: '2026-08-26 15:55', origin: 'provider', stage: 'pending', claimedBy: null },
+      { sourceOrderId: '73f35cce973040', patientName: 'Taylor Hensley', errorCode: 'ERR_INVALID_PHONE', errorMessage: 'Phone number must contain exactly 10 digits.', flaggedDate: '2026-08-26 15:59', origin: 'delivery', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 'c938757bf2016a', patientName: 'Jada Richards', errorCode: 'ERR_INVALID_PHONE', errorMessage: 'Phone number must contain exactly 10 digits.', flaggedDate: '2026-08-26 15:59', origin: 'delivery', stage: 'pending', claimedBy: null },
+      { sourceOrderId: 'd12360', patientName: 'Sarah Jenkins', errorCode: 'ERR_INVALID_UPLOADS', errorMessage: 'Claimed order locked for active processing.', flaggedDate: '2026-08-06 09:30', origin: 'validation', stage: 'in_review', claimedBy: 'Jane Doe' },
+      { sourceOrderId: 'd12361', patientName: 'Robert Fox', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Claimed order locked for active processing.', flaggedDate: '2026-08-06 09:35', origin: 'provider', stage: 'in_review', claimedBy: 'Jane Doe' },
+      { sourceOrderId: 'd12350', patientName: 'Guy Hawkins', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Placed on hold pending clinic signature.', flaggedDate: '2026-08-06 08:00', origin: 'provider', stage: 'awaiting', claimedBy: 'Jane Doe' }
+    ];
+
+    let activeLifecycleStage = 'pending';
+    let activeOriginFilter = 'all';
+    let currentPage = 1;
+    let pageSize = 10; // Defaulting to 10 rows per page
+
+    // Step 1: Sidebar Lifecycle Filter
+    function setLifecycleStage(stage) {
+      activeLifecycleStage = stage;
+      currentPage = 1;
+      const stages = ['pending', 'in_review', 'awaiting', 'history'];
+      const map = { pending: 'side-pending', in_review: 'side-in-review', awaiting: 'side-awaiting', history: 'side-history' };
+
+      stages.forEach(s => {
+        const btn = document.getElementById(map[s]);
+        if (s === stage) {
+          btn.className = "w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-primary font-medium text-sm leading-[19.5px] transition";
+        } else {
+          btn.className = "w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-[19.5px] hover:bg-[#F3EDF7] transition";
+        }
+      });
+
+      renderTable();
+    }
+
+    // Step 1: Origin Exception Filter Chips
+    function setOriginFilter(origin) {
+      activeOriginFilter = origin;
+      currentPage = 1;
+      document.querySelectorAll('.chip-btn').forEach(btn => {
+        if (btn.dataset.origin === origin) {
+          btn.className = "chip-btn active px-3.5 py-1.5 rounded-full text-xs font-bold bg-primary text-white transition shadow-sm";
+        } else {
+          btn.className = "chip-btn px-3.5 py-1.5 rounded-full text-xs font-medium text-muted bg-surface hover:bg-[#F3EDF7] border border-line transition";
+        }
+      });
+      renderTable();
+    }
+
+    // Pagination Controls
+    function changePage(direction) {
+      currentPage += direction;
+      renderTable();
+    }
+
+    function changePageSize(newSize) {
+      pageSize = parseInt(newSize, 10);
+      currentPage = 1;
+      renderTable();
+    }
+
+    function renderTable() {
+      const search = document.getElementById('table-search').value.trim().toLowerCase();
+      const stageFiltered = reviewData.filter(item => item.stage === activeLifecycleStage);
+
+      // Recalculate Subset Counts
+      document.getElementById('chip-count-all').innerText = stageFiltered.length;
+      document.getElementById('chip-count-validation').innerText = stageFiltered.filter(i => i.origin === 'validation').length;
+      document.getElementById('chip-count-duplicates').innerText = stageFiltered.filter(i => i.origin === 'duplicates').length;
+      document.getElementById('chip-count-provider').innerText = stageFiltered.filter(i => i.origin === 'provider').length;
+      document.getElementById('chip-count-delivery').innerText = stageFiltered.filter(i => i.origin === 'delivery').length;
+
+      // Update Sidebar Badges
+      document.getElementById('side-pending-badge').innerText = reviewData.filter(i => i.stage === 'pending').length;
+      document.getElementById('side-inreview-badge').innerText = reviewData.filter(i => i.stage === 'in_review').length;
+      document.getElementById('side-awaiting-badge').innerText = reviewData.filter(i => i.stage === 'awaiting').length;
+
+      const visible = stageFiltered.filter(item => {
+        const matchesOrigin = activeOriginFilter === 'all' || item.origin === activeOriginFilter;
+        const matchesSearch = !search || Object.values(item).join(' ').toLowerCase().includes(search);
+        return matchesOrigin && matchesSearch;
+      });
+
+      const totalCount = visible.length;
+      const totalPages = Math.ceil(totalCount / pageSize) || 1;
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const startIdx = (currentPage - 1) * pageSize;
+      const endIdx = Math.min(startIdx + pageSize, totalCount);
+      const pageData = visible.slice(startIdx, endIdx);
+
+      const stageTitles = { pending: 'Pending Review', in_review: 'In Review', awaiting: 'Awaiting Information', history: 'Review History' };
+      document.getElementById('canvas-stage-title').innerHTML = `${stageTitles[activeLifecycleStage]} (<span id="title-stage-count">${totalCount}</span>)`;
+      document.getElementById('stat-pending-count').innerText = reviewData.filter(i => i.stage === 'pending').length;
+      
+      if (totalCount === 0) {
+        document.getElementById('pagination-status').innerText = 'Showing 0-0 of 0';
+      } else {
+        document.getElementById('pagination-status').innerText = `Showing ${startIdx + 1}-${endIdx} of ${totalCount}`;
+      }
+
+      document.getElementById('prev-page-btn').disabled = currentPage <= 1;
+      document.getElementById('next-page-btn').disabled = currentPage >= totalPages;
+
+      const tbody = document.getElementById('review-table-body');
+
+      if (!pageData.length) {
+        tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-muted text-sm">No records match the active lifecycle and exception origin filter.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = pageData.map(row => {
+        const isClaimed = row.stage === 'in_review';
+        const actionLabel = isClaimed ? 'Resume' : 'Claim';
+
+        return `
+          <tr class="border-b border-line hover:bg-surface transition cursor-pointer" onclick="claimAndNavigate('${row.sourceOrderId}')">
+            <td class="py-3 px-4 font-mono font-bold text-primary text-sm truncate" title="${row.sourceOrderId}">${row.sourceOrderId}</td>
+            <td class="py-3 px-4 font-bold text-text text-sm">${row.patientName}</td>
+            <td class="py-3 px-4">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap bg-amber-bg text-amber">
+                <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+                ${row.errorCode}
+              </span>
+            </td>
+            <td class="py-3 px-4 text-muted text-sm truncate" title="${row.errorMessage}">${row.errorMessage}</td>
+            <td class="py-3 px-4 text-muted text-sm font-mono whitespace-nowrap">${row.flaggedDate}</td>
+            <td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+              <button id="btn-claim-${row.sourceOrderId}" onclick="claimAndNavigate('${row.sourceOrderId}')" class="px-3.5 py-1 bg-primary-soft text-primary font-bold text-xs rounded-full hover:bg-primary hover:text-white transition shadow-sm">
+                ${actionLabel}
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // Step 2: Work Claiming & Concurrency Lock
+    function claimAndNavigate(sourceOrderId) {
+      if (sourceOrderId === 'd12375') {
+        document.getElementById('conflict-order-id').innerText = sourceOrderId;
+        document.getElementById('concurrency-banner').classList.remove('hidden');
+        reviewData = reviewData.filter(i => i.sourceOrderId !== sourceOrderId);
+        renderTable();
+        return;
+      }
+
+      const button = document.getElementById(`btn-claim-${sourceOrderId}`);
+      if (button) {
+        button.innerHTML = `<span class="inline-block animate-spin font-bold">↻</span>`;
+      }
+
+      setTimeout(() => {
+        const target = reviewData.find(i => i.sourceOrderId === sourceOrderId);
+        if (target) {
+          target.stage = 'in_review';
+          target.claimedBy = 'Jane Doe';
+        }
+        window.location.href = `ReviewDetails.html?sourceOrderId=${sourceOrderId}`;
+      }, 180);
+    }
+
+    function dismissConcurrencyBanner() {
+      document.getElementById('concurrency-banner').classList.add('hidden');
+    }
+
+    // Account / Role Switcher Logic
+    let activeRole = 'operations';
+    let roleSwitcherOpen = false;
+
+    const roleData = {
+      operations: { name: 'Jane Doe', email: 'jane.doe@h2m.org', initials: 'J', color: '#6750a4', label: 'Operations' },
+      administrator: { name: 'Priya Patel', email: 'p.patel@h2m.org', initials: 'P', color: '#1967D2', label: 'Administrator' }
+    };
+
+    document.getElementById('role-switcher-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      roleSwitcherOpen = !roleSwitcherOpen;
+      document.getElementById('role-switcher-dropdown').classList.toggle('hidden', !roleSwitcherOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+      const container = document.getElementById('role-switcher-container');
+      if (container && !container.contains(e.target)) {
+        roleSwitcherOpen = false;
+        document.getElementById('role-switcher-dropdown').classList.add('hidden');
+      }
+    });
+
+    function selectRole(role) {
+      activeRole = role;
+      roleSwitcherOpen = false;
+      document.getElementById('role-switcher-dropdown').classList.add('hidden');
+
+      const current = roleData[role];
+      const avatar = document.getElementById('active-avatar');
+      avatar.style.backgroundColor = current.color;
+      avatar.innerText = current.initials;
+
+      document.getElementById('active-name').innerText = current.name;
+      const label = document.getElementById('active-label');
+      label.innerText = current.label;
+      label.style.color = current.color;
+
+      const opsBtn = document.getElementById('role-opt-operations');
+      const adminBtn = document.getElementById('role-opt-administrator');
+      const checkOps = document.getElementById('check-operations');
+      const checkAdmin = document.getElementById('check-administrator');
+
+      if (role === 'operations') {
+        opsBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]";
+        adminBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
+        checkOps.classList.remove('hidden');
+        checkAdmin.classList.add('hidden');
+      } else {
+        adminBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]";
+        opsBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
+        checkAdmin.classList.remove('hidden');
+        checkOps.classList.add('hidden');
+      }
+
+      showToast(`Switched to ${current.label} view — ${current.name}`);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast-notification');
+      toast.innerText = message;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 3000);
+    }
+
+    document.getElementById('table-search').addEventListener('input', () => {
+      currentPage = 1;
+      renderTable();
+    });
+
+    renderTable();
+  </script>
+</body>
+</html>

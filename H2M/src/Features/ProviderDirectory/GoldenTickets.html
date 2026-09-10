@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golden Tickets | H2M BRIDGE Workspace</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Roboto', 'sans-serif'], mono: ['"Roboto Mono"', 'monospace'] },
+          colors: {
+            surface: '#FEF7FF', 'surface-container': '#F3EDF7', 'surface-container-low': '#F7F2FA',
+            primary: '#6750A4', 'primary-soft': '#EADDFF', 'on-primary-container': '#4A4458',
+            line: '#CAC4D0', text: '#1C1B1F', muted: '#49454F', outline: '#79747E',
+            'status-success-bg': '#E6F4EA', 'status-success-text': '#0D652D',
+            'status-failed-bg': '#F9DEDC', 'status-failed-text': '#B3261E',
+            'status-warning-bg': '#FEF7E0', 'status-warning-text': '#6D4200'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-surface text-text font-sans min-h-screen relative overflow-x-hidden antialiased">
+
+  <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+      <div class="w-[58px] h-[58px]">
+        <img src="https://www.figma.com/api/mcp/asset/344953eb-406f-498c-b60f-e17d785f92f3.png" alt="Help to Moms logo" class="w-full h-full object-contain">
+      </div>
+      
+      <nav class="w-full flex flex-col gap-1.5">
+        <a href="AllProvidersPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium transition">
+          <div class="flex items-center gap-2.5 min-w-0 flex-1"><span class="material-symbols-outlined text-[18px]">badge</span><span class="truncate">All Providers</span></div>
+        </a>
+
+        <a href="NewProvidersPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium transition">
+          <div class="flex items-center gap-2.5 min-w-0 flex-1"><span class="material-symbols-outlined text-[18px]">person_add</span><span class="truncate">New Providers</span></div>
+        </a>
+
+        <!-- Active: Golden Tickets -->
+        <a href="GoldenTicketsPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition">
+          <div class="flex items-center gap-2.5 min-w-0 flex-1"><span class="material-symbols-outlined text-[18px]">verified</span><span class="truncate">Golden Tickets</span></div>
+        </a>
+
+        <a href="ArchivedProvidersPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium transition">
+          <div class="flex items-center gap-2.5 min-w-0 flex-1"><span class="material-symbols-outlined text-[18px]">archive</span><span class="truncate">Archived Providers</span></div>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <section class="flex-1 p-8 pb-12 flex flex-col gap-6 overflow-hidden">
+      <header class="h-[58px] flex items-center justify-between">
+        <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm">
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditPage.html">Audit</a>
+          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="AllProvidersPage.html">Provider Directory</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Administration/AdministrationPage.html">Administration</a>
+        </nav>
+      </header>
+
+      <div>
+        <h1 class="text-3xl font-semibold text-text">Golden Tickets Directory</h1>
+        <p class="text-xs text-muted mt-0.5">Clinicians with rolling 90-day verified fax delivery histories bypassing manual review</p>
+      </div>
+
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex-1 flex flex-col">
+        <div class="p-5 border-b border-line flex items-center justify-between">
+          <h2 class="text-xl font-semibold text-text">Bypass Manual Verification Roster</h2>
+          
+          <div class="flex items-center gap-2.5">
+            <input id="dir-search" type="search" oninput="applyFilters()" class="h-9 w-48 px-3.5 bg-[#F3EDF7] rounded-full text-xs outline-none" placeholder="Search golden tickets...">
+
+            <select id="cat-filter" onchange="applyFilters()" class="h-9 pl-3 pr-8 border border-outline rounded-lg text-xs font-medium text-muted bg-white">
+              <option value="all">All Specialties</option>
+              <option value="Obstetrics & Gynecology">Obstetrics &amp; Gynecology</option>
+              <option value="Maternal & Fetal Medicine">Maternal &amp; Fetal Medicine</option>
+            </select>
+
+            <select id="loc-filter" onchange="applyFilters()" class="h-9 pl-3 pr-8 border border-outline rounded-lg text-xs font-medium text-muted bg-white">
+              <option value="all">All Locations / States</option>
+              <option value="TN">Tennessee (TN)</option>
+              <option value="MI">Michigan (MI)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto flex-1">
+          <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1050px]">
+            <colgroup><col class="w-[12%]"><col class="w-[20%]"><col class="w-[14%]"><col class="w-[22%]"><col class="w-[16%]"><col class="w-[16%]"></colgroup>
+            <thead>
+              <tr class="bg-primary text-white text-[11px] font-bold uppercase tracking-wider">
+                <th class="py-3 px-4">PROVIDER ID</th>
+                <th class="py-3 px-4">PHYSICIAN NAME</th>
+                <th class="py-3 px-4">NPI NUMBER</th>
+                <th class="py-3 px-4">CLINIC / PRACTICE</th>
+                <th class="py-3 px-4">PRIMARY FAX</th>
+                <th class="py-3 px-4 text-center">STATUS</th>
+              </tr>
+            </thead>
+            <tbody id="directory-table-body">
+              <!-- Dynamically rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </div>
+
+  <script>
+    let goldenProviders = [
+      { id: "PROV-000002", name: "Dr. Raymond Aldrich, M.D.", npi: "1215048332", specialty: "Obstetrics & Gynecology", status: "Active", state: "TN", locations: [{ name: "Diana Health Springfield", fax: "(615) 384-1234" }] },
+      { id: "PROV-000003", name: "Dr. Jeremy Avila, M.D.", npi: "1841390291", specialty: "Obstetrics & Gynecology", status: "Active", state: "TN", locations: [{ name: "Avila Women's Health", fax: "(615) 890-4412" }] },
+      { id: "PROV-000004", name: "Dr. Paul Grayson Smith, D.O.", npi: "1093748201", specialty: "Maternal & Fetal Medicine", status: "Active", state: "TN", locations: [{ name: "Grayson Smith OBGYN", fax: "(615) 327-1100" }] }
+    ];
+
+    function applyFilters() {
+      const search = document.getElementById('dir-search').value.trim().toLowerCase();
+      const spec = document.getElementById('cat-filter').value;
+      const loc = document.getElementById('loc-filter').value;
+
+      let filtered = goldenProviders.filter(item => {
+        const matchesSearch = !search || item.id.toLowerCase().includes(search) || item.name.toLowerCase().includes(search) || item.npi.includes(search);
+        const matchesSpec = spec === 'all' || item.specialty === spec;
+        const matchesLoc = loc === 'all' || item.state === loc;
+        return matchesSearch && matchesSpec && matchesLoc;
+      });
+
+      const tbody = document.getElementById('directory-table-body');
+      tbody.innerHTML = filtered.map(row => `
+        <tr class="border-b border-line hover:bg-surface-container-low transition">
+          <td class="py-3 px-4 font-mono font-bold text-primary text-sm">${row.id}</td>
+          <td class="py-3 px-4 font-bold text-text text-sm">${row.name}</td>
+          <td class="py-3 px-4 font-mono text-sm">${row.npi}</td>
+          <td class="py-3 px-4 text-text text-sm truncate">${row.locations[0].name}</td>
+          <td class="py-3 px-4 font-mono text-muted text-sm">${row.locations[0].fax}</td>
+          <td class="py-3 px-4 text-center"><span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-success-bg text-status-success-text">Active / Verified</span></td>
+        </tr>
+      `).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', applyFilters);
+  </script>
+</body>
+</html>

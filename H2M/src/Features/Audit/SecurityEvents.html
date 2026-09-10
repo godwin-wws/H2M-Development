@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Audit Module | H2M BRIDGE Workspace</title>
+  <title>Security Events | H2M BRIDGE Workspace</title>
   
+  <!-- Explicit Google Fonts Import for Roboto & Roboto Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   
+  <!-- Google Material Symbols Import -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -52,6 +54,7 @@
 
   <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
     
+    <!-- Sidebar Navigation -->
     <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
       <div class="w-[58px] h-[58px]">
         <img src="https://www.figma.com/api/mcp/asset/344953eb-406f-498c-b60f-e17d785f92f3.png" alt="Help to Moms logo" class="w-full h-full object-contain">
@@ -60,13 +63,15 @@
       <div class="w-full">
         <nav class="w-full flex flex-col gap-1.5" id="audit-sidebar-nav">
           
-          <a href="AuditLogs.html" id="nav-channel-all" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition">
+          <!-- Item 1: All Events -->
+          <a href="AuditLogs.html" id="nav-channel-all" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
-              <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-[18px]">reorder</span>
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">reorder</span>
               <span class="truncate">All Events</span>
             </div>
           </a>
 
+          <!-- Item 2: Automation Events -->
           <a href="AutomationEvents.html" id="nav-channel-automation" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">bolt</span>
@@ -74,13 +79,15 @@
             </div>
           </a>
 
-          <a href="UserActions.html" id="nav-channel-user" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+          <!-- Item 3: User Actions -->
+          <a href="AuditUserActionsPage.html" id="nav-channel-user" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">person</span>
               <span class="truncate">User Actions</span>
             </div>
           </a>
 
+          <!-- Item 4: Intake History -->
           <a href="IntakeHistory.html" id="nav-channel-intake" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">description</span>
@@ -88,9 +95,10 @@
             </div>
           </a>
 
-          <a href="SecurityEvents.html" id="nav-channel-security" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+          <!-- Item 5: Security Events (ACTIVE PAGE) -->
+          <a href="SecurityEvents.html" id="nav-channel-security" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
-              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">lock</span>
+              <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-[18px]">lock</span>
               <span class="truncate">Security Events</span>
             </div>
           </a>
@@ -99,8 +107,10 @@
 
     </aside>
 
+    <!-- Main Workspace Canvas -->
     <section class="flex-1 p-8 pb-12 flex flex-col gap-6 overflow-hidden">
       
+      <!-- Top Navigation Header -->
       <header class="h-[58px] flex items-center justify-between">
         <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
@@ -116,6 +126,7 @@
             <span class="absolute top-0 right-0 w-4 h-4 border border-white rounded-full bg-status-failed-text text-white flex items-center justify-center text-[9px] font-bold">14</span>
           </div>
 
+          <!-- Account / Role Switcher -->
           <div class="relative inline-block text-left" id="role-switcher-container">
             <button id="role-switcher-btn" type="button" class="flex items-center gap-2 h-9 pl-1 pr-3 rounded-full border border-[#e8def8] bg-white hover:bg-[#f3edf7] cursor-pointer transition-colors outline-none focus:ring-2 focus:ring-[#6750a4]">
               <div id="active-avatar" class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold text-white shrink-0 bg-[#6750a4]">J</div>
@@ -153,59 +164,52 @@
         </div>
       </header>
 
+      <!-- Main Title -->
       <div>
-        <h1 class="text-3xl font-semibold text-text" id="canvas-stage-title">Audit Logs</h1>
+        <h1 class="text-3xl font-semibold text-text">Security Events Audit Log</h1>
+        <p class="text-xs text-muted mt-0.5">Permanent security gateway ledger recording authentication tokens, access grants, and role-gated permissions</p>
       </div>
 
-      <section class="grid grid-cols-4 gap-4">
-        <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md hover:bg-[#FDFBFE] cursor-pointer flex items-start justify-between">
+      <!-- KPI Summary Cards Grid with hover:shadow-md -->
+      <section class="grid grid-cols-3 gap-4">
+        <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200 text-left flex items-start justify-between cursor-pointer">
           <div class="flex flex-col">
-            <span class="block text-sm font-bold text-text">Total Recorded Events</span>
-            <span class="text-3xl font-extrabold text-text mt-3" id="kpi-total-events">50</span>
-            <span class="block mt-1 text-[11px] text-muted">Permanent Audit IDs</span>
+            <span class="block text-sm font-bold text-text">Security Events</span>
+            <span class="text-3xl font-extrabold text-text mt-3" id="kpi-security-total">2</span>
+            <span class="block mt-1 text-[11px] text-muted">Auth &amp; permission challenges</span>
           </div>
           <div class="w-9 h-9 rounded-xl bg-surface-container text-primary flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-[20px]">description</span>
+            <span class="material-symbols-outlined text-[20px]">lock</span>
           </div>
         </div>
 
-        <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md hover:bg-[#FDFBFE] cursor-pointer flex items-start justify-between">
+        <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200 text-left flex items-start justify-between cursor-pointer">
           <div class="flex flex-col">
-            <span class="block text-sm font-bold text-text">Successful Ingests</span>
-            <span class="text-3xl font-extrabold text-status-success-text mt-3" id="kpi-success-ingests">28</span>
-            <span class="block mt-1 text-[11px] text-muted">Outcome: SUCCESS</span>
+            <span class="block text-sm font-bold text-text">Authenticated Grants</span>
+            <span class="text-3xl font-extrabold text-status-success-text mt-3">2</span>
+            <span class="block mt-1 text-[11px] text-muted">Valid SSO token sessions</span>
           </div>
           <div class="w-9 h-9 rounded-xl bg-status-success-bg text-status-success-text flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-[20px]">check</span>
+            <span class="material-symbols-outlined text-[20px]">shield</span>
           </div>
         </div>
 
-        <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md hover:bg-[#FDFBFE] cursor-pointer flex items-start justify-between">
+        <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200 text-left flex items-start justify-between cursor-pointer">
           <div class="flex flex-col">
-            <span class="block text-sm font-bold text-text">Validation Failures</span>
-            <span class="text-3xl font-extrabold text-status-failed-text mt-3" id="kpi-validation-failures">14</span>
-            <span class="block mt-1 text-[11px] text-muted">Outcome: FAILED</span>
+            <span class="block text-sm font-bold text-text">Access Violations</span>
+            <span class="text-3xl font-extrabold text-status-failed-text mt-3">0</span>
+            <span class="block mt-1 text-[11px] text-muted">Unauthorized access stops</span>
           </div>
           <div class="w-9 h-9 rounded-xl bg-status-failed-bg text-status-failed-text flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-[20px]">warning</span>
-          </div>
-        </div>
-
-        <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md hover:bg-[#FDFBFE] cursor-pointer flex items-start justify-between">
-          <div class="flex flex-col">
-            <span class="block text-sm font-bold text-text">Review Routing Events</span>
-            <span class="text-3xl font-extrabold text-status-pending-text mt-3" id="kpi-review-routing">8</span>
-            <span class="block mt-1 text-[11px] text-muted">Outcome: PENDING_REVIEW</span>
-          </div>
-          <div class="w-9 h-9 rounded-xl bg-status-pending-bg text-status-pending-text flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-[20px]">swap_horiz</span>
+            <span class="material-symbols-outlined text-[20px]">gpp_maybe</span>
           </div>
         </div>
       </section>
 
+      <!-- Main Audit Data Table Frame -->
       <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col flex-1">
         <div class="p-5 border-b border-line flex items-center justify-between">
-          <h2 class="text-xl font-semibold text-text">Audit Events</h2>
+          <h2 class="text-xl font-semibold text-text">Security Gateway Stream</h2>
           
           <div class="flex items-center gap-2.5">
             <div class="h-9 w-72 px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 text-muted border-0 focus:outline-none shrink-0">
@@ -214,51 +218,11 @@
             </div>
 
             <div class="flex items-center gap-3 text-xs text-muted pl-2">
-              
-              <div class="relative inline-block">
-                <select 
-                  id="date-range-filter" 
-                  onchange="handleDateFilterChange()" 
-                  class="h-8 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white hover:bg-[#F3EDF7] text-sm font-medium text-[#49454F] outline-none transition-colors duration-200 appearance-none cursor-pointer"
-                >
-                  <option value="today" selected>Today</option>
-                  <option value="7days">Last 7 Days</option>
-                  <option value="30days">Last 30 Days</option>
-                  <option value="all">All Time</option>
-                </select>
-                <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">
-                  arrow_drop_down
-                </span>
-              </div>
-
-              <span id="pagination-indicator" class="font-medium text-text font-mono select-none">
-                1 - 10 of 50
-              </span>
-
+              <span id="pagination-indicator" class="font-medium text-text font-mono select-none">1 - 2 of 2</span>
               <div class="flex items-center gap-1 select-none">
-                <button 
-                  id="btn-prev-page" 
-                  onclick="navigatePagination(-1)" 
-                  class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 outline-none disabled:opacity-20 disabled:hover:bg-transparent disabled:cursor-not-allowed"
-                  title="Previous page"
-                >
-                  <span class="material-symbols-outlined text-[20px] leading-none select-none">
-                    navigate_before
-                  </span>
-                </button>
-
-                <button 
-                  id="btn-next-page" 
-                  onclick="navigatePagination(1)" 
-                  class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 outline-none disabled:opacity-38 disabled:hover:bg-transparent disabled:cursor-not-allowed"
-                  title="Next page"
-                >
-                  <span class="material-symbols-outlined text-[20px] leading-none select-none">
-                    navigate_next
-                  </span>
-                </button>
+                <button id="btn-prev-page" class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] disabled:opacity-20" disabled><span class="material-symbols-outlined text-[20px]">navigate_before</span></button>
+                <button id="btn-next-page" class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] disabled:opacity-20" disabled><span class="material-symbols-outlined text-[20px]">navigate_next</span></button>
               </div>
-
             </div>
           </div>
         </div>
@@ -274,7 +238,7 @@
               <col class="w-[12%]">
             </colgroup>
             <thead>
-              <tr class="bg-primary text-white text-[11px] font-bold tracking-wider">
+              <tr class="bg-primary text-white text-[11px] font-bold tracking-wider uppercase">
                 <th class="py-3 px-4">TIMESTAMP</th>
                 <th class="py-3 px-4">EVENT ID</th>
                 <th class="py-3 px-4">ORDER ID</th>
@@ -284,7 +248,8 @@
               </tr>
             </thead>
             <tbody id="audit-table-body">
-              </tbody>
+              <!-- Injected via JS -->
+            </tbody>
           </table>
         </div>
       </section>
@@ -292,13 +257,14 @@
     </section>
   </div>
 
+  <!-- Read-Only Audit Event Detail Modal -->
   <div id="audit-detail-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-2xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
       
       <div class="bg-primary px-6 py-4 flex items-center justify-between text-white">
         <div class="flex items-center gap-3">
-          <span class="material-symbols-outlined text-[20px] text-primary-soft">description</span>
-          <span id="modal-event-id" class="text-base font-bold font-mono tracking-wide">AUD-000015</span>
+          <span class="material-symbols-outlined text-[20px] text-primary-soft">lock</span>
+          <span id="modal-event-id" class="text-base font-bold font-mono tracking-wide">AUD-000030</span>
         </div>
         <button onclick="closeAuditModal()" class="text-white/80 hover:text-white transition p-1 rounded-full hover:bg-white/10 font-bold">✕</button>
       </div>
@@ -308,12 +274,12 @@
         <div class="border border-line rounded-xl overflow-hidden divide-y divide-line bg-white">
           <div class="grid grid-cols-[180px_1fr] p-3 hover:bg-surface transition">
             <span class="text-muted font-medium">Occurred At / Recorded At</span>
-            <span id="modal-timestamp" class="font-mono text-text">2026-08-11 11:18:42</span>
+            <span id="modal-timestamp" class="font-mono text-text">2026-08-11 15:30:00</span>
           </div>
 
           <div class="grid grid-cols-[180px_1fr] p-3 hover:bg-surface transition">
             <span class="text-muted font-medium">Event Name</span>
-            <span id="modal-event-name" class="font-bold text-text">Validation failed</span>
+            <span id="modal-event-name" class="font-bold text-text">Security Auth Token Refreshed</span>
           </div>
 
           <div class="grid grid-cols-[180px_1fr] p-3 items-center hover:bg-surface transition">
@@ -323,37 +289,37 @@
 
           <div class="grid grid-cols-[180px_1fr] p-3 hover:bg-surface transition">
             <span class="text-muted font-medium">BRIDGE Order ID</span>
-            <a id="modal-order-link" href="#" onclick="routeToWorkspaceFromModal(event)" class="font-mono font-bold text-primary hover:underline truncate">73f35cce9730406bc30c72cf45d74680</a>
+            <a id="modal-order-link" href="#" onclick="routeToWorkspaceFromModal(event)" class="font-mono font-bold text-primary hover:underline truncate">d7e9fa8a8feba20f1e9a51befb5c8b47</a>
           </div>
 
           <div class="grid grid-cols-[180px_1fr] p-3 hover:bg-surface transition">
             <span class="text-muted font-medium">Source Module</span>
-            <span id="modal-module-name" class="font-medium text-text">TM-001 — BRIDGE Intake</span>
+            <span id="modal-module-name" class="font-medium text-text">Security</span>
           </div>
 
           <div class="grid grid-cols-[180px_1fr] p-3 hover:bg-surface transition">
             <span class="text-muted font-medium">Actor Reference</span>
-            <span id="modal-actor-ref" class="font-mono text-text">system_intake@bridge.com</span>
+            <span id="modal-actor-ref" class="font-mono text-text">p.patel@h2m.org</span>
           </div>
 
           <div class="grid grid-cols-[180px_1fr] p-3 hover:bg-surface transition">
             <span class="text-muted font-medium">Source System</span>
-            <span id="modal-source-system" class="font-medium text-text">BlueGoose Ingest</span>
+            <span id="modal-source-system" class="font-medium text-text">BRIDGE Security Gateway</span>
           </div>
 
           <div class="grid grid-cols-[180px_1fr] p-3 hover:bg-surface transition">
             <span class="text-muted font-medium">Source Record Reference</span>
-            <span id="modal-source-record-ref" class="font-mono text-text">BlueGoose_Approved_Row_107</span>
+            <span id="modal-source-record-ref" class="font-mono text-text">Session_88412</span>
           </div>
 
           <div class="grid grid-cols-[180px_1fr] p-3 hover:bg-surface transition">
             <span class="text-muted font-medium">Previous Value</span>
-            <div id="modal-prev-val-container" class="break-words whitespace-pre-wrap font-mono text-text">Status: Processing</div>
+            <div id="modal-prev-val-container" class="break-words whitespace-pre-wrap font-mono text-text">Token Expired</div>
           </div>
 
           <div class="grid grid-cols-[180px_1fr] p-3 hover:bg-surface transition">
             <span class="text-muted font-medium">New Value</span>
-            <div id="modal-new-val-container" class="break-words whitespace-pre-wrap font-mono text-text">Status: Validation Failed</div>
+            <div id="modal-new-val-container" class="break-words whitespace-pre-wrap font-mono text-text">Token Issued (TTL: 3600s)</div>
           </div>
         </div>
 
@@ -372,132 +338,56 @@
     </div>
   </div>
 
-  <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
-
   <script>
-    /* Master Immutable Audit Dataset */
-    const masterAuditDatabase = [
+    const securityDatabase = [
       {
-        id: "AUD-000014",
-        timestamp: "2026-08-11 11:18:00",
-        orderId: "73f35cce9730406bc30c72cf45d74680",
-        actor: "system_intake@bridge.com",
-        actorType: "Automation",
-        eventName: "Intake processing started",
+        id: "AUD-000030",
+        timestamp: "2026-08-11 15:30:00",
+        orderId: "d7e9fa8a8feba20f1e9a51befb5c8b47",
+        actor: "p.patel@h2m.org",
+        eventName: "Security Auth Token Refreshed",
         eventOutcome: "SUCCESS",
-        sourceModule: "TM-001 — BRIDGE Intake",
-        sourceSystem: "BlueGoose Ingest",
-        sourceRecordRef: "BlueGoose_Approved_Row_107",
-        prevValue: "N/A",
-        newValue: "Status: Processing Started",
-        payload: '{\n  "batch_id": "BATCH_20260811_01",\n  "records_ingested": 1,\n  "source_channel": "API_WEBHOOK"\n}'
+        sourceModule: "Security",
+        sourceSystem: "BRIDGE Security Gateway",
+        sourceRecordRef: "Session_88412",
+        prevValue: "Token Expired",
+        newValue: "Token Issued (TTL: 3600s)",
+        payload: '{\n  "ip_address": "192.168.1.104",\n  "auth_method": "OAUTH2_SSO"\n}'
       },
       {
-        id: "AUD-000015",
-        timestamp: "2026-08-11 11:18:42",
-        orderId: "73f35cce9730406bc30c72cf45d74680",
-        actor: "system_intake@bridge.com",
-        actorType: "Automation",
-        eventName: "Validation failed",
-        eventOutcome: "FAILED",
-        sourceModule: "TM-001 — BRIDGE Intake",
-        sourceSystem: "BlueGoose Ingest",
-        sourceRecordRef: "BlueGoose_Approved_Row_107",
-        prevValue: "Status: Processing",
-        newValue: "Status: Validation Failed",
-        payload: '{\n  "error_code": "ERR_MISSING_REQ_FIELD",\n  "reason": "Physician / Provider is required.",\n  "source_system": "BlueGoose",\n  "batch_id": "BATCH_20260811_01"\n}'
-      },
-      {
-        id: "AUD-000021",
-        timestamp: "2026-08-11 12:28:10",
-        orderId: "3f35cce9730406bc30c72cf45d74681",
-        actor: "system_intake@bridge.com",
-        actorType: "Automation",
-        eventName: "Record routed to Human Review",
-        eventOutcome: "PENDING_REVIEW",
-        sourceModule: "TM-002 — Review Queue",
-        sourceSystem: "BRIDGE Review Engine",
-        sourceRecordRef: "Review_Task_9012",
-        prevValue: "Queue: Unassigned",
-        newValue: "Queue: Pending Human Review",
-        payload: '{\n  "routing_reason": "UNRESOLVED_EXCEPTIONS",\n  "assigned_queue": "GENERAL_OPERATIONS"\n}'
-      },
-      {
-        id: "AUD-000028",
-        timestamp: "2026-08-11 13:10:15",
-        orderId: "bf69fe72cda10842e12847bb12239100",
+        id: "AUD-000031",
+        timestamp: "2026-08-11 16:12:05",
+        orderId: "d7e9fa8a8feba20f1e9a51befb5c8b47",
         actor: "jane.doe@h2m.org",
-        actorType: "User",
-        eventName: "Order Created",
+        eventName: "Role Privilege Evaluation",
         eventOutcome: "SUCCESS",
-        sourceModule: "TM-001 — BRIDGE Intake",
-        sourceSystem: "BRIDGE Manual Workspace",
-        sourceRecordRef: "Manual_Override_201",
-        prevValue: "Draft Order",
-        newValue: "Active Order Created (ORD-000886)",
-        payload: '{\n  "operator_id": "jane.doe@h2m.org",\n  "action": "MANUAL_ORDER_COMMIT"\n}'
+        sourceModule: "Security",
+        sourceSystem: "BRIDGE RBAC Evaluator",
+        sourceRecordRef: "Privilege_Check_1092",
+        prevValue: "Role: Operations",
+        newValue: "Scope Granted (Read/Write Queue)",
+        payload: '{\n  "role": "Operations",\n  "permission_evaluated": "WRITE_REVIEW_QUEUE"\n}'
       }
     ];
 
-    /* State Variables */
-    let searchQuery = '';
-    let dateFilter = 'today';
-    let currentPageIndex = 0;
-    let pageSize = 10;
     let selectedActiveModalRecord = null;
 
-    /* Render Engine */
-    function renderAuditWorkspace() {
-      let filtered = masterAuditDatabase;
-
-      if (searchQuery) {
-        const q = searchQuery.toLowerCase();
-        filtered = filtered.filter(item => 
-          item.id.toLowerCase().includes(q) ||
-          item.orderId.toLowerCase().includes(q) ||
-          item.actor.toLowerCase().includes(q) ||
-          item.eventName.toLowerCase().includes(q)
-        );
-      }
-
-      updateKPICards();
-
-      const totalRecords = filtered.length;
-      const maxPages = Math.ceil(totalRecords / pageSize) || 1;
-      if (currentPageIndex >= maxPages) currentPageIndex = maxPages - 1;
-      if (currentPageIndex < 0) currentPageIndex = 0;
-
-      const startIndex = currentPageIndex * pageSize;
-      const endIndex = Math.min(startIndex + pageSize, totalRecords);
-      const pageData = filtered.slice(startIndex, endIndex);
-
-      const indicator = document.getElementById('pagination-indicator');
-      if (totalRecords === 0) {
-        indicator.innerText = "Showing 0-0 of 0";
-      } else {
-        indicator.innerText = `Showing ${startIndex + 1}-${endIndex} of ${totalRecords}`;
-      }
-
-      document.getElementById('btn-prev-page').disabled = (currentPageIndex === 0);
-      document.getElementById('btn-next-page').disabled = (currentPageIndex >= maxPages - 1 || totalRecords === 0);
+    function renderTable() {
+      const search = document.getElementById('audit-table-search').value.trim().toLowerCase();
+      const visible = securityDatabase.filter(item => 
+        !search || Object.values(item).join(' ').toLowerCase().includes(search)
+      );
 
       const tbody = document.getElementById('audit-table-body');
-      
-      if (pageData.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-muted text-sm">No matching audit events found.</td></tr>`;
-        return;
-      }
+      tbody.innerHTML = visible.map(row => {
+        let badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap bg-status-success-bg text-status-success-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Success</span>`;
 
-      tbody.innerHTML = pageData.map(row => {
-        const badge = getStatusBadgeHTML(row.eventOutcome);
         return `
           <tr class="border-b border-line hover:bg-surface transition cursor-pointer" onclick="openAuditDetailModal('${row.id}')">
             <td class="py-3 px-4 font-mono text-muted text-sm whitespace-nowrap">${row.timestamp}</td>
             <td class="py-3 px-4 font-mono font-bold text-primary text-sm whitespace-nowrap">${row.id}</td>
-            <td class="py-3 px-4 font-mono font-bold text-text text-sm truncate" onclick="event.stopPropagation()">
-              <a href="../Workspace/OrderDetails/OrderDetailsView.html?orderId=${row.orderId}" class="text-primary hover:underline" title="Navigate to Order Details Workspace">${row.orderId}</a>
-            </td>
-            <td class="py-3 px-4 text-text text-sm font-medium truncate" title="${row.actor}">${row.actor}</td>
+            <td class="py-3 px-4 font-mono font-bold text-text text-sm truncate">${row.orderId}</td>
+            <td class="py-3 px-4 text-text text-sm font-medium truncate">${row.actor}</td>
             <td class="py-3 px-4 font-bold text-text text-sm">${row.eventName}</td>
             <td class="py-3 px-4 text-center">${badge}</td>
           </tr>
@@ -505,50 +395,12 @@
       }).join('');
     }
 
-    function getStatusBadgeHTML(outcome) {
-      if (outcome === 'SUCCESS') {
-        return `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap bg-status-success-bg text-status-success-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Success</span>`;
-      } else if (outcome === 'FAILED') {
-        return `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap bg-status-failed-bg text-status-failed-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Failed</span>`;
-      } else if (outcome === 'PENDING_REVIEW') {
-        return `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap bg-status-pending-bg text-status-pending-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Pending Review</span>`;
-      } else {
-        return `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap bg-status-warning-bg text-status-warning-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Warning</span>`;
-      }
-    }
-
-    function updateKPICards() {
-      const total = masterAuditDatabase.length;
-      const success = masterAuditDatabase.filter(i => i.eventOutcome === 'SUCCESS').length;
-      const failures = masterAuditDatabase.filter(i => i.eventOutcome === 'FAILED').length;
-      const reviewRouting = masterAuditDatabase.filter(i => i.eventOutcome === 'PENDING_REVIEW').length;
-
-      document.getElementById('kpi-total-events').innerText = total;
-      document.getElementById('kpi-success-ingests').innerText = success;
-      document.getElementById('kpi-validation-failures').innerText = failures;
-      document.getElementById('kpi-review-routing').innerText = reviewRouting;
-    }
-
     function handleSearchInput() {
-      searchQuery = document.getElementById('audit-table-search').value.trim();
-      currentPageIndex = 0;
-      renderAuditWorkspace();
-    }
-
-    function handleDateFilterChange() {
-      dateFilter = document.getElementById('date-range-filter').value;
-      showToast(`Audit view filtered by range: ${dateFilter.toUpperCase()}`);
-      currentPageIndex = 0;
-      renderAuditWorkspace();
-    }
-
-    function navigatePagination(direction) {
-      currentPageIndex += direction;
-      renderAuditWorkspace();
+      renderTable();
     }
 
     function openAuditDetailModal(eventId) {
-      const record = masterAuditDatabase.find(i => i.id === eventId);
+      const record = securityDatabase.find(i => i.id === eventId);
       if (!record) return;
 
       selectedActiveModalRecord = record;
@@ -556,7 +408,7 @@
       document.getElementById('modal-event-id').innerText = record.id;
       document.getElementById('modal-timestamp').innerText = record.timestamp;
       document.getElementById('modal-event-name').innerText = record.eventName;
-      document.getElementById('modal-outcome-container').innerHTML = getStatusBadgeHTML(record.eventOutcome);
+      document.getElementById('modal-outcome-container').innerHTML = `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap bg-status-success-bg text-status-success-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Success</span>`;
       
       const orderLink = document.getElementById('modal-order-link');
       orderLink.innerText = record.orderId;
@@ -629,23 +481,10 @@
       const label = document.getElementById('active-label');
       label.innerText = current.label;
       label.style.color = current.color;
-
-      showToast(`Switched to ${current.label} view — ${current.name}`);
-    }
-
-    function showToast(message) {
-      const toast = document.getElementById('toast-notification');
-      toast.innerText = message;
-      toast.classList.remove('opacity-0');
-      toast.classList.add('opacity-100');
-      setTimeout(() => {
-        toast.classList.remove('opacity-100');
-        toast.classList.add('opacity-0');
-      }, 2500);
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      renderAuditWorkspace();
+      renderTable();
     });
   </script>
 </body>

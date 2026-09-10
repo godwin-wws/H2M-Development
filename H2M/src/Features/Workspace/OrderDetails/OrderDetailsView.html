@@ -10,6 +10,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   
+  <!-- Google Material Symbols Import -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=bolt_boost" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_outward" />
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -21,17 +26,17 @@
           },
           colors: {
             surface: '#FEF7FF',
-            primary: '#6750A4',
+        primary: '#6750A4',
             'primary-soft': '#EADDFF',
             line: '#CAC4D0',
             text: '#1D1B20',
-            muted: '#79747E',
+            muted: '#49454F',
             'blue-bg': '#E8F0FE',
             blue: '#174EA6',
             'amber-bg': '#FEF7E0',
             amber: '#6D4200',
             'purple-bg': '#EADDFF',
-            purple: '#4F378A',
+            purple: '#4A4458',
             'green-bg': '#E6F4EA',
             green: '#0D652D',
             'red-bg': '#F9DEDC',
@@ -42,7 +47,7 @@
     }
   </script>
 </head>
-<body class="bg-surface text-text font-sans min-h-screen relative overflow-x-hidden">
+<body class="bg-surface text-text font-sans min-h-screen relative overflow-x-hidden antialiased">
 
   <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
     
@@ -56,8 +61,8 @@
           <svg class="w-4 h-4 shrink-0 text-[#49454f]" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
           <span>Dashboard</span>
         </a>
-        <a class="h-10 px-3.5 rounded-full flex items-center gap-3 bg-primary-soft text-primary font-medium text-sm leading-[19.5px] transition" href="../WorkQueue.html">
-          <svg class="w-4 h-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+        <a class="h-10 px-3.5 rounded-full flex items-center gap-3 bg-primary-soft text-[#4A4458] font-bold text-sm leading-[19.5px] transition" href="../WorkQueue.html">
+          <svg class="w-4 h-4 shrink-0 text-[#4A4458]" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
           <span>Work Queues</span>
         </a>
         <a class="h-10 px-3.5 rounded-full flex items-center gap-3 text-[#49454f] text-sm font-medium leading-[19.5px] hover:bg-[#F3EDF7] transition" href="../OrderSearch.html">
@@ -78,10 +83,10 @@
       <header class="h-[58px] flex items-center justify-between">
         <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
           <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium" href="Dashboard.html">Workspace</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="Alerts.html">Review</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="#">Audit</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="#">Provider Directory</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="#">Administration</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="ReviewPage.html">Review</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="AuditLogs.html">Audit</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="ProviderDirectory.html">Provider Directory</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="AdminHome.html">Administration</a>
         </nav>
         
         <div class="flex items-center gap-6">
@@ -128,7 +133,7 @@
                   <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Jane Doe</p>
                   <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">jane.doe@h2m.org</p>
                   <p class="text-[10px] font-bold m-0 text-[#6750a4]">
-                    Operations · <span class="font-normal text-[#79747e]">Queues · Provider edits · Fax retries</span>
+                    Operations
                   </p>
                 </div>
                 <svg id="check-operations" width="14" height="14" viewBox="0 0 24 24" fill="none" class="shrink-0">
@@ -147,7 +152,7 @@
                   <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Priya Patel</p>
                   <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">p.patel@h2m.org</p>
                   <p class="text-[10px] font-bold m-0 text-[#1967D2]">
-                    Administrator · <span class="font-normal text-[#79747e]">System config · Templates · Intake reprocess</span>
+                    Administrator
                   </p>
                 </div>
                 <svg id="check-administrator" width="14" height="14" viewBox="0 0 24 24" fill="none" class="shrink-0 hidden">
@@ -161,7 +166,7 @@
 
       <!-- Breadcrumbs & Heading -->
       <div>
-        <div class="text-xs text-muted">
+        <div class="text-sm text-muted">
           <a href="../Dashboard.html" class="text-primary hover:underline font-medium">Workspace</a> / <span id="crumb-id" class="font-mono font-bold text-text">ORD-000886</span>
         </div>
         <h1 class="text-3xl font-bold text-text tracking-tight mt-1">Order Details</h1>
@@ -170,8 +175,8 @@
       <!-- Order Summary Header Card -->
       <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden">
         <div class="p-6 flex items-center gap-4">
-          <div id="patient-avatar" class="w-11 h-11 rounded-xl bg-primary-soft text-purple flex items-center justify-center text-sm font-bold shrink-0">
-            MC
+          <div id="patient-avatar" class="w-11 h-11 rounded-2xl bg-primary-soft text-[#4A4458] flex items-center justify-center text-sm font-bold shrink-0">
+            SS
           </div>
           <div class="flex-1">
             <div class="flex items-center gap-2.5">
@@ -183,15 +188,24 @@
                 <span class="w-1.5 h-1.5 rounded-full bg-current"></span> Accepted
               </span>
             </div>
-            <div id="patient-name" class="text-sm font-bold text-text mt-1">Madison Chilcutt</div>
-            <div id="order-meta" class="text-xs text-muted mt-0.5">BlueGoose · Henderson, TN</div>
+            <div id="patient-name" class="text-sm font-bold text-text mt-1">Stefany Sanchez</div>
+            <div id="order-meta" class="text-xs text-muted mt-0.5">BlueGoose · Knoxville, TN</div>
           </div>
           <div class="flex items-center gap-3">
-            <button id="btn-quick-action" type="button" class="h-9 px-4 border border-line rounded-full bg-white text-text font-medium text-xs flex items-center gap-2 hover:border-primary hover:bg-surface transition">
-              ⚡ Quick Action
+            <!-- Updated Quick Action Button (Matching REVIEWdetails.html behaviour and image_a950c8.png) -->
+            <button 
+              id="btn-quick-action" 
+              type="button" 
+              onclick="saveCorrectionAndResume()" 
+              class="px-4 py-2 rounded-full border border-outline text-[#1D1B20] text-sm font-bold hover:bg-[#F3EDF7] transition  flex items-center gap-1.5"
+            >
+              <span class="material-symbols-outlined text-[16px]">bolt_boost</span>
+              <span>Quick Action</span>
             </button>
-            <button type="button" class="h-9 px-4 bg-[#F3EDF7] text-primary font-medium text-xs rounded-full hover:bg-primary-soft transition flex items-center gap-1.5">
-              Open in Review ↗
+
+            <!-- Unchanged Open in Review Button -->
+            <button type="button" class="h-9 px-4 bg-[#F3EDF7] text-primary font-medium text-sm rounded-full hover:font-bold hover:bg-primary-soft transition flex items-center gap-1.5">
+              Open in Review
             </button>
           </div>
         </div>
@@ -203,11 +217,11 @@
           </div>
           <div>
             <span class="text-[10px] font-bold text-muted uppercase tracking-wider block">Insurance</span>
-            <span id="meta-insurance" class="text-xs font-semibold text-text mt-1 block">United Healthcare Community Plan</span>
+            <span id="meta-insurance" class="text-xs font-semibold text-text mt-1 block">CoverKids</span>
           </div>
           <div>
             <span class="text-[10px] font-bold text-muted uppercase tracking-wider block">Product</span>
-            <span id="meta-product" class="text-xs font-semibold text-text mt-1 block">Pregnancy Support Kit</span>
+            <span id="meta-product" class="text-xs font-semibold text-text mt-1 block">Spectra S2 Plus Premier double electric bre...</span>
           </div>
           <div>
             <span class="text-[10px] font-bold text-muted uppercase tracking-wider block">Created At</span>
@@ -216,34 +230,53 @@
         </div>
       </section>
 
+      <!-- ERROR STATUS LOG CONTAINER -->
+      <div id="error-log-card" class="bg-[#F9DEDC] border border-[#F2B8B5] rounded-2xl p-5 shadow-sm flex flex-col gap-3">
+        <div class="flex items-start justify-between">
+          <div class="flex items-center gap-2 font-bold text-[#B3261E] text-sm">
+            <span class="material-symbols-outlined text-[20px]">error</span>
+            <span>Missing fax number — order cannot route to physician</span>
+          </div>
+        </div>
+        <p class="text-xs text-[#B3261E] font-normal leading-relaxed">
+          Fax number is absent on the physician record. Order cannot route until a valid fax is resolved. Manual lookup required.
+        </p>
+        <div class="grid grid-cols-2 gap-y-1 gap-x-6 pt-2 border-t border-[#F2B8B5]/60 font-mono text-[11px] text-[#B3261E]/90">
+          <div><span class="text-[#B3261E]/70">error_code:</span> <span class="font-bold">BRG_E_2201</span></div>
+          <div><span class="text-[#B3261E]/70">order_id:</span> <span class="font-bold">ORD-000886</span></div>
+          <div><span class="text-[#B3261E]/70">physician:</span> <span class="font-bold">Whitney Bean, 1928 Alcoa Hwy Suite B-127, Knoxville TN</span></div>
+          <div><span class="text-[#B3261E]/70">trace_id:</span> <span class="font-bold">7c1b0f9a-e2d4-4a11-9f88-0d3ac2f7b1e6</span></div>
+        </div>
+      </div>
+
       <!-- Outer Unified Container -->
       <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col">
         
-        <!-- Header Sub-Navigation Tabs Container (With Light Vertical Separators) -->
+        <!-- Header Sub-Navigation Tabs Container -->
         <div class="border-b border-line bg-white">
           <div class="flex items-center overflow-x-auto">
-            <button onclick="switchTab('order')" class="detail-nav-tab px-6 py-3.5 text-xs font-bold text-primary border-b-2 border-primary transition whitespace-nowrap" data-tab="order">
+            <button onclick="switchTab('order')" class="detail-nav-tab px-6 py-4 text-sm font-bold text-primary border-b-2 border-primary transition whitespace-nowrap" data-tab="order">
               Order
             </button>
-            <button onclick="switchTab('patient')" class="detail-nav-tab px-6 py-3.5 text-xs font-medium text-muted hover:text-text border-b-2 border-transparent transition whitespace-nowrap" data-tab="patient">
+            <button onclick="switchTab('patient')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap" data-tab="patient">
               Patient
             </button>
-            <button onclick="switchTab('provider')" class="detail-nav-tab px-6 py-3.5 text-xs font-medium text-muted hover:text-text border-b-2 border-transparent transition whitespace-nowrap" data-tab="provider">
+            <button onclick="switchTab('provider')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap" data-tab="provider">
               Provider
             </button>
-            <button onclick="switchTab('verification')" class="detail-nav-tab px-6 py-3.5 text-xs font-medium text-muted hover:text-text border-b-2 border-transparent transition whitespace-nowrap" data-tab="verification">
+            <button onclick="switchTab('verification')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap" data-tab="verification">
               Verification
             </button>
-            <button onclick="switchTab('documents')" class="detail-nav-tab px-6 py-3.5 text-xs font-medium text-muted hover:text-text border-b-2 border-transparent transition whitespace-nowrap" data-tab="documents">
+            <button onclick="switchTab('documents')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap" data-tab="documents">
               Documents
             </button>
-            <button onclick="switchTab('communications')" class="detail-nav-tab px-6 py-3.5 text-xs font-medium text-muted hover:text-text border-b-2 border-transparent transition whitespace-nowrap" data-tab="communications">
+            <button onclick="switchTab('communications')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap" data-tab="communications">
               Communications
             </button>
-            <button onclick="switchTab('timeline')" class="detail-nav-tab px-6 py-3.5 text-xs font-medium text-muted hover:text-text border-b-2 border-transparent transition whitespace-nowrap" data-tab="timeline">
+            <button onclick="switchTab('timeline')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap" data-tab="timeline">
               Activity Timeline
             </button>
-            <button onclick="switchTab('audit')" class="detail-nav-tab px-6 py-3.5 text-xs font-medium text-muted hover:text-text border-b-2 border-transparent transition whitespace-nowrap" data-tab="audit">
+            <button onclick="switchTab('audit')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap" data-tab="audit">
               Audit
             </button>
           </div>
@@ -254,7 +287,7 @@
           
           <!-- Tab 1: Order Panel -->
           <div id="panel-order" class="tab-panel">
-            <div class="border border-line rounded-xl overflow-hidden  divide-line text-xs bg-white">
+            <div class="border border-line rounded-xl overflow-hidden divide-y divide-line/40 text-xs bg-white">
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">BRIDGE Order ID</span>
                 <span id="panel-bridge-id" class="font-mono font-bold text-text">ORD-000886</span>
@@ -312,10 +345,10 @@
 
           <!-- Tab 2: Patient Panel -->
           <div id="panel-patient" class="tab-panel hidden">
-            <div class="border border-line rounded-xl overflow-hidden  divide-line text-xs bg-white">
+            <div class="border border-line rounded-xl overflow-hidden divide-y divide-line/40 text-xs bg-white">
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Patient Name</span>
-                <span class="font-bold text-text">Madison Chilcutt</span>
+                <span class="font-bold text-text">Stefany Sanchez</span>
               </div>
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Date of Birth</span>
@@ -323,57 +356,59 @@
               </div>
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Address</span>
-                <span class="text-text">95 Marvin Terry Lane, Henderson, TN 38340</span>
+                <span class="text-text">1928 Alcoa Hwy Suite B-127, Knoxville TN 37920</span>
               </div>
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Insurance Member ID</span>
-                <span class="font-mono text-text">129549692</span>
+                <span class="font-mono text-text">CoverKids — 129549692</span>
               </div>
             </div>
           </div>
 
           <!-- Tab 3: Provider Panel -->
-          <div id="panel-provider" class="tab-panel hidden">
-            <h2 class="text-xs font-bold text-muted uppercase tracking-wider mb-3">PROVIDER</h2>
-            <div class="border border-line rounded-xl overflow-hidden divide-line text-xs bg-white mb-4">
-              <div class="grid grid-cols-[220px_1fr] p-3.5">
-                <span class="text-muted font-medium">BRIDGE Provider ID</span>
-                <span class="font-mono font-bold text-text">PROV-000542</span>
-              </div>
-              <div class="grid grid-cols-[220px_1fr] p-3.5">
-                <span class="text-muted font-medium">Physician Name</span>
-                <span class="font-bold text-text">Raymond Aldrich, MD</span>
-              </div>
-              <div class="grid grid-cols-[220px_1fr] p-3.5">
-                <span class="text-muted font-medium">Practice</span>
-                <span class="font-semibold text-text">Marion Family Health Assoc.</span>
-              </div>
-              <div class="grid grid-cols-[220px_1fr] p-3.5">
-                <span class="text-muted font-medium">NPI</span>
-                <span class="font-mono font-bold text-text">1215048332</span>
-              </div>
-              <div class="grid grid-cols-[220px_1fr] p-3.5">
-                <span class="text-muted font-medium">Fax (this order)</span>
-                <span class="font-mono text-text">(740) 555-0199</span>
-              </div>
-              <div class="grid grid-cols-[220px_1fr] p-3.5">
-                <span class="text-muted font-medium">Directory status</span>
-                <div>
-                  <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-green-bg text-green">
-                    <span class="w-1.5 h-1.5 rounded-full bg-current"></span> Active
-                  </span>
+          <div id="panel-provider" class="tab-panel hidden flex flex-col gap-4">
+            <div class="bg-[#FEF7E0] border border-[#E6C687] rounded-2xl p-5 shadow-sm flex flex-col gap-3">
+              <div class="flex items-start justify-between">
+                <div class="flex items-center gap-2 font-bold text-[#6D4200] text-sm">
+                  <span class="material-symbols-outlined text-[20px]">warning</span>
+                  <span>Physician fax number missing — order stalled</span>
                 </div>
               </div>
+              <p class="text-xs text-[#6D4200] font-normal leading-relaxed">
+                No fax number on record for the listed physician. Order cannot be routed until the fax number is sourced.
+              </p>
+              <div class="grid grid-cols-2 gap-y-1 gap-x-6 pt-2 border-t border-[#E6C687]/50 font-mono text-[11px] text-[#6D4200]/90">
+                <div><span class="text-[#6D4200]/70">error_code:</span> <span class="font-bold">BRG_W_2117</span></div>
+                <div><span class="text-[#6D4200]/70">order_id:</span> <span class="font-bold">ORD-000886</span></div>
+                <div><span class="text-[#6D4200]/70">npi_ref:</span> <span class="font-bold">(missing)</span></div>
+                <div><span class="text-[#6D4200]/70">trace_id:</span> <span class="font-bold">3c8e14bd-91c2-4b67-a5f1-4d20ee5c9f77</span></div>
+              </div>
             </div>
-            <button type="button" class="h-8 px-4 border border-line rounded-lg bg-white text-text font-medium text-xs hover:border-primary hover:bg-surface transition">
-              View full record in Provider Directory →
-            </button>
+
+            <div class="border border-line rounded-xl overflow-hidden divide-y divide-line/40 text-xs bg-white">
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Physician</span>
+                <span class="font-bold text-text">Whitney Bean, 1928 Alcoa Hwy Suite B-127, Knoxville TN</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Phone</span>
+                <span class="font-mono text-muted">–</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Fax</span>
+                <span class="font-mono text-muted">–</span>
+              </div>
+              <div class="grid grid-cols-[220px_1fr] p-3.5">
+                <span class="text-muted font-medium">Physician NPI</span>
+                <span class="font-mono text-muted">–</span>
+              </div>
+            </div>
           </div>
 
           <!-- Tab 4: Verification Panel -->
           <div id="panel-verification" class="tab-panel hidden">
             <h2 class="text-sm font-bold text-text mb-3">Verification status</h2>
-            <div class="border border-line rounded-xl overflow-hidden  divide-line text-xs bg-white mb-4">
+            <div class="border border-line rounded-xl overflow-hidden divide-y divide-line/40 text-xs bg-white mb-4">
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Status</span>
                 <div>
@@ -402,85 +437,141 @@
               <h2 class="text-sm font-bold text-text">Documents on file</h2>
               <span class="text-[10px] text-muted bg-[#F3EDF7] px-2.5 py-1 rounded-full font-medium">Owned by BRIDGE Documents</span>
             </div>
-            <div class="border border-line rounded-xl divide-y divide-line text-xs bg-white mb-4">
+            <div class="border border-line rounded-xl divide-y divide-line/40 text-xs bg-white mb-4">
               <div class="p-3.5 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-muted shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  <svg class="w-4 h-4 text-muted shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 01-2-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                   <span class="font-medium text-text">Intake fax — page 1–3</span>
                 </div>
                 <span class="text-muted font-mono">Received 9:41 AM</span>
               </div>
               <div class="p-3.5 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-muted shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  <svg class="w-4 h-4 text-muted shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 01-2-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                   <span class="font-medium text-text">Insurance verification form</span>
                 </div>
                 <span class="text-muted font-mono">Received 9:44 AM</span>
               </div>
-              <div class="p-3.5 flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-amber shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                  <span class="font-medium text-text">Kit authorization — missing</span>
-                </div>
-                <span class="text-red font-bold">Outstanding</span>
-              </div>
             </div>
-            <button type="button" class="h-8 px-4 border border-line rounded-lg bg-white text-text font-medium text-xs hover:border-primary hover:bg-surface transition">
-              Open full document library ↗
-            </button>
           </div>
 
           <!-- Tab 6: Communications Panel -->
-          <div id="panel-communications" class="tab-panel hidden">
-            <h2 class="text-sm font-bold text-text mb-3">Communication history</h2>
-            <div class="border border-line rounded-xl divide-y divide-line text-xs bg-white mb-4">
-              <div class="p-3.5 flex items-center justify-between">
-                <span class="font-mono text-muted w-[140px] shrink-0">Jul 16, 9:45 AM</span>
-                <span class="font-medium text-text flex-1">Fax confirmation sent to Marion Family Health Assoc. — delivered.</span>
+          <div id="panel-communications" class="tab-panel hidden flex flex-col gap-6">
+            <div class="border border-line rounded-2xl overflow-hidden bg-white shadow-sm">
+              <div class="bg-[#F3EDF7] p-3 px-5 border-b border-line flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-primary">Communication History</span>
+                <span class="text-[10px] text-muted font-medium">Owned by BRIDGE Communications</span>
               </div>
-              <div class="p-3.5 flex items-center justify-between">
-                <span class="font-mono text-muted w-[140px] shrink-0">Jul 14, 2:10 PM</span>
-                <span class="font-medium text-text flex-1">Follow-up fax sent requesting kit authorization — delivered, no response yet.</span>
+
+              <div class="divide-y divide-line/40 text-xs p-5 flex flex-col gap-4">
+                <div class="flex items-start gap-3">
+                  <span class="w-2 h-2 rounded-full bg-primary mt-1.5 shrink-0"></span>
+                  <div class="flex flex-col gap-0.5">
+                    <span class="font-mono text-muted text-[11px]">Aug 11, 11:18 AM</span>
+                    <span class="text-text font-medium">Fax confirmation sent to Whitney Bean, 1928 Alcoa Hwy Suite B-127, Knoxville TN — delivered.</span>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3 pt-3">
+                  <span class="w-2 h-2 rounded-full bg-primary mt-1.5 shrink-0"></span>
+                  <div class="flex flex-col gap-0.5">
+                    <span class="font-mono text-muted text-[11px]">Aug 10, 2:10 PM</span>
+                    <span class="text-text font-medium">Follow-up fax sent requesting kit authorization — delivered, no response yet.</span>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3 pt-3">
+                  <span class="w-2 h-2 rounded-full bg-primary mt-1.5 shrink-0"></span>
+                  <div class="flex flex-col gap-0.5">
+                    <span class="font-mono text-muted text-[11px]">Aug 09, 9:30 AM</span>
+                    <span class="text-text font-medium">Order intake received from BlueGoose. Routing to workspace.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-4 bg-surface/30 border-t border-line">
+                <button type="button" class="h-8 px-4 border border-line rounded-full bg-white text-primary font-bold text-xs hover:bg-primary-soft transition">
+                  Open full communication log ↗
+                </button>
               </div>
             </div>
-            <button type="button" class="h-8 px-4 border border-line rounded-lg bg-white text-text font-medium text-xs hover:border-primary hover:bg-surface transition">
-              Open full communication log ↗
-            </button>
+
+            <!-- New Note Box -->
+            <div class="bg-white border border-line rounded-2xl p-5 shadow-sm flex flex-col gap-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-muted">New Note / Message</span>
+              <textarea rows="3" class="w-full text-xs p-3 border border-outline rounded-xl focus:outline-none focus:border-primary" placeholder="Add an internal note or outbound communication log entry..."></textarea>
+              <div class="flex justify-end">
+                <button type="button" class="px-5 py-2 bg-primary text-white text-xs font-bold rounded-full hover:bg-on-primary-container transition shadow-sm">
+                  Save Note
+                </button>
+              </div>
+            </div>
           </div>
 
           <!-- Tab 7: Activity Timeline Panel -->
-          <div id="panel-timeline" class="tab-panel hidden">
-            <h2 class="text-xs font-bold text-muted uppercase tracking-wider mb-4">ACTIVITY TIMELINE</h2>
-            <div class="relative pl-6 flex flex-col gap-6 text-xs before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-line">
+          <div id="panel-timeline" class="tab-panel hidden flex flex-col gap-4">
+            <h2 class="text-xs font-bold text-muted uppercase tracking-wider">Activity Timeline</h2>
+            
+            <div class="relative pl-8 flex flex-col gap-6 text-xs before:absolute before:left-[13px] before:top-2 before:bottom-2 before:w-[2px] before:bg-line">
               
               <div class="relative flex items-start gap-3">
-                <div class="absolute -left-[30px] top-0 w-5 h-5 rounded-full bg-green text-white flex items-center justify-center text-[10px] font-bold z-10">
+                <div class="absolute -left-[32px] top-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-[12px] font-bold z-10 shadow-sm">
                   ✓
                 </div>
                 <div>
                   <span class="font-bold text-text text-sm block">Order created from Intake</span>
-                  <span class="text-muted font-mono text-[11px] mt-0.5 block">Jul 16, 9:41 AM</span>
+                  <span class="text-muted font-mono text-[11px] mt-0.5 block">7/22/2026 15:19:14</span>
                 </div>
               </div>
 
               <div class="relative flex items-start gap-3">
-                <div class="absolute -left-[30px] top-0 w-5 h-5 rounded-full bg-green text-white flex items-center justify-center text-[10px] font-bold z-10">
+                <div class="absolute -left-[32px] top-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-[12px] font-bold z-10 shadow-sm">
                   ✓
                 </div>
                 <div>
-                  <span class="font-bold text-text text-sm block">Assigned to Jane Doe</span>
-                  <span class="text-muted font-mono text-[11px] mt-0.5 block">Jul 16, 9:50 AM</span>
+                  <span class="font-bold text-text text-sm block">Assigned to workspace queue</span>
+                  <span class="text-muted font-mono text-[11px] mt-0.5 block">Aug 11, 9:50 AM</span>
                 </div>
               </div>
 
               <div class="relative flex items-start gap-3">
-                <div class="absolute -left-[30px] top-0 w-5 h-5 rounded-full bg-blue text-white flex items-center justify-center text-[8px] font-bold z-10">
+                <div class="absolute -left-[32px] top-0 w-6 h-6 rounded-full border-2 border-primary bg-white text-primary flex items-center justify-center text-[8px] font-bold z-10">
                   ●
                 </div>
                 <div>
-                  <span class="font-bold text-text text-sm block">Flagged — provider verification mismatch</span>
-                  <span class="text-muted text-xs block mt-0.5">Routed to Review; awaiting resolution.</span>
-                  <span class="text-muted font-mono text-[11px] mt-0.5 block">Today, 9:52 AM</span>
+                  <span class="font-bold text-text text-sm block">Flagged — provider information required</span>
+                  <span class="text-muted text-xs block mt-0.5">Awaiting physician fax / NPI resolution before routing.</span>
+                  <span class="text-muted font-mono text-[11px] mt-0.5 block">Today</span>
+                </div>
+              </div>
+
+              <div class="relative flex items-start gap-3">
+                <div class="absolute -left-[32px] top-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-[12px] font-bold z-10 shadow-sm">
+                  ✓
+                </div>
+                <div>
+                  <span class="font-bold text-text text-sm block">Order accepted — ready for routing</span>
+                  <span class="text-muted font-mono text-[11px] mt-0.5 block">7/22/2026 15:19</span>
+                </div>
+              </div>
+
+              <div class="relative flex items-start gap-3 opacity-40">
+                <div class="absolute -left-[32px] top-0 w-6 h-6 rounded-full border border-line bg-surface flex items-center justify-center text-[8px] z-10">
+                  ○
+                </div>
+                <div>
+                  <span class="font-bold text-text text-sm block">Fax sent to physician</span>
+                  <span class="text-muted font-mono text-[11px] mt-0.5 block">–</span>
+                </div>
+              </div>
+
+              <div class="relative flex items-start gap-3 opacity-40">
+                <div class="absolute -left-[32px] top-0 w-6 h-6 rounded-full border border-line bg-surface flex items-center justify-center text-[8px] z-10">
+                  ○
+                </div>
+                <div>
+                  <span class="font-bold text-text text-sm block">Order fulfilled &amp; closed</span>
+                  <span class="text-muted font-mono text-[11px] mt-0.5 block">–</span>
                 </div>
               </div>
 
@@ -490,7 +581,7 @@
           <!-- Tab 8: Audit Panel -->
           <div id="panel-audit" class="tab-panel hidden">
             <h2 class="text-sm font-bold text-text mb-4">Business Audit History</h2>
-            <div class="border border-line rounded-xl divide-y divide-line text-xs font-mono bg-white mb-4">
+            <div class="border border-line rounded-xl divide-y divide-line/40 text-xs font-mono bg-white mb-4">
               <div class="p-3.5 flex items-center gap-4">
                 <span class="text-muted">7/22/2026 15:19:14</span>
                 <span class="text-text">System — Order created from Intake record d7e9fa8a8feba20f1e9a51befb5c8b47</span>
@@ -511,12 +602,16 @@
   <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
 
   <script>
+    function saveCorrectionAndResume() {
+      showToast("Quick Action executed. Order corrections committed and workflow resumed.");
+    }
+
     function switchTab(tabKey) {
       document.querySelectorAll('.detail-nav-tab').forEach(btn => {
         if (btn.dataset.tab === tabKey) {
-          btn.className = "detail-nav-tab px-6 py-3.5 text-xs font-bold text-primary border-b-2 border-primary transition whitespace-nowrap";
+          btn.className = "detail-nav-tab px-6 py-4 text-sm font-bold text-primary border-b-2 border-primary transition whitespace-nowrap";
         } else {
-          btn.className = "detail-nav-tab px-6 py-3.5 text-xs font-medium text-muted hover:text-text border-b-2 border-transparent transition whitespace-nowrap";
+          btn.className = "detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap";
         }
       });
 

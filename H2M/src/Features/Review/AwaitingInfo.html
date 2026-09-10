@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Review Queue | H2M BRIDGE Workspace</title>
+  <title>Awaiting Info | H2M BRIDGE Workspace</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   
-  <!-- Google Material Symbols Import -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -46,7 +45,6 @@
 </head>
 <body class="bg-surface text-text font-sans min-h-screen relative overflow-x-hidden antialiased">
 
-  <!-- Concurrency Alert Banner -->
   <div id="concurrency-banner" class="hidden bg-amber-bg border-b border-amber/30 px-6 py-2.5 text-amber text-xs font-medium flex items-center justify-between shadow-sm transition-all duration-300">
     <div class="flex items-center gap-2">
       <span class="material-symbols-outlined text-[18px] text-amber shrink-0">warning</span>
@@ -57,7 +55,6 @@
 
   <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
     
-    <!-- Sidebar Navigation with Direct Modular HTML Page Links -->
     <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
       <div class="w-[58px] h-[58px]">
         <img src="https://www.figma.com/api/mcp/asset/344953eb-406f-498c-b60f-e17d785f92f3.png" alt="Help to Moms logo" class="w-full h-full object-contain">
@@ -65,15 +62,13 @@
       
       <div class="w-full">
         <nav class="w-full flex flex-col gap-1.5" id="review-sidebar-nav">
-          <!-- Item 1: Pending Review (ACTIVE PAGE) -->
-          <a href="ReviewPage.html" id="side-pending" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition">
+          <a href="ReviewPage.html" id="side-pending" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
-              <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-[18px]">schedule</span>
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">schedule</span>
               <span class="truncate">Pending Review</span>
             </div>
           </a>
 
-          <!-- Item 2: In Review -->
           <a href="InReview.html" id="side-in-review" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">edit_note</span>
@@ -81,15 +76,13 @@
             </div>
           </a>
 
-          <!-- Item 3: Awaiting Info -->
-          <a href="AwaitingInfo.html" id="side-awaiting" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+          <a href="AwaitingInfo.html" id="side-awaiting" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
-              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">pause_circle</span>
+              <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-[18px]">pause_circle</span>
               <span class="truncate">Awaiting Info</span>
             </div>
           </a>
 
-          <!-- Item 4: Review History -->
           <a href="ReviewHistory.html" id="side-history" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">assignment_turned_in</span>
@@ -100,17 +93,15 @@
       </div>
     </aside>
 
-    <!-- Main Workspace Canvas -->
     <section class="flex-1 p-8 pb-12 flex flex-col gap-6 overflow-hidden">
       
-      <!-- Top Bar Navigation Header -->
       <header class="h-[58px] flex items-center justify-between">
         <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="ReviewPage.html">Review</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditLogs.html">Audit</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectory.html">Provider Directory</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Administration/AdminHome.html">Administration</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditPage.html">Audit</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectoryPage.html">Provider Directory</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Administration/AdministrationPage.html">Administration</a>
         </nav>
         
         <div class="flex items-center gap-6">
@@ -119,7 +110,6 @@
             <span class="absolute top-0 right-0 w-4 h-4 border border-white rounded-full bg-red text-white flex items-center justify-center text-[9px] font-bold">14</span>
           </div>
 
-          <!-- Account / Role Switcher -->
           <div class="relative inline-block text-left" id="role-switcher-container">
             <button id="role-switcher-btn" type="button" class="flex items-center gap-2 h-9 pl-1 pr-3 rounded-full border border-[#e8def8] bg-white hover:bg-[#f3edf7] cursor-pointer transition-colors outline-none focus:ring-2 focus:ring-[#6750a4]">
               <div id="active-avatar" class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold text-white shrink-0 bg-[#6750a4]">J</div>
@@ -157,25 +147,23 @@
         </div>
       </header>
 
-      <!-- Dashboard Title -->
       <div>
-        <h1 class="text-3xl font-semibold text-text" id="canvas-stage-title">Pending Review Queue</h1>
+        <h1 class="text-3xl font-semibold text-text">Awaiting Information Queue</h1>
       </div>
 
-      <!-- Stat Cards Grid -->
       <section class="grid grid-cols-3 gap-4">
-        <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md hover:bg-[#FDFBFE] cursor-pointer flex items-start justify-between">
+        <div class="stat-card border border-line bg-white p-4 rounded-2xl hover:shadow-md text-left flex items-start justify-between">
           <div class="flex flex-col">
-            <span class="block text-sm font-bold text-text">Pending Review Items</span>
-            <span class="text-3xl font-extrabold text-text mt-3" id="stat-pending-count">244</span>
-            <span class="block mt-1 text-[11px] text-muted">Active unresolved items</span>
+            <span class="block text-sm font-bold text-text">Awaiting Info Items</span>
+            <span class="text-3xl font-extrabold text-text mt-3" id="stat-awaiting-count">1</span>
+            <span class="block mt-1 text-[11px] text-muted">Pending external documentation/clinic feedback</span>
           </div>
           <div class="w-9 h-9 rounded-xl bg-amber-bg text-amber flex items-center justify-center shrink-0">
-            <span class="material-symbols-outlined text-[20px]">warning</span>
+            <span class="material-symbols-outlined text-[20px]">pause_circle</span>
           </div>
         </div>
 
-        <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md hover:bg-[#FDFBFE] cursor-pointer flex items-start justify-between">
+        <div class="stat-card border border-line bg-white p-4 rounded-2xl hover:shadow-md text-left flex items-start justify-between">
           <div class="flex flex-col">
             <span class="block text-sm font-bold text-text">Completed Today</span>
             <span class="text-3xl font-extrabold text-text mt-3">14</span>
@@ -186,7 +174,7 @@
           </div>
         </div>
 
-        <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md hover:bg-[#FDFBFE] cursor-pointer flex items-start justify-between">
+        <div class="stat-card border border-line bg-white p-4 rounded-2xl hover:shadow-md text-left flex items-start justify-between">
           <div class="flex flex-col">
             <span class="block text-sm font-bold text-text">System Update</span>
             <span class="text-xl font-bold text-text mt-3">Last Update On</span>
@@ -198,7 +186,6 @@
         </div>
       </section>
 
-      <!-- Exception Origin Filter Chips -->
       <section class="rounded-2xl p-1 flex flex-col gap-2.5">
         <div class="flex items-center gap-2.5 flex-wrap">
           <button onclick="setOriginFilter('all')" class="chip-btn active px-3.5 py-1.5 rounded-full text-sm font-bold bg-primary text-white transition shadow-sm" data-origin="all">
@@ -223,21 +210,18 @@
         </div>
       </section>
 
-      <!-- Review Queue Table Panel -->
       <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col flex-1">
         <div class="p-5 border-b border-line flex items-center justify-between">
-          <h2 class="text-xl font-semibold text-text">Pending Review Table</h2>
+          <h2 class="text-xl font-semibold text-text">Awaiting Info Queue Table</h2>
           
           <div class="flex items-center gap-2.5">
-            <!-- Search Input Container -->
             <div class="h-9 w-64 px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 text-muted border-0 focus:outline-none shrink-0">
               <span class="material-symbols-outlined text-[#49454F] text-[20px] select-none">search</span>
               <input id="table-search" type="search" class="w-full bg-transparent border-0 outline-none text-sm text-text placeholder-muted focus:ring-0" placeholder="Search by ID, name...">
             </div>
 
-            <!-- Page Controls -->
             <div class="flex items-center gap-3 text-xs text-muted pl-2">
-              <span id="pagination-status" class="font-medium text-text font-mono select-none">1-10 of 244</span>
+              <span id="pagination-status" class="font-medium text-text font-mono select-none">1-1 of 1</span>
               
               <div class="flex items-center gap-1 select-none">
                 <button id="prev-page-btn" onclick="changePage(-1)" class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 outline-none disabled:opacity-20 disabled:hover:bg-transparent disabled:cursor-not-allowed" title="Previous page">
@@ -252,7 +236,7 @@
         </div>
 
         <div class="overflow-x-auto">
-          <table class="w-full gap-1 border-collapse text-left text-sm table-fixed min-w-[1000px]">
+          <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1000px]">
             <colgroup>
               <col class="w-[18%]">
               <col class="w-[16%]">
@@ -272,8 +256,7 @@
               </tr>
             </thead>
             <tbody id="review-table-body">
-              <!-- Injected via JS -->
-            </tbody>
+              </tbody>
           </table>
         </div>
       </section>
@@ -281,18 +264,12 @@
     </section>
   </div>
 
-  <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-sm px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
+  <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
 
   <script>
-    let reviewData = [
-      { sourceOrderId: 'c72a5931c291aac09449d1bbb2fa7706', patientName: 'Sari Gutierrez', errorCode: 'ERR_DUPLICATE_RECORD', errorMessage: 'Duplicate record matched on (Order ID / Email / Composite Patient Profile).', flaggedDate: '2026-08-06 09:56', origin: 'duplicates', stage: 'pending', claimedBy: null },
-      { sourceOrderId: 'd1234567', patientName: 'Priya Nair1', errorCode: 'ERR_INVALID_NAME', errorMessage: 'Last Name must contain text characters only. Found: \'Nair1\'', flaggedDate: '2026-08-06 09:56', origin: 'validation', stage: 'pending', claimedBy: null },
-      { sourceOrderId: 'd1234567', patientName: 'Priya Nair', errorCode: 'ERR_MISSING_REQ_FIELD', errorMessage: 'Address is required and cannot be empty.', flaggedDate: '2026-08-06 09:56', origin: 'validation', stage: 'pending', claimedBy: null },
-      { sourceOrderId: 's123', patientName: 'judes bellingam', errorCode: 'ERR_DUPLICATE_RECORD', errorMessage: 'Duplicate record matched on (Order ID / Email / Composite Patient Profile).', flaggedDate: '2026-08-06 09:56', origin: 'duplicates', stage: 'pending', claimedBy: null },
-      { sourceOrderId: '6556263310346000384', patientName: 'Cheyenne Michelle Bailey', errorCode: 'ERR_MISSING_REQ_FIELD', errorMessage: 'Insurance Member ID is required.', flaggedDate: '2026-08-06 10:00', origin: 'validation', stage: 'pending', claimedBy: null },
-      { sourceOrderId: '6603832661914260480', patientName: 'Dorimar Cruz', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Physician NPI and Fax missing. Match not found in Provider Directory.', flaggedDate: '2026-08-06 10:00', origin: 'provider', stage: 'pending', claimedBy: null },
-      { sourceOrderId: '6601229201768290304', patientName: 'Karen Taylor', errorCode: 'ERR_DUPLICATE_RECORD', errorMessage: 'Duplicate record matched on (Order ID / Email / Composite Patient Profile).', flaggedDate: '2026-08-06 10:00', origin: 'duplicates', stage: 'pending', claimedBy: null },
-      { sourceOrderId: '6601249464014560256', patientName: 'Maria Carlota Mendez Decena', errorCode: 'ERR_INVALID_CITY', errorMessage: 'City must contain text characters only (no numbers/symbols). Found: \'Cape Coral 01\'', flaggedDate: '2026-08-06 10:00', origin: 'validation', stage: 'pending', claimedBy: null }
+    // Dataset containing records in 'awaiting' stage
+    let awaitingData = [
+      { sourceOrderId: 'd12350', patientName: 'Guy Hawkins', errorCode: 'ERR_MISSING_PHYSICIAN_INFO', errorMessage: 'Placed on hold pending clinic signature.', flaggedDate: '2026-08-06 08:00', origin: 'provider', stage: 'awaiting', claimedBy: 'Jane Doe' }
     ];
 
     let activeOriginFilter = 'all';
@@ -319,15 +296,14 @@
 
     function renderTable() {
       const search = document.getElementById('table-search').value.trim().toLowerCase();
-      const stageFiltered = reviewData.filter(item => item.stage === 'pending');
 
-      document.getElementById('chip-count-all').innerText = stageFiltered.length;
-      document.getElementById('chip-count-validation').innerText = stageFiltered.filter(i => i.origin === 'validation').length;
-      document.getElementById('chip-count-duplicates').innerText = stageFiltered.filter(i => i.origin === 'duplicates').length;
-      document.getElementById('chip-count-provider').innerText = stageFiltered.filter(i => i.origin === 'provider').length;
-      document.getElementById('chip-count-delivery').innerText = stageFiltered.filter(i => i.origin === 'delivery').length;
+      document.getElementById('chip-count-all').innerText = awaitingData.length;
+      document.getElementById('chip-count-validation').innerText = awaitingData.filter(i => i.origin === 'validation').length;
+      document.getElementById('chip-count-duplicates').innerText = awaitingData.filter(i => i.origin === 'duplicates').length;
+      document.getElementById('chip-count-provider').innerText = awaitingData.filter(i => i.origin === 'provider').length;
+      document.getElementById('chip-count-delivery').innerText = awaitingData.filter(i => i.origin === 'delivery').length;
 
-      const visible = stageFiltered.filter(item => {
+      const visible = awaitingData.filter(item => {
         const matchesOrigin = activeOriginFilter === 'all' || item.origin === activeOriginFilter;
         const matchesSearch = !search || Object.values(item).join(' ').toLowerCase().includes(search);
         return matchesOrigin && matchesSearch;
@@ -342,7 +318,7 @@
       const endIdx = Math.min(startIdx + pageSize, totalCount);
       const pageData = visible.slice(startIdx, endIdx);
 
-      document.getElementById('stat-pending-count').innerText = stageFiltered.length;
+      document.getElementById('stat-awaiting-count').innerText = awaitingData.length;
       
       if (totalCount === 0) {
         document.getElementById('pagination-status').innerText = 'Showing 0-0 of 0';
@@ -356,13 +332,13 @@
       const tbody = document.getElementById('review-table-body');
 
       if (!pageData.length) {
-        tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-muted text-xs font-medium">No records match the active lifecycle and exception origin filter.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-muted text-xs font-medium">No records match the active filters in this queue.</td></tr>`;
         return;
       }
 
       tbody.innerHTML = pageData.map(row => {
         return `
-          <tr class="border-b border-line hover:bg-surface transition cursor-pointer" onclick="claimAndNavigate('${row.sourceOrderId}')">
+          <tr class="border-b border-line hover:bg-surface transition cursor-pointer" onclick="navigateToDetails('${row.sourceOrderId}')">
             <td class="py-3 px-4 font-mono font-bold text-primary text-sm truncate" title="${row.sourceOrderId}">${row.sourceOrderId}</td>
             <td class="py-3 px-4 font-bold text-text text-sm">${row.patientName}</td>
             <td class="py-3 px-4">
@@ -374,8 +350,8 @@
             <td class="py-3 px-4 text-muted text-sm truncate" title="${row.errorMessage}">${row.errorMessage}</td>
             <td class="py-3 px-4 text-muted text-sm font-mono whitespace-nowrap">${row.flaggedDate}</td>
             <td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
-              <button id="btn-claim-${row.sourceOrderId}" onclick="claimAndNavigate('${row.sourceOrderId}')" class="px-3.5 py-1 bg-primary-soft text-primary font-bold text-xs rounded-full hover:bg-primary hover:text-white transition shadow-sm">
-                Claim
+              <button onclick="navigateToDetails('${row.sourceOrderId}')" class="px-3.5 py-1 bg-primary-soft text-primary font-bold text-sm rounded-full hover:bg-primary hover:text-white transition shadow-sm">
+                Resume
               </button>
             </td>
           </tr>
@@ -383,24 +359,8 @@
       }).join('');
     }
 
-    function claimAndNavigate(sourceOrderId) {
-      const button = document.getElementById(`btn-claim-${sourceOrderId}`);
-      if (button) {
-        button.innerHTML = `<span class="inline-block animate-spin font-bold">↻</span>`;
-      }
-
-      setTimeout(() => {
-        const target = reviewData.find(i => i.sourceOrderId === sourceOrderId);
-        if (target) {
-          target.stage = 'in_review';
-          target.claimedBy = 'Jane Doe';
-        }
-        window.location.href = `ReviewDetails.html?sourceOrderId=${sourceOrderId}`;
-      }, 180);
-    }
-
-    function dismissConcurrencyBanner() {
-      document.getElementById('concurrency-banner').classList.add('hidden');
+    function navigateToDetails(sourceOrderId) {
+      window.location.href = `ReviewDetails.html?sourceOrderId=${sourceOrderId}`;
     }
 
     /* Account / Role Switcher Logic */

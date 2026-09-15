@@ -50,14 +50,14 @@
     }
   </script>
 </head>
-<body class="bg-surface text-text font-sans min-h-screen relative overflow-x-hidden antialiased">
+<body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
 
-  <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
+  <div class="w-[1440px] h-screen mx-auto bg-surface flex overflow-hidden">
     
     <!-- Sidebar Navigation -->
-    <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+    <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
       <div class="w-[58px] h-[58px]">
-        <img src="https://www.figma.com/api/mcp/asset/344953eb-406f-498c-b60f-e17d785f92f3.png" alt="Help to Moms logo" class="w-full h-full object-contain">
+        <img src="https://helptomoms.com/__l5e/assets-v1/923ead63-1849-4075-9845-3e9a00b8b649/help-to-moms-logo.webp" alt="Help to Moms logo" class="w-full h-full object-contain">
       </div>
       
       <div class="w-full">
@@ -108,10 +108,10 @@
     </aside>
 
     <!-- Main Workspace Canvas -->
-    <section class="flex-1 p-8 pb-12 flex flex-col gap-6 overflow-hidden">
+    <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
       
       <!-- Top Navigation Header -->
-      <header class="h-[58px] flex items-center justify-between">
+      <header class="h-[58px] flex items-center justify-between shrink-0">
         <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
@@ -165,13 +165,13 @@
       </header>
 
       <!-- Main Title -->
-      <div>
-        <h1 class="text-3xl font-semibold text-text">Intake History Log</h1>
+      <div class="shrink-0">
+        <h1 class="text-3xl font-semibold text-text">Audit</h1>
         <p class="text-xs text-muted mt-0.5">Permanent record of raw intake payload receptions, webhooks, and initial batch ingestions</p>
       </div>
 
       <!-- KPI Summary Cards Grid -->
-      <section class="grid grid-cols-3 gap-4">
+      <section class="grid grid-cols-3 gap-4 shrink-0">
         <div class="stat-card border border-line bg-white p-4 rounded-2xl hover:shadow-md text-left flex items-start justify-between">
           <div class="flex flex-col">
             <span class="block text-sm font-bold text-text">Total Inbound Intakes</span>
@@ -206,15 +206,15 @@
         </div>
       </section>
 
-      <!-- Main Audit Data Table Frame -->
-      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col flex-1">
-        <div class="p-5 border-b border-line flex items-center justify-between">
-          <h2 class="text-xl font-semibold text-text">Intake Pipeline Stream</h2>
+      <!-- Main Audit Data Table Frame (Hugs Content) -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0">
+        <div class="p-5 border-b border-line flex items-center justify-between shrink-0">
+          <h2 class="text-xl font-semibold text-text">Intake History</h2>
           
           <div class="flex items-center gap-2.5">
             <div class="h-9 w-72 px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 text-muted border-0 focus:outline-none shrink-0">
               <span class="material-symbols-outlined text-[#49454F] text-[20px] select-none">search</span>
-              <input id="audit-table-search" type="search" oninput="handleSearchInput()" class="w-full bg-transparent border-0 outline-none text-sm text-text placeholder-muted focus:ring-0" placeholder="Search by Order ID, Actor, Event...">
+              <input id="audit-table-search" type="search" oninput="handleSearchInput()" class="w-full bg-transparent border-0 outline-none text-xs text-text placeholder-muted focus:ring-0" placeholder="Search by Order ID, Actor, Event...">
             </div>
 
             <div class="flex items-center gap-3 text-xs text-muted pl-2">
@@ -227,7 +227,8 @@
           </div>
         </div>
 
-        <div class="overflow-x-auto">
+        <!-- Table Container (Internal Vertical Scroll) -->
+        <div class="overflow-y-auto max-h-[calc(100vh-380px)] h-auto">
           <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1000px]">
             <colgroup>
               <col class="w-[15%]">
@@ -237,7 +238,7 @@
               <col class="w-[18%]">
               <col class="w-[12%]">
             </colgroup>
-            <thead>
+            <thead class="sticky top-0 z-10">
               <tr class="bg-primary text-white text-[11px] font-bold tracking-wider uppercase">
                 <th class="py-3 px-4">TIMESTAMP</th>
                 <th class="py-3 px-4">EVENT ID</th>
@@ -337,6 +338,8 @@
       </div>
     </div>
   </div>
+
+  <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
 
   <script>
     const intakeDatabase = [

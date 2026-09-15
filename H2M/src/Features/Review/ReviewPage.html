@@ -44,7 +44,7 @@
     }
   </script>
 </head>
-<body class="bg-surface text-text font-sans min-h-screen relative overflow-x-hidden antialiased">
+<body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
 
   <!-- Concurrency Alert Banner -->
   <div id="concurrency-banner" class="hidden bg-amber-bg border-b border-amber/30 px-6 py-2.5 text-amber text-xs font-medium flex items-center justify-between shadow-sm transition-all duration-300">
@@ -55,12 +55,12 @@
     <button onclick="dismissConcurrencyBanner()" class="text-amber hover:underline text-xs font-bold">Dismiss</button>
   </div>
 
-  <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
+  <div class="w-full h-screen mx-auto bg-surface flex overflow-hidden">
     
-    <!-- Sidebar Navigation with Direct Modular HTML Page Links -->
-    <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+    <!-- Sidebar Navigation -->
+    <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
       <div class="w-[58px] h-[58px]">
-        <img src="https://www.figma.com/api/mcp/asset/344953eb-406f-498c-b60f-e17d785f92f3.png" alt="Help to Moms logo" class="w-full h-full object-contain">
+        <img src="https://helptomoms.com/__l5e/assets-v1/923ead63-1849-4075-9845-3e9a00b8b649/help-to-moms-logo.webp" alt="Help to Moms logo" class="w-full h-full object-contain">
       </div>
       
       <div class="w-full">
@@ -85,7 +85,7 @@
           <a href="AwaitingInfo.html" id="side-awaiting" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">pause_circle</span>
-              <span class="truncate">Awaiting Info</span>
+              <span class="truncate">Awaiting Information</span>
             </div>
           </a>
 
@@ -101,10 +101,10 @@
     </aside>
 
     <!-- Main Workspace Canvas -->
-    <section class="flex-1 p-8 pb-12 flex flex-col gap-6 overflow-hidden">
+    <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
       
       <!-- Top Bar Navigation Header -->
-      <header class="h-[58px] flex items-center justify-between">
+      <header class="h-[58px] flex items-center justify-between shrink-0">
         <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="ReviewPage.html">Review</a>
@@ -114,9 +114,14 @@
         </nav>
         
         <div class="flex items-center gap-6">
-          <div class="relative w-10 h-10 flex items-center justify-center cursor-pointer">
-            <img src="https://www.figma.com/api/mcp/asset/0e022744-e0d6-4c6f-8546-51c31cf743c4.svg" alt="Notifications" class="w-5 h-5">
-            <span class="absolute top-0 right-0 w-4 h-4 border border-white rounded-full bg-red text-white flex items-center justify-center text-[9px] font-bold">14</span>
+          <!-- Integrated Material Symbols Notification Bell with Red Badge -->
+          <div class="relative inline-flex items-center justify-center w-9 h-9 cursor-pointer group">
+            <span class="material-symbols-outlined text-[#1C1B1F] text-[24px] group-hover:text-primary transition-colors select-none">
+              notifications
+            </span>
+            <span class="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 bg-[#B3261E] text-white rounded-full flex items-center justify-center text-[10px] font-bold leading-none border-2 border-white shadow-xs select-none">
+              14
+            </span>
           </div>
 
           <!-- Account / Role Switcher -->
@@ -158,16 +163,16 @@
       </header>
 
       <!-- Dashboard Title -->
-      <div>
-        <h1 class="text-3xl font-semibold text-text" id="canvas-stage-title">Pending Review Queue</h1>
+      <div class="shrink-0">
+        <h1 class="text-3xl font-semibold text-text" id="canvas-stage-title">Review</h1>
       </div>
 
       <!-- Stat Cards Grid -->
-      <section class="grid grid-cols-3 gap-4">
+      <section class="grid grid-cols-3 gap-4 shrink-0">
         <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md hover:bg-[#FDFBFE] cursor-pointer flex items-start justify-between">
           <div class="flex flex-col">
-            <span class="block text-sm font-bold text-text">Pending Review Items</span>
-            <span class="text-3xl font-extrabold text-text mt-3" id="stat-pending-count">244</span>
+            <span class="block text-sm font-bold text-text">Pending Review</span>
+            <span class="text-3xl font-extrabold text-text mt-3" id="stat-pending-count">8</span>
             <span class="block mt-1 text-[11px] text-muted">Active unresolved items</span>
           </div>
           <div class="w-9 h-9 rounded-xl bg-amber-bg text-amber flex items-center justify-center shrink-0">
@@ -199,45 +204,45 @@
       </section>
 
       <!-- Exception Origin Filter Chips -->
-      <section class="rounded-2xl p-1 flex flex-col gap-2.5">
+      <section class="rounded-2xl p-1 flex flex-col gap-2.5 shrink-0">
         <div class="flex items-center gap-2.5 flex-wrap">
           <button onclick="setOriginFilter('all')" class="chip-btn active px-3.5 py-1.5 rounded-full text-sm font-bold bg-primary text-white transition shadow-sm" data-origin="all">
-            <span>All</span> (<span id="chip-count-all"></span>)
+            <span>All</span> (<span id="chip-count-all">8</span>)
           </button>
 
           <button onclick="setOriginFilter('validation')" class="chip-btn px-3.5 py-1.5 rounded-full text-sm font-medium text-muted bg-surface hover:bg-[#F3EDF7] border border-line transition" data-origin="validation">
-            <span>Validation Failed</span> (<span id="chip-count-validation"></span>)
+            <span>Validation Failed</span> (<span id="chip-count-validation">4</span>)
           </button>
 
           <button onclick="setOriginFilter('duplicates')" class="chip-btn px-3.5 py-1.5 rounded-full text-sm font-medium text-muted bg-surface hover:bg-[#F3EDF7] border border-line transition" data-origin="duplicates">
-            <span>Duplicate Suspected</span> (<span id="chip-count-duplicates"></span>)
+            <span>Duplicate Suspected</span> (<span id="chip-count-duplicates">3</span>)
           </button>
 
           <button onclick="setOriginFilter('provider')" class="chip-btn px-3.5 py-1.5 rounded-full text-sm font-medium text-muted bg-surface hover:bg-[#F3EDF7] border border-line transition" data-origin="provider">
-            <span>Provider Resolution</span> (<span id="chip-count-provider"></span>)
+            <span>Provider Resolution</span> (<span id="chip-count-provider">1</span>)
           </button>
 
           <button onclick="setOriginFilter('delivery')" class="chip-btn px-3.5 py-1.5 rounded-full text-sm font-medium text-muted bg-surface hover:bg-[#F3EDF7] border border-line transition" data-origin="delivery">
-            <span>Delivery Failed</span> (<span id="chip-count-delivery"></span>)
+            <span>Delivery Failed</span> (<span id="chip-count-delivery">0</span>)
           </button>
         </div>
       </section>
 
       <!-- Review Queue Table Panel -->
-      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col flex-1">
-        <div class="p-5 border-b border-line flex items-center justify-between">
-          <h2 class="text-xl font-semibold text-text">Pending Review Table</h2>
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col flex-1 min-h-0 mb-2">
+        <div class="p-5 border-b border-line flex items-center justify-between shrink-0">
+          <h2 class="text-xl font-semibold text-text">Pending Review</h2>
           
           <div class="flex items-center gap-2.5">
             <!-- Search Input Container -->
             <div class="h-9 w-64 px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 text-muted border-0 focus:outline-none shrink-0">
               <span class="material-symbols-outlined text-[#49454F] text-[20px] select-none">search</span>
-              <input id="table-search" type="search" class="w-full bg-transparent border-0 outline-none text-sm text-text placeholder-muted focus:ring-0" placeholder="Search by ID, name...">
+              <input id="table-search" type="search" class="w-full bg-transparent border-0 outline-none text-xs text-text placeholder-muted focus:ring-0" placeholder="Search by ID, name...">
             </div>
 
             <!-- Page Controls -->
             <div class="flex items-center gap-3 text-xs text-muted pl-2">
-              <span id="pagination-status" class="font-medium text-text font-mono select-none">1-10 of 244</span>
+              <span id="pagination-status" class="font-medium text-text font-mono select-none">Showing 1-8 of 8</span>
               
               <div class="flex items-center gap-1 select-none">
                 <button id="prev-page-btn" onclick="changePage(-1)" class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 outline-none disabled:opacity-20 disabled:hover:bg-transparent disabled:cursor-not-allowed" title="Previous page">
@@ -251,17 +256,18 @@
           </div>
         </div>
 
-        <div class="overflow-x-auto">
-          <table class="w-full gap-1 border-collapse text-left text-sm table-fixed min-w-[1000px]">
+        <!-- Table Container (Internal Scroll) -->
+        <div class="flex-1 overflow-y-auto">
+          <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1000px]">
             <colgroup>
-              <col class="w-[18%]">
               <col class="w-[16%]">
-              <col class="w-[22%]">
+              <col class="w-[14%]">
+              <col class="w-[18%]">
               <col class="w-[25%]">
-              <col class="w-[11%]">
-              <col class="w-[8%]">
+              <col class="w-[17%]">
+              <col class="w-[10%]">
             </colgroup>
-            <thead>
+            <thead class="sticky top-0 z-10">
               <tr class="bg-primary text-white text-[11px] font-bold tracking-wider uppercase">
                 <th class="py-3 px-4">Source Order ID</th>
                 <th class="py-3 px-4">Patient Name</th>
@@ -304,9 +310,9 @@
       currentPage = 1;
       document.querySelectorAll('.chip-btn').forEach(btn => {
         if (btn.dataset.origin === origin) {
-          btn.className = "chip-btn active px-3.5 py-1.5 rounded-full text-xs font-bold bg-primary text-white transition shadow-sm";
+          btn.className = "chip-btn active px-3.5 py-1.5 rounded-full text-sm font-bold bg-primary text-white transition shadow-sm";
         } else {
-          btn.className = "chip-btn px-3.5 py-1.5 rounded-full text-xs font-medium text-muted bg-surface hover:bg-[#F3EDF7] border border-line transition";
+          btn.className = "chip-btn px-3.5 py-1.5 rounded-full text-sm font-medium text-muted bg-surface hover:bg-[#F3EDF7] border border-line transition";
         }
       });
       renderTable();
@@ -372,9 +378,9 @@
               </span>
             </td>
             <td class="py-3 px-4 text-muted text-sm truncate" title="${row.errorMessage}">${row.errorMessage}</td>
-            <td class="py-3 px-4 text-muted text-sm font-mono whitespace-nowrap">${row.flaggedDate}</td>
+            <td class="py-3 px-4 pr-4 text-muted text-sm font-mono whitespace-nowrap">${row.flaggedDate}</td>
             <td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
-              <button id="btn-claim-${row.sourceOrderId}" onclick="claimAndNavigate('${row.sourceOrderId}')" class="px-3.5 py-1 bg-primary-soft text-primary font-bold text-xs rounded-full hover:bg-primary hover:text-white transition shadow-sm">
+              <button id="btn-claim-${row.sourceOrderId}" onclick="claimAndNavigate('${row.sourceOrderId}')" class="px-3.5 py-1 bg-primary-soft text-primary font-bold text-xs rounded-full hover:bg-primary hover:text-white transition shadow-sm cursor-pointer">
                 Claim
               </button>
             </td>

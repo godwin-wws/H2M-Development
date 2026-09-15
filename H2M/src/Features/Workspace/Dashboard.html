@@ -46,55 +46,55 @@
   </script>
 </head>
 <body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
-  <div class="w-full h-screen mx-auto bg-surface flex overflow-hidden">
+  <div class="w-[1440px] h-screen mx-auto bg-surface flex overflow-hidden">
     
     <!-- Unified Side Navigation -->
     <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
       <div class="w-[58px] h-[58px]">
-        <img src="https://www.figma.com/api/mcp/asset/344953eb-406f-498c-b60f-e17d785f92f3.png" alt="Help to Moms logo" class="w-full h-full object-contain">
+        <img src="https://helptomoms.com/__l5e/assets-v1/923ead63-1849-4075-9845-3e9a00b8b649/help-to-moms-logo.webp" alt="Help to Moms logo" class="w-full h-full object-contain">
       </div>
       <nav class="w-full flex flex-col gap-1.5" id="workspace-sidebar-nav">
-  <!-- Active Dashboard Page -->
-  <a href="Dashboard.html" id="nav-dashboard" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition">
-    <div class="flex items-center gap-2.5 min-w-0 flex-1">
-      <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-[18px]">dashboard</span>
-      <span class="truncate">Dashboard</span>
-    </div>
-  </a>
+        <!-- Active Dashboard Page -->
+        <a href="Dashboard.html" id="nav-dashboard" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition">
+          <div class="flex items-center gap-2.5 min-w-0 flex-1">
+            <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-[18px]">dashboard</span>
+            <span class="truncate">Dashboard</span>
+          </div>
+        </a>
 
-  <!-- Inactive Work Queues Page -->
-  <a href="WorkQueue.html" id="nav-work-queue" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
-    <div class="flex items-center gap-2.5 min-w-0 flex-1">
-      <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">format_list_bulleted</span>
-      <span class="truncate">Work Queues</span>
-    </div>
-  </a>
+        <!-- Inactive Work Queues Page -->
+        <a href="WorkQueue.html" id="nav-work-queue" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+          <div class="flex items-center gap-2.5 min-w-0 flex-1">
+            <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">format_list_bulleted</span>
+            <span class="truncate">Work Queues</span>
+          </div>
+        </a>
 
-  <!-- Inactive Order Search Page -->
-  <a href="OrderSearch.html" id="nav-order-search" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
-    <div class="flex items-center gap-2.5 min-w-0 flex-1">
-      <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">search</span>
-      <span class="truncate">Order Search</span>
-    </div>
-  </a>
+        <!-- Inactive Order Search Page -->
+        <a href="OrderSearch.html" id="nav-order-search" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+          <div class="flex items-center gap-2.5 min-w-0 flex-1">
+            <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">search</span>
+            <span class="truncate">Order Search</span>
+          </div>
+        </a>
 
-  <!-- Inactive Alerts & Exceptions Page -->
-  <a href="Alerts.html" id="nav-alerts-exceptions" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
-    <div class="flex items-center gap-2.5 min-w-0 flex-1">
-      <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">notifications</span>
-      <span class="truncate">Alerts &amp; Exceptions</span>
-    </div>
-  </a>
-</nav>
+        <!-- Inactive Alerts & Exceptions Page -->
+        <a href="Alerts.html" id="nav-alerts-exceptions" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+          <div class="flex items-center gap-2.5 min-w-0 flex-1">
+            <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">notifications</span>
+            <span class="truncate">Alerts &amp; Exceptions</span>
+          </div>
+        </a>
+      </nav>
     </aside>
 
-    <!-- Main Content Area (Fixed Height - No Page Scroll) -->
+    <!-- Main Content Area -->
     <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
       
-      <!-- Top Bar Tabs -->
+      <!-- Top Navigation Bar & Global Module Pill -->
       <header class="h-[58px] flex items-center justify-between shrink-0">
         <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
-          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium" href="../Workspace/Dashboard.html">Workspace</a>
+          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditLogs.html">Audit</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectory.html">Provider Directory</a>
@@ -102,9 +102,14 @@
         </nav>
         
         <div class="flex items-center gap-6">
-          <div class="relative w-10 h-10 flex items-center justify-center cursor-pointer">
-            <img src="https://www.figma.com/api/mcp/asset/0e022744-e0d6-4c6f-8546-51c31cf743c4.svg" alt="Notifications" class="w-5 h-5">
-            <span class="absolute top-0 right-0 w-4 h-4 border border-white rounded-full bg-red text-white flex items-center justify-center text-[9px] font-bold">14</span>
+           <!-- Integrated Material Symbols Notification Bell with Red Badge -->
+          <div class="relative inline-flex items-center justify-center w-9 h-9 cursor-pointer group">
+            <span class="material-symbols-outlined text-[#1C1B1F] text-[24px] group-hover:text-primary transition-colors select-none">
+              notifications
+            </span>
+            <span class="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 bg-[#B3261E] text-white rounded-full flex items-center justify-center text-[10px] font-bold leading-none border-2 border-white shadow-xs select-none">
+              14
+            </span>
           </div>
 
           <!-- Account / Role Switcher -->
@@ -114,7 +119,7 @@
               type="button"
               class="flex items-center gap-2 h-9 pl-1 pr-3 rounded-full border border-[#e8def8] bg-white hover:bg-[#f3edf7] cursor-pointer transition-colors outline-none focus:ring-2 focus:ring-[#6750a4]"
             >
-              <div id="active-avatar" class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold text-white flex-shrink-0 bg-[#6750a4]">
+              <div id="active-avatar" class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold text-white shrink-0 bg-[#6750a4]">
                 J
               </div>
               <div class="text-left hidden sm:block">
@@ -139,7 +144,7 @@
                 id="role-opt-operations"
                 class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]"
               >
-                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-sans-bold text-white flex-shrink-0 bg-[#6750a4]">J</div>
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white shrink-0 bg-[#6750a4]">J</div>
                 <div class="flex-1 min-w-0">
                   <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Jane Doe</p>
                   <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">jane.doe@h2m.org</p>
@@ -154,7 +159,7 @@
                 id="role-opt-administrator"
                 class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]"
               >
-                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-sans-bold text-white flex-shrink-0 bg-[#1967D2]">P</div>
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white shrink-0 bg-[#1967D2]">P</div>
                 <div class="flex-1 min-w-0">
                   <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Priya Patel</p>
                   <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">p.patel@h2m.org</p>
@@ -167,14 +172,15 @@
         </div>
       </header>
 
+      <!-- Page Title -->
       <div class="shrink-0">
-        <h1 class="text-3xl font-semibold text-text">Workspace</h1>
+        <h1 class="text-3xl font-semibold text-text">Workspace Dashboard</h1>
       </div>
 
-      <!-- Stat Cards Grid (DYNAMIC CALCULATED COUNTS & SINGLE BORDER ACTIVE Feedback) -->
+      <!-- Stat Cards Grid -->
       <section class="grid grid-cols-4 gap-4 shrink-0">
         <!-- Card 1: All Orders -->
-        <button class="stat-card border-2 border-primary bg-[#FDFBFE] p-4 rounded-2xl shadow-sm text-left transition-all duration-200 outline-none cursor-pointer" data-filter="all">
+        <button class="stat-card border-2 border-primary bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 outline-none cursor-pointer" data-filter="all">
           <div class="flex items-center justify-between">
             <div class="w-9 h-9 rounded-xl bg-[#F3EDF7] flex items-center justify-center text-[#6750A4]">
               <span class="material-symbols-outlined text-[20px]">grid_view</span>
@@ -186,7 +192,7 @@
         </button>
 
         <!-- Card 2: Prescription Requested -->
-        <button class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md hover:bg-[#FDFBFE] outline-none cursor-pointer" data-filter="Prescription Requested">
+        <button class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md outline-none cursor-pointer" data-filter="Prescription Requested">
           <div class="flex items-center justify-between">
             <div class="w-9 h-9 rounded-xl bg-blue-bg flex items-center justify-center text-blue">
               <span class="material-symbols-outlined text-[20px]">assignment</span>
@@ -198,7 +204,7 @@
         </button>
 
         <!-- Card 3: Missing Fax Number -->
-        <button class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md hover:bg-[#FDFBFE] outline-none cursor-pointer" data-filter="Missing Fax Number">
+        <button class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md outline-none cursor-pointer" data-filter="Missing Fax Number">
           <div class="flex items-center justify-between">
             <div class="w-9 h-9 rounded-xl bg-red-bg flex items-center justify-center text-red">
               <span class="material-symbols-outlined text-[20px]">warning</span>
@@ -210,7 +216,7 @@
         </button>
 
         <!-- Card 4: Physician Info Requested -->
-        <button class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md hover:bg-[#FDFBFE] outline-none cursor-pointer" data-filter="Physician Info Requested">
+        <button class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md outline-none cursor-pointer" data-filter="Physician Info Requested">
           <div class="flex items-center justify-between">
             <div class="w-9 h-9 rounded-xl bg-amber-bg flex items-center justify-center text-amber">
               <span class="material-symbols-outlined text-[20px]">person</span>
@@ -222,8 +228,8 @@
         </button>
       </section>
 
-      <!-- Orders Panel (Table Data Only Scrolling with Sticky Header) -->
-      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col flex-1 min-h-0">
+      <!-- Orders Panel (Content-Hugging Container with Internal Scroll) -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0 mb-6">
         <div class="p-5 border-b border-line flex flex-col gap-3 shrink-0">
           <h2 class="text-xl font-semibold text-text">Recent Orders</h2>
           <div class="flex items-center gap-2.5">
@@ -240,18 +246,20 @@
 
             <!-- Insurance Filter Dropdown -->
             <div class="relative inline-block">
-              <select id="insurance-filter" class="h-8 pl-4 pr-8 border border-[#79747E] rounded-lg bg-white text-sm font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
+              <select id="insurance-filter" class="h-8 pl-4 pr-8 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
                 <option value="all">Insurance</option>
                 <option>United Healthcare Community Plan</option>
                 <option>Anthem Blue Cross</option>
                 <option>Wellpoint</option>
+                <option>TennCare</option>
+                <option>CoverKids</option>
               </select>
               <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
             </div>
 
             <!-- State Filter Dropdown -->
             <div class="relative inline-block">
-              <select id="state-filter" class="h-8 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white text-sm font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
+              <select id="state-filter" class="h-8 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
                 <option value="all">State</option>
                 <option>Tennessee</option>
                 <option>Michigan</option>
@@ -262,7 +270,7 @@
 
             <!-- M3 Circular Pagination Controls -->
             <div class="flex items-center gap-3 text-xs text-muted ml-auto">
-              <span id="pagination-status" class="font-medium text-text font-mono select-none">Showing 1-10 of 12</span>
+              <span id="pagination-status" class="font-medium text-text font-mono select-none">Showing 1-10 of 14</span>
               <div class="flex items-center gap-1 select-none">
                 <button 
                   id="prev-page-btn" 
@@ -285,8 +293,8 @@
           </div>
         </div>
 
-        <!-- Scrollable Table Container with Sticky Header -->
-        <div class="overflow-y-auto max-h-[calc(100vh-380px)] flex-1 min-h-0">
+        <!-- Table Container (Dynamic Content Hugging with Internal Scroll) -->
+        <div class="overflow-y-auto max-h-[calc(100vh-380px)] h-auto">
           <table class="w-full border-collapse text-left text-sm table-fixed min-w-[900px]">
             <colgroup>
               <col class="w-[13%]">
@@ -331,7 +339,9 @@
       { id: 'ORD-000875', firstName: 'Doris', lastName: 'Manchame', dob: '04/11/2002', provider: 'Provider not listed', product: 'Pregnancy Support Kit', insurance: '6 Degrees Health', sourceStatus: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '11/04/2025' },
       { id: 'ORD-000876', firstName: 'Peyton', lastName: 'Tockey', dob: '02/18/1994', provider: 'Dr. Jeremy Avila', product: 'Momcozy Double Wearable Breast Pump', insurance: 'United Healthcare Community Plan', sourceStatus: 'Prescription Requested', statusClass: 'bg-blue-bg text-blue', date: '06/02/2026' },
       { id: 'ORD-000877', firstName: 'Leah', lastName: 'Garcia', dob: '04/19/1996', provider: 'Crowe, Women\'s OB Nashville', product: 'Momcozy Double Wearable Breast Pump', insurance: 'Anthem Blue Cross', sourceStatus: 'Missing Fax Number', statusClass: 'bg-red-bg text-red', date: '08/01/2026' },
-      { id: 'ORD-000878', firstName: 'Sarah', lastName: 'Albertson', dob: '08/28/2002', provider: 'Dr. Paul Grayson Smith, D.O', product: 'Rumble Tuff EZ Express with Classic', insurance: 'TennCare', sourceStatus: 'Missing Fax Number', statusClass: 'bg-red-bg text-red', date: '05/27/2026' }
+      { id: 'ORD-000878', firstName: 'Sarah', lastName: 'Albertson', dob: '08/28/2002', provider: 'Dr. Paul Grayson Smith, D.O', product: 'Rumble Tuff EZ Express with Classic', insurance: 'TennCare', sourceStatus: 'Missing Fax Number', statusClass: 'bg-red-bg text-red', date: '05/27/2026' },
+      { id: 'ORD-000884', firstName: 'Linda', lastName: 'Winland', dob: '05/23/1996', provider: 'Amanda Haney, Diana Health', product: 'Momcozy Double Wearable Breast Pump | S12 Pro', insurance: 'TennCare', sourceStatus: 'Missing Fax Number', statusClass: 'bg-red-bg text-red', date: '06/11/2026' },
+      { id: 'ORD-000886', firstName: 'Stefany', lastName: 'Sanchez', dob: '10/07/1998', provider: 'Whitney Bean 1928 Alcoa Hwy Suite B-127, Knoxville, TN', product: 'Spectra S2 Plus Premier double electric breast pump', insurance: 'CoverKids', sourceStatus: 'Missing Fax Number', statusClass: 'bg-red-bg text-red', date: '09/16/2025' }
     ];
 
     let activeFilter = 'all';
@@ -351,7 +361,7 @@
       const query = document.getElementById('table-search').value.trim().toLowerCase();
       const insurance = document.getElementById('insurance-filter').value;
       const state = document.getElementById('state-filter').value;
-      const stateByInsurance = {'United Healthcare Community Plan': 'Tennessee', 'Anthem Blue Cross': 'Ohio', Wellpoint: 'Michigan', 'Blue Cross Community Health': 'Ohio', 'Michigan Medicaid': 'Michigan', '6 Degrees Health': 'Tennessee', TennCare: 'Tennessee'};
+      const stateByInsurance = {'United Healthcare Community Plan': 'Tennessee', 'Anthem Blue Cross': 'Ohio', Wellpoint: 'Michigan', 'Blue Cross Community Health': 'Ohio', 'Michigan Medicaid': 'Michigan', '6 Degrees Health': 'Tennessee', TennCare: 'Tennessee', CoverKids: 'Tennessee'};
 
       const filtered = orders.filter(order => {
         const matchesFilter = activeFilter === 'all' || order.sourceStatus === activeFilter;
@@ -382,8 +392,8 @@
       document.getElementById('next-page-btn').disabled = (currentPage >= totalPages || totalRecords === 0);
 
       document.getElementById('order-body').innerHTML = visible.length ? visible.map(order => `
-        <tr class="border-b border-line hover:bg-surface transition">
-          <td class="p-3"><a class="font-mono font-bold text-primary hover:underline text-sm" href="OrderDetails/OrderDetailsView.html?orderId=${order.id}">${order.id}</a></td>
+        <tr class="border-b border-line hover:bg-[#F3EDF7]/50 transition">
+          <td class="p-3"><a class="font-mono font-bold text-primary hover:underline text-sm" href="OrderDetails/OrderDetailsView.html?orderId=${order.id}&origin=dashboard">${order.id}</a></td>
           <td class="p-3 text-text font-medium text-sm">${order.firstName} ${order.lastName}</td>
           <td class="p-3 text-muted text-sm">${order.dob}</td>
           <td class="p-3 text-text text-sm truncate" title="${order.provider}">${order.provider}</td>
@@ -408,7 +418,7 @@
         document.querySelectorAll('.stat-card').forEach(c => {
           c.className = "stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md hover:bg-[#FDFBFE] outline-none cursor-pointer";
         });
-        btn.className = "stat-card border-2 border-primary bg-[#FDFBFE] p-4 rounded-2xl shadow-sm text-left transition-all duration-200 outline-none cursor-pointer";
+        btn.className = "stat-card border-2 border-primary bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 outline-none cursor-pointer";
         
         activeFilter = btn.dataset.filter;
         currentPage = 1;
@@ -429,7 +439,7 @@
       renderOrders();
     });
 
-    // Account / Role Switcher Logic
+    /* Role Switcher Logic */
     let activeRole = 'operations';
     let roleSwitcherOpen = false;
 

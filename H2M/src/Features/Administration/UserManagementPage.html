@@ -67,18 +67,17 @@
     }
   </style>
 </head>
-<body class="bg-surface text-text font-sans min-h-screen relative overflow-x-hidden antialiased">
+<body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
 
-  <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
+  <div class="w-[1440px] h-screen mx-auto bg-surface flex overflow-hidden">
     
     <!-- 1. UNIFIED ADMINISTRATION SIDEBAR NAVIGATION -->
-    <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+    <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
       <div class="w-[58px] h-[58px]">
-        <img src="https://www.figma.com/api/mcp/asset/344953eb-406f-498c-b60f-e17d785f92f3.png" alt="Help to Moms logo" class="w-full h-full object-contain">
+        <img src="https://helptomoms.com/__l5e/assets-v1/923ead63-1849-4075-9845-3e9a00b8b649/help-to-moms-logo.webp" alt="Help to Moms logo" class="w-full h-full object-contain">
       </div>
       
       <div class="w-full">
-       
         <nav class="w-full flex flex-col gap-1.5" id="admin-sidebar-nav">
           
           <a href="AdministrationPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
@@ -126,15 +125,13 @@
           </a>
         </nav>
       </div>
-
-     
     </aside>
 
     <!-- Main Workspace Canvas -->
-    <section class="flex-1 p-8 pb-12 flex flex-col gap-6 overflow-hidden">
+    <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
       
       <!-- Top Navigation Header -->
-      <header class="h-[58px] flex items-center justify-between">
+      <header class="h-[58px] flex items-center justify-between shrink-0">
         <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
@@ -144,9 +141,14 @@
         </nav>
         
         <div class="flex items-center gap-6">
-          <div class="relative w-10 h-10 flex items-center justify-center cursor-pointer">
-            <img src="https://www.figma.com/api/mcp/asset/0e022744-e0d6-4c6f-8546-51c31cf743c4.svg" alt="Notifications" class="w-5 h-5">
-            <span class="absolute top-0 right-0 w-4 h-4 border border-white rounded-full bg-status-failed-text text-white flex items-center justify-center text-[9px] font-bold">14</span>
+          <!-- Notification Bell Icon -->
+          <div class="relative w-8 h-8 rounded-full flex items-center justify-center text-[#1C1B1F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 cursor-pointer outline-none select-none group">
+            <span class="material-symbols-outlined text-[20px] leading-none select-none text-[#1C1B1F] group-hover:text-primary transition-colors">
+              notifications
+            </span>
+            <span class="absolute -top-0.5 -right-0.5 min-w-[16px] h-[16px] px-1 bg-[#B3261E] text-white rounded-full flex items-center justify-center text-[9px] font-bold leading-none border-2 border-white shadow-xs select-none">
+              14
+            </span>
           </div>
 
           <!-- Account / Role Switcher -->
@@ -188,23 +190,23 @@
       </header>
 
       <!-- Page Title & CTA -->
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between shrink-0">
         <div>
           <h1 class="text-3xl font-semibold text-text" id="canvas-stage-title">User Management</h1>
           <p class="text-xs text-muted mt-0.5">6 users · 5 active</p>
         </div>
-        <!-- Admin-Only + Create User Button (Hidden for Operations) -->
-        <button onclick="openCreateUserModal()" class="admin-only px-5 py-2 bg-primary text-white rounded-full text-xs font-medium hover:bg-on-primary-container transition shadow-sm flex items-center gap-2">
+        <!-- Admin-Only + Create User Button -->
+        <button onclick="openCreateUserModal()" class="admin-only px-5 py-2 bg-primary text-white rounded-full text-xs font-medium hover:bg-on-primary-container transition shadow-sm flex items-center gap-2 cursor-pointer">
           <span class="material-symbols-outlined text-[18px]">person_add</span>
           <span>Create User</span>
         </button>
       </div>
 
-      <!-- Master User Roster Table Panel -->
-      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex-1 flex flex-col">
+      <!-- Master User Roster Table Panel (Re-balanced Columns to Prevent Overlap) -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0 mb-6">
         
         <!-- Toolbar Header Controls -->
-        <div class="p-5 border-b border-line flex items-center justify-between">
+        <div class="p-5 border-b border-line flex items-center justify-between shrink-0">
           <h2 class="text-xl font-semibold text-text">User Roster</h2>
           
           <div class="flex items-center gap-2.5">
@@ -227,7 +229,7 @@
               <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
             </div>
 
-            <!-- Gmail-Style Circular Pagination -->
+            <!-- Pagination Controls -->
             <div class="flex items-center gap-3 text-xs text-muted pl-2">
               <span id="pagination-status" class="font-medium text-text font-mono select-none">Showing 1–6 of 6</span>
               <div class="flex items-center gap-1 select-none">
@@ -242,27 +244,27 @@
           </div>
         </div>
 
-        <!-- Table Data Body -->
-        <div class="overflow-x-auto flex-1">
-          <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1000px]">
+        <!-- Table Body Container with Correct Column Percentages -->
+        <div class="overflow-y-auto max-h-[calc(100vh-320px)] h-auto">
+          <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1050px]">
             <colgroup>
               <col class="w-[10%]">
               <col class="w-[18%]">
               <col class="w-[22%]">
               <col class="w-[18%]">
               <col class="w-[10%]">
+              <col class="w-[14%]">
               <col class="w-[12%]">
-              <col class="w-[10%]">
             </colgroup>
-            <thead>
+            <thead class="sticky top-0 z-10">
               <tr class="bg-primary text-white text-[11px] font-bold tracking-wider uppercase">
-                <th class="py-3 px-4">USER ID</th>
-                <th class="py-3 px-4">NAME</th>
-                <th class="py-3 px-4">EMAIL</th>
-                <th class="py-3 px-4">ROLE</th>
-                <th class="py-3 px-4">STATUS</th>
-                <th class="py-3 px-4">LAST LOGIN</th>
-                <th class="py-3 px-4 text-center">ACCOUNT ACCESS</th>
+                <th class="py-3 px-3.5">USER ID</th>
+                <th class="py-3 px-3.5">NAME</th>
+                <th class="py-3 px-3.5">EMAIL</th>
+                <th class="py-3 px-3.5">ROLE</th>
+                <th class="py-3 px-3.5">STATUS</th>
+                <th class="py-3 px-3.5">LAST LOGIN</th>
+                <th class="py-3 px-3.5 text-center">ACCOUNT ACCESS</th>
               </tr>
             </thead>
             <tbody id="users-table-body">
@@ -337,7 +339,7 @@
 
   <!-- Scripting Controller -->
   <script>
-    /* Master User Roster Dataset (Matching Figmas 11.png / 12.png) */
+    /* Master User Roster Dataset */
     let userRosterDatabase = [
       { id: "USR-001", name: "Jane Doe", email: "jane.doe@h2m.org", role: "Operations Manager", status: "Active", lastLogin: "Jul 22, 2026 14:30", access: "Enabled", isSelf: false },
       { id: "USR-002", name: "Michael Reed", email: "m.reed@h2m.org", role: "Operator", status: "Active", lastLogin: "Jul 22, 2026 09:15", access: "Enabled", isSelf: false },
@@ -402,31 +404,30 @@
         const isSelf = (activeRole === 'administrator' && u.isSelf) || (activeRole === 'operations' && u.email === 'jane.doe@h2m.org');
         
         const statusBadge = u.status === 'Active'
-          ? `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-success-bg text-status-success-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Active</span>`
-          : `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-failed-bg text-status-failed-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Inactive</span>`;
+          ? `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-success-bg text-status-success-text whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Active</span>`
+          : `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-failed-bg text-status-failed-text whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Inactive</span>`;
 
         const isEnabled = u.access === 'Enabled';
 
-        // Part 3.2: Interactive Switch for Admin View vs. Static Text Block for Operations View
         const toggleSwitchHTML = `
           <div class="admin-toggle-switch flex items-center justify-center gap-2 cursor-pointer ${isSelf ? 'opacity-40 cursor-not-allowed' : ''}" onclick="${isSelf ? '' : `toggleUserAccess('${u.id}')`}">
-            <div class="w-8 h-4 ${isEnabled ? 'bg-status-success-text' : 'bg-outline'} rounded-full relative transition-colors">
+            <div class="w-8 h-4 ${isEnabled ? 'bg-status-success-text' : 'bg-outline'} rounded-full relative transition-colors shrink-0">
               <div class="w-3 h-3 bg-white rounded-full absolute ${isEnabled ? 'right-0.5' : 'left-0.5'} top-0.5 transition-all"></div>
             </div>
-            <span class="text-xs font-bold ${isEnabled ? 'text-status-success-text' : 'text-status-failed-text'}">${u.access}</span>
+            <span class="text-xs font-bold ${isEnabled ? 'text-status-success-text' : 'text-status-failed-text'} whitespace-nowrap">${u.access}</span>
           </div>
-          <span class="operations-static-tag hidden text-xs font-bold ${isEnabled ? 'text-status-success-text' : 'text-muted'}">${u.access}</span>
+          <span class="operations-static-tag hidden text-xs font-bold ${isEnabled ? 'text-status-success-text' : 'text-muted'} whitespace-nowrap">${u.access}</span>
         `;
 
         return `
           <tr class="border-b border-line hover:bg-surface-container-low transition">
-            <td class="py-3 px-4 font-mono font-bold text-primary text-xs whitespace-nowrap">${u.id}</td>
-            <td class="py-3 px-4 font-bold text-text text-sm">${u.name} ${isSelf ? '<span class="text-[10px] text-primary font-mono ml-1">(You)</span>' : ''}</td>
-            <td class="py-3 px-4 font-mono text-muted text-xs">${u.email}</td>
-            <td class="py-3 px-4"><span class="bg-[#F3EDF7] px-2.5 py-1 rounded-md text-xs font-medium text-text">${u.role}</span></td>
-            <td class="py-3 px-4">${statusBadge}</td>
-            <td class="py-3 px-4 font-mono text-xs text-muted whitespace-nowrap">${u.lastLogin}</td>
-            <td class="py-3 px-4 text-center">${toggleSwitchHTML}</td>
+            <td class="py-3 px-3.5 font-mono font-bold text-primary text-xs whitespace-nowrap">${u.id}</td>
+            <td class="py-3 px-3.5 font-bold text-text text-sm truncate" title="${u.name}">${u.name} ${isSelf ? '<span class="text-[10px] text-primary font-mono ml-1">(You)</span>' : ''}</td>
+            <td class="py-3 px-3.5 font-mono text-muted text-xs truncate" title="${u.email}">${u.email}</td>
+            <td class="py-3 px-3.5 truncate"><span class="bg-[#F3EDF7] px-2.5 py-1 rounded-md text-xs font-medium text-text whitespace-nowrap">${u.role}</span></td>
+            <td class="py-3 px-3.5">${statusBadge}</td>
+            <td class="py-3 px-3.5 font-mono text-xs text-muted whitespace-nowrap">${u.lastLogin}</td>
+            <td class="py-3 px-3.5 text-center">${toggleSwitchHTML}</td>
           </tr>
         `;
       }).join('');
@@ -535,7 +536,7 @@
       renderUserWorkspace();
     }
 
-    /* Role Switcher & Role Gating Engine */
+    /* Role Switcher Logic */
     function selectRole(role) {
       activeRole = role;
       document.getElementById('role-switcher-dropdown').classList.add('hidden');

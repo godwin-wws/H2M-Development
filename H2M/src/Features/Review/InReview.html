@@ -45,7 +45,7 @@
     }
   </script>
 </head>
-<body class="bg-surface text-text font-sans min-h-screen relative overflow-x-hidden antialiased">
+<body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
 
   <!-- Concurrency Alert Banner -->
   <div id="concurrency-banner" class="hidden bg-amber-bg border-b border-amber/30 px-6 py-2.5 text-amber text-xs font-medium flex items-center justify-between shadow-sm transition-all duration-300">
@@ -56,12 +56,12 @@
     <button onclick="dismissConcurrencyBanner()" class="text-amber hover:underline text-xs font-bold">Dismiss</button>
   </div>
 
-  <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
+  <div class="w-[1440px] h-screen mx-auto bg-surface flex overflow-hidden">
     
     <!-- Sidebar Navigation -->
-    <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+    <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
       <div class="w-[58px] h-[58px]">
-        <img src="https://www.figma.com/api/mcp/asset/344953eb-406f-498c-b60f-e17d785f92f3.png" alt="Help to Moms logo" class="w-full h-full object-contain">
+        <img src="https://helptomoms.com/__l5e/assets-v1/923ead63-1849-4075-9845-3e9a00b8b649/help-to-moms-logo.webp" alt="Help to Moms logo" class="w-full h-full object-contain">
       </div>
       
       <div class="w-full">
@@ -86,7 +86,7 @@
           <a href="AwaitingInfo.html" id="side-awaiting" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">pause_circle</span>
-              <span class="truncate">Awaiting Info</span>
+              <span class="truncate">Awaiting Information</span>
             </div>
           </a>
 
@@ -102,10 +102,10 @@
     </aside>
 
     <!-- Main Workspace Canvas -->
-    <section class="flex-1 p-8 pb-12 flex flex-col gap-6 overflow-hidden">
+    <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
       
       <!-- Top Bar Navigation Header -->
-      <header class="h-[58px] flex items-center justify-between">
+      <header class="h-[58px] flex items-center justify-between shrink-0">
         <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="ReviewPage.html">Review</a>
@@ -115,11 +115,15 @@
         </nav>
         
         <div class="flex items-center gap-6">
-          <div class="relative w-10 h-10 flex items-center justify-center cursor-pointer">
-            <img src="https://www.figma.com/api/mcp/asset/0e022744-e0d6-4c6f-8546-51c31cf743c4.svg" alt="Notifications" class="w-5 h-5">
-            <span class="absolute top-0 right-0 w-4 h-4 border border-white rounded-full bg-red text-white flex items-center justify-center text-[9px] font-bold">14</span>
+           <!-- Integrated Material Symbols Notification Bell with Red Badge -->
+          <div class="relative inline-flex items-center justify-center w-9 h-9 cursor-pointer group">
+            <span class="material-symbols-outlined text-[#1C1B1F] text-[24px] group-hover:text-primary transition-colors select-none">
+              notifications
+            </span>
+            <span class="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 bg-[#B3261E] text-white rounded-full flex items-center justify-center text-[10px] font-bold leading-none border-2 border-white shadow-xs select-none">
+              14
+            </span>
           </div>
-
           <!-- Account / Role Switcher -->
           <div class="relative inline-block text-left" id="role-switcher-container">
             <button id="role-switcher-btn" type="button" class="flex items-center gap-2 h-9 pl-1 pr-3 rounded-full border border-[#e8def8] bg-white hover:bg-[#f3edf7] cursor-pointer transition-colors outline-none focus:ring-2 focus:ring-[#6750a4]">
@@ -159,12 +163,12 @@
       </header>
 
       <!-- Dashboard Title -->
-      <div>
-        <h1 class="text-3xl font-semibold text-text">In Review Queue</h1>
+      <div class="shrink-0">
+        <h1 class="text-3xl font-semibold text-text" id="canvas-stage-title">Review</h1>
       </div>
 
       <!-- Stat Cards Grid -->
-      <section class="grid grid-cols-3 gap-4">
+      <section class="grid grid-cols-3 gap-4 shrink-0">
         <div class="stat-card border border-line bg-white p-4 rounded-2xl hover:shadow-md text-left flex items-start justify-between">
           <div class="flex flex-col">
             <span class="block text-sm font-bold text-text">Active Items In Review</span>
@@ -200,7 +204,7 @@
       </section>
 
       <!-- Exception Origin Filter Chips -->
-      <section class="rounded-2xl p-1 flex flex-col gap-2.5">
+      <section class="rounded-2xl p-1 flex flex-col gap-2.5 shrink-0">
         <div class="flex items-center gap-2.5 flex-wrap">
           <button onclick="setOriginFilter('all')" class="chip-btn active px-3.5 py-1.5 rounded-full text-sm font-bold bg-primary text-white transition shadow-sm" data-origin="all">
             <span>All</span> (<span id="chip-count-all"></span>)
@@ -225,15 +229,15 @@
       </section>
 
       <!-- Review Queue Table Panel -->
-      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col flex-1">
-        <div class="p-5 border-b border-line flex items-center justify-between">
-          <h2 class="text-xl font-semibold text-text">In Review Queue Table</h2>
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0">
+        <div class="p-5 border-b border-line flex items-center justify-between shrink-0">
+          <h2 class="text-xl font-semibold text-text">In Review</h2>
           
           <div class="flex items-center gap-2.5">
             <!-- Search Input Container -->
             <div class="h-9 w-64 px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 text-muted border-0 focus:outline-none shrink-0">
               <span class="material-symbols-outlined text-[#49454F] text-[20px] select-none">search</span>
-              <input id="table-search" type="search" class="w-full bg-transparent border-0 outline-none text-sm text-text placeholder-muted focus:ring-0" placeholder="Search by ID, name...">
+              <input id="table-search" type="search" class="w-full bg-transparent border-0 outline-none text-xs text-text placeholder-muted focus:ring-0" placeholder="Search by ID, name...">
             </div>
 
             <!-- Page Controls -->
@@ -252,24 +256,25 @@
           </div>
         </div>
 
-        <div class="overflow-x-auto">
-          <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1000px]">
+        <!-- Table Container (Optimized Column Spacing) -->
+        <div class="overflow-y-auto max-h-[calc(100vh-380px)] h-auto">
+          <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1050px]">
             <colgroup>
-              <col class="w-[18%]">
               <col class="w-[16%]">
-              <col class="w-[22%]">
-              <col class="w-[25%]">
-              <col class="w-[11%]">
-              <col class="w-[8%]">
+              <col class="w-[15%]">
+              <col class="w-[20%]">
+              <col class="w-[26%]">
+              <col class="w-[14%]">
+              <col class="w-[9%]">
             </colgroup>
-            <thead>
+            <thead class="sticky top-0 z-10">
               <tr class="bg-primary text-white text-[11px] font-bold tracking-wider uppercase">
-                <th class="py-3 px-4">Source Order ID</th>
-                <th class="py-3 px-4">Patient Name</th>
-                <th class="py-3 px-4">Error Code</th>
-                <th class="py-3 px-4">Error Message</th>
-                <th class="py-3 px-4">Flagged Date</th>
-                <th class="py-3 px-4 text-center">Action</th>
+                <th class="py-3 px-3.5">Source Order ID</th>
+                <th class="py-3 px-3.5">Patient Name</th>
+                <th class="py-3 px-3.5">Error Code</th>
+                <th class="py-3 px-3.5">Error Message</th>
+                <th class="py-3 px-3.5">Flagged Date</th>
+                <th class="py-3 px-3.5 text-center">Action</th>
               </tr>
             </thead>
             <tbody id="review-table-body">
@@ -282,7 +287,7 @@
     </section>
   </div>
 
-  <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
+  <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-sm px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
 
   <script>
     // Dataset containing records in 'in_review' stage
@@ -358,17 +363,17 @@
       tbody.innerHTML = pageData.map(row => {
         return `
           <tr class="border-b border-line hover:bg-surface transition cursor-pointer" onclick="navigateToDetails('${row.sourceOrderId}')">
-            <td class="py-3 px-4 font-mono font-bold text-primary text-sm truncate" title="${row.sourceOrderId}">${row.sourceOrderId}</td>
-            <td class="py-3 px-4 font-bold text-text text-sm">${row.patientName}</td>
-            <td class="py-3 px-4">
+            <td class="py-3 px-3.5 font-mono font-bold text-primary text-sm truncate" title="${row.sourceOrderId}">${row.sourceOrderId}</td>
+            <td class="py-3 px-3.5 font-bold text-text text-sm">${row.patientName}</td>
+            <td class="py-3 px-3.5">
               <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap bg-amber-bg text-amber">
                 <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
                 ${row.errorCode}
               </span>
             </td>
-            <td class="py-3 px-4 text-muted text-sm truncate" title="${row.errorMessage}">${row.errorMessage}</td>
-            <td class="py-3 px-4 text-muted text-sm font-mono whitespace-nowrap">${row.flaggedDate}</td>
-            <td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+            <td class="py-3 px-3.5 text-muted text-sm truncate" title="${row.errorMessage}">${row.errorMessage}</td>
+            <td class="py-3 px-3.5 text-muted text-xs font-mono whitespace-nowrap">${row.flaggedDate}</td>
+            <td class="py-3 px-3.5 text-center" onclick="event.stopPropagation()">
               <button onclick="navigateToDetails('${row.sourceOrderId}')" class="px-3.5 py-1 bg-primary-soft text-primary font-bold text-xs rounded-full hover:bg-primary hover:text-white transition shadow-sm">
                 Resume
               </button>

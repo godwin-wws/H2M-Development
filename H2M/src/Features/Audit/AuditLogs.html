@@ -48,13 +48,13 @@
     }
   </script>
 </head>
-<body class="bg-surface text-text font-sans min-h-screen relative overflow-x-hidden antialiased">
+<body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
 
-  <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
+  <div class="w-[1440px] h-screen mx-auto bg-surface flex overflow-hidden">
     
-    <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+    <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
       <div class="w-[58px] h-[58px]">
-        <img src="https://www.figma.com/api/mcp/asset/344953eb-406f-498c-b60f-e17d785f92f3.png" alt="Help to Moms logo" class="w-full h-full object-contain">
+        <img src="https://helptomoms.com/__l5e/assets-v1/923ead63-1849-4075-9845-3e9a00b8b649/help-to-moms-logo.webp" alt="Help to Moms logo" class="w-full h-full object-contain">
       </div>
       
       <div class="w-full">
@@ -99,9 +99,9 @@
 
     </aside>
 
-    <section class="flex-1 p-8 pb-12 flex flex-col gap-6 overflow-hidden">
+    <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
       
-      <header class="h-[58px] flex items-center justify-between">
+      <header class="h-[58px] flex items-center justify-between shrink-0">
         <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
@@ -153,11 +153,11 @@
         </div>
       </header>
 
-      <div>
+      <div class="shrink-0">
         <h1 class="text-3xl font-semibold text-text" id="canvas-stage-title">Audit Logs</h1>
       </div>
 
-      <section class="grid grid-cols-4 gap-4">
+      <section class="grid grid-cols-4 gap-4 shrink-0">
         <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md hover:bg-[#FDFBFE] cursor-pointer flex items-start justify-between">
           <div class="flex flex-col">
             <span class="block text-sm font-bold text-text">Total Recorded Events</span>
@@ -203,8 +203,9 @@
         </div>
       </section>
 
-      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col flex-1">
-        <div class="p-5 border-b border-line flex items-center justify-between">
+      <!-- Table Panel (Content-Hugging with Internal Vertical Scroll) -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0">
+        <div class="p-5 border-b border-line flex items-center justify-between shrink-0">
           <h2 class="text-xl font-semibold text-text">Audit Events</h2>
           
           <div class="flex items-center gap-2.5">
@@ -219,7 +220,7 @@
                 <select 
                   id="date-range-filter" 
                   onchange="handleDateFilterChange()" 
-                  class="h-8 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white hover:bg-[#F3EDF7] text-sm font-medium text-[#49454F] outline-none transition-colors duration-200 appearance-none cursor-pointer"
+                  class="h-8 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white hover:bg-[#F3EDF7] text-xs font-medium text-[#49454F] outline-none transition-colors duration-200 appearance-none cursor-pointer"
                 >
                   <option value="today" selected>Today</option>
                   <option value="7days">Last 7 Days</option>
@@ -263,7 +264,8 @@
           </div>
         </div>
 
-        <div class="overflow-x-auto">
+        <!-- Table Container (Internal Vertical Scroll) -->
+        <div class="overflow-y-auto max-h-[calc(100vh-380px)] h-auto">
           <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1000px]">
             <colgroup>
               <col class="w-[15%]">
@@ -273,7 +275,7 @@
               <col class="w-[18%]">
               <col class="w-[12%]">
             </colgroup>
-            <thead>
+            <thead class="sticky top-0 z-10">
               <tr class="bg-primary text-white text-[11px] font-bold tracking-wider">
                 <th class="py-3 px-4">TIMESTAMP</th>
                 <th class="py-3 px-4">EVENT ID</th>
@@ -284,7 +286,7 @@
               </tr>
             </thead>
             <tbody id="audit-table-body">
-              </tbody>
+            </tbody>
           </table>
         </div>
       </section>

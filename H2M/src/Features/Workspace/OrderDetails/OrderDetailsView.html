@@ -12,8 +12,6 @@
   
   <!-- Google Material Symbols Import -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=bolt_boost" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_outward" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -26,11 +24,11 @@
           },
           colors: {
             surface: '#FEF7FF',
-        primary: '#6750A4',
+            primary: '#6750A4',
             'primary-soft': '#EADDFF',
             line: '#CAC4D0',
             text: '#1D1B20',
-            muted: '#49454F',
+            muted: '#79747E',
             'blue-bg': '#E8F0FE',
             blue: '#174EA6',
             'amber-bg': '#FEF7E0',
@@ -47,46 +45,31 @@
     }
   </script>
 </head>
-<body class="bg-surface text-text font-sans min-h-screen relative overflow-x-hidden antialiased">
+<body class="bg-surface text-text font-sans min-h-screen relative antialiased">
 
-  <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
+  <div class="w-full min-h-screen mx-auto bg-surface flex">
     
-    <!-- Side Navigation -->
-    <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+    <!-- Dynamic Side Navigation -->
+    <aside class="w-[224px] min-h-screen p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
       <div class="w-[58px] h-[58px]">
         <img src="https://www.figma.com/api/mcp/asset/344953eb-406f-498c-b60f-e17d785f92f3.png" alt="Help to Moms logo" class="w-full h-full object-contain">
       </div>
-      <nav class="w-full flex flex-col gap-2">
-        <a class="h-10 px-3.5 rounded-full flex items-center gap-3 text-[#49454f] text-sm font-medium leading-[19.5px] hover:bg-[#F3EDF7] transition" href="../Dashboard.html">
-          <svg class="w-4 h-4 shrink-0 text-[#49454f]" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
-          <span>Dashboard</span>
-        </a>
-        <a class="h-10 px-3.5 rounded-full flex items-center gap-3 bg-primary-soft text-[#4A4458] font-bold text-sm leading-[19.5px] transition" href="../WorkQueue.html">
-          <svg class="w-4 h-4 shrink-0 text-[#4A4458]" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-          <span>Work Queues</span>
-        </a>
-        <a class="h-10 px-3.5 rounded-full flex items-center gap-3 text-[#49454f] text-sm font-medium leading-[19.5px] hover:bg-[#F3EDF7] transition" href="../OrderSearch.html">
-          <svg class="w-4 h-4 shrink-0 text-[#49454f]" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/></svg>
-          <span>Order Search</span>
-        </a>
-        <a class="h-10 px-3.5 rounded-full flex items-center gap-3 text-[#49454f] text-sm font-medium leading-[19.5px] hover:bg-[#F3EDF7] transition" href="../Alerts.html">
-          <svg class="w-4 h-4 shrink-0 text-[#49454f]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
-          <span>Alerts &amp; Exceptions</span>
-        </a>
+      <nav class="w-full flex flex-col gap-2" id="workspace-sidebar-nav">
+        <!-- Injected via JavaScript based on origin -->
       </nav>
     </aside>
 
     <!-- Main Content Area -->
-    <section class="flex-1 p-8 pb-12 flex flex-col gap-6 overflow-hidden">
+    <section class="flex-1 p-8 pb-12 flex flex-col gap-6 h-screen overflow-y-auto">
       
-      <!-- Top Navigation Header -->
-      <header class="h-[58px] flex items-center justify-between">
-        <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
-          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium" href="Dashboard.html">Workspace</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="ReviewPage.html">Review</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="AuditLogs.html">Audit</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="ProviderDirectory.html">Provider Directory</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="AdminHome.html">Administration</a>
+      <!-- Dynamic Top Navigation Header -->
+      <header class="h-[58px] flex items-center justify-between shrink-0">
+        <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none" id="top-nav-bar">
+          <a id="header-nav-workspace" class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Dashboard.html">Workspace</a>
+          <a id="header-nav-review" class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../../Review/ReviewPage.html">Review</a>
+          <a id="header-nav-audit" class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../../Audit/AuditLogs.html">Audit</a>
+          <a id="header-nav-provider" class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../../ProviderDirectory/ProviderDirectory.html">Provider Directory</a>
+          <a id="header-nav-admin" class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../../Administration/AdminHome.html">Administration</a>
         </nav>
         
         <div class="flex items-center gap-6">
@@ -102,16 +85,14 @@
               type="button"
               class="flex items-center gap-2 h-9 pl-1 pr-3 rounded-full border border-[#e8def8] bg-white hover:bg-[#f3edf7] cursor-pointer transition-colors outline-none focus:ring-2 focus:ring-[#6750a4]"
             >
-              <div id="active-avatar" class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold text-white flex-shrink-0 bg-[#6750a4]">
+              <div id="active-avatar" class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold text-white shrink-0 bg-[#6750a4]">
                 J
               </div>
               <div class="text-left hidden sm:block">
                 <p id="active-name" class="text-[12px] font-medium text-[#1C1B1F] m-0 leading-none">Jane Doe</p>
                 <p id="active-label" class="text-[10px] m-0 font-bold text-[#6750a4] mt-0.5">Operations</p>
               </div>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="shrink-0">
-                <path d="M6 9l6 6 6-6" stroke="#79747e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <span class="material-symbols-outlined text-[16px] text-[#49454F]">arrow_drop_down</span>
             </button>
 
             <div
@@ -128,17 +109,13 @@
                 id="role-opt-operations"
                 class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]"
               >
-                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white flex-shrink-0 bg-[#6750a4]">J</div>
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white shrink-0 bg-[#6750a4]">J</div>
                 <div class="flex-1 min-w-0">
                   <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Jane Doe</p>
                   <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">jane.doe@h2m.org</p>
-                  <p class="text-[10px] font-bold m-0 text-[#6750a4]">
-                    Operations
-                  </p>
+                  <p class="text-[10px] font-bold m-0 text-[#6750a4]">Operations</p>
                 </div>
-                <svg id="check-operations" width="14" height="14" viewBox="0 0 24 24" fill="none" class="shrink-0">
-                  <path d="M20 6L9 17l-5-5" stroke="#6750a4" stroke-width="2.5" stroke-linecap="round"/>
-                </svg>
+                <span id="check-operations" class="material-symbols-outlined text-[18px] text-[#6750a4]">check</span>
               </button>
 
               <button
@@ -147,33 +124,29 @@
                 id="role-opt-administrator"
                 class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]"
               >
-                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white flex-shrink-0 bg-[#1967D2]">P</div>
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white shrink-0 bg-[#1967D2]">P</div>
                 <div class="flex-1 min-w-0">
                   <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Priya Patel</p>
                   <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">p.patel@h2m.org</p>
-                  <p class="text-[10px] font-bold m-0 text-[#1967D2]">
-                    Administrator
-                  </p>
+                  <p class="text-[10px] font-bold m-0 text-[#1967D2]">Administrator</p>
                 </div>
-                <svg id="check-administrator" width="14" height="14" viewBox="0 0 24 24" fill="none" class="shrink-0 hidden">
-                  <path d="M20 6L9 17l-5-5" stroke="#6750a4" stroke-width="2.5" stroke-linecap="round"/>
-                </svg>
+                <span id="check-administrator" class="material-symbols-outlined text-[18px] text-[#6750a4] hidden">check</span>
               </button>
             </div>
           </div>
         </div>
       </header>
 
-      <!-- Breadcrumbs & Heading -->
-      <div>
+      <!-- Dynamic Breadcrumbs & Heading -->
+      <div class="shrink-0">
         <div class="text-sm text-muted">
-          <a href="../Dashboard.html" class="text-primary hover:underline font-medium">Workspace</a> / <span id="crumb-id" class="font-mono font-bold text-text">ORD-000886</span>
+          <a id="crumb-back-link" href="../../Review/ReviewHistory.html" class="text-primary hover:underline font-medium">Review History</a> / <span id="crumb-id" class="font-mono font-bold text-text"></span>
         </div>
         <h1 class="text-3xl font-bold text-text tracking-tight mt-1">Order Details</h1>
       </div>
 
       <!-- Order Summary Header Card -->
-      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden">
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden shrink-0">
         <div class="p-6 flex items-center gap-4">
           <div id="patient-avatar" class="w-11 h-11 rounded-2xl bg-primary-soft text-[#4A4458] flex items-center justify-center text-sm font-bold shrink-0">
             SS
@@ -192,21 +165,24 @@
             <div id="order-meta" class="text-xs text-muted mt-0.5">BlueGoose · Knoxville, TN</div>
           </div>
           <div class="flex items-center gap-3">
-            <!-- Updated Quick Action Button (Matching REVIEWdetails.html behaviour and image_a950c8.png) -->
             <button 
               id="btn-quick-action" 
               type="button" 
-              onclick="saveCorrectionAndResume()" 
-              class="px-4 py-2 rounded-full border border-outline text-[#1D1B20] text-sm font-bold hover:bg-[#F3EDF7] transition  flex items-center gap-1.5"
+              onclick="openQuickActionsModal()" 
+              class="px-4 py-2 rounded-full border border-line text-text text-sm font-bold hover:bg-[#F3EDF7] hover:border-primary transition flex items-center gap-1.5 shadow-sm cursor-pointer"
             >
-              <span class="material-symbols-outlined text-[16px]">bolt_boost</span>
-              <span>Quick Action</span>
+              <span class="material-symbols-outlined text-[18px] text-primary">flash_on</span>
+              <span>Quick Actions</span>
             </button>
 
-            <!-- Unchanged Open in Review Button -->
-            <button type="button" class="h-9 px-4 bg-[#F3EDF7] text-primary font-medium text-sm rounded-full hover:font-bold hover:bg-primary-soft transition flex items-center gap-1.5">
-              Open in Review
-            </button>
+            <a 
+              id="btn-open-review"
+              href="../../Review/ReviewDetails.html?sourceOrderId=ORD-000886" 
+              class="h-9 px-4 bg-[#F3EDF7] text-primary font-medium text-sm rounded-full hover:font-bold hover:bg-primary-soft transition flex items-center gap-1.5"
+            >
+              <span>Open in Review</span>
+              <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+            </a>
           </div>
         </div>
 
@@ -230,53 +206,50 @@
         </div>
       </section>
 
-      <!-- ERROR STATUS LOG CONTAINER -->
-      <div id="error-log-card" class="bg-[#F9DEDC] border border-[#F2B8B5] rounded-2xl p-5 shadow-sm flex flex-col gap-3">
+      <!-- DYNAMIC STATUS/ERROR/WARNING LOG BANNER CONTAINER -->
+      <div id="dynamic-log-card" class="hidden rounded-2xl p-5 shadow-sm flex flex-col gap-3 shrink-0">
         <div class="flex items-start justify-between">
-          <div class="flex items-center gap-2 font-bold text-[#B3261E] text-sm">
-            <span class="material-symbols-outlined text-[20px]">error</span>
-            <span>Missing fax number — order cannot route to physician</span>
+          <div class="flex items-center gap-2 font-bold text-sm" id="alert-title-container">
+            <span class="material-symbols-outlined text-[20px]" id="alert-icon">error</span>
+            <span id="alert-headline-text">Title</span>
           </div>
         </div>
-        <p class="text-xs text-[#B3261E] font-normal leading-relaxed">
-          Fax number is absent on the physician record. Order cannot route until a valid fax is resolved. Manual lookup required.
+        <p class="text-xs font-normal leading-relaxed" id="alert-description-text">
+          Description
         </p>
-        <div class="grid grid-cols-2 gap-y-1 gap-x-6 pt-2 border-t border-[#F2B8B5]/60 font-mono text-[11px] text-[#B3261E]/90">
-          <div><span class="text-[#B3261E]/70">error_code:</span> <span class="font-bold">BRG_E_2201</span></div>
-          <div><span class="text-[#B3261E]/70">order_id:</span> <span class="font-bold">ORD-000886</span></div>
-          <div><span class="text-[#B3261E]/70">physician:</span> <span class="font-bold">Whitney Bean, 1928 Alcoa Hwy Suite B-127, Knoxville TN</span></div>
-          <div><span class="text-[#B3261E]/70">trace_id:</span> <span class="font-bold">7c1b0f9a-e2d4-4a11-9f88-0d3ac2f7b1e6</span></div>
+        <div class="grid grid-cols-2 gap-y-1 gap-x-6 pt-2 border-t font-mono text-[11px]" id="alert-metadata-container">
+          <!-- Injected via JS based on order dataset -->
         </div>
       </div>
 
-      <!-- Outer Unified Container -->
-      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col">
+      <!-- Outer Unified Container (Hugs Content) -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col shrink-0 mb-6">
         
         <!-- Header Sub-Navigation Tabs Container -->
         <div class="border-b border-line bg-white">
           <div class="flex items-center overflow-x-auto">
-            <button onclick="switchTab('order')" class="detail-nav-tab px-6 py-4 text-sm font-bold text-primary border-b-2 border-primary transition whitespace-nowrap" data-tab="order">
+            <button onclick="switchTab('order')" class="detail-nav-tab px-6 py-4 text-sm font-bold text-primary border-b-2 border-primary transition whitespace-nowrap cursor-pointer" data-tab="order">
               Order
             </button>
-            <button onclick="switchTab('patient')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap" data-tab="patient">
+            <button onclick="switchTab('patient')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap cursor-pointer" data-tab="patient">
               Patient
             </button>
-            <button onclick="switchTab('provider')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap" data-tab="provider">
+            <button onclick="switchTab('provider')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap cursor-pointer" data-tab="provider">
               Provider
             </button>
-            <button onclick="switchTab('verification')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap" data-tab="verification">
+            <button onclick="switchTab('verification')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap cursor-pointer" data-tab="verification">
               Verification
             </button>
-            <button onclick="switchTab('documents')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap" data-tab="documents">
+            <button onclick="switchTab('documents')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap cursor-pointer" data-tab="documents">
               Documents
             </button>
-            <button onclick="switchTab('communications')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap" data-tab="communications">
+            <button onclick="switchTab('communications')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap cursor-pointer" data-tab="communications">
               Communications
             </button>
-            <button onclick="switchTab('timeline')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap" data-tab="timeline">
+            <button onclick="switchTab('timeline')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap cursor-pointer" data-tab="timeline">
               Activity Timeline
             </button>
-            <button onclick="switchTab('audit')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap" data-tab="audit">
+            <button onclick="switchTab('audit')" class="detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap cursor-pointer" data-tab="audit">
               Audit
             </button>
           </div>
@@ -294,20 +267,20 @@
               </div>
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Source System</span>
-                <span class="font-bold text-text">BlueGoose</span>
+                <span id="panel-source-system" class="font-bold text-text">BlueGoose</span>
               </div>
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Source Record ID</span>
-                <span class="font-mono text-text">d7e9fa8a8feba20f1e9a51befb5c8b47</span>
+                <span id="panel-source-rec-id" class="font-mono text-text">d7e9fa8a8feba20f1e9a51befb5c8b47</span>
               </div>
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">REI Date</span>
-                <span class="font-mono text-text">11/5/2025 3:39</span>
+                <span id="panel-rei-date" class="font-mono text-text">11/5/2025 3:39</span>
               </div>
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Source Status</span>
                 <div>
-                  <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-bg text-red">
+                  <span id="panel-source-badge" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-bg text-red">
                     <span class="w-1.5 h-1.5 rounded-full bg-current"></span> Missing Fax Number
                   </span>
                 </div>
@@ -315,7 +288,7 @@
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">BRIDGE Status</span>
                 <div>
-                  <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-green-bg text-green">
+                  <span id="panel-bridge-badge" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-green-bg text-green">
                     <span class="w-1.5 h-1.5 rounded-full bg-current"></span> Accepted
                   </span>
                 </div>
@@ -334,11 +307,11 @@
               </div>
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Due Date</span>
-                <span class="font-mono text-text">9/16/2025</span>
+                <span id="panel-due-date" class="font-mono text-text">9/16/2025</span>
               </div>
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Created At</span>
-                <span class="font-mono text-text">7/22/2026 15:19:14</span>
+                <span id="panel-created-at" class="font-mono text-text">7/22/2026 15:19:14</span>
               </div>
             </div>
           </div>
@@ -348,59 +321,41 @@
             <div class="border border-line rounded-xl overflow-hidden divide-y divide-line/40 text-xs bg-white">
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Patient Name</span>
-                <span class="font-bold text-text">Stefany Sanchez</span>
+                <span id="panel-patient-name" class="font-bold text-text">Stefany Sanchez</span>
               </div>
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Date of Birth</span>
-                <span class="font-mono text-text">01/12/2004</span>
+                <span id="panel-patient-dob" class="font-mono text-text">01/12/2004</span>
               </div>
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Address</span>
-                <span class="text-text">1928 Alcoa Hwy Suite B-127, Knoxville TN 37920</span>
+                <span id="panel-patient-address" class="text-text">1928 Alcoa Hwy Suite B-127, Knoxville TN 37920</span>
               </div>
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Insurance Member ID</span>
-                <span class="font-mono text-text">CoverKids — 129549692</span>
+                <span id="panel-patient-insurance" class="font-mono text-text">CoverKids — 129549692</span>
               </div>
             </div>
           </div>
 
           <!-- Tab 3: Provider Panel -->
           <div id="panel-provider" class="tab-panel hidden flex flex-col gap-4">
-            <div class="bg-[#FEF7E0] border border-[#E6C687] rounded-2xl p-5 shadow-sm flex flex-col gap-3">
-              <div class="flex items-start justify-between">
-                <div class="flex items-center gap-2 font-bold text-[#6D4200] text-sm">
-                  <span class="material-symbols-outlined text-[20px]">warning</span>
-                  <span>Physician fax number missing — order stalled</span>
-                </div>
-              </div>
-              <p class="text-xs text-[#6D4200] font-normal leading-relaxed">
-                No fax number on record for the listed physician. Order cannot be routed until the fax number is sourced.
-              </p>
-              <div class="grid grid-cols-2 gap-y-1 gap-x-6 pt-2 border-t border-[#E6C687]/50 font-mono text-[11px] text-[#6D4200]/90">
-                <div><span class="text-[#6D4200]/70">error_code:</span> <span class="font-bold">BRG_W_2117</span></div>
-                <div><span class="text-[#6D4200]/70">order_id:</span> <span class="font-bold">ORD-000886</span></div>
-                <div><span class="text-[#6D4200]/70">npi_ref:</span> <span class="font-bold">(missing)</span></div>
-                <div><span class="text-[#6D4200]/70">trace_id:</span> <span class="font-bold">3c8e14bd-91c2-4b67-a5f1-4d20ee5c9f77</span></div>
-              </div>
-            </div>
-
             <div class="border border-line rounded-xl overflow-hidden divide-y divide-line/40 text-xs bg-white">
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Physician</span>
-                <span class="font-bold text-text">Whitney Bean, 1928 Alcoa Hwy Suite B-127, Knoxville TN</span>
+                <span id="panel-prov-physician" class="font-bold text-text">Whitney Bean, 1928 Alcoa Hwy Suite B-127, Knoxville TN</span>
               </div>
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Phone</span>
-                <span class="font-mono text-muted">–</span>
+                <span id="panel-prov-phone" class="font-mono text-muted">–</span>
               </div>
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Fax</span>
-                <span class="font-mono text-muted">–</span>
+                <span id="panel-prov-fax" class="font-mono text-muted">–</span>
               </div>
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Physician NPI</span>
-                <span class="font-mono text-muted">–</span>
+                <span id="panel-prov-npi" class="font-mono text-muted">–</span>
               </div>
             </div>
           </div>
@@ -412,7 +367,7 @@
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Status</span>
                 <div>
-                  <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-bg text-red">
+                  <span id="panel-verification-status-badge" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-bg text-red">
                     <span class="w-1.5 h-1.5 rounded-full bg-current"></span> Mismatch found
                   </span>
                 </div>
@@ -423,11 +378,11 @@
               </div>
               <div class="grid grid-cols-[220px_1fr] p-3.5">
                 <span class="text-muted font-medium">Note</span>
-                <span class="font-medium text-text">Provider NPI on the order does not match the Provider Directory record.</span>
+                <span id="panel-verification-note" class="font-medium text-text">Provider NPI on the order does not match the Provider Directory record.</span>
               </div>
             </div>
-            <button type="button" class="h-8 px-4 border border-line rounded-lg bg-white text-text font-medium text-xs hover:border-primary hover:bg-surface transition">
-              Open full verification workspace ↗
+            <button type="button" class="h-8 px-4 border border-line rounded-lg bg-white text-muted font-medium text-sm hover:border-primary hover:bg-surface transition">
+              Open full verification workspace
             </button>
           </div>
 
@@ -440,14 +395,14 @@
             <div class="border border-line rounded-xl divide-y divide-line/40 text-xs bg-white mb-4">
               <div class="p-3.5 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-muted shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 01-2-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  <span class="material-symbols-outlined text-[18px] text-muted shrink-0">description</span>
                   <span class="font-medium text-text">Intake fax — page 1–3</span>
                 </div>
                 <span class="text-muted font-mono">Received 9:41 AM</span>
               </div>
               <div class="p-3.5 flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-muted shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 01-2-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  <span class="material-symbols-outlined text-[18px] text-muted shrink-0">description</span>
                   <span class="font-medium text-text">Insurance verification form</span>
                 </div>
                 <span class="text-muted font-mono">Received 9:44 AM</span>
@@ -458,9 +413,8 @@
           <!-- Tab 6: Communications Panel -->
           <div id="panel-communications" class="tab-panel hidden flex flex-col gap-6">
             <div class="border border-line rounded-2xl overflow-hidden bg-white shadow-sm">
-              <div class="bg-[#F3EDF7] p-3 px-5 border-b border-line flex items-center justify-between">
+              <div class="p-3 px-5 border-b border-line flex items-center justify-between">
                 <span class="text-xs font-bold uppercase tracking-wider text-primary">Communication History</span>
-                <span class="text-[10px] text-muted font-medium">Owned by BRIDGE Communications</span>
               </div>
 
               <div class="divide-y divide-line/40 text-xs p-5 flex flex-col gap-4">
@@ -468,7 +422,7 @@
                   <span class="w-2 h-2 rounded-full bg-primary mt-1.5 shrink-0"></span>
                   <div class="flex flex-col gap-0.5">
                     <span class="font-mono text-muted text-[11px]">Aug 11, 11:18 AM</span>
-                    <span class="text-text font-medium">Fax confirmation sent to Whitney Bean, 1928 Alcoa Hwy Suite B-127, Knoxville TN — delivered.</span>
+                    <span class="text-text font-medium">Fax confirmation sent to physician — delivered.</span>
                   </div>
                 </div>
 
@@ -484,14 +438,14 @@
                   <span class="w-2 h-2 rounded-full bg-primary mt-1.5 shrink-0"></span>
                   <div class="flex flex-col gap-0.5">
                     <span class="font-mono text-muted text-[11px]">Aug 09, 9:30 AM</span>
-                    <span class="text-text font-medium">Order intake received from BlueGoose. Routing to workspace.</span>
+                    <span class="text-text font-medium">Order intake received from source system. Routing to workspace.</span>
                   </div>
                 </div>
               </div>
 
               <div class="p-4 bg-surface/30 border-t border-line">
-                <button type="button" class="h-8 px-4 border border-line rounded-full bg-white text-primary font-bold text-xs hover:bg-primary-soft transition">
-                  Open full communication log ↗
+                <button type="button" class="h-8 px-4 border border-line rounded-full bg-white text-muted font-bold text-sm hover:border-primary hover:bg-surface transition">
+                  Open full communication log
                 </button>
               </div>
             </div>
@@ -520,7 +474,7 @@
                 </div>
                 <div>
                   <span class="font-bold text-text text-sm block">Order created from Intake</span>
-                  <span class="text-muted font-mono text-[11px] mt-0.5 block">7/22/2026 15:19:14</span>
+                  <span id="timeline-created-at" class="text-muted font-mono text-[11px] mt-0.5 block">7/22/2026 15:19:14</span>
                 </div>
               </div>
 
@@ -539,19 +493,9 @@
                   ●
                 </div>
                 <div>
-                  <span class="font-bold text-text text-sm block">Flagged — provider information required</span>
-                  <span class="text-muted text-xs block mt-0.5">Awaiting physician fax / NPI resolution before routing.</span>
+                  <span id="timeline-status-title" class="font-bold text-text text-sm block">Flagged — information required</span>
+                  <span id="timeline-status-desc" class="text-muted text-xs block mt-0.5">Awaiting physician fax / NPI resolution before routing.</span>
                   <span class="text-muted font-mono text-[11px] mt-0.5 block">Today</span>
-                </div>
-              </div>
-
-              <div class="relative flex items-start gap-3">
-                <div class="absolute -left-[32px] top-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-[12px] font-bold z-10 shadow-sm">
-                  ✓
-                </div>
-                <div>
-                  <span class="font-bold text-text text-sm block">Order accepted — ready for routing</span>
-                  <span class="text-muted font-mono text-[11px] mt-0.5 block">7/22/2026 15:19</span>
                 </div>
               </div>
 
@@ -583,12 +527,12 @@
             <h2 class="text-sm font-bold text-text mb-4">Business Audit History</h2>
             <div class="border border-line rounded-xl divide-y divide-line/40 text-xs font-mono bg-white mb-4">
               <div class="p-3.5 flex items-center gap-4">
-                <span class="text-muted">7/22/2026 15:19:14</span>
-                <span class="text-text">System — Order created from Intake record d7e9fa8a8feba20f1e9a51befb5c8b47</span>
+                <span id="audit-timestamp" class="text-muted">7/22/2026 15:19:14</span>
+                <span id="audit-details" class="text-text">System — Order created from Intake record</span>
               </div>
             </div>
-            <button type="button" class="h-8 px-4 border border-line rounded-lg bg-white text-text font-medium text-xs hover:border-primary hover:bg-surface transition">
-              Open full audit trail →
+            <button type="button" class="h-8 px-4 border border-line rounded-lg bg-white text-muted font-medium text-sm hover:border-primary hover:bg-surface transition">
+              Open full audit trail
             </button>
           </div>
 
@@ -599,19 +543,505 @@
     </section>
   </div>
 
+  <!-- INTEGRATED QUICK ACTIONS MODAL OVERLAY -->
+  <div id="quick-actions-modal" class="hidden fixed inset-0 bg-black/40 backdrop-blur-xs z-50 flex items-center justify-center p-4 transition-opacity duration-200" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="bg-white border border-line rounded-2xl shadow-xl w-full max-w-lg overflow-hidden flex flex-col">
+      
+      <!-- Modal Header -->
+      <div class="p-5 border-b border-line bg-white flex items-start justify-between">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[22px] text-text">flash_on</span>
+            <h3 class="text-base font-bold text-text">Contextual Quick Actions</h3>
+          </div>
+          <p class="text-xs text-muted mt-0.5">Gated by current status and active user role</p>
+        </div>
+        <button id="modal-close-btn" onclick="closeQuickActionsModal()" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-surface transition cursor-pointer" type="button" aria-label="Close modal">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+      
+      <!-- Active Order Banner -->
+      <div class="p-3 px-5 mx-6 mt-5 bg-blue-bg/60 border border-blue/20 rounded-xl flex items-center justify-between text-xs font-mono">
+        <span class="font-bold text-blue" id="modal-order-text">Active Order: ORD-000886</span>
+        <span class="font-bold text-blue" id="modal-status-text">Status: Review Required</span>
+      </div>
+
+      <div class="px-6 pt-4 pb-1 text-[10px] font-bold text-muted uppercase tracking-wider">Permitted Operational Actions</div>
+
+      <!-- Action Buttons List -->
+      <div class="p-6 pt-2 flex flex-col gap-2.5">
+        
+        <!-- Action 1: Accept Order (Direct Execute) -->
+        <button onclick="handleQuickActionSelect('accept')" id="action-btn-accept" class="w-full p-3 px-4 rounded-xl border border-line bg-white hover:bg-[#F3EDF7] hover:border-primary text-text text-xs font-medium flex items-center justify-between transition group cursor-pointer" type="button">
+          <div class="flex items-center gap-2.5">
+            <span class="text-green font-bold">✓</span>
+            <span class="font-bold text-text">Accept Order</span>
+          </div>
+        </button>
+
+        <!-- Action 2: Reject Order (Reason Required) -->
+        <button onclick="handleQuickActionSelect('reject')" id="action-btn-reject" class="w-full p-3 px-4 rounded-xl border border-line bg-white hover:bg-red-bg/30 text-text text-xs font-medium flex items-center justify-between transition group cursor-pointer" type="button">
+          <div class="flex items-center gap-2.5">
+            <span class="text-red font-bold">✕</span>
+            <span class="font-bold text-text">Reject Order</span>
+          </div>
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-red-bg text-red">Reason Required</span>
+        </button>
+
+        <!-- Action 3: Return Order to Intake (Reason Required) -->
+        <button onclick="handleQuickActionSelect('return')" id="action-btn-return" class="w-full p-3 px-4 rounded-xl border border-line bg-white hover:bg-amber-bg/40 text-text text-xs font-medium flex items-center justify-between transition group cursor-pointer" type="button">
+          <div class="flex items-center gap-2.5">
+            <span class="text-amber font-bold">↩</span>
+            <span class="font-bold text-text">Return Order to Intake</span>
+          </div>
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-bg text-amber">Reason Required</span>
+        </button>
+
+        <!-- Action 4: Regenerate Order Document (Reason Required) -->
+        <button onclick="handleQuickActionSelect('regenerate')" id="action-btn-regenerate" class="w-full p-3 px-4 rounded-xl border border-line bg-white hover:bg-blue-bg/40 text-text text-xs font-medium flex items-center justify-between transition group cursor-pointer" type="button">
+          <div class="flex items-center gap-2.5">
+            <span class="material-symbols-outlined text-[16px] text-blue">autorenew</span>
+            <span class="font-bold text-text">Regenerate Order Document</span>
+          </div>
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-bg text-amber">Reason Required</span>
+        </button>
+
+        <!-- REASON INPUT CONTAINER -->
+        <div id="reason-input-container" class="hidden mt-2 p-4 border-2 border-primary/80 bg-blue-bg/20 rounded-xl flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-red text-xs">Reason <span class="text-red">*</span></span>
+          </div>
+          <textarea id="modal-rationale-text" rows="3" class="w-full p-3 border border-line rounded-lg bg-white text-xs text-text placeholder-muted/60 focus:border-primary outline-none" placeholder="Enter mandatory business justification for audit trail..."></textarea>
+          <div class="flex items-center justify-end gap-2.5 pt-1">
+            <button onclick="hideReasonContainer()" type="button" class="px-4 py-1.5 rounded-lg border border-line bg-white text-text font-bold text-xs hover:bg-surface transition cursor-pointer">
+              Cancel
+            </button>
+            <button onclick="commitQuickActionWithRationale()" type="button" class="px-4 py-1.5 rounded-lg bg-blue text-white font-bold text-xs hover:bg-blue/90 transition shadow-sm cursor-pointer">
+              Confirm &amp; Log Audit
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
   <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
 
   <script>
-    function saveCorrectionAndResume() {
-      showToast("Quick Action executed. Order corrections committed and workflow resumed.");
+    // Dataset Extracted from H2M_Bridge_Intake.xlsx
+    const mockOrderDatabase = {
+      'ORD-100401': {
+        patientName: 'Albert Einsten',
+        avatarInitials: 'AE',
+        sourceStatus: 'Approved',
+        bridgeStatus: 'Accepted',
+        metaLocation: 'Approved Intake · Nashville, TN',
+        dueDate: '8/15/2026',
+        insurance: 'Aetna',
+        memberId: 'AET-994120',
+        product: 'Medela Pump In Style Double Electric',
+        createdAt: '2026-08-06 09:12',
+        sourceSystem: 'Approved Intake',
+        sourceRecordId: 'REC-100401',
+        reiDate: '8/6/2026 9:12',
+        patientDob: '05/14/1985',
+        patientAddress: '124 Innovation Way, Nashville TN 37201',
+        physicianName: 'Dr. Sarah Jenkins',
+        physicianPhone: '(615) 555-0199',
+        physicianFax: '(615) 555-0190',
+        physicianNpi: '1902834102',
+        alert: null
+      },
+      'ORD-100398': {
+        patientName: 'Maria Carlota',
+        avatarInitials: 'MC',
+        sourceStatus: 'Overridden',
+        bridgeStatus: 'Accepted',
+        metaLocation: 'BlueGoose · Cape Coral, FL',
+        dueDate: '8/20/2026',
+        insurance: 'United Healthcare',
+        memberId: 'UHC-881204',
+        product: 'Momcozy Double Wearable Pump',
+        createdAt: '2026-08-05 16:45',
+        sourceSystem: 'BlueGoose',
+        sourceRecordId: 'REC-100398',
+        reiDate: '8/5/2026 16:45',
+        patientDob: '11/02/1992',
+        patientAddress: '782 Ocean Blvd, Cape Coral FL 33904',
+        physicianName: 'Dr. James Duerkes',
+        physicianPhone: '(239) 555-4012',
+        physicianFax: '(239) 555-4019',
+        physicianNpi: '1092837411',
+        alert: null
+      },
+      'ORD-100350': {
+        patientName: 'John Smith',
+        avatarInitials: 'JS',
+        sourceStatus: 'Rejected',
+        bridgeStatus: 'Rejected',
+        metaLocation: 'BlueGoose · Memphis, TN',
+        dueDate: '8/10/2026',
+        insurance: 'TennCare',
+        memberId: 'TC-330192',
+        product: 'Pregnancy Support Kit',
+        createdAt: '2026-08-05 11:20',
+        sourceSystem: 'BlueGoose',
+        sourceRecordId: 'REC-100350',
+        reiDate: '8/5/2026 11:20',
+        patientDob: '03/22/1990',
+        patientAddress: '412 Main St, Memphis TN 38103',
+        physicianName: 'Dr. Robert Fox',
+        physicianPhone: '(901) 555-8821',
+        physicianFax: '(901) 555-8820',
+        physicianNpi: '1487291022',
+        alert: {
+          type: 'error',
+          code: 'ERR_DUPLICATE_RECORD',
+          headline: 'Duplicate submission halted',
+          description: 'Confirmed exact duplicate submission from secondary provider queue. Workflow halted.',
+          traceId: '7c1b0f9a-e2d4-4a11-9f88-0d3ac2f7b1e6',
+          extraLabel: 'conflict_ref',
+          extraValue: 'ORD-100348'
+        }
+      },
+      'ORD-000886': {
+        patientName: 'Stefany Sanchez',
+        avatarInitials: 'SS',
+        sourceStatus: 'Missing Fax Number',
+        bridgeStatus: 'Accepted',
+        metaLocation: 'BlueGoose · Knoxville, TN',
+        dueDate: '9/16/2025',
+        insurance: 'CoverKids',
+        memberId: '737522524',
+        product: 'Spectra® S2 Plus Premier double electric breast pump',
+        createdAt: '7/22/2026 15:19:14',
+        sourceSystem: 'BlueGoose',
+        sourceRecordId: 'd7e9fa8a8feba20f1e9a51befb5c8b47',
+        reiDate: '11/5/2025 3:39',
+        patientDob: '10/07/1998',
+        patientAddress: '2755 Lay Ave, Knoxville, TN 37914',
+        physicianName: 'Whitney Bean 1928 Alcoa Hwy Suite B-127, Knoxville, TN 37920',
+        physicianPhone: '–',
+        physicianFax: '–',
+        physicianNpi: '–',
+        alert: {
+          type: 'error',
+          code: 'BRG_E_2201',
+          headline: 'Missing fax number — order cannot route to physician',
+          description: 'Fax number is absent on the physician record. Order cannot route until a valid fax is resolved. Manual lookup required.',
+          traceId: '7c1b0f9a-e2d4-4a11-9f88-0d3ac2f7b1e6',
+          extraLabel: 'physician',
+          extraValue: 'Whitney Bean, Diana Health'
+        }
+      }
+    };
+
+    // Parse URL Parameter and Load Dynamic Order Record
+    const urlParams = new URLSearchParams(window.location.search);
+    const orderId = urlParams.get('orderId') || 'ORD-000886';
+    const origin = urlParams.get('origin') || 'dashboard';
+    const orderData = mockOrderDatabase[orderId] || mockOrderDatabase['ORD-000886'];
+
+    // Extended Origin Configuration
+    const originMap = {
+      dashboard: { label: 'Dashboard', link: '../Dashboard.html', navId: 'nav-dashboard', headerTab: 'workspace' },
+      workqueue: { label: 'Work Queues', link: '../WorkQueue.html', navId: 'nav-work-queue', headerTab: 'workspace' },
+      ordersearch: { label: 'Order Search', link: '../OrderSearch.html', navId: 'nav-order-search', headerTab: 'workspace' },
+      alerts: { label: 'Alerts & Exceptions', link: '../Alerts.html', navId: 'nav-alerts-exceptions', headerTab: 'workspace' },
+      reviewhistory: { label: 'Review History', link: '../../Review/ReviewHistory.html', navId: 'nav-review-history', headerTab: 'review' },
+      reviewpage: { label: 'Pending Review', link: '../../Review/ReviewPage.html', navId: 'nav-pending-review', headerTab: 'review' },
+      inreview: { label: 'In Review', link: '../../Review/InReview.html', navId: 'nav-in-review', headerTab: 'review' },
+      awaitinginfo: { label: 'Awaiting Information', link: '../../Review/AwaitingInfo.html', navId: 'nav-awaiting-info', headerTab: 'review' }
+    };
+
+    const currentOrigin = originMap[origin] || originMap.dashboard;
+
+    // Render Navigation Layout based on Origin
+    function renderNavigationLayout() {
+      const topWorkspace = document.getElementById('header-nav-workspace');
+      const topReview = document.getElementById('header-nav-review');
+      
+      // Top Navigation Pill Highlight
+      if (currentOrigin.headerTab === 'review') {
+        topWorkspace.className = "h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition";
+        topReview.className = "h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm";
+      } else {
+        topWorkspace.className = "h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm";
+        topReview.className = "h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition";
+      }
+
+      // Render Left Sidebar HTML Nodes based on origin context
+      const sidebarNav = document.getElementById('workspace-sidebar-nav');
+      
+      if (currentOrigin.headerTab === 'review') {
+        sidebarNav.innerHTML = `
+          <a href="../../Review/ReviewPage.html" id="nav-pending-review" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[18px]">schedule</span>
+              <span class="truncate">Pending Review</span>
+            </div>
+          </a>
+          <a href="../../Review/InReview.html" id="nav-in-review" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[18px]">edit_note</span>
+              <span class="truncate">In Review</span>
+            </div>
+          </a>
+          <a href="../../Review/AwaitingInfo.html" id="nav-awaiting-info" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[18px]">pause_circle</span>
+              <span class="truncate">Awaiting Information</span>
+            </div>
+          </a>
+          <a href="../../Review/ReviewHistory.html" id="nav-review-history" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[18px]">assignment_turned_in</span>
+              <span class="truncate">Review History</span>
+            </div>
+          </a>
+        `;
+      } else {
+        sidebarNav.innerHTML = `
+          <a href="../Dashboard.html" id="nav-dashboard" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[18px]">dashboard</span>
+              <span class="truncate">Dashboard</span>
+            </div>
+          </a>
+          <a href="../WorkQueue.html" id="nav-work-queue" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[18px]">format_list_bulleted</span>
+              <span class="truncate">Work Queues</span>
+            </div>
+          </a>
+          <a href="../OrderSearch.html" id="nav-order-search" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[18px]">search</span>
+              <span class="truncate">Order Search</span>
+            </div>
+          </a>
+          <a href="../Alerts.html" id="nav-alerts-exceptions" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[18px]">notifications</span>
+              <span class="truncate">Alerts &amp; Exceptions</span>
+            </div>
+          </a>
+        `;
+      }
+
+      // Highlight Active Node in Sidebar
+      const activeNode = document.getElementById(currentOrigin.navId);
+      if (activeNode) {
+        activeNode.className = "w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition";
+      }
+    }
+
+    // Synchronize Breadcrumb Text & Link
+    const crumbBackLink = document.getElementById('crumb-back-link');
+    if (crumbBackLink) {
+      crumbBackLink.innerText = currentOrigin.label;
+      crumbBackLink.href = currentOrigin.link;
+    }
+
+    renderNavigationLayout();
+
+    // Bind Dynamic Order Record Fields to DOM Elements
+    document.getElementById('crumb-id').innerText = orderId;
+    document.getElementById('order-id').innerText = orderId;
+    document.getElementById('panel-bridge-id').innerText = orderId;
+    document.getElementById('patient-avatar').innerText = orderData.avatarInitials;
+    document.getElementById('patient-name').innerText = orderData.patientName;
+    document.getElementById('order-meta').innerText = orderData.metaLocation;
+    document.getElementById('meta-due-date').innerText = orderData.dueDate;
+    document.getElementById('meta-insurance').innerText = orderData.insurance;
+    document.getElementById('meta-product').innerText = orderData.product;
+    document.getElementById('meta-created-at').innerText = orderData.createdAt;
+    
+    // Bind Source Status Badge Colors Dynamically
+    const sourceBadge = document.getElementById('source-status-badge');
+    const panelSourceBadge = document.getElementById('panel-source-badge');
+    sourceBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-current"></span> ${orderData.sourceStatus}`;
+    panelSourceBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-current"></span> ${orderData.sourceStatus}`;
+    
+    if (orderData.sourceStatus === 'Missing Fax Number' || orderData.sourceStatus === 'Duplicate Suspected' || orderData.sourceStatus === 'Rejected') {
+      sourceBadge.className = "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-bg text-red";
+      panelSourceBadge.className = "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-bg text-red";
+    } else if (orderData.sourceStatus === 'Accepted' || orderData.sourceStatus === 'Approved') {
+      sourceBadge.className = "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-green-bg text-green";
+      panelSourceBadge.className = "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-green-bg text-green";
+    } else {
+      sourceBadge.className = "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-bg text-amber";
+      panelSourceBadge.className = "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-bg text-amber";
+    }
+
+    document.getElementById('bridge-status-badge').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-current"></span> ${orderData.bridgeStatus}`;
+    document.getElementById('panel-source-system').innerText = orderData.sourceSystem;
+    document.getElementById('panel-source-rec-id').innerText = orderData.sourceRecordId;
+    document.getElementById('panel-rei-date').innerText = orderData.reiDate;
+    document.getElementById('panel-due-date').innerText = orderData.dueDate;
+    document.getElementById('panel-created-at').innerText = orderData.createdAt;
+    document.getElementById('panel-patient-name').innerText = orderData.patientName;
+    document.getElementById('panel-patient-dob').innerText = orderData.patientDob;
+    document.getElementById('panel-patient-address').innerText = orderData.patientAddress;
+    document.getElementById('panel-patient-insurance').innerText = `${orderData.insurance} — ${orderData.memberId}`;
+    document.getElementById('panel-prov-physician').innerText = orderData.physicianName;
+    document.getElementById('panel-prov-phone').innerText = orderData.physicianPhone;
+    document.getElementById('panel-prov-fax').innerText = orderData.physicianFax;
+    document.getElementById('panel-prov-npi').innerText = orderData.physicianNpi;
+    document.getElementById('timeline-created-at').innerText = orderData.createdAt;
+    document.getElementById('audit-timestamp').innerText = orderData.createdAt;
+    document.getElementById('audit-details').innerText = `System — Order created from Intake record ${orderData.sourceRecordId}`;
+
+    // Update Open in Review Link Reference
+    const openReviewBtn = document.getElementById('btn-open-review');
+    if (openReviewBtn) {
+      openReviewBtn.href = `../../Review/ReviewDetails.html?sourceOrderId=${orderId}`;
+    }
+
+    // Dynamic Render Engine for Error vs Warning Banner
+    function renderOrderAlertBanner() {
+      const logCard = document.getElementById('dynamic-log-card');
+      const alert = orderData.alert;
+
+      if (!alert) {
+        logCard.classList.add('hidden');
+        return;
+      }
+
+      logCard.classList.remove('hidden');
+
+      const isError = alert.type === 'error';
+
+      if (isError) {
+        logCard.className = "bg-[#F9DEDC] border border-[#F2B8B5] rounded-2xl p-5 shadow-sm flex flex-col gap-3 shrink-0";
+        document.getElementById('alert-title-container').className = "flex items-center gap-2 font-bold text-[#B3261E] text-sm";
+        document.getElementById('alert-icon').innerText = "error";
+        document.getElementById('alert-description-text').className = "text-xs text-[#B3261E] font-normal leading-relaxed";
+        document.getElementById('alert-metadata-container').className = "grid grid-cols-2 gap-y-1 gap-x-6 pt-2 border-t border-[#F2B8B5]/60 font-mono text-[11px] text-[#B3261E]/90";
+      } else {
+        logCard.className = "bg-[#FEF7E0] border border-[#E6C687] rounded-2xl p-5 shadow-sm flex flex-col gap-3 shrink-0";
+        document.getElementById('alert-title-container').className = "flex items-center gap-2 font-bold text-[#6D4200] text-sm";
+        document.getElementById('alert-icon').innerText = "warning";
+        document.getElementById('alert-description-text').className = "text-xs text-[#6D4200] font-normal leading-relaxed";
+        document.getElementById('alert-metadata-container').className = "grid grid-cols-2 gap-y-1 gap-x-6 pt-2 border-t border-[#E6C687]/60 font-mono text-[11px] text-[#6D4200]/90";
+      }
+
+      document.getElementById('alert-headline-text').innerText = alert.headline;
+      document.getElementById('alert-description-text').innerText = alert.description;
+
+      const textColorClass = isError ? "text-[#B3261E]/70" : "text-[#6D4200]/70";
+
+      document.getElementById('alert-metadata-container').innerHTML = `
+        <div><span class="${textColorClass}">error_code:</span> <span class="font-bold">${alert.code}</span></div>
+        <div><span class="${textColorClass}">order_id:</span> <span class="font-bold">${orderId}</span></div>
+        <div><span class="${textColorClass}">${alert.extraLabel}:</span> <span class="font-bold">${alert.extraValue}</span></div>
+        <div><span class="${textColorClass}">trace_id:</span> <span class="font-bold">${alert.traceId}</span></div>
+      `;
+    }
+
+    renderOrderAlertBanner();
+
+    // INTEGRATED DYNAMIC CONTEXTUAL QUICK ACTIONS MODAL ENGINE
+    let selectedAction = null;
+
+    function openQuickActionsModal() {
+      const modal = document.getElementById('quick-actions-modal');
+      document.getElementById('modal-order-text').innerText = `Active Order: ${orderId}`;
+      document.getElementById('modal-status-text').innerText = `Status: ${orderData.sourceStatus}`;
+      hideReasonContainer();
+      modal.classList.remove('hidden');
+    }
+
+    function closeQuickActionsModal() {
+      document.getElementById('quick-actions-modal').classList.add('hidden');
+      hideReasonContainer();
+    }
+
+    function hideReasonContainer() {
+      selectedAction = null;
+      const reasonContainer = document.getElementById('reason-input-container');
+      if (reasonContainer) reasonContainer.classList.add('hidden');
+      document.getElementById('modal-rationale-text').value = '';
+
+      // Reset Button Highlights
+      ['accept', 'reject', 'return', 'regenerate'].forEach(act => {
+        const btn = document.getElementById(`action-btn-${act}`);
+        if (btn) btn.className = "w-full p-3 px-4 rounded-xl border border-line bg-white hover:bg-surface text-text text-xs font-medium flex items-center justify-between transition cursor-pointer";
+      });
+    }
+
+    function handleQuickActionSelect(actionType) {
+      selectedAction = actionType;
+
+      if (actionType === 'accept') {
+        // Direct Accept Execution without rationale
+        orderData.sourceStatus = 'Ready to Fax';
+        orderData.bridgeStatus = 'Accepted';
+        delete orderData.alert;
+
+        document.getElementById('source-status-badge').className = "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-green-bg text-green";
+        document.getElementById('source-status-badge').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-current"></span> Ready to Fax`;
+        document.getElementById('panel-source-badge').className = "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-green-bg text-green";
+        document.getElementById('panel-source-badge').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-current"></span> Ready to Fax`;
+
+        closeQuickActionsModal();
+        renderOrderAlertBanner();
+        showToast(`Order ${orderId} accepted and queued for automated dispatch.`);
+        return;
+      }
+
+      // Highlight Selected Button
+      ['accept', 'reject', 'return', 'regenerate'].forEach(act => {
+        const btn = document.getElementById(`action-btn-${act}`);
+        if (btn) {
+          if (act === actionType) {
+            btn.className = "w-full p-3 px-4 rounded-xl border-2 border-primary bg-[#F3EDF7] text-text text-xs font-bold flex items-center justify-between transition cursor-pointer shadow-sm";
+          } else {
+            btn.className = "w-full p-3 px-4 rounded-xl border border-line bg-white hover:bg-surface text-text text-xs font-medium flex items-center justify-between transition cursor-pointer opacity-60";
+          }
+        }
+      });
+
+      // Expand Rationale Textarea Container
+      const reasonContainer = document.getElementById('reason-input-container');
+      reasonContainer.classList.remove('hidden');
+    }
+
+    function commitQuickActionWithRationale() {
+      const rationale = document.getElementById('modal-rationale-text').value.trim();
+      if (!rationale) {
+        showToast("Error: Mandatory business justification required for audit trail.");
+        return;
+      }
+
+      closeQuickActionsModal();
+
+      if (selectedAction === 'reject') {
+        orderData.sourceStatus = 'Rejected';
+        orderData.bridgeStatus = 'Rejected';
+
+        document.getElementById('source-status-badge').className = "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-bg text-red";
+        document.getElementById('source-status-badge').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-current"></span> Rejected`;
+        document.getElementById('panel-source-badge').className = "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-bg text-red";
+        document.getElementById('panel-source-badge').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-current"></span> Rejected`;
+
+        showToast(`Order ${orderId} marked as Rejected. Audit logged.`);
+      } else if (selectedAction === 'return') {
+        showToast(`Order ${orderId} returned to Intake queue. Audit rationale logged.`);
+      } else if (selectedAction === 'regenerate') {
+        showToast(`Document regeneration initiated for order ${orderId}. Audit logged.`);
+      }
     }
 
     function switchTab(tabKey) {
       document.querySelectorAll('.detail-nav-tab').forEach(btn => {
         if (btn.dataset.tab === tabKey) {
-          btn.className = "detail-nav-tab px-6 py-4 text-sm font-bold text-primary border-b-2 border-primary transition whitespace-nowrap";
+          btn.className = "detail-nav-tab px-6 py-4 text-sm font-bold text-primary border-b-2 border-primary transition whitespace-nowrap cursor-pointer";
         } else {
-          btn.className = "detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap";
+          btn.className = "detail-nav-tab px-6 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap cursor-pointer";
         }
       });
 
@@ -622,14 +1052,6 @@
       const activePanel = document.getElementById('panel-' + tabKey);
       if (activePanel) activePanel.classList.remove('hidden');
     }
-
-    // Dynamic Parameter Binding
-    const urlParams = new URLSearchParams(window.location.search);
-    const orderId = urlParams.get('orderId') || 'ORD-000886';
-
-    document.getElementById('crumb-id').innerText = orderId;
-    document.getElementById('order-id').innerText = orderId;
-    document.getElementById('panel-bridge-id').innerText = orderId;
 
     // Account / Role Switcher Logic
     let activeRole = 'operations';
@@ -668,23 +1090,6 @@
       const label = document.getElementById('active-label');
       label.innerText = current.label;
       label.style.color = current.color;
-
-      const opsBtn = document.getElementById('role-opt-operations');
-      const adminBtn = document.getElementById('role-opt-administrator');
-      const checkOps = document.getElementById('check-operations');
-      const checkAdmin = document.getElementById('check-administrator');
-
-      if (role === 'operations') {
-        opsBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]";
-        adminBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
-        checkOps.classList.remove('hidden');
-        checkAdmin.classList.add('hidden');
-      } else {
-        adminBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]";
-        opsBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
-        checkAdmin.classList.remove('hidden');
-        checkOps.classList.add('hidden');
-      }
 
       showToast(`Switched to ${current.label} view — ${current.name}`);
     }

@@ -46,55 +46,55 @@
 </head>
 <body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
 
-  <div class="w-[full] h-screen mx-auto bg-surface flex overflow-hidden">
+  <div class="w-[1440px] h-screen mx-auto bg-surface flex overflow-hidden">
     
-    <!-- Side Navigation -->
+    <!-- Unified Side Navigation -->
     <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
       <div class="w-[58px] h-[58px]">
-        <img src="https://www.figma.com/api/mcp/asset/344953eb-406f-498c-b60f-e17d785f92f3.png" alt="Help to Moms logo" class="w-full h-full object-contain">
+        <img src="https://helptomoms.com/__l5e/assets-v1/923ead63-1849-4075-9845-3e9a00b8b649/help-to-moms-logo.webp" alt="Help to Moms logo" class="w-full h-full object-contain">
       </div>
       <nav class="w-full flex flex-col gap-1.5" id="workspace-sidebar-nav">
-  <!-- Inactive Dashboard Page -->
-  <a href="Dashboard.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
-    <div class="flex items-center gap-2.5 min-w-0 flex-1">
-      <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">dashboard</span>
-      <span class="truncate">Dashboard</span>
-    </div>
-  </a>
+        <!-- Inactive Dashboard Node -->
+        <a href="Dashboard.html" id="nav-dashboard" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+          <div class="flex items-center gap-2.5 min-w-0 flex-1">
+            <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">dashboard</span>
+            <span class="truncate">Dashboard</span>
+          </div>
+        </a>
 
-  <!-- Active Work Queues Page -->
-  <a href="WorkQueue.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition" >
-    <div class="flex items-center gap-2.5 min-w-0 flex-1">
-      <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-[18px]">format_list_bulleted</span>
-      <span class="truncate">Work Queues</span>
-    </div>
-  </a>
+        <!-- Active Work Queues Node -->
+        <a href="WorkQueue.html" id="nav-work-queue" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition">
+          <div class="flex items-center gap-2.5 min-w-0 flex-1">
+            <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-[18px]">format_list_bulleted</span>
+            <span class="truncate">Work Queues</span>
+          </div>
+        </a>
 
-  <!-- Inactive Order Search Page -->
-  <a href="OrderSearch.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
-    <div class="flex items-center gap-2.5 min-w-0 flex-1">
-      <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">search</span>
-      <span class="truncate">Order Search</span>
-    </div>
-  </a>
+        <!-- Inactive Order Search Page -->
+        <a href="OrderSearch.html" id="nav-order-search" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+          <div class="flex items-center gap-2.5 min-w-0 flex-1">
+            <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">search</span>
+            <span class="truncate">Order Search</span>
+          </div>
+        </a>
 
-  <!-- Inactive Alerts & Exceptions Page -->
-  <a href="Alerts.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
-    <div class="flex items-center gap-2.5 min-w-0 flex-1">
-      <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">notifications</span>
-      <span class="truncate">Alerts &amp; Exceptions</span>
-    </div>
-  </a>
-</nav>
+        <!-- Inactive Alerts & Exceptions Page -->
+        <a href="Alerts.html" id="nav-alerts-exceptions" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+          <div class="flex items-center gap-2.5 min-w-0 flex-1">
+            <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">notifications</span>
+            <span class="truncate">Alerts &amp; Exceptions</span>
+          </div>
+        </a>
+      </nav>
     </aside>
 
     <!-- Main Content Area -->
     <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
       
-      <!-- Top Bar Header -->
+      <!-- Top Navigation Bar & Global Module Pill -->
       <header class="h-[58px] flex items-center justify-between shrink-0">
         <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
-          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium" href="Dashboard.html">Workspace</a>
+          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditLogs.html">Audit</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectory.html">Provider Directory</a>
@@ -102,11 +102,15 @@
         </nav>
         
         <div class="flex items-center gap-6">
-          <div class="relative w-10 h-10 flex items-center justify-center cursor-pointer">
-            <img src="https://www.figma.com/api/mcp/asset/0e022744-e0d6-4c6f-8546-51c31cf743c4.svg" alt="Notifications" class="w-5 h-5">
-            <span class="absolute top-0 right-0 w-4 h-4 border border-white rounded-full bg-red text-white flex items-center justify-center text-[9px] font-bold">14</span>
+           <!-- Integrated Material Symbols Notification Bell with Red Badge -->
+          <div class="relative inline-flex items-center justify-center w-9 h-9 cursor-pointer group">
+            <span class="material-symbols-outlined text-[#1C1B1F] text-[24px] group-hover:text-primary transition-colors select-none">
+              notifications
+            </span>
+            <span class="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 bg-[#B3261E] text-white rounded-full flex items-center justify-center text-[10px] font-bold leading-none border-2 border-white shadow-xs select-none">
+              14
+            </span>
           </div>
-
           <!-- Account / Role Switcher -->
           <div class="relative inline-block text-left" id="role-switcher-container">
             <button
@@ -139,7 +143,7 @@
                 id="role-opt-operations"
                 class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]"
               >
-                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white flex-shrink-0 bg-[#6750a4]">J</div>
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-sans-bold text-white flex-shrink-0 bg-[#6750a4]">J</div>
                 <div class="flex-1 min-w-0">
                   <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Jane Doe</p>
                   <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">jane.doe@h2m.org</p>
@@ -154,7 +158,7 @@
                 id="role-opt-administrator"
                 class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]"
               >
-                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white flex-shrink-0 bg-[#1967D2]">P</div>
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-sans-bold text-white flex-shrink-0 bg-[#1967D2]">P</div>
                 <div class="flex-1 min-w-0">
                   <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Priya Patel</p>
                   <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">p.patel@h2m.org</p>
@@ -201,30 +205,30 @@
         </div>
       </div>
 
-      <!-- Filter Pill Chips Container (Refactored to match image_fce605.png / ReviewPage.html) -->
+      <!-- Filter Pill Chips Container -->
       <section class="rounded-2xl p-1 flex flex-col gap-2.5 shrink-0">
         <div class="flex items-center gap-2.5 flex-wrap">
           <button onclick="setStatusQueue('all')" class="chip-btn active px-3.5 py-1.5 rounded-full text-sm font-bold bg-primary text-white transition shadow-sm" data-queue="all">
             <span>All</span> (<span id="chip-count-all">0</span>)
           </button>
 
-          <button onclick="setStatusQueue('new')" class="chip-btn px-3.5 py-1.5 rounded-full text-sm font-medium text-muted bg-surface hover:bg-[#F3EDF7] border border-line transition" data-queue="new">
+          <button onclick="setStatusQueue('new')" class="chip-btn px-3.5 py-1.5 rounded-full text-sm font-medium text-muted bg-white hover:bg-[#F3EDF7] border border-line transition" data-queue="new">
             <span>New Intake</span> (<span id="chip-count-new">0</span>)
           </button>
 
-          <button onclick="setStatusQueue('verification')" class="chip-btn px-3.5 py-1.5 rounded-full text-sm font-medium text-muted bg-surface hover:bg-[#F3EDF7] border border-line transition" data-queue="verification">
+          <button onclick="setStatusQueue('verification')" class="chip-btn px-3.5 py-1.5 rounded-full text-sm font-medium text-muted bg-white hover:bg-[#F3EDF7] border border-line transition" data-queue="verification">
             <span>Pending Verification</span> (<span id="chip-count-verification">0</span>)
           </button>
 
-          <button onclick="setStatusQueue('review')" class="chip-btn px-3.5 py-1.5 rounded-full text-sm font-medium text-muted bg-surface hover:bg-[#F3EDF7] border border-line transition" data-queue="review">
+          <button onclick="setStatusQueue('review')" class="chip-btn px-3.5 py-1.5 rounded-full text-sm font-medium text-muted bg-white hover:bg-[#F3EDF7] border border-line transition" data-queue="review">
             <span>Pending Review</span> (<span id="chip-count-review">0</span>)
           </button>
 
-          <button onclick="setStatusQueue('fax')" class="chip-btn px-3.5 py-1.5 rounded-full text-sm font-medium text-muted bg-surface hover:bg-[#F3EDF7] border border-line transition" data-queue="fax">
+          <button onclick="setStatusQueue('fax')" class="chip-btn px-3.5 py-1.5 rounded-full text-sm font-medium text-muted bg-white hover:bg-[#F3EDF7] border border-line transition" data-queue="fax">
             <span>Ready to Fax</span> (<span id="chip-count-fax">0</span>)
           </button>
 
-          <button onclick="setStatusQueue('exceptions')" class="chip-btn px-3.5 py-1.5 rounded-full text-sm font-medium text-muted bg-surface hover:bg-[#F3EDF7] border border-line transition" data-queue="exceptions">
+          <button onclick="setStatusQueue('exceptions')" class="chip-btn px-3.5 py-1.5 rounded-full text-sm font-medium text-muted bg-white hover:bg-[#F3EDF7] border border-line transition" data-queue="exceptions">
             <span>Exceptions</span> (<span id="chip-count-exceptions">0</span>)
           </button>
         </div>
@@ -233,7 +237,8 @@
       <!-- Orders Panel -->
       <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto transition-all">
         <div class="p-5 border-b border-line flex flex-col gap-3 shrink-0">
-          <h2 class="text-xl font-semibold text-text" id="queue-panel-title">Recent Orders</h2>
+          <!-- Dynamic Header Title updates based on Team Queue vs My Queue -->
+          <h2 class="text-xl font-semibold text-text" id="queue-panel-title">Team Queue</h2>
           <div class="flex items-center gap-2.5">
             <!-- Search Bar Component -->
             <div class="h-9 w-[300px] px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 border-0 focus-within:ring-2 focus-within:ring-[#6750A4] shrink-0">
@@ -248,7 +253,7 @@
 
             <!-- Insurance Filter Dropdown -->
             <div class="relative inline-block">
-              <select id="insurance-filter" class="h-8 pl-4 pr-8 border border-[#79747E] rounded-lg bg-white text-sm font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
+              <select id="insurance-filter" class="h-8 pl-4 pr-8 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
                 <option value="all">Insurance</option>
                 <option>United Healthcare Community Plan</option>
                 <option>Anthem Blue Cross</option>
@@ -259,7 +264,7 @@
 
             <!-- State Filter Dropdown -->
             <div class="relative inline-block">
-              <select id="state-filter" class="h-8 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white text-sm font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
+              <select id="state-filter" class="h-8 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
                 <option value="all">State</option>
                 <option>Tennessee</option>
                 <option>Michigan</option>
@@ -293,7 +298,7 @@
           </div>
         </div>
 
-        <!-- Table Data Only Scrolling Wrapper with Sticky Header -->
+        <!-- Table Container -->
         <div class="overflow-y-auto max-h-[calc(100vh-380px)] flex-1 min-h-0">
           <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1000px]">
             <thead id="table-head" class="sticky top-0 z-10">
@@ -309,7 +314,7 @@
     </section>
   </div>
 
-  <!-- Toast Notification Container -->
+  <!-- Toast Container -->
   <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
 
   <script>
@@ -325,7 +330,7 @@
       { id: 'ORD-000875', patientName: 'Doris Manchame', dob: '04/11/2002', provider: 'Provider not listed', insurance: '6 Degrees Health', queue: 'exceptions', statusLabel: 'Exceptions', statusClass: 'bg-red-bg text-red', receivedDate: '2026-08-21', assignedTo: 'jane.doe@h2m.com', exceptionReason: 'Missing Mandatory Documentation' },
       { id: 'ORD-000876', patientName: 'Peyton Tockey', dob: '02/18/1994', provider: 'Dr. Jeremy Avila', insurance: 'United Healthcare Community Plan', queue: 'fax', statusLabel: 'Ready to Fax', statusClass: 'bg-green-bg text-green', receivedDate: '2026-08-26', assignedTo: null, exceptionReason: '—' },
       { id: 'ORD-000877', patientName: 'Leah Garcia', dob: '04/19/1996', provider: 'Crowe, Women\'s OB Nashville', insurance: 'Anthem Blue Cross', queue: 'exceptions', statusLabel: 'Exceptions', statusClass: 'bg-red-bg text-red', receivedDate: '2026-08-24', assignedTo: null, exceptionReason: 'Missing Fax Number' },
-      { id: 'ORD-000878', patientName: 'Sarah Albertson', dob: '08/28/2002', provider: 'Dr. Paul Grayson Smith, D.O', insurance: 'TennCare', queue: 'new', statusLabel: 'New Intake', statusClass: 'bg-blue-bg text-blue', receivedDate: '2026-08-26', assignedTo: null, exceptionReason: '—' }
+      { id: 'ORD-000878', firstName: 'Sarah', lastName: 'Albertson', dob: '08/28/2002', provider: 'Dr. Paul Grayson Smith, D.O', insurance: 'TennCare', queue: 'new', statusLabel: 'New Intake', statusClass: 'bg-blue-bg text-blue', receivedDate: '2026-08-26', assignedTo: null, exceptionReason: '—' }
     ];
 
     let activeAssignmentView = 'team';
@@ -333,7 +338,6 @@
     let currentPage = 1;
     const pageSize = 10;
 
-    // Segmented Button View Controller
     function setAssignmentView(view) {
       activeAssignmentView = view;
       const teamBtn = document.getElementById('tab-team-queue');
@@ -356,14 +360,13 @@
       renderQueue();
     }
 
-    // Filter Pill Chip Controller (Refactored for Chips UI)
     function setStatusQueue(queue) {
       activeStatusQueue = queue;
       document.querySelectorAll('.chip-btn').forEach(btn => {
         if (btn.dataset.queue === queue) {
           btn.className = "chip-btn active px-3.5 py-1.5 rounded-full text-sm font-bold bg-primary text-white transition shadow-sm";
         } else {
-          btn.className = "chip-btn px-3.5 py-1.5 rounded-full text-sm font-medium text-muted bg-surface hover:bg-[#F3EDF7] border border-line transition";
+          btn.className = "chip-btn px-3.5 py-1.5 rounded-full text-sm font-medium text-muted bg-white hover:bg-[#F3EDF7] border border-line transition";
         }
       });
       currentPage = 1;
@@ -416,6 +419,9 @@
       updateChipCounts();
       renderTableHeaders();
 
+      // Dynamically update section title based on active view tab
+      document.getElementById('queue-panel-title').innerText = activeAssignmentView === 'team' ? 'Team Queue' : 'My Queue';
+
       const isExceptionsView = activeStatusQueue === 'exceptions';
       const query = document.getElementById('table-search').value.trim().toLowerCase();
       const insurance = document.getElementById('insurance-filter').value;
@@ -457,9 +463,10 @@
         return;
       }
 
+      // Link navigates directly to OrderDetails/OrderDetailsView.html with origin=workqueue query param
       tbody.innerHTML = visible.map(order => `
-        <tr class="border-b border-line hover:bg-surface transition">
-          <td class="p-3"><a class="font-mono font-bold text-primary hover:underline text-sm" href="OrderDetails/OrderDetailsView.html?orderId=${order.id}">${order.id}</a></td>
+        <tr class="border-b border-line hover:bg-[#F3EDF7]/50 transition">
+          <td class="p-3"><a class="font-mono font-bold text-primary hover:underline text-sm" href="OrderDetails/OrderDetailsView.html?orderId=${order.id}&origin=workqueue">${order.id}</a></td>
           <td class="p-3 text-text font-medium text-sm">${order.patientName}</td>
           <td class="p-3 text-muted text-sm font-mono">${order.dob}</td>
           <td class="p-3 text-text text-sm truncate" title="${order.provider}">${order.provider}</td>

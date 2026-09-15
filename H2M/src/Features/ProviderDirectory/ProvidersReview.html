@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Golden Tickets | H2M BRIDGE Workspace</title>
+  <title>Provider Review | H2M BRIDGE Workspace</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,8 @@
             line: '#CAC4D0', text: '#1C1B1F', muted: '#49454F', outline: '#79747E',
             'status-success-bg': '#E6F4EA', 'status-success-text': '#0D652D',
             'status-failed-bg': '#F9DEDC', 'status-failed-text': '#B3261E',
-            'status-warning-bg': '#FEF7E0', 'status-warning-text': '#6D4200'
+            'status-warning-bg': '#FEF7E0', 'status-warning-text': '#6D4200',
+            'status-info-bg': '#E8F0FE', 'status-info-text': '#174EA6'
           }
         }
       }
@@ -45,18 +46,18 @@
           <div class="flex items-center gap-2.5 min-w-0 flex-1"><span class="material-symbols-outlined text-[18px]">badge</span><span class="truncate">All Providers</span></div>
         </a>
 
-        <!-- Item 2: Provider Review (Renamed from New Providers) -->
-        <a href="ProvidersReview.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium transition">
+        <!-- Item 2: Provider Review (Active Page) -->
+        <a href="ProvidersReview.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition">
           <div class="flex items-center gap-2.5 min-w-0 flex-1"><span class="material-symbols-outlined text-[18px]">rate_review</span><span class="truncate">Provider Review</span></div>
         </a>
 
-        <!-- Item 3: Golden Tickets (Active) -->
-        <a href="GoldenTickets.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition">
+        <!-- Item 3: Golden Tickets -->
+        <a href="GoldenTickets.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium transition">
           <div class="flex items-center gap-2.5 min-w-0 flex-1"><span class="material-symbols-outlined text-[18px]">verified</span><span class="truncate">Golden Tickets</span></div>
         </a>
 
         <!-- Item 4: Archived Providers -->
-        <a href="Archievedproviders.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium transition">
+        <a href="Archivedproviders.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium transition">
           <div class="flex items-center gap-2.5 min-w-0 flex-1"><span class="material-symbols-outlined text-[18px]">archive</span><span class="truncate">Archived Providers</span></div>
         </a>
       </nav>
@@ -127,25 +128,24 @@
       <!-- Main Title -->
       <div class="shrink-0">
         <h1 class="text-3xl font-semibold text-text">Provider Directory</h1>
-        <p class="text-xs text-muted mt-0.5">Clinicians with rolling 90-day verified fax delivery histories bypassing manual review</p>
+        <p class="text-xs text-muted mt-0.5">Newly discovered clinician records pending credential verification or NPI lookup</p>
       </div>
 
       <!-- Main Table Panel (Content-Hugging with Internal Vertical Scroll) -->
       <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0 mb-6">
         <div class="p-5 border-b border-line flex items-center justify-between shrink-0">
-          <h2 class="text-xl font-semibold text-text">Golden Tickets</h2>
+          <h2 class="text-xl font-semibold text-text">Provider review</h2>
           
           <div class="flex items-center gap-2.5">
             <div class="h-9 w-56 px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 text-muted border-0 shrink-0">
               <span class="material-symbols-outlined shrink-0 text-[#49454F] text-[20px] select-none">search</span>
-              <input id="dir-search" type="search" oninput="applyFilters()" class="w-full bg-transparent border-0 outline-none text-xs text-[#1C1B1F] placeholder-[#79747E] focus:ring-0" placeholder="Search golden tickets...">
+              <input id="dir-search" type="search" oninput="applyFilters()" class="w-full bg-transparent border-0 outline-none text-xs text-[#1C1B1F] placeholder-[#79747E] focus:ring-0" placeholder="Search unverified...">
             </div>
 
             <div class="relative inline-block">
               <select id="cat-filter" onchange="applyFilters()" class="h-9 pl-3 pr-8 border border-[#79747E] rounded-lg bg-white hover:bg-[#F3EDF7] text-xs font-medium text-[#49454F] outline-none transition-colors duration-200 appearance-none cursor-pointer">
                 <option value="all">All Specialties</option>
                 <option value="Obstetrics & Gynecology">Obstetrics &amp; Gynecology</option>
-                <option value="Maternal & Fetal Medicine">Maternal &amp; Fetal Medicine</option>
                 <option value="Family Medicine">Family Medicine</option>
               </select>
               <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
@@ -162,7 +162,7 @@
 
             <!-- Pagination Status & Controls -->
             <div class="flex items-center gap-3 text-xs text-muted pl-2">
-              <span id="pagination-status" class="font-medium text-text font-mono select-none">Showing 1–3 of 3</span>
+              <span id="pagination-status" class="font-medium text-text font-mono select-none">Showing 1–2 of 2</span>
               <div class="flex items-center gap-1 select-none">
                 <button id="prev-page-btn" onclick="changePage(-1)" class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 outline-none disabled:opacity-20 disabled:hover:bg-transparent disabled:cursor-not-allowed" title="Previous page">
                   <span class="material-symbols-outlined text-[20px] leading-none select-none">navigate_before</span>
@@ -208,10 +208,9 @@
   <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
 
   <script>
-    let goldenProviders = [
-      { id: "PROV-000002", name: "Dr. Raymond Aldrich, M.D.", npi: "1215048332", specialty: "Obstetrics & Gynecology", status: "Active", state: "TN", locations: [{ name: "Diana Health Springfield", fax: "(615) 384-1234" }] },
-      { id: "PROV-000003", name: "Dr. Jeremy Avila, M.D.", npi: "1841390291", specialty: "Obstetrics & Gynecology", status: "Active", state: "TN", locations: [{ name: "Avila Women's Health", fax: "(615) 890-4412" }] },
-      { id: "PROV-000004", name: "Dr. Paul Grayson Smith, D.O.", npi: "1093748201", specialty: "Maternal & Fetal Medicine", status: "Active", state: "TN", locations: [{ name: "Grayson Smith OBGYN", fax: "(615) 327-1100" }] }
+    let newProviders = [
+      { id: "PROV-000001", name: "Unassigned Provider (Clinic General)", npi: "", specialty: "Obstetrics & Gynecology", status: "Review Required", state: "TN", locations: [{ name: "UT Family Medicine", fax: "731-410-0358" }] },
+      { id: "PROV-000012", name: "Dr. Candidate 12, M.D.", npi: "", specialty: "Family Medicine", status: "Review Required", state: "TN", locations: [{ name: "Baptist Medical Group", fax: "(731) 885-2001" }] }
     ];
 
     let currentPageIndex = 0;
@@ -222,8 +221,8 @@
       const spec = document.getElementById('cat-filter').value;
       const loc = document.getElementById('loc-filter').value;
 
-      let filtered = goldenProviders.filter(item => {
-        const matchesSearch = !search || item.id.toLowerCase().includes(search) || item.name.toLowerCase().includes(search) || item.npi.includes(search);
+      let filtered = newProviders.filter(item => {
+        const matchesSearch = !search || item.id.toLowerCase().includes(search) || item.name.toLowerCase().includes(search);
         const matchesSpec = spec === 'all' || item.specialty === spec;
         const matchesLoc = loc === 'all' || item.state === loc;
         return matchesSearch && matchesSpec && matchesLoc;
@@ -252,7 +251,7 @@
       const tbody = document.getElementById('directory-table-body');
       
       if (pageData.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-muted text-xs">No golden ticket providers match the active filters.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-muted text-xs">No unverified provider records match the active filters.</td></tr>`;
         return;
       }
 
@@ -260,10 +259,10 @@
         <tr class="border-b border-line hover:bg-surface-container-low transition cursor-pointer">
           <td class="py-3 px-4 font-mono font-bold text-primary text-sm">${row.id}</td>
           <td class="py-3 px-4 font-bold text-text text-sm">${row.name}</td>
-          <td class="py-3 px-4 font-mono text-sm">${row.npi}</td>
+          <td class="py-3 px-4 font-mono text-sm"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-status-warning-bg text-status-warning-text uppercase">Missing NPI</span></td>
           <td class="py-3 px-4 text-text text-sm truncate">${row.locations[0].name}</td>
           <td class="py-3 px-4 font-mono text-muted text-sm">${row.locations[0].fax}</td>
-          <td class="py-3 px-4 text-center"><span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-success-bg text-status-success-text whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-current inline-block mr-1"></span>Active / Verified</span></td>
+          <td class="py-3 px-4 text-center"><span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-warning-bg text-status-warning-text whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-current inline-block mr-1"></span>Review Required</span></td>
         </tr>
       `).join('');
     }

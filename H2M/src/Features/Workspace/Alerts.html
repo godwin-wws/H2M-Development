@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alerts &amp; Exceptions | H2M BRIDGE</title>
+  <title>Alerts &amp; Exceptions | H2M BRIDGE Workspace</title>
   
+  <!-- Explicit Google Fonts Import for Roboto & Roboto Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -32,6 +33,10 @@
             blue: '#174EA6',
             'amber-bg': '#FEF7E0',
             amber: '#6D4200',
+            'purple-bg': '#EADDFF',
+            purple: '#4A4458',
+            'green-bg': '#E6F4EA',
+            green: '#0D652D',
             'red-bg': '#F9DEDC',
             red: '#B3261E',
           }
@@ -40,41 +45,42 @@
     }
   </script>
 </head>
-<body class="bg-surface text-text font-sans min-h-screen antialiased">
-  <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
+<body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
+
+  <div class="w-[1440px] h-screen mx-auto bg-surface flex overflow-hidden">
     
-    <!-- Side Navigation -->
-    <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+    <!-- Unified Side Navigation -->
+    <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
       <div class="w-[58px] h-[58px]">
-        <img src="https://www.figma.com/api/mcp/asset/344953eb-406f-498c-b60f-e17d785f92f3.png" alt="Help to Moms logo" class="w-full h-full object-contain">
+        <img src="https://helptomoms.com/__l5e/assets-v1/923ead63-1849-4075-9845-3e9a00b8b649/help-to-moms-logo.webp" alt="Help to Moms logo" class="w-full h-full object-contain">
       </div>
       <nav class="w-full flex flex-col gap-1.5" id="workspace-sidebar-nav">
-        <!-- Inactive Dashboard Node (Font Medium, #49454f) -->
-        <a class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition" href="Dashboard.html">
+        <!-- Inactive Dashboard Node -->
+        <a href="Dashboard.html" id="nav-dashboard" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
           <div class="flex items-center gap-2.5 min-w-0 flex-1">
             <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">dashboard</span>
             <span class="truncate">Dashboard</span>
           </div>
         </a>
 
-        <!-- Inactive Work Queues Node (Font Medium, #49454f) -->
-        <a class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition" href="WorkQueue.html">
+        <!-- Inactive Work Queues Page -->
+        <a href="WorkQueue.html" id="nav-work-queue" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
           <div class="flex items-center gap-2.5 min-w-0 flex-1">
             <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">format_list_bulleted</span>
             <span class="truncate">Work Queues</span>
           </div>
         </a>
 
-        <!-- Inactive Order Search Node (Font Medium, #49454f) -->
-        <a class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition" href="OrderSearch.html">
+        <!-- Inactive Order Search Page -->
+        <a href="OrderSearch.html" id="nav-order-search" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
           <div class="flex items-center gap-2.5 min-w-0 flex-1">
             <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">search</span>
             <span class="truncate">Order Search</span>
           </div>
         </a>
 
-        <!-- Active Alerts & Exceptions Node (Font Bold, #4A4458) -->
-        <a class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition" href="Alerts.html">
+        <!-- Active Alerts & Exceptions Page -->
+        <a href="Alerts.html" id="nav-alerts-exceptions" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition">
           <div class="flex items-center gap-2.5 min-w-0 flex-1">
             <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-[18px]">notifications</span>
             <span class="truncate">Alerts &amp; Exceptions</span>
@@ -83,13 +89,13 @@
       </nav>
     </aside>
 
-   <!-- Main Content -->
-    <section class="flex-1 p-8 pb-12 flex flex-col gap-6">
+    <!-- Main Content Area -->
+    <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
       
-      <!-- Top Bar Tabs -->
-      <header class="h-[58px] flex items-center justify-between">
+      <!-- Top Navigation Bar & Global Module Pill -->
+      <header class="h-[58px] flex items-center justify-between shrink-0">
         <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
-          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium" href="Dashboard.html">Workspace</a>
+          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditLogs.html">Audit</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectory.html">Provider Directory</a>
@@ -97,9 +103,14 @@
         </nav>
         
         <div class="flex items-center gap-6">
-          <div class="relative w-10 h-10 flex items-center justify-center cursor-pointer">
-            <img src="https://www.figma.com/api/mcp/asset/0e022744-e0d6-4c6f-8546-51c31cf743c4.svg" alt="Notifications" class="w-5 h-5">
-            <span class="absolute top-0 right-0 w-4 h-4 border border-white rounded-full bg-red text-white flex items-center justify-center text-[9px] font-bold">14</span>
+           <!-- Integrated Material Symbols Notification Bell with Red Badge -->
+          <div class="relative inline-flex items-center justify-center w-9 h-9 cursor-pointer group">
+            <span class="material-symbols-outlined text-[#1C1B1F] text-[24px] group-hover:text-primary transition-colors select-none">
+              notifications
+            </span>
+            <span class="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 bg-[#B3261E] text-white rounded-full flex items-center justify-center text-[10px] font-bold leading-none border-2 border-white shadow-xs select-none">
+              14
+            </span>
           </div>
 
           <!-- Account / Role Switcher -->
@@ -109,7 +120,7 @@
               type="button"
               class="flex items-center gap-2 h-9 pl-1 pr-3 rounded-full border border-[#e8def8] bg-white hover:bg-[#f3edf7] cursor-pointer transition-colors outline-none focus:ring-2 focus:ring-[#6750a4]"
             >
-              <div id="active-avatar" class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold text-white shrink-0 bg-[#6750a4]">
+              <div id="active-avatar" class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold text-white flex-shrink-0 bg-[#6750a4]">
                 J
               </div>
               <div class="text-left hidden sm:block">
@@ -134,13 +145,11 @@
                 id="role-opt-operations"
                 class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]"
               >
-                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white shrink-0 bg-[#6750a4]">J</div>
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-sans-bold text-white flex-shrink-0 bg-[#6750a4]">J</div>
                 <div class="flex-1 min-w-0">
                   <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Jane Doe</p>
                   <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">jane.doe@h2m.org</p>
-                  <p class="text-[10px] font-bold m-0 text-[#6750a4]">
-                    Operations 
-                  </p>
+                  <p class="text-[10px] font-bold m-0 text-[#6750a4]">Operations</p>
                 </div>
                 <span id="check-operations" class="material-symbols-outlined text-[18px] text-[#6750a4]">check</span>
               </button>
@@ -151,13 +160,11 @@
                 id="role-opt-administrator"
                 class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]"
               >
-                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white shrink-0 bg-[#1967D2]">P</div>
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-sans-bold text-white flex-shrink-0 bg-[#1967D2]">P</div>
                 <div class="flex-1 min-w-0">
                   <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Priya Patel</p>
                   <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">p.patel@h2m.org</p>
-                  <p class="text-[10px] font-bold m-0 text-[#1967D2]">
-                    Administrator
-                  </p>
+                  <p class="text-[10px] font-bold m-0 text-[#1967D2]">Administrator</p>
                 </div>
                 <span id="check-administrator" class="material-symbols-outlined text-[18px] text-[#6750a4] hidden">check</span>
               </button>
@@ -166,12 +173,45 @@
         </div>
       </header>
 
-      <div>
+      <!-- Page Title -->
+      <div class="shrink-0">
         <h1 class="text-3xl font-bold text-text tracking-tight">Alerts &amp; Exceptions</h1>
       </div>
 
-      <section class="bg-white border border-line rounded-3xl shadow-sm overflow-hidden flex flex-col">
-        <div id="alerts-container" class="divide-y divide-line">
+      <!-- Dashboard Style Card Wrapper (Dynamic Height Hugs Content) -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col flex-1 min-h-0">
+        
+        <!-- Top Card Header & M3 Pagination Controls -->
+        <div class="p-5 border-b border-line flex items-center justify-between shrink-0">
+          <h2 class="text-xl font-semibold text-text">Active Alerts</h2>
+
+          <!-- M3 Circular Pagination Controls -->
+          <div class="flex items-center gap-3 text-xs text-muted ml-auto">
+            <span id="pagination-status" class="font-medium text-text font-mono select-none">Showing 1-10 of 77</span>
+            <div class="flex items-center gap-1 select-none">
+              <button 
+                id="prev-page-btn" 
+                onclick="changePage(-1)" 
+                class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 outline-none disabled:opacity-20 disabled:hover:bg-transparent disabled:cursor-not-allowed"
+                title="Previous page"
+              >
+                <span class="material-symbols-outlined text-[20px] leading-none select-none">navigate_before</span>
+              </button>
+              <button 
+                id="next-page-btn" 
+                onclick="changePage(1)" 
+                class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 outline-none disabled:opacity-38 disabled:hover:bg-transparent disabled:cursor-not-allowed"
+                title="Next page"
+              >
+                <span class="material-symbols-outlined text-[20px] leading-none select-none">navigate_next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scrollable List Container -->
+        <div id="alerts-container" class="divide-y divide-line overflow-y-auto flex-1 min-h-0">
+          <!-- JS Injected Content -->
         </div>
       </section>
 
@@ -182,44 +222,37 @@
   <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
 
   <script>
+    // Compiled exceptions feed extracted directly from H2M_Bridge_Intake.xlsx
     const alertsData = [
-      {
-        orderId: 'ORD-100465',
-        type: 'Duplicate Suspected',
-        description: 'Routed to Review from Intake. Awaiting Resolution',
-        timeAgo: '12 min ago',
-        iconType: 'info',
-        iconBg: 'bg-blue-bg',
-        iconColor: 'text-blue'
-      },
-      {
-        orderId: 'ORD-100478',
-        type: 'Waiting on Provider Response',
-        description: 'No response for 3 days. Consider escalation',
-        timeAgo: '50 min ago',
-        iconType: 'clock',
-        iconBg: 'bg-[#EAE6EE]',
-        iconColor: 'text-[#49454F]'
-      },
-      {
-        orderId: 'ORD-100471',
-        type: 'Verification mismatch',
-        description: 'Provider NPI does not match directory record',
-        timeAgo: '1 hr ago',
-        iconType: 'warning',
-        iconBg: 'bg-amber-bg',
-        iconColor: 'text-amber'
-      },
-      {
-        orderId: 'ORD-100465',
-        type: 'Missing documentation',
-        description: 'Required kit authorization document not yet received',
-        timeAgo: '2 hrs ago',
-        iconType: 'error',
-        iconBg: 'bg-red-bg',
-        iconColor: 'text-red'
-      }
+      { orderId: 'ORD-000867', type: 'Prescription Requested', description: 'Prescription request sent to provider for Brianna Treadway. Pending response.', timeAgo: '12 min ago', iconType: 'info', iconBg: 'bg-blue-bg', iconColor: 'text-blue' },
+      { orderId: 'ORD-000868', type: 'Physician Info Requested', description: 'Provider details incomplete for Laura Mabry. Awaiting info.', timeAgo: '45 min ago', iconType: 'warning', iconBg: 'bg-amber-bg', iconColor: 'text-amber' },
+      { orderId: 'ORD-000869', type: 'Physician Info Requested', description: 'Provider details incomplete for Madison Chilcutt. Awaiting info.', timeAgo: '2 hrs ago', iconType: 'warning', iconBg: 'bg-amber-bg', iconColor: 'text-amber' },
+      { orderId: 'ORD-000871', type: 'Physician Info Requested', description: 'Provider details incomplete for Sinthia Abrego. Awaiting info.', timeAgo: '12 min ago', iconType: 'warning', iconBg: 'bg-amber-bg', iconColor: 'text-amber' },
+      { orderId: 'ORD-000872', type: 'Prescription Requested', description: 'Prescription request sent to provider for Suheda Begum. Pending response.', timeAgo: '45 min ago', iconType: 'info', iconBg: 'bg-blue-bg', iconColor: 'text-blue' },
+      { orderId: 'ORD-000873', type: 'Prescription Requested', description: 'Prescription request sent to provider for Leticia Delarosa. Pending response.', timeAgo: '2 hrs ago', iconType: 'info', iconBg: 'bg-blue-bg', iconColor: 'text-blue' },
+      { orderId: 'ORD-000874', type: 'Physician Info Requested', description: 'Provider details incomplete for Hayley Gow. Awaiting info.', timeAgo: '12 min ago', iconType: 'warning', iconBg: 'bg-amber-bg', iconColor: 'text-amber' },
+      { orderId: 'ORD-000875', type: 'Physician Info Requested', description: 'Provider details incomplete for Doris Manchame. Awaiting info.', timeAgo: '45 min ago', iconType: 'warning', iconBg: 'bg-amber-bg', iconColor: 'text-amber' },
+      { orderId: 'ORD-000876', type: 'Prescription Requested', description: 'Prescription request sent to provider for Peyton Tockey. Pending response.', timeAgo: '2 hrs ago', iconType: 'info', iconBg: 'bg-blue-bg', iconColor: 'text-blue' },
+      { orderId: 'ORD-000877', type: 'Missing Fax Number', description: 'Fax number is absent for physician on order. Manual lookup required for Leah Garcia.', timeAgo: '12 min ago', iconType: 'error', iconBg: 'bg-red-bg', iconColor: 'text-red' },
+      { orderId: 'ORD-000878', type: 'Missing Fax Number', description: 'Fax number is absent for physician on order. Manual lookup required for Sarah Albertson.', timeAgo: '45 min ago', iconType: 'error', iconBg: 'bg-red-bg', iconColor: 'text-red' },
+      { orderId: 'ORD-000879', type: 'Missing Fax Number', description: 'Fax number is absent for physician on order. Manual lookup required for Elizabeth Lyi.', timeAgo: '2 hrs ago', iconType: 'error', iconBg: 'bg-red-bg', iconColor: 'text-red' },
+      { orderId: 'ORD-000880', type: 'Physician Info Requested', description: 'Provider details incomplete for Jade Blasdell. Awaiting info.', timeAgo: '12 min ago', iconType: 'warning', iconBg: 'bg-amber-bg', iconColor: 'text-amber' },
+      { orderId: 'ORD-000881', type: 'Physician Info Requested', description: 'Provider details incomplete for Kaylee Kemp. Awaiting info.', timeAgo: '45 min ago', iconType: 'warning', iconBg: 'bg-amber-bg', iconColor: 'text-amber' },
+      { orderId: 'ORD-000884', type: 'Missing Fax Number', description: 'Fax number is absent for physician on order. Manual lookup required for Linda Winland.', timeAgo: '2 hrs ago', iconType: 'error', iconBg: 'bg-red-bg', iconColor: 'text-red' },
+      { orderId: 'ORD-000886', type: 'Missing Fax Number', description: 'Fax number is absent for physician on order. Manual lookup required for Stefany Sanchez.', timeAgo: '12 min ago', iconType: 'error', iconBg: 'bg-red-bg', iconColor: 'text-red' },
+      { orderId: 'ORD-100465', type: 'Missing Kit Auth', description: 'Required kit authorization form not received. Routed to Waiting queue for Madison Chilcutt.', timeAgo: '45 min ago', iconType: 'warning', iconBg: 'bg-amber-bg', iconColor: 'text-amber' },
+      { orderId: 'ORD-100471', type: 'NPI Mismatch', description: 'Inbound provider NPI does not match directory record for Sari Gutierrez.', timeAgo: '2 hrs ago', iconType: 'warning', iconBg: 'bg-amber-bg', iconColor: 'text-amber' },
+      { orderId: 'ORD-100482', type: 'Duplicate Record', description: 'Duplicate record matched on (Order ID / Email / Composite Patient Profile) for Priya Nair.', timeAgo: '15 min ago', iconType: 'error', iconBg: 'bg-red-bg', iconColor: 'text-red' },
+      { orderId: 'ORD-100401', type: 'Invalid Name', description: 'Last Name must contain text characters only. Found digits or symbols.', timeAgo: '30 min ago', iconType: 'error', iconBg: 'bg-red-bg', iconColor: 'text-red' },
+      { orderId: 'ORD-100402', type: 'Missing Req Field', description: 'Address is required and cannot be empty.', timeAgo: '45 min ago', iconType: 'error', iconBg: 'bg-red-bg', iconColor: 'text-red' },
+      { orderId: 'ORD-100404', type: 'Missing Req Field', description: 'Insurance Member ID is required. (Cheyenne Michelle Bailey)', timeAgo: '60 min ago', iconType: 'error', iconBg: 'bg-red-bg', iconColor: 'text-red' },
+      { orderId: 'ORD-100405', type: 'Missing Physician Info', description: 'Physician NPI and Fax missing. Match not found in Provider Directory. (Dorimar Cruz)', timeAgo: '75 min ago', iconType: 'warning', iconBg: 'bg-amber-bg', iconColor: 'text-amber' },
+      { orderId: 'ORD-100407', type: 'Invalid City', description: 'City must contain text characters only. Found: Cape Coral 01.', timeAgo: '90 min ago', iconType: 'error', iconBg: 'bg-red-bg', iconColor: 'text-red' },
+      { orderId: 'ORD-100409', type: 'Missing Physician Info', description: 'Physician NPI and Fax missing. Match not found in Provider Directory. (Sade N Goodluck)', timeAgo: '105 min ago', iconType: 'warning', iconBg: 'bg-amber-bg', iconColor: 'text-amber' }
     ];
+
+    let currentPage = 1;
+    const pageSize = 10;
 
     function renderIcons(type, colorClass) {
       if (type === 'info') {
@@ -233,7 +266,69 @@
       }
     }
 
-    // Account / Role Switcher Logic
+    function renderAlerts() {
+      const totalItems = alertsData.length;
+      const totalPages = Math.ceil(totalItems / pageSize) || 1;
+      if (currentPage > totalPages) currentPage = totalPages;
+
+      const startIndex = (currentPage - 1) * pageSize;
+      const endIndex = Math.min(startIndex + pageSize, totalItems);
+      const paginatedData = alertsData.slice(startIndex, endIndex);
+
+      const container = document.getElementById('alerts-container');
+
+      if (!paginatedData.length) {
+        container.innerHTML = `<div class="p-8 text-center text-muted text-sm">No active alerts found.</div>`;
+      } else {
+        container.innerHTML = paginatedData.map(item => `
+          <div class="px-6 py-4 flex items-center justify-between hover:bg-[#F3EDF7]/50 transition cursor-pointer group" onclick="navigateToOrderDetails('${item.orderId}')">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full ${item.iconBg} flex items-center justify-center shrink-0">
+                ${renderIcons(item.iconType, item.iconColor)}
+              </div>
+              <div class="flex flex-col gap-0.5">
+                <div class="text-sm font-bold text-text">
+                  <span class="font-mono font-bold text-text">${item.orderId}</span> - <span>${item.type}</span>
+                </div>
+                <div class="text-xs text-muted font-normal">
+                  ${item.description}
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-3 shrink-0">
+              <span class="text-xs text-muted font-normal">${item.timeAgo}</span>
+              <span class="material-symbols-outlined text-[16px] text-muted opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition">chevron_right</span>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Update Pagination Indicator Controls
+      const statusText = totalItems > 0 
+        ? `Showing ${startIndex + 1}-${endIndex} of ${totalItems}`
+        : `Showing 0-0 of 0`;
+
+      document.getElementById('pagination-status').innerText = statusText;
+      document.getElementById('prev-page-btn').disabled = currentPage === 1;
+      document.getElementById('next-page-btn').disabled = currentPage >= totalPages;
+    }
+
+    function changePage(direction) {
+      const totalPages = Math.ceil(alertsData.length / pageSize) || 1;
+      const newPage = currentPage + direction;
+      if (newPage >= 1 && newPage <= totalPages) {
+        currentPage = newPage;
+        renderAlerts();
+      }
+    }
+
+    // Direct link to OrderDetailsView.html with origin=alerts
+    function navigateToOrderDetails(orderId) {
+      window.location.href = `OrderDetails/OrderDetailsView.html?orderId=${orderId}&origin=alerts`;
+    }
+
+    // Role Switcher Logic
     let activeRole = 'operations';
     let roleSwitcherOpen = false;
 
@@ -300,37 +395,6 @@
         toast.classList.remove('opacity-100');
         toast.classList.add('opacity-0');
       }, 3000);
-    }
-
-    function renderAlerts() {
-      const container = document.getElementById('alerts-container');
-      
-      container.innerHTML = alertsData.map(item => `
-        <div class="px-6 py-4 flex items-center justify-between hover:bg-surface/60 transition cursor-pointer group" onclick="navigateToOrderDetails('${item.orderId}')">
-          <div class="flex items-center gap-4">
-            <div class="w-10 h-10 rounded-full ${item.iconBg} flex items-center justify-center shrink-0">
-              ${renderIcons(item.iconType, item.iconColor)}
-            </div>
-            <div class="flex flex-col gap-0.5">
-              <div class="text-sm font-bold text-text">
-                <span class="font-mono font-bold text-text">${item.orderId}</span> - <span>${item.type}</span>
-              </div>
-              <div class="text-xs text-muted font-normal">
-                ${item.description}
-              </div>
-            </div>
-          </div>
-          
-          <div class="flex items-center gap-3 shrink-0">
-            <span class="text-xs text-muted font-normal">${item.timeAgo}</span>
-            <span class="material-symbols-outlined text-[16px] text-muted opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition">chevron_right</span>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function navigateToOrderDetails(orderId) {
-      window.location.href = `OrderDetails/OrderDetailsView.html?orderId=${orderId}`;
     }
 
     renderAlerts();

@@ -1,41 +1,196 @@
-<!-- Quick Actions Modal Component -->
-<div id="quick-actions-modal" class="modal-backdrop hidden" aria-hidden="true" role="dialog" aria-modal="true">
-  <div class="modal-card">
-    <div class="modal-header">
-      <h3 class="modal-title">Quick Actions</h3>
-      <button id="modal-close-btn" class="modal-close" type="button" aria-label="Close modal">✕</button>
+<!-- Contextual Quick Actions Modal Component -->
+<div id="quick-actions-modal" class="hidden fixed inset-0 bg-black/40 backdrop-blur-xs z-50 flex items-center justify-center p-4 transition-opacity duration-200" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="bg-white border border-line rounded-2xl shadow-xl w-full max-w-lg overflow-hidden flex flex-col transition-all">
+    
+    <!-- Modal Header -->
+    <div class="p-5 border-b border-line bg-white flex items-center justify-between">
+      <div class="flex flex-col gap-0.5">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-[22px]">bolt</span>
+          <h3 class="text-base font-bold text-text">Contextual Quick Actions</h3>
+        </div>
+        <p class="text-[11px] text-muted">Gated by current status and active user role</p>
+      </div>
+      <button id="modal-close-btn" onclick="closeQuickActionsModal()" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-primary-soft/50 hover:text-text transition cursor-pointer" type="button" aria-label="Close modal">
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
     </div>
     
-    <div class="modal-banner">
-      <span class="banner-order" id="modal-order-text">Active Order: ORD-000869</span>
-      <span class="banner-status">Status: Review Required</span>
+    <!-- Active Order Banner -->
+    <div class="p-3.5 px-6 m-6 mb-0 rounded-xl bg-blue-bg/60 border border-blue/20 flex items-center justify-between text-xs">
+      <span class="font-bold text-blue" id="modal-order-text">Active Order: ORD-100482</span>
+      <span class="font-bold text-blue" id="modal-status-badge">Status: Review Required</span>
     </div>
 
-    <div class="modal-section-label">Operational Actions</div>
+    <!-- Section Sub-Header -->
+    <div class="px-6 pt-5 pb-2 text-[11px] font-bold text-muted uppercase tracking-wider">Permitted Operational Actions</div>
 
-    <div class="modal-actions-list">
-      <button class="modal-action-row" type="button" data-action="accept">
-        <span class="action-icon">✓</span>
-        <span class="action-text">Accept Order</span>
+    <!-- Operational Action Buttons List -->
+    <div class="p-6 pt-0 flex flex-col gap-2.5">
+      
+      <!-- Action 1: Accept Order (Direct Action) -->
+      <button 
+        id="btn-action-accept"
+        onclick="selectQuickActionRow('accept', 'Accept Order', false)" 
+        class="action-row-btn w-full p-3 px-4 rounded-xl border border-line bg-white hover:bg-[#F3EDF7] hover:border-primary text-text text-xs font-medium flex items-center justify-between transition cursor-pointer" 
+        type="button"
+      >
+        <div class="flex items-center gap-2.5">
+          <span class="text-text font-bold text-sm">✓</span>
+          <span class="font-bold text-text">Accept Order</span>
+        </div>
       </button>
 
-      <button class="modal-action-row" type="button" data-action="reject">
-        <span class="action-icon">✕</span>
-        <span class="action-text">Reject Order</span>
-        <span class="action-badge">Reason Required</span>
+      <!-- Action 2: Reject Order (Reason Required) -->
+      <button 
+        id="btn-action-reject"
+        onclick="selectQuickActionRow('reject', 'Reject Order', true, 'RV-002')" 
+        class="action-row-btn w-full p-3 px-4 rounded-xl border border-line bg-white hover:bg-red-bg/30 hover:border-red text-text text-xs font-medium flex items-center justify-between transition cursor-pointer" 
+        type="button"
+      >
+        <div class="flex items-center gap-2.5">
+          <span class="text-red font-bold text-sm">✕</span>
+          <span class="font-bold text-text">Reject Order</span>
+        </div>
+        <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-red-bg text-red">Reason Required</span>
       </button>
 
-      <button class="modal-action-row" type="button" data-action="return">
-        <span class="action-icon">↺</span>
-        <span class="action-text">Return Order to Intake</span>
-        <span class="action-badge">Reason Required</span>
+      <!-- Action 3: Return Order to Intake (Reason Required) -->
+      <button 
+        id="btn-action-return"
+        onclick="selectQuickActionRow('return', 'Return Order to Intake', true, 'RV-003')" 
+        class="action-row-btn w-full p-3 px-4 rounded-xl border border-line bg-white hover:bg-amber-bg/40 hover:border-amber text-text text-xs font-medium flex items-center justify-between transition cursor-pointer" 
+        type="button"
+      >
+        <div class="flex items-center gap-2.5">
+          <span class="text-amber font-bold text-sm">↩</span>
+          <span class="font-bold text-text">Return Order to Intake</span>
+        </div>
+        <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-bg text-amber">Reason Required</span>
       </button>
 
-      <button class="modal-action-row" type="button" data-action="regenerate">
-        <span class="action-icon">🔄</span>
-        <span class="action-text">Regenerate Order Document</span>
-        <span class="action-badge">Reason Required</span>
+      <!-- Action 4: Regenerate Order Document (Reason Required) -->
+      <button 
+        id="btn-action-regenerate"
+        onclick="selectQuickActionRow('regenerate', 'Regenerate Order Document', true, 'RV-004')" 
+        class="action-row-btn w-full p-3 px-4 rounded-xl border border-line bg-white hover:bg-blue-bg/40 hover:border-blue text-text text-xs font-medium flex items-center justify-between transition cursor-pointer" 
+        type="button"
+      >
+        <div class="flex items-center gap-2.5">
+          <span class="text-blue font-bold text-sm">🔄</span>
+          <span class="font-bold text-text">Regenerate Order Document</span>
+        </div>
+        <span class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-amber-bg text-amber">Reason Required</span>
       </button>
+
+      <!-- DYNAMIC MANDATORY AUDIT REASON BOX (Matches image_55ae69.png) -->
+      <div id="reason-audit-box" class="hidden mt-2 p-4 rounded-xl border-2 border-blue bg-white flex flex-col gap-3 transition-all shadow-xs">
+        <div class="flex items-center justify-between">
+          <span id="reason-box-title" class="font-bold text-xs text-red">Reason Required for "Return Order to Intake" (RV-003)</span>
+          <span class="text-[10px] font-bold text-red uppercase tracking-wider">(AUD-006 Compliance)</span>
+        </div>
+        
+        <textarea 
+          id="action-audit-reason-input" 
+          rows="3" 
+          class="w-full text-xs p-3 border border-line rounded-lg focus:outline-none focus:border-primary text-text placeholder-muted resize-none" 
+          placeholder="Enter mandatory business justification for audit trail..."
+        ></textarea>
+        
+        <div class="flex items-center justify-end gap-2.5 pt-1">
+          <button 
+            type="button" 
+            onclick="resetQuickActionSelection()" 
+            class="px-4 py-1.5 rounded-lg border border-line text-text text-xs font-bold hover:bg-[#F3EDF7] transition cursor-pointer"
+          >
+            Cancel
+          </button>
+          <button 
+            type="button" 
+            onclick="confirmQuickActionWithAudit()" 
+            class="px-4 py-1.5 rounded-lg bg-blue text-white text-xs font-bold hover:bg-blue/90 transition shadow-sm cursor-pointer"
+          >
+            Confirm &amp; Log Audit
+          </button>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
+
+<script>
+  let selectedActionType = null;
+  let selectedActionLabel = '';
+
+  function openQuickActionsModal() {
+    const modal = document.getElementById('quick-actions-modal');
+    document.getElementById('modal-order-text').innerText = `Active Order: ${orderId}`;
+    document.getElementById('modal-status-badge').innerText = `Status: ${orderData.bridgeStatus || 'Review Required'}`;
+    
+    resetQuickActionSelection();
+    modal.classList.remove('hidden');
+  }
+
+  function closeQuickActionsModal() {
+    document.getElementById('quick-actions-modal').classList.add('hidden');
+    resetQuickActionSelection();
+  }
+
+  function resetQuickActionSelection() {
+    selectedActionType = null;
+    selectedActionLabel = '';
+    
+    // Reset all row highlights
+    document.querySelectorAll('.action-row-btn').forEach(btn => {
+      btn.className = "action-row-btn w-full p-3 px-4 rounded-xl border border-line bg-white text-text text-xs font-medium flex items-center justify-between transition cursor-pointer hover:bg-[#F3EDF7]";
+    });
+    
+    // Hide reason box and clear input
+    const auditBox = document.getElementById('reason-audit-box');
+    if (auditBox) auditBox.classList.add('hidden');
+    
+    const input = document.getElementById('action-audit-reason-input');
+    if (input) input.value = '';
+  }
+
+  function selectQuickActionRow(actionType, actionLabel, requiresReason, codeRule = 'RV-001') {
+    selectedActionType = actionType;
+    selectedActionLabel = actionLabel;
+
+    // Highlight selected row with black outline matching image_55ae69.png
+    document.querySelectorAll('.action-row-btn').forEach(btn => {
+      btn.className = "action-row-btn w-full p-3 px-4 rounded-xl border border-line bg-white text-text text-xs font-medium flex items-center justify-between transition cursor-pointer opacity-70";
+    });
+
+    const activeBtn = document.getElementById(`btn-action-${actionType}`);
+    if (activeBtn) {
+      activeBtn.className = "action-row-btn w-full p-3 px-4 rounded-xl border-2 border-black bg-white text-text text-xs font-medium flex items-center justify-between transition cursor-pointer opacity-100 shadow-xs";
+    }
+
+    const auditBox = document.getElementById('reason-audit-box');
+    const titleElem = document.getElementById('reason-box-title');
+
+    if (requiresReason) {
+      titleElem.innerText = `Reason Required for "${actionLabel}" (${codeRule})`;
+      auditBox.classList.remove('hidden');
+      document.getElementById('action-audit-reason-input').focus();
+    } else {
+      // Direct execution without reason required
+      handleQuickAction(actionType, 'Direct operational approval committed.');
+    }
+  }
+
+  function confirmQuickActionWithAudit() {
+    const reasonInput = document.getElementById('action-audit-reason-input');
+    const justification = reasonInput ? reasonInput.value.trim() : '';
+
+    if (!justification) {
+      showToast('Mandatory business justification is required before confirming.');
+      reasonInput.focus();
+      return;
+    }
+
+    handleQuickAction(selectedActionType, justification);
+  }
+</script>

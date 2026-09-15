@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Order Search | H2M BRIDGE Workspace</title>
   
+  <!-- Explicit Google Fonts Import for Roboto & Roboto Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -32,6 +33,10 @@
             blue: '#174EA6',
             'amber-bg': '#FEF7E0',
             amber: '#6D4200',
+            'purple-bg': '#EADDFF',
+            purple: '#4A4458',
+            'green-bg': '#E6F4EA',
+            green: '#0D652D',
             'red-bg': '#F9DEDC',
             red: '#B3261E',
           }
@@ -40,41 +45,42 @@
     }
   </script>
 </head>
-<body class="bg-surface text-text font-sans min-h-screen antialiased">
-  <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
+<body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
+
+  <div class="w-[1440px] h-screen mx-auto bg-surface flex overflow-hidden">
     
-    <!-- Side Navigation -->
-    <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+    <!-- Unified Side Navigation -->
+    <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
       <div class="w-[58px] h-[58px]">
-        <img src="https://www.figma.com/api/mcp/asset/344953eb-406f-498c-b60f-e17d785f92f3.png" alt="Help to Moms logo" class="w-full h-full object-contain">
+        <img src="https://helptomoms.com/__l5e/assets-v1/923ead63-1849-4075-9845-3e9a00b8b649/help-to-moms-logo.webp" alt="Help to Moms logo" class="w-full h-full object-contain">
       </div>
       <nav class="w-full flex flex-col gap-1.5" id="workspace-sidebar-nav">
-        <!-- Inactive Dashboard Node (Font Medium, #49454f) -->
-        <a class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition" href="Dashboard.html">
+        <!-- Inactive Dashboard Node -->
+        <a href="Dashboard.html" id="nav-dashboard" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
           <div class="flex items-center gap-2.5 min-w-0 flex-1">
             <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">dashboard</span>
             <span class="truncate">Dashboard</span>
           </div>
         </a>
 
-        <!-- Inactive Work Queues Node (Font Medium, #49454f) -->
-        <a class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition" href="WorkQueue.html">
+        <!-- Inactive Work Queues Page -->
+        <a href="WorkQueue.html" id="nav-work-queue" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
           <div class="flex items-center gap-2.5 min-w-0 flex-1">
             <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">format_list_bulleted</span>
             <span class="truncate">Work Queues</span>
           </div>
         </a>
 
-        <!-- Active Order Search Node (Font Bold, #4A4458) -->
-        <a class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition" href="OrderSearch.html">
+        <!-- Active Order Search Page -->
+        <a href="OrderSearch.html" id="nav-order-search" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition">
           <div class="flex items-center gap-2.5 min-w-0 flex-1">
             <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-[18px]">search</span>
             <span class="truncate">Order Search</span>
           </div>
         </a>
 
-        <!-- Inactive Alerts & Exceptions Node (Font Medium, #49454f) -->
-        <a class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition" href="Alerts.html">
+        <!-- Inactive Alerts & Exceptions Page -->
+        <a href="Alerts.html" id="nav-alerts-exceptions" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
           <div class="flex items-center gap-2.5 min-w-0 flex-1">
             <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">notifications</span>
             <span class="truncate">Alerts &amp; Exceptions</span>
@@ -84,12 +90,12 @@
     </aside>
 
     <!-- Main Content Area -->
-    <section class="flex-1 p-8 pb-12 flex flex-col gap-6 overflow-hidden">
+    <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-y-auto">
       
-      <!-- Top Bar Tabs -->
-      <header class="h-[58px] flex items-center justify-between">
+      <!-- Top Navigation Bar & Global Module Pill -->
+      <header class="h-[58px] flex items-center justify-between shrink-0">
         <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
-          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium" href="Dashboard.html">Workspace</a>
+          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditLogs.html">Audit</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectory.html">Provider Directory</a>
@@ -97,9 +103,14 @@
         </nav>
         
         <div class="flex items-center gap-6">
-          <div class="relative w-10 h-10 flex items-center justify-center cursor-pointer">
-            <img src="https://www.figma.com/api/mcp/asset/0e022744-e0d6-4c6f-8546-51c31cf743c4.svg" alt="Notifications" class="w-5 h-5">
-            <span class="absolute top-0 right-0 w-4 h-4 border border-white rounded-full bg-red text-white flex items-center justify-center text-[9px] font-bold">14</span>
+           <!-- Integrated Material Symbols Notification Bell with Red Badge -->
+          <div class="relative inline-flex items-center justify-center w-9 h-9 cursor-pointer group">
+            <span class="material-symbols-outlined text-[#1C1B1F] text-[24px] group-hover:text-primary transition-colors select-none">
+              notifications
+            </span>
+            <span class="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 bg-[#B3261E] text-white rounded-full flex items-center justify-center text-[10px] font-bold leading-none border-2 border-white shadow-xs select-none">
+              14
+            </span>
           </div>
 
           <!-- Account / Role Switcher -->
@@ -134,13 +145,11 @@
                 id="role-opt-operations"
                 class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]"
               >
-                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white flex-shrink-0 bg-[#6750a4]">J</div>
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-sans-bold text-white flex-shrink-0 bg-[#6750a4]">J</div>
                 <div class="flex-1 min-w-0">
                   <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Jane Doe</p>
                   <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">jane.doe@h2m.org</p>
-                  <p class="text-[10px] font-bold m-0 text-[#6750a4]">
-                    Operations 
-                  </p>
+                  <p class="text-[10px] font-bold m-0 text-[#6750a4]">Operations</p>
                 </div>
                 <span id="check-operations" class="material-symbols-outlined text-[18px] text-[#6750a4]">check</span>
               </button>
@@ -151,13 +160,11 @@
                 id="role-opt-administrator"
                 class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]"
               >
-                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white flex-shrink-0 bg-[#1967D2]">P</div>
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-sans-bold text-white flex-shrink-0 bg-[#1967D2]">P</div>
                 <div class="flex-1 min-w-0">
                   <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Priya Patel</p>
                   <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">p.patel@h2m.org</p>
-                  <p class="text-[10px] font-bold m-0 text-[#1967D2]">
-                    Administrator
-                  </p>
+                  <p class="text-[10px] font-bold m-0 text-[#1967D2]">Administrator</p>
                 </div>
                 <span id="check-administrator" class="material-symbols-outlined text-[18px] text-[#6750a4] hidden">check</span>
               </button>
@@ -166,102 +173,123 @@
         </div>
       </header>
 
-      <!-- Page Heading -->
-      <div>
+      <div class="shrink-0">
         <h1 class="text-3xl font-bold text-text tracking-tight">Order Search</h1>
       </div>
 
-      <!-- Search Controls Toolbar -->
-      <section class="bg-white rounded-2xl p-4 shadow-sm flex items-center gap-3">
-        <div class="h-10 flex-1 flex items-center gap-2 px-4 bg-[#F3EDF7] rounded-full text-muted border-0 focus:outline-none">
-          <span class="material-symbols-outlined text-[#49454F] text-[20px] shrink-0 leading-none select-none">
-            search
-          </span>
-          <input id="search-query" type="search" class="w-full bg-transparent border-0 outline-none text-sm text-text placeholder-muted focus:ring-0" placeholder="Search by ID, name, email...">
-        </div>
-
-        <!-- Source Filter Dropdown -->
-        <div class="relative inline-block">
-          <select id="source-filter" class="h-9 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
-            <option value="all">All Sources</option>
-            <option value="Fax Intake">Fax Intake</option>
-            <option value="BlueGoose">BlueGoose</option>
-            <option value="CareNexus">CareNexus</option>
-          </select>
-          <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">
-            arrow_drop_down
-          </span>
-        </div>
-
-        <!-- Reviewer Filter Dropdown -->
-        <div class="relative inline-block">
-          <select id="reviewer-filter" class="h-9 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white text-sm font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
-            <option value="all">All Reviewers</option>
-            <option value="Dr. Raymond Aldrich">Dr. Raymond Aldrich</option>
-            <option value="Jane Doe">Jane Doe</option>
-          </select>
-          <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">
-            arrow_drop_down
-          </span>
-        </div>
-
-        <!-- Status Filter Dropdown -->
-        <div class="relative inline-block">
-          <select id="status-filter" class="h-9 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white text-sm font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
-            <option value="all">All Statuses</option>
-            <option value="Review Required">Review Required</option>
-            <option value="Prescription Requested">Prescription Requested</option>
-            <option value="Missing Fax Number">Missing Fax Number</option>
-          </select>
-          <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">
-            arrow_drop_down
-          </span>
-        </div>
-      </section>
-
-      <!-- Frame Container (Swaps Empty State vs Results Table) -->
-      <section id="search-card-frame" class="bg-white border border-line rounded-3xl p-12 shadow-sm flex flex-col items-center justify-center text-center transition-all min-h-[360px]">
+      <!-- Unified Master Search Card Panel -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0">
         
-        <!-- Empty State -->
-        <div id="empty-state-content" class="flex flex-col items-center justify-center">
-          <div class="w-14 h-14 rounded-full bg-primary-soft text-primary flex items-center justify-center mb-4">
+        <!-- Controls Header Bar -->
+        <div class="p-5 flex items-center gap-2.5 shrink-0" id="search-bar-container">
+          <!-- Search Bar Component -->
+          <div class="h-9 w-[360px] px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 border-0 focus-within:ring-2 focus-within:ring-[#6750A4] shrink-0">
+            <span class="material-symbols-outlined text-[#49454F] text-[20px] shrink-0 leading-none select-none">search</span>
+            <input 
+              id="table-search" 
+              type="search" 
+              class="w-full bg-transparent border-0 outline-none text-xs text-[#1C1B1F] placeholder-[#79747E] focus:ring-0" 
+              placeholder="Search by ID, patient name, provider, email..."
+            >
+          </div>
+
+          <!-- Source Filter Dropdown -->
+          <div class="relative inline-block">
+            <select id="source-filter" class="h-8 pl-4 pr-8 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
+              <option value="all">All Sources</option>
+              <option>BlueGoose</option>
+              <option>Approved Intake</option>
+              <option>JotForm</option>
+            </select>
+            <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
+          </div>
+
+          <!-- Reviewer Filter Dropdown -->
+          <div class="relative inline-block">
+            <select id="reviewer-filter" class="h-8 pl-4 pr-8 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
+              <option value="all">All Reviewers</option>
+              <option>Jane Doe</option>
+              <option>Priya Patel</option>
+              <option>Marcus Reed</option>
+              <option>Unassigned</option>
+            </select>
+            <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
+          </div>
+
+          <!-- Status Filter Dropdown -->
+          <div class="relative inline-block">
+            <select id="status-filter" class="h-8 pl-4 pr-8 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
+              <option value="all">All Statuses</option>
+              <option>Prescription Requested</option>
+              <option>Physician Info Requested</option>
+              <option>Missing Fax Number</option>
+              <option>Approved</option>
+              <option>Accepted</option>
+              <option>Duplicate Suspected</option>
+            </select>
+            <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
+          </div>
+
+          <!-- M3 Circular Pagination Controls (Hidden during empty state) -->
+          <div id="pagination-wrapper" class="hidden items-center gap-3 text-xs text-muted ml-auto">
+            <span id="pagination-status" class="font-medium text-text font-mono select-none">Showing 1-10 of 187</span>
+            <div class="flex items-center gap-1 select-none">
+              <button 
+                id="prev-page-btn" 
+                onclick="changePage(-1)" 
+                class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 outline-none disabled:opacity-20 disabled:hover:bg-transparent disabled:cursor-not-allowed"
+                title="Previous page"
+              >
+                <span class="material-symbols-outlined text-[20px] leading-none select-none">navigate_before</span>
+              </button>
+              <button 
+                id="next-page-btn" 
+                onclick="changePage(1)" 
+                class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 outline-none disabled:opacity-38 disabled:hover:bg-transparent disabled:cursor-not-allowed"
+                title="Next page"
+              >
+                <span class="material-symbols-outlined text-[20px] leading-none select-none">navigate_next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- INITIAL EMPTY SEARCH STATE GRAPHIC -->
+        <div id="empty-search-state" class="flex flex-col items-center justify-center py-20 px-12 text-center bg-white border-t border-line shrink-0">
+          <div class="w-14 h-14 rounded-full bg-[#F3EDF7] flex items-center justify-center mb-4 text-primary shrink-0">
             <span class="material-symbols-outlined text-[28px]">search</span>
           </div>
-          <h2 class="text-xl font-bold text-text mb-2">Search Orders &amp; Records</h2>
-          <p class="text-sm text-muted max-w-lg leading-relaxed">
-            Search by <strong class="text-text font-medium">Order ID</strong>, <strong class="text-text font-medium">Patient Name</strong>, <strong class="text-text font-medium">Email</strong>, <strong class="text-text font-medium">Phone</strong>, <strong class="text-text font-medium">Provider NPI</strong>, or <strong class="text-text font-medium">Member ID</strong>.
+          <h2 class="text-lg font-bold text-text mb-1">Search Orders &amp; Records</h2>
+          <p class="text-xs text-muted max-w-md leading-relaxed">
+            Search by <span class="font-semibold text-text">Order ID</span>, <span class="font-semibold text-text">Patient Name</span>, <span class="font-semibold text-text">Email</span>, <span class="font-semibold text-text">Phone</span>, <span class="font-semibold text-text">Provider NPI</span>, or <span class="font-semibold text-text">Member ID</span>.
           </p>
         </div>
 
-        <!-- Searched Results Table Container -->
-        <div id="results-table-container" class="w-full hidden flex-col">
-          <div class="overflow-x-auto w-full">
-            <table class="w-full border-collapse text-left text-xs table-fixed min-w-[900px]">
-              <colgroup>
-                <col class="w-[12%]">
-                <col class="w-[16%]">
-                <col class="w-[18%]">
-                <col class="w-[10%]">
-                <col class="w-[14%]">
-                <col class="w-[16%]">
-                <col class="w-[14%]">
-              </colgroup>
-              <thead>
-                <tr class="bg-primary text-white text-[11px] font-bold tracking-wider">
-                  <th class="py-3 px-4">ORDER ID</th>
-                  <th class="py-3 px-4">PATIENT</th>
-                  <th class="py-3 px-4">STATUS</th>
-                  <th class="py-3 px-4">PRIORITY</th>
-                  <th class="py-3 px-4">INTAKE SOURCE</th>
-                  <th class="py-3 px-4">PROVIDER</th>
-                  <th class="py-3 px-4">LAST UPDATED</th>
-                </tr>
-              </thead>
-              <tbody id="results-table-body">
-                <!-- JS Injected Rows -->
-              </tbody>
-            </table>
-          </div>
+        <!-- RESULTS TABLE CONTAINER (Hugs content dynamically) -->
+        <div id="results-table-container" class="hidden border-t border-line overflow-x-auto h-auto shrink-0">
+          <table class="w-full border-collapse text-left text-sm table-fixed min-w-[900px]">
+            <colgroup>
+              <col class="w-[13%]">
+              <col class="w-[16%]">
+              <col class="w-[12%]">
+              <col class="w-[27%]">
+              <col class="w-[18%]">
+              <col class="w-[14%]">
+            </colgroup>
+            <thead class="sticky top-0 z-10">
+              <tr class="bg-primary text-white text-[11px] font-bold tracking-wider">
+                <th class="py-3 px-3">ORDER ID</th>
+                <th class="py-3 px-3">PATIENT NAME</th>
+                <th class="py-3 px-3">DOB</th>
+                <th class="py-3 px-3">PROVIDER</th>
+                <th class="py-3 px-3">STATUS</th>
+                <th class="py-3 px-3">DATE</th>
+              </tr>
+            </thead>
+            <tbody id="search-order-body">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
         </div>
 
       </section>
@@ -269,21 +297,117 @@
     </section>
   </div>
 
-  <!-- Toast Notification Container -->
+  <!-- Toast Container -->
   <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
 
   <script>
-    const sampleOrders = [
-      { id: 'ORD-100465', patientName: 'Linda Castillo', status: 'Review Required', priority: 'URGENT', source: 'Fax Intake', provider: 'Dr. Raymond Aldrich', lastUpdated: 'Resolve verification mismatch' },
-      { id: 'ORD-100466', patientName: 'Thomas Nguyen', status: 'Review Required', priority: 'URGENT', source: 'Fax Intake', provider: 'Dr. Raymond Aldrich', lastUpdated: 'Confirm provider NPI' },
-      { id: 'ORD-100467', patientName: 'Delores Whitfield', status: 'Review Required', priority: 'URGENT', source: 'Fax Intake', provider: 'Dr. Raymond Aldrich', lastUpdated: 'Resolve verification mismatch' },
-      { id: 'ORD-100468', patientName: 'Brooklyn Simmons', status: 'Review Required', priority: 'URGENT', source: 'Fax Intake', provider: 'Dr. Raymond Aldrich', lastUpdated: 'Missing documentation' },
-      { id: 'ORD-100469', patientName: 'James Okafor', status: 'Review Required', priority: 'URGENT', source: 'Fax Intake', provider: 'Dr. Raymond Aldrich', lastUpdated: 'Awaiting provider response' },
-      { id: 'ORD-100470', patientName: 'Robert Fox', status: 'Review Required', priority: 'URGENT', source: 'Fax Intake', provider: 'Dr. Raymond Aldrich', lastUpdated: 'Resolve verification mismatch' },
-      { id: 'ORD-100471', patientName: 'Savannah Nguyen', status: 'Review Required', priority: 'URGENT', source: 'Fax Intake', provider: 'Dr. Raymond Aldrich', lastUpdated: 'Missing documentation' }
+    // Full Dataset Mapping Extracted from H2M_Bridge_Intake.xlsx
+    const searchOrders = [
+      { id: 'ORD-000867', firstName: 'Brianna', lastName: 'Treadway', dob: '03/16/2006', provider: 'Diana Health, Springfield Tennessee', insurance: 'United Healthcare Community Plan', source: 'BlueGoose', reviewer: 'Jane Doe', status: 'Prescription Requested', statusClass: 'bg-amber-bg text-amber', date: '10/27/2025' },
+      { id: 'ORD-000868', firstName: 'Laura', lastName: 'Mabry', dob: '11/11/1988', provider: 'Provider not listed', insurance: 'Anthem Blue Cross', source: 'BlueGoose', reviewer: 'Priya Patel', status: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '07/11/2026' },
+      { id: 'ORD-000869', firstName: 'Madison', lastName: 'Chilcutt', dob: '01/12/2004', provider: 'Provider not listed', insurance: 'United Healthcare Community Plan', source: 'BlueGoose', reviewer: 'Marcus Reed', status: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '10/21/2025' },
+      { id: 'ORD-000870', firstName: 'Sari', lastName: 'Gutierrez', dob: '03/03/2000', provider: 'Baptist Medical Group Women\'s Health Center of Union City', insurance: 'United Healthcare Community Plan', source: 'BlueGoose', reviewer: 'Jane Doe', status: 'Prescription Requested', statusClass: 'bg-amber-bg text-amber', date: '02/05/2026' },
+      { id: 'ORD-000871', firstName: 'Sinthia', lastName: 'Abrego', dob: '11/04/1989', provider: 'Provider not listed', insurance: 'Wellpoint', source: 'BlueGoose', reviewer: 'Unassigned', status: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '03/08/2026' },
+      { id: 'ORD-000872', firstName: 'Suheda', lastName: 'Begum', dob: '06/24/2001', provider: 'KHOSHABA, AUDISHO', insurance: 'Blue Cross Community Health', source: 'BlueGoose', reviewer: 'Priya Patel', status: 'Prescription Requested', statusClass: 'bg-amber-bg text-amber', date: '02/12/2026' },
+      { id: 'ORD-000873', firstName: 'Leticia', lastName: 'Delarosa', dob: '10/24/2001', provider: 'Dr Hadeel', insurance: 'Michigan Medicaid', source: 'BlueGoose', reviewer: 'Marcus Reed', status: 'Prescription Requested', statusClass: 'bg-amber-bg text-amber', date: '01/25/2026' },
+      { id: 'ORD-000874', firstName: 'Hayley', lastName: 'Gow', dob: '11/26/1999', provider: 'Provider not listed', insurance: 'Wellpoint', source: 'BlueGoose', reviewer: 'Jane Doe', status: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '04/28/2026' },
+      { id: 'ORD-000875', firstName: 'Doris', lastName: 'Manchame', dob: '04/11/2002', provider: 'Provider not listed', insurance: '6 Degrees Health', source: 'BlueGoose', reviewer: 'Unassigned', status: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '11/04/2025' },
+      { id: 'ORD-000876', firstName: 'Peyton', lastName: 'Tockey', dob: '02/18/1994', provider: 'Dr. Jeremy Avila', insurance: 'United Healthcare Community Plan', source: 'BlueGoose', reviewer: 'Priya Patel', status: 'Prescription Requested', statusClass: 'bg-amber-bg text-amber', date: '06/02/2026' },
+      { id: 'ORD-000877', firstName: 'Leah', lastName: 'Garcia', dob: '04/19/1996', provider: 'Crowe, Women\'s OB Nashville', insurance: 'Anthem Blue Cross', source: 'BlueGoose', reviewer: 'Marcus Reed', status: 'Missing Fax Number', statusClass: 'bg-red-bg text-red', date: '08/01/2026' },
+      { id: 'ORD-000878', firstName: 'Sarah', lastName: 'Albertson', dob: '08/28/2002', provider: 'Dr. Paul Grayson Smith, D.O', insurance: 'TennCare', source: 'BlueGoose', reviewer: 'Jane Doe', status: 'Missing Fax Number', statusClass: 'bg-red-bg text-red', date: '05/27/2026' },
+      { id: 'ORD-000884', firstName: 'Linda', lastName: 'Winland', dob: '05/23/1996', provider: 'Amanda Haney, Diana Health', insurance: 'TennCare', source: 'BlueGoose', reviewer: 'Jane Doe', status: 'Missing Fax Number', statusClass: 'bg-red-bg text-red', date: '06/11/2026' },
+      { id: 'ORD-000886', firstName: 'Stefany', lastName: 'Sanchez', dob: '10/07/1998', provider: 'Whitney Bean, Knoxville TN', insurance: 'CoverKids', source: 'BlueGoose', reviewer: 'Priya Patel', status: 'Missing Fax Number', statusClass: 'bg-red-bg text-red', date: '09/16/2025' },
+      { id: 'ORD-100465', firstName: 'Madison', lastName: 'Chilcutt', dob: '01/12/2004', provider: 'Dr. Jeremy Avila', insurance: 'TennCare', source: 'JotForm', reviewer: 'Marcus Reed', status: 'Missing Kit Auth', statusClass: 'bg-amber-bg text-amber', date: '09/22/2025' },
+      { id: 'ORD-100471', firstName: 'Sari', lastName: 'Gutierrez', dob: '03/03/2000', provider: 'Dr. Paul Grayson Smith, D.O', insurance: 'Wellpoint', source: 'BlueGoose', reviewer: 'Jane Doe', status: 'NPI Mismatch', statusClass: 'bg-amber-bg text-amber', date: '09/25/2025' },
+      { id: 'ORD-100482', firstName: 'Priya', lastName: 'Nair', dob: '11/04/1988', provider: 'Priya Nair', insurance: 'Aetna', source: 'Approved Intake', reviewer: 'Priya Patel', status: 'Duplicate Suspected', statusClass: 'bg-red-bg text-red', date: '11/05/2025' }
     ];
 
-    // Account / Role Switcher Logic
+    let currentPage = 1;
+    const pageSize = 10;
+
+    function renderSearchResults() {
+      const query = document.getElementById('table-search').value.trim().toLowerCase();
+      const source = document.getElementById('source-filter').value;
+      const reviewer = document.getElementById('reviewer-filter').value;
+      const status = document.getElementById('status-filter').value;
+
+      const emptyStateContainer = document.getElementById('empty-search-state');
+      const resultsTableContainer = document.getElementById('results-table-container');
+      const paginationWrapper = document.getElementById('pagination-wrapper');
+
+      // Empty State Logic: Show graphic when search input and dropdowns are cleared
+      const isSearchActive = query.length > 0 || source !== 'all' || reviewer !== 'all' || status !== 'all';
+
+      if (!isSearchActive) {
+        emptyStateContainer.classList.remove('hidden');
+        emptyStateContainer.classList.add('flex');
+        resultsTableContainer.classList.add('hidden');
+        resultsTableContainer.classList.remove('block');
+        paginationWrapper.classList.add('hidden');
+        paginationWrapper.classList.remove('flex');
+        return;
+      }
+
+      // Searched Logic: Hide empty state graphic and show purple table header row with data
+      emptyStateContainer.classList.add('hidden');
+      emptyStateContainer.classList.remove('flex');
+      resultsTableContainer.classList.remove('hidden');
+      resultsTableContainer.classList.add('block');
+      paginationWrapper.classList.remove('hidden');
+      paginationWrapper.classList.add('flex');
+
+      const filtered = searchOrders.filter(order => {
+        const matchesSource = source === 'all' || order.source === source;
+        const matchesReviewer = reviewer === 'all' || order.reviewer === reviewer;
+        const matchesStatus = status === 'all' || order.status === status;
+        const matchesQuery = !query || Object.values(order).join(' ').toLowerCase().includes(query);
+        return matchesSource && matchesReviewer && matchesStatus && matchesQuery;
+      });
+
+      const totalRecords = filtered.length;
+      const totalPages = Math.ceil(totalRecords / pageSize) || 1;
+      
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const startIndex = (currentPage - 1) * pageSize;
+      const endIndex = Math.min(startIndex + pageSize, totalRecords);
+      const visible = filtered.slice(startIndex, endIndex);
+
+      const statusElem = document.getElementById('pagination-status');
+      if (totalRecords === 0) {
+        statusElem.innerText = "Showing 0-0 of 0";
+      } else {
+        statusElem.innerText = `Showing ${startIndex + 1}-${endIndex} of ${totalRecords}`;
+      }
+
+      document.getElementById('prev-page-btn').disabled = (currentPage <= 1);
+      document.getElementById('next-page-btn').disabled = (currentPage >= totalPages || totalRecords === 0);
+
+      // Links navigate directly to OrderDetailsView.html with origin=ordersearch query parameter
+      document.getElementById('search-order-body').innerHTML = visible.length ? visible.map(order => `
+        <tr class="border-b border-line hover:bg-[#F3EDF7]/50 transition">
+          <td class="p-3"><a class="font-mono font-bold text-primary hover:underline text-sm" href="OrderDetails/OrderDetailsView.html?orderId=${order.id}&origin=ordersearch">${order.id}</a></td>
+          <td class="p-3 text-text font-medium text-sm">${order.firstName} ${order.lastName}</td>
+          <td class="p-3 text-muted text-sm font-mono">${order.dob}</td>
+          <td class="p-3 text-text text-sm truncate" title="${order.provider}">${order.provider}</td>
+          <td class="p-3">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap ${order.statusClass}">
+              <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+              ${order.status}
+            </span>
+          </td>
+          <td class="p-3 text-muted text-sm font-mono">${order.date}</td>
+        </tr>
+      `).join('') : `<tr><td class="p-8 text-center text-muted text-sm" colspan="6">No orders match the specified search parameters.</td></tr>`;
+    }
+
+    function changePage(direction) {
+      currentPage += direction;
+      renderSearchResults();
+    }
+
+    // Role Switcher Logic
     let activeRole = 'operations';
     let roleSwitcherOpen = false;
 
@@ -352,75 +476,24 @@
       }, 3000);
     }
 
-    function handleSearch() {
-      const query = document.getElementById('search-query').value.trim().toLowerCase();
-      const source = document.getElementById('source-filter').value;
-      const reviewer = document.getElementById('reviewer-filter').value;
-      const status = document.getElementById('status-filter').value;
+    document.getElementById('table-search').addEventListener('input', () => {
+      currentPage = 1;
+      renderSearchResults();
+    });
+    document.getElementById('source-filter').addEventListener('change', () => {
+      currentPage = 1;
+      renderSearchResults();
+    });
+    document.getElementById('reviewer-filter').addEventListener('change', () => {
+      currentPage = 1;
+      renderSearchResults();
+    });
+    document.getElementById('status-filter').addEventListener('change', () => {
+      currentPage = 1;
+      renderSearchResults();
+    });
 
-      const isFilterActive = query !== '' || source !== 'all' || reviewer !== 'all' || status !== 'all';
-
-      const frame = document.getElementById('search-card-frame');
-      const emptyState = document.getElementById('empty-state-content');
-      const tableContainer = document.getElementById('results-table-container');
-
-      if (!isFilterActive) {
-        frame.classList.add('p-12', 'justify-center', 'items-center', 'text-center');
-        frame.classList.remove('p-0', 'overflow-hidden');
-        emptyState.classList.remove('hidden');
-        emptyState.classList.add('flex');
-        tableContainer.classList.add('hidden');
-        tableContainer.classList.remove('flex');
-        return;
-      }
-
-      const filtered = sampleOrders.filter(item => {
-        const matchesQuery = !query || item.id.toLowerCase().includes(query) || item.patientName.toLowerCase().includes(query) || item.provider.toLowerCase().includes(query) || item.lastUpdated.toLowerCase().includes(query);
-        const matchesSource = source === 'all' || item.source === source;
-        const matchesReviewer = reviewer === 'all' || item.provider === reviewer;
-        const matchesStatus = status === 'all' || item.status === status;
-        return matchesQuery && matchesSource && matchesReviewer && matchesStatus;
-      });
-
-      emptyState.classList.add('hidden');
-      emptyState.classList.remove('flex');
-      
-      frame.classList.remove('p-12', 'justify-center', 'items-center', 'text-center');
-      frame.classList.add('p-0', 'overflow-hidden');
-
-      tableContainer.classList.remove('hidden');
-      tableContainer.classList.add('flex');
-
-      const tbody = document.getElementById('results-table-body');
-      if (!filtered.length) {
-        tbody.innerHTML = `<tr><td colspan="7" class="p-8 text-center text-muted text-xs">No orders match your search criteria.</td></tr>`;
-        return;
-      }
-
-      tbody.innerHTML = filtered.map(item => `
-        <tr class="border-b border-line hover:bg-surface transition cursor-pointer" onclick="window.location.href='OrderDetails/OrderDetailsView.html?orderId=${item.id}'">
-          <td class="py-3 px-4 font-mono font-bold text-primary text-xs">${item.id}</td>
-          <td class="py-3 px-4 font-bold text-text text-xs">${item.patientName}</td>
-          <td class="py-3 px-4">
-            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-bg text-red border border-red/20">
-              <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
-              ${item.status}
-            </span>
-          </td>
-          <td class="py-3 px-4">
-            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-bg text-amber uppercase">${item.priority}</span>
-          </td>
-          <td class="py-3 px-4 text-muted text-xs">${item.source}</td>
-          <td class="py-3 px-4 text-text font-medium text-xs">${item.provider}</td>
-          <td class="py-3 px-4 text-muted text-xs truncate">${item.lastUpdated}</td>
-        </tr>
-      `).join('');
-    }
-
-    document.getElementById('search-query').addEventListener('input', handleSearch);
-    document.getElementById('source-filter').addEventListener('change', handleSearch);
-    document.getElementById('reviewer-filter').addEventListener('change', handleSearch);
-    document.getElementById('status-filter').addEventListener('change', handleSearch);
+    renderSearchResults();
   </script>
 </body>
 </html>

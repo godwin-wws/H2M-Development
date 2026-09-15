@@ -57,37 +57,37 @@
     }
   </style>
 </head>
-<body class="bg-surface text-text font-sans min-h-screen relative overflow-x-hidden antialiased">
+<body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
 
-  <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
+  <div class="w-[1440px] h-screen mx-auto bg-surface flex overflow-hidden">
     
     <!-- 1. Dedicated Provider Directory Secondary Navigation Sidebar -->
-    <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+    <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
       <div class="w-[58px] h-[58px]">
-        <img src="https://www.figma.com/api/mcp/asset/344953eb-406f-498c-b60f-e17d785f92f3.png" alt="Help to Moms logo" class="w-full h-full object-contain">
+        <img src="https://helptomoms.com/__l5e/assets-v1/923ead63-1849-4075-9845-3e9a00b8b649/help-to-moms-logo.webp" alt="Help to Moms logo" class="w-full h-full object-contain">
       </div>
       
       <div class="w-full">
         <nav class="w-full flex flex-col gap-1.5" id="directory-sidebar-nav">
           
-          <!-- Item 1: All Providers (ACTIVE PAGE LINK) -->
-          <a href="ProviderDirectoryPage.html" id="nav-prov-all" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition">
+          <!-- Item 1: All Providers -->
+          <a href="ProviderDirectory.html" id="nav-prov-all" class="sidebar-nav-btn w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-[18px]">badge</span>
               <span class="truncate">All Providers</span>
             </div>
           </a>
 
-          <!-- Item 2: New Providers -->
-          <a href="NewProvidersPage.html" id="nav-prov-new" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+          <!-- Item 2: Provider Review -->
+          <a href="ProvidersReview.html" id="nav-prov-new" class="sidebar-nav-btn w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
-              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">person_add</span>
-              <span class="truncate">New Providers</span>
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">rate_review</span>
+              <span class="truncate">Provider Review</span>
             </div>
           </a>
 
           <!-- Item 3: Golden Tickets -->
-          <a href="GoldenTicketsPage.html" id="nav-prov-gt" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+          <a href="GoldenTickets.html" id="nav-prov-gt" class="sidebar-nav-btn w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">verified</span>
               <span class="truncate">Golden Tickets</span>
@@ -95,7 +95,7 @@
           </a>
 
           <!-- Item 4: Archived Providers -->
-          <a href="ArchivedProvidersPage.html" id="nav-prov-archived" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+          <a href="Archivedproviders.html" id="nav-prov-archived" class="sidebar-nav-btn w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">archive</span>
               <span class="truncate">Archived Providers</span>
@@ -106,22 +106,28 @@
     </aside>
 
     <!-- Main Workspace Canvas -->
-    <section class="flex-1 p-8 pb-12 flex flex-col gap-6 overflow-hidden">
+    <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
       
       <!-- Top Navigation Header -->
-      <header class="h-[58px] flex items-center justify-between">
+      <header class="h-[58px] flex items-center justify-between shrink-0">
         <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditPage.html">Audit</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditLogs.html">Audit</a>
           <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="ProviderDirectoryPage.html">Provider Directory</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Administration/AdministrationPage.html">Administration</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Administration/AdminHome.html">Administration</a>
         </nav>
         
         <div class="flex items-center gap-6">
-          <div class="relative w-10 h-10 flex items-center justify-center cursor-pointer">
-            <img src="https://www.figma.com/api/mcp/asset/0e022744-e0d6-4c6f-8546-51c31cf743c4.svg" alt="Notifications" class="w-5 h-5">
-            <span class="absolute top-0 right-0 w-4 h-4 border border-white rounded-full bg-status-failed-text text-white flex items-center justify-center text-[9px] font-bold">14</span>
+          
+          <!-- Integrated Notification Bell Icon -->
+          <div class="relative w-8 h-8 rounded-full flex items-center justify-center text-[#1C1B1F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 cursor-pointer outline-none select-none group">
+            <span class="material-symbols-outlined text-[20px] leading-none select-none text-[#1C1B1F] group-hover:text-primary transition-colors">
+              notifications
+            </span>
+            <span class="absolute -top-0.5 -right-0.5 min-w-[16px] h-[16px] px-1 bg-[#B3261E] text-white rounded-full flex items-center justify-center text-[9px] font-bold leading-none border-2 border-white shadow-xs select-none">
+              14
+            </span>
           </div>
 
           <!-- Role Switcher -->
@@ -163,27 +169,26 @@
       </header>
 
       <!-- Page Header & Action -->
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between shrink-0">
         <div>
           <h1 class="text-3xl font-semibold text-text" id="canvas-stage-title">Provider Directory</h1>
         </div>
-        <!-- Admin-Only CTA (Suppressed for Operations) -->
-        <button onclick="openNewProviderModal()" class="admin-only px-5 py-2 bg-primary text-white rounded-full text-sm font-medium hover:bg-on-primary-container transition shadow-sm flex items-center gap-2">
+        <!-- Admin-Only CTA -->
+        <button onclick="openAddProviderModal()" class="admin-only px-5 py-2 bg-primary text-white rounded-full text-sm font-medium hover:bg-on-primary-container transition shadow-sm flex items-center gap-2 cursor-pointer">
           <span class="material-symbols-outlined text-[18px]">add_circle</span>
-          <span>+ Add New Provider</span>
+          <span>Add New Provider</span>
         </button>
       </div>
 
       <!-- VIEW A: DIRECTORY HOME GRID VIEW -->
-      <div id="view-home-grid" class="flex flex-col gap-6 flex-1">
+      <div id="view-home-grid" class="flex flex-col gap-6 flex-1 shrink-0 pb-4">
         
         <!-- Summary Metric Bento Widgets -->
-        <section class="grid grid-cols-3 gap-4">
-          <!-- Widget 1: Total Physician Records -->
-          <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left flex items-start justify-between">
+        <section class="grid grid-cols-3 gap-4 shrink-0">
+          <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm hover:shadow-md hover:bg-[#FDFBFE] transition-all duration-200 text-left flex items-start justify-between cursor-pointer">
             <div class="flex flex-col">
               <span class="block text-sm font-bold text-text">Total Physician Records</span>
-              <span class="text-3xl font-extrabold text-text mt-3" id="kpi-total-provs">447</span>
+              <span class="text-3xl font-extrabold text-text mt-3" id="kpi-total-provs">461</span>
               <span class="block mt-1 text-[11px] text-muted">Unique PROV-###### Index Entries</span>
             </div>
             <div class="w-9 h-9 rounded-xl bg-surface-container text-primary flex items-center justify-center shrink-0">
@@ -191,11 +196,10 @@
             </div>
           </div>
 
-          <!-- Widget 2: Active Verified -->
-          <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left flex items-start justify-between">
+          <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm hover:shadow-md hover:bg-[#FDFBFE] transition-all duration-200 text-left flex items-start justify-between cursor-pointer">
             <div class="flex flex-col">
               <span class="block text-sm font-bold text-text">Active Verified</span>
-              <span class="text-3xl font-extrabold text-status-success-text mt-3" id="kpi-active-provs">389</span>
+              <span class="text-3xl font-extrabold text-status-success-text mt-3" id="kpi-active-provs">393</span>
               <span class="block mt-1 text-[11px] text-muted">Approved for Automated Routing</span>
             </div>
             <div class="w-9 h-9 rounded-xl bg-status-success-bg text-status-success-text flex items-center justify-center shrink-0">
@@ -203,12 +207,11 @@
             </div>
           </div>
 
-          <!-- Widget 3: Inactive / Match Uncertain -->
-          <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left flex items-start justify-between">
+          <div class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm hover:shadow-md hover:bg-[#FDFBFE] transition-all duration-200 text-left flex items-start justify-between cursor-pointer">
             <div class="flex flex-col">
-              <span class="block text-sm font-bold text-text">Inactive / Match Uncertain</span>
-              <span class="text-3xl font-extrabold text-status-warning-text mt-3" id="kpi-uncertain-provs">58</span>
-              <span class="block mt-1 text-[11px] text-muted">Missing Credentials / Archived</span>
+              <span class="block text-sm font-bold text-text">Review Required</span>
+              <span class="text-3xl font-extrabold text-status-warning-text mt-3" id="kpi-uncertain-provs">68</span>
+              <span class="block mt-1 text-[11px] text-muted">Missing Credentials / Discrepancies</span>
             </div>
             <div class="w-9 h-9 rounded-xl bg-status-warning-bg text-status-warning-text flex items-center justify-center shrink-0">
               <span class="material-symbols-outlined text-[20px]">warning</span>
@@ -216,20 +219,18 @@
           </div>
         </section>
 
-        <!-- Master Directory Table -->
-        <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex-1 flex flex-col">
+        <!-- Master Directory Table Panel (Added mb-6 for Bottom Screen Clearance) -->
+        <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0 mb-6">
           
-          <div class="p-5 border-b border-line flex items-center justify-between">
+          <div class="p-5 border-b border-line flex items-center justify-between shrink-0">
             <h2 class="text-xl font-semibold text-text" id="directory-panel-title">All Providers</h2>
             
             <div class="flex items-center gap-2.5">
-              <!-- Search Bar -->
               <div class="h-9 w-56 px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 text-muted border-0 shrink-0">
                 <span class="material-symbols-outlined shrink-0 text-[#49454F] text-[20px] select-none">search</span>
                 <input id="dir-search" type="search" oninput="handleDirectorySearch()" class="w-full bg-transparent border-0 outline-none text-xs text-[#1C1B1F] placeholder-[#79747E] focus:ring-0" placeholder="Search name, NPI, fax...">
               </div>
 
-              <!-- Specialty Filter Dropdown with Standard M3 Icon Overlay -->
               <div class="relative inline-block">
                 <select id="cat-filter" onchange="handleDirectoryFilter()" class="h-9 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white hover:bg-[#F3EDF7] text-xs font-medium text-[#49454F] outline-none transition-colors duration-200 appearance-none cursor-pointer">
                   <option value="all">All Specialties</option>
@@ -241,20 +242,19 @@
                 <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
               </div>
 
-              <!-- Location / State Filter Dropdown with Standard M3 Icon Overlay -->
               <div class="relative inline-block">
                 <select id="state-filter" onchange="handleDirectoryFilter()" class="h-9 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white hover:bg-[#F3EDF7] text-xs font-medium text-[#49454F] outline-none transition-colors duration-200 appearance-none cursor-pointer">
                   <option value="all">All Locations / States</option>
-                  <option value="Tennessee">Tennessee Clinics</option>
-                  <option value="Michigan">Michigan Outpatient</option>
+                  <option value="Tennessee">Tennessee</option>
+                  <option value="Texas">Texas</option>
+                  <option value="Georgia">Georgia</option>
                 </select>
                 <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
               </div>
 
-              <!-- NPI Status Filter Dropdown with Standard M3 Icon Overlay -->
               <div class="relative inline-block">
                 <select id="npi-filter" onchange="handleDirectoryFilter()" class="h-9 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white hover:bg-[#F3EDF7] text-xs font-medium text-[#49454F] outline-none transition-colors duration-200 appearance-none cursor-pointer">
-                  <option value="all">All NPI Statuses</option>
+                  <option value="all">All Statuses</option>
                   <option value="Active">Active / Verified</option>
                   <option value="Review Required">Review Required</option>
                   <option value="Soft-Archived">Soft-Archived</option>
@@ -262,9 +262,8 @@
                 <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
               </div>
 
-              <!-- Pagination Controls -->
               <div class="flex items-center gap-3 text-xs text-muted pl-2">
-                <span id="pagination-status" class="font-medium text-text font-mono select-none">Showing 1–10 of 447</span>
+                <span id="pagination-status" class="font-medium text-text font-mono select-none">Showing 1–10 of 38</span>
                 <div class="flex items-center gap-1 select-none">
                   <button id="prev-page-btn" onclick="changePage(-1)" class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 outline-none disabled:opacity-20 disabled:hover:bg-transparent disabled:cursor-not-allowed" title="Previous page">
                     <span class="material-symbols-outlined text-[20px] leading-none select-none">navigate_before</span>
@@ -277,8 +276,8 @@
             </div>
           </div>
 
-          <!-- Data Grid Table Columns -->
-          <div class="overflow-x-auto flex-1">
+          <!-- Internal Scroll Area with Balanced Max-Height -->
+          <div class="overflow-y-auto max-h-[calc(100vh-410px)] h-auto">
             <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1050px]">
               <colgroup>
                 <col class="w-[12%]">
@@ -288,7 +287,7 @@
                 <col class="w-[16%]">
                 <col class="w-[16%]">
               </colgroup>
-              <thead>
+              <thead class="sticky top-0 z-10">
                 <tr class="bg-primary text-white text-[11px] font-bold tracking-wider uppercase">
                   <th class="py-3 px-4">PROVIDER ID</th>
                   <th class="py-3 px-4">PHYSICIAN NAME</th>
@@ -299,7 +298,6 @@
                 </tr>
               </thead>
               <tbody id="directory-table-body">
-                <!-- Dynamically Injected via JS -->
               </tbody>
             </table>
           </div>
@@ -308,348 +306,373 @@
       </div>
 
       <!-- VIEW B: PROVIDER PROFILE DETAIL VIEW -->
-      <div id="view-detail-profile" class="hidden flex flex-col gap-6">
+      <div id="view-detail-profile" class="hidden flex flex-col gap-6 shrink-0 pb-6">
         
         <!-- Breadcrumbs -->
         <div class="flex items-center gap-2 text-sm text-muted">
-          <button onclick="showHomeGridView()" class="text-primary font-bold hover:underline flex items-center gap-1">
+          <button onclick="showHomeGridView()" class="text-primary font-bold hover:underline flex items-center gap-1 cursor-pointer">
             <span class="material-symbols-outlined text-[16px]">arrow_back</span>
-            <span>Return to Provider Directory</span>
+            <span>Back to Directory List</span>
           </button>
-          <span>/</span>
-          <span id="detail-breadcrumb-id" class="font-mono font-bold text-text">PROV-000001</span>
         </div>
 
         <!-- Header Profile Card -->
-        <div class="bg-white rounded-2xl p-6 border border-line shadow-sm flex justify-between items-start">
-          <div class="flex flex-col gap-1">
+        <div class="bg-white rounded-2xl p-6 border border-line shadow-sm flex flex-col gap-4">
+          <div class="flex items-start justify-between">
             <div class="flex items-center gap-3">
               <h2 id="detail-prov-id" class="text-2xl font-bold font-mono text-text">PROV-000001</h2>
               <div id="detail-prov-status-chip"></div>
             </div>
-            <h3 id="detail-prov-name" class="text-xl font-medium text-text mt-1">Unassigned Provider (Clinic General)</h3>
-            <p class="text-xs text-muted mt-1">
-              NPI: <span id="detail-prov-npi" class="font-mono font-bold text-status-failed-text">MISSING NPI</span> · 
-              Specialty: <span id="detail-prov-specialty" class="font-medium text-text">Obstetrics &amp; Gynecology</span> · 
-              Last Verified: <span id="detail-last-verified" class="font-mono">Jul 10, 2026</span> (NPPES Registry)
-            </p>
+
+            <div class="flex items-center gap-3">
+              <button id="btn-soft-archive" onclick="toggleSoftArchiveState()" class="admin-only px-4 py-2 rounded-full border border-line text-text text-sm font-bold hover:bg-surface transition cursor-pointer">
+                Soft-Archive Record
+              </button>
+              <button onclick="openEditProviderModal()" class="admin-only px-5 py-2 rounded-full bg-primary text-white text-sm font-bold hover:bg-on-primary-container transition shadow-sm cursor-pointer">
+                Edit Provider Profile
+              </button>
+            </div>
           </div>
 
-          <div class="flex items-center gap-2">
-            <button id="btn-soft-archive" onclick="toggleSoftArchiveState()" class="admin-only px-4 py-2 rounded-full border border-status-failed-text text-status-failed-text text-xs font-bold hover:bg-status-failed-bg transition">
-              Soft-Archive Record
-            </button>
-            <button onclick="openEditProviderModal()" class="admin-only px-5 py-2 rounded-full bg-primary text-white text-xs font-bold hover:bg-on-primary-container transition shadow-sm">
-              Edit Provider Profile
-            </button>
+          <div class="grid grid-cols-4 border-t border-line pt-4 gap-4 text-xs">
+            <div>
+              <span class="text-[10px] font-bold text-muted uppercase tracking-wider block">PHYSICIAN NAME</span>
+              <span id="detail-prov-name" class="text-xs font-bold text-text mt-1 block">Unassigned Provider</span>
+            </div>
+            <div>
+              <span class="text-[10px] font-bold text-muted uppercase tracking-wider block">NPI</span>
+              <span id="detail-prov-npi" class="text-xs font-mono font-bold text-text mt-1 block">Missing</span>
+            </div>
+            <div>
+              <span class="text-[10px] font-bold text-muted uppercase tracking-wider block">ASSOCIATED CLINIC</span>
+              <span id="detail-prov-clinic" class="text-xs font-semibold text-text mt-1 block">UT Family Medicine-Jackson</span>
+            </div>
+            <div>
+              <span class="text-[10px] font-bold text-muted uppercase tracking-wider block">LAST VERIFIED</span>
+              <span id="detail-last-verified" class="text-xs font-semibold text-text font-mono mt-1 block">Jul 10, 2026 · NPPES Lookup</span>
+            </div>
           </div>
         </div>
 
-        <!-- Details Grid & Locations Pane -->
-        <div class="grid grid-cols-3 gap-6">
-          
-          <div class="flex flex-col gap-6">
-            <!-- Core Credentials Card -->
-            <div class="bg-white rounded-2xl p-5 border border-line shadow-sm flex flex-col gap-4">
-              <h4 class="text-xs font-bold uppercase tracking-wider text-muted border-b border-line pb-2">Core Credentials &amp; Taxonomy</h4>
-              
-              <div class="flex flex-col gap-1">
-                <span class="text-[10px] font-bold text-outline uppercase">Full Legal Name</span>
-                <span id="card-legal-name" class="text-sm font-medium text-text">Unassigned Provider</span>
-              </div>
-
-              <div class="flex flex-col gap-1">
-                <span class="text-[10px] font-bold text-outline uppercase">National Provider Identifier (NPI)</span>
-                <span id="card-npi-num" class="text-sm font-mono font-bold text-status-failed-text">NOT ASSIGNED</span>
-              </div>
-
-              <div class="flex flex-col gap-1">
-                <span class="text-[10px] font-bold text-outline uppercase">Primary Medical Specialty</span>
-                <span id="card-specialty" class="text-sm font-medium text-text">Obstetrics &amp; Gynecology</span>
-              </div>
-
-              <div class="flex flex-col gap-1">
-                <span class="text-[10px] font-bold text-outline uppercase">Golden Ticket Status</span>
-                <span id="card-golden-status" class="text-xs font-semibold text-status-warning-text flex items-center gap-1">
-                  <span class="material-symbols-outlined text-[16px]">warning</span> Suspended — Verification Required
-                </span>
-              </div>
-            </div>
-
-            <!-- 90-Day Fax Verification & Automation Transparency Card -->
-            <div class="bg-white rounded-2xl p-5 border border-line shadow-sm flex flex-col gap-3 text-xs">
-              <h4 class="text-xs font-bold uppercase tracking-wider text-muted border-b border-line pb-2 flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-[16px] text-primary">history_toggle_off</span>
-                <span>90-Day Fax Verification Window</span>
-              </h4>
-
-              <div>
-                <span class="block text-[10px] font-bold text-outline uppercase">Last Successful Fax Date</span>
-                <span id="gt-last-fax-date" class="font-mono font-bold text-text">2026-08-01 14:22 UTC</span>
-              </div>
-
-              <div>
-                <span class="block text-[10px] font-bold text-outline uppercase">Verified Destination Fax</span>
-                <span id="gt-destination-fax" class="font-mono font-bold text-primary">(615) 384-1234</span>
-              </div>
-
-              <div>
-                <span class="block text-[10px] font-bold text-outline uppercase">Verification Reference ID</span>
-                <span id="gt-ref-id" class="font-mono text-muted">TX_FAX_9002381</span>
-              </div>
+        <!-- Sub-Tabs Navigation Container -->
+        <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col shrink-0">
+          <div class="border-b border-line bg-white">
+            <div class="flex items-center gap-2 overflow-x-auto">
+              <button onclick="switchTab('profile')" class="detail-nav-tab px-8 py-4 text-sm font-bold text-primary border-b-2 border-primary transition whitespace-nowrap cursor-pointer" data-tab="profile">
+                Profile
+              </button>
+              <button onclick="switchTab('practices')" class="detail-nav-tab px-8 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap cursor-pointer" data-tab="practices">
+                Practices &amp; Contact
+              </button>
+              <button onclick="switchTab('pending')" class="detail-nav-tab px-8 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap cursor-pointer" data-tab="pending">
+                Pending Updates
+              </button>
+              <button onclick="switchTab('history')" class="detail-nav-tab px-8 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap cursor-pointer" data-tab="history">
+                History &amp; Retention (OD-PD-005)
+              </button>
             </div>
           </div>
 
-          <div class="col-span-2 flex flex-col gap-6">
-            <!-- Unresolved Pending Intake Conflicts Comparison Panel -->
-            <div id="pending-conflicts-panel" class="bg-status-warning-bg/40 border border-status-warning-text/30 rounded-2xl p-5 shadow-sm hidden flex-col gap-3">
-              <div class="flex items-center justify-between border-b border-status-warning-text/20 pb-2">
-                <div class="flex items-center gap-2 text-status-warning-text font-bold text-xs">
-                  <span class="material-symbols-outlined text-[18px]">warning</span>
-                  <span>Pending Intake Discrepancy Suspended Golden Ticket</span>
+          <!-- Tab Content Panels -->
+          <div class="p-6">
+            
+            <!-- Panel 1: Profile -->
+            <div id="panel-profile" class="tab-panel">
+              <div class="border border-line rounded-xl overflow-hidden divide-y divide-line/40 text-xs bg-white">
+                <div class="grid grid-cols-[260px_1fr] p-3.5">
+                  <span class="text-muted font-medium">Permanent BRIDGE Provider ID</span>
+                  <span id="tab-bridge-prov-id" class="font-mono font-bold text-text">PROV-000001</span>
                 </div>
-                <span class="text-[10px] font-mono font-bold uppercase text-status-warning-text">Action Required</span>
-              </div>
-
-              <div class="grid grid-cols-2 gap-4 text-xs">
-                <div class="p-3 bg-white rounded-xl border border-line">
-                  <span class="block font-bold text-status-failed-text text-[10px] uppercase mb-1">Submitted Intake Values</span>
-                  <p class="font-mono text-[11px]">Fax: <strong class="text-text">(615) 999-0011</strong></p>
-                  <p class="font-mono text-[11px]">Practice: <strong class="text-text">Diana Health Metro</strong></p>
+                <div class="grid grid-cols-[260px_1fr] p-3.5">
+                  <span class="text-muted font-medium">Physician Name</span>
+                  <span id="tab-physician-name" class="font-bold text-text">Unassigned Provider</span>
                 </div>
-                <div class="p-3 bg-white rounded-xl border border-line">
-                  <span class="block font-bold text-status-success-text text-[10px] uppercase mb-1">Approved Directory Master</span>
-                  <p class="font-mono text-[11px]">Fax: <strong class="text-text">(615) 384-1234</strong></p>
-                  <p class="font-mono text-[11px]">Practice: <strong class="text-text">Diana Health — Springfield</strong></p>
+                <div class="grid grid-cols-[260px_1fr] p-3.5">
+                  <span class="text-muted font-medium">National Provider Identifier (NPI)</span>
+                  <span id="tab-npi-num" class="font-mono font-bold text-text">Missing</span>
                 </div>
-              </div>
-
-              <div class="flex justify-end gap-2 pt-1">
-                <button onclick="resolveDiscrepancy('reject')" class="px-3 py-1.5 rounded-full border border-status-failed-text text-status-failed-text text-xs font-bold hover:bg-status-failed-bg">Reject Discrepancy</button>
-                <button onclick="resolveDiscrepancy('approve')" class="px-3 py-1.5 rounded-full bg-primary text-white text-xs font-bold hover:bg-on-primary-container">Approve &amp; Update Master</button>
+                <div class="grid grid-cols-[260px_1fr] p-3.5">
+                  <span class="text-muted font-medium">Directory Status</span>
+                  <div>
+                    <span id="tab-directory-status-badge" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-green-bg text-green">
+                      <span class="w-1.5 h-1.5 rounded-full bg-current"></span> Active
+                    </span>
+                  </div>
+                </div>
+                <div class="grid grid-cols-[260px_1fr] p-3.5">
+                  <span class="text-muted font-medium">Primary Practice / Location</span>
+                  <span id="tab-primary-location" class="font-bold text-text">UT Family Medicine-Jackson</span>
+                </div>
+                <div class="grid grid-cols-[260px_1fr] p-3.5">
+                  <span class="text-muted font-medium">Operational Phone</span>
+                  <span id="tab-phone-num" class="font-mono text-text">(731) 423-1932</span>
+                </div>
+                <div class="grid grid-cols-[260px_1fr] p-3.5">
+                  <span class="text-muted font-medium">Operational Fax</span>
+                  <span id="tab-fax-num" class="font-mono text-text">(731) 410-0358</span>
+                </div>
+                <div class="grid grid-cols-[260px_1fr] p-3.5">
+                  <span class="text-muted font-medium">Notes &amp; Flags</span>
+                  <span id="tab-notes-flags" class="font-semibold text-text">Flags: NPI missing</span>
+                </div>
               </div>
             </div>
 
-            <!-- Locations Pane -->
-            <div class="bg-white rounded-2xl p-5 border border-line shadow-sm flex flex-col gap-4">
-              <div class="flex items-center justify-between border-b border-line pb-2">
-                <h4 class="text-xs font-bold uppercase tracking-wider text-muted">Practice Locations &amp; Outbound Fax Destinations</h4>
-                <span id="card-location-count" class="text-xs font-mono font-bold text-primary">1 Associated Location</span>
-              </div>
-
-              <div id="detail-locations-list" class="flex flex-col gap-3">
-                <!-- Practice Cards Injected via JS -->
+            <!-- Panel 2: Practices & Contact -->
+            <div id="panel-practices" class="tab-panel hidden flex flex-col gap-4">
+              <div id="practices-list-container" class="flex flex-col gap-3">
+                <!-- Practice items injected dynamically -->
               </div>
             </div>
+
+            <!-- Panel 3: Pending Updates -->
+            <div id="panel-pending" class="tab-panel hidden">
+              <div class="p-4 bg-amber-bg/40 border border-amber/30 rounded-xl flex flex-col gap-2 text-xs">
+                <span class="font-bold text-amber">Pending Discrepancy Flag</span>
+                <p class="text-muted">Inbound intake payload fax (731) 410-0358 differs from historical registry record. Verification pending.</p>
+              </div>
+            </div>
+
+            <!-- Panel 4: History & Retention -->
+            <div id="panel-history" class="tab-panel hidden">
+              <div class="border border-line rounded-xl divide-y divide-line/40 text-xs font-mono bg-white">
+                <div class="p-3.5 flex items-center gap-4">
+                  <span class="text-muted">2026-09-08 15:34:00</span>
+                  <span class="text-text">BRIDGE_SYSTEM_AUTOMATION — Record verified via NPPES lookup</span>
+                </div>
+              </div>
+            </div>
+
           </div>
+        </section>
 
-        </div>
       </div>
 
     </section>
   </div>
 
-  <!-- Relational Multi-Practice Edit Modal (Admin Only) -->
-  <div id="edit-provider-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-2xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+  <!-- ADD / EDIT PROVIDER MODAL -->
+  <div id="provider-form-modal" class="fixed inset-0 bg-black/40 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white border border-line rounded-3xl shadow-2xl w-full max-w-xl overflow-hidden flex flex-col">
       
-      <div class="bg-primary px-6 py-4 flex items-center justify-between text-white">
-        <div class="flex items-center gap-2">
-          <span class="material-symbols-outlined text-[20px]">edit_note</span>
-          <h3 id="modal-title-text" class="text-base font-bold font-mono">Edit Provider Profile — PROV-000001</h3>
-        </div>
-        <button type="button" onclick="closeEditProviderModal()" class="text-white/80 hover:text-white transition font-bold">✕</button>
+      <!-- Modal Header -->
+      <div class="p-6 border-b border-line/60 flex items-center justify-between bg-white">
+        <h3 id="form-modal-header-title" class="text-lg font-bold text-text">Add Provider</h3>
+        <button type="button" onclick="closeFormModal()" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-surface transition cursor-pointer">
+          <span class="material-symbols-outlined text-[22px]">close</span>
+        </button>
       </div>
 
-      <form id="provider-edit-form" onsubmit="event.preventDefault(); triggerSaveWithRationale();" class="p-6 overflow-y-auto flex flex-col gap-5 text-xs">
+      <!-- Modal Form Body -->
+      <form id="provider-form" onsubmit="event.preventDefault(); commitFormModal();" class="p-6 flex flex-col gap-4 text-xs">
         
+        <!-- Field 1: Physician Name -->
+        <div class="flex flex-col gap-1.5">
+          <label class="font-bold text-text">Physician Name</label>
+          <input type="text" id="input-phys-name" required class="p-3 border border-line rounded-xl text-text font-mono text-xs focus:border-primary outline-none" placeholder="Dr. First Last, MD">
+        </div>
+
+        <!-- Field 2: NPI Number -->
+        <div class="flex flex-col gap-1.5">
+          <label class="font-bold text-text">NPI Number</label>
+          <input type="text" id="input-npi-num" maxlength="10" class="p-3 border border-line rounded-xl text-text font-mono text-xs focus:border-primary outline-none" placeholder="10-digit NPI" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+        </div>
+
+        <!-- Field 3: Practice Association(s) -->
+        <div class="flex flex-col gap-1.5">
+          <label class="font-bold text-text">Practice Association(s)</label>
+          <input type="text" id="input-practice-assoc" required class="p-3 border border-line rounded-xl text-text font-mono text-xs focus:border-primary outline-none" placeholder="Clinic / Practice Name">
+        </div>
+
+        <!-- Field 4: Operational Fax Number -->
+        <div class="flex flex-col gap-1.5">
+          <label class="font-bold text-text">Operational Fax Number</label>
+          <input type="text" id="input-op-fax" required class="p-3 border border-line rounded-xl text-text font-mono text-xs focus:border-primary outline-none" placeholder="(XXX) XXX-XXXX">
+        </div>
+
+        <!-- Grid Row 5: Primary State & Directory Status -->
         <div class="grid grid-cols-2 gap-4">
-          <div>
-            <label class="block text-[10px] font-bold text-outline uppercase mb-1">Provider Full Name *</label>
-            <input type="text" id="prov-name-field" required class="w-full text-xs p-2.5 border border-outline rounded-lg bg-white focus:border-primary focus:outline-none" placeholder="e.g. Dr. Raymond Aldrich">
+          <div class="flex flex-col gap-1.5">
+            <label class="font-bold text-text">Primary State</label>
+            <div class="relative">
+              <select id="select-primary-state" class="w-full p-3 pr-8 border border-line rounded-xl text-text font-sans text-xs bg-white outline-none appearance-none cursor-pointer">
+                <option value="Tennessee">Tennessee</option>
+                <option value="Texas">Texas</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Michigan">Michigan</option>
+              </select>
+              <span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-muted text-[20px]">arrow_drop_down</span>
+            </div>
           </div>
-          <div>
-            <label class="block text-[10px] font-bold text-outline uppercase mb-1">National Provider Identifier (NPI) *</label>
-            <input type="text" id="prov-npi-field" maxlength="10" class="w-full text-xs p-2.5 border border-outline rounded-lg bg-white font-mono focus:border-primary focus:outline-none" placeholder="10-Digit NPI Number" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+
+          <div class="flex flex-col gap-1.5">
+            <label class="font-bold text-text">Directory Status</label>
+            <div class="relative">
+              <select id="select-dir-status" class="w-full p-3 pr-8 border border-line rounded-xl text-text font-sans text-xs bg-white outline-none appearance-none cursor-pointer">
+                <option value="Active">Active</option>
+                <option value="Review Required">Review Required</option>
+                <option value="Soft-Archived">Soft-Archived</option>
+              </select>
+              <span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-muted text-[20px]">arrow_drop_down</span>
+            </div>
           </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-4">
-          <div>
-            <label class="block text-[10px] font-bold text-outline uppercase mb-1">Specialty Category</label>
-            <select id="prov-specialty-field" class="w-full text-xs p-2.5 border border-outline rounded-lg bg-white focus:border-primary focus:outline-none">
-              <option value="Obstetrics & Gynecology">Obstetrics &amp; Gynecology</option>
-              <option value="Maternal & Fetal Medicine">Maternal &amp; Fetal Medicine</option>
-              <option value="Family Medicine">Family Medicine</option>
-              <option value="Pediatrics">Family Care / Pediatrics</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-[10px] font-bold text-outline uppercase mb-1">NPI Verification Status *</label>
-            <select id="prov-status-dropdown" class="w-full text-xs p-2.5 border border-outline rounded-lg bg-white focus:border-primary focus:outline-none">
-              <option value="Active">Active / Verified</option>
-              <option value="Review Required">Review Required</option>
-              <option value="Soft-Archived">Soft-Archived</option>
-            </select>
-          </div>
+        <!-- Modal Footer Actions -->
+        <div class="p-4 pt-6 border-t border-line/60 flex items-center justify-end gap-3 mt-2">
+          <button type="button" onclick="closeFormModal()" class="px-6 py-2.5 rounded-full border border-line text-text font-bold hover:bg-surface transition cursor-pointer">
+            Cancel
+          </button>
+          <button type="submit" id="btn-save-provider-cta" class="px-6 py-2.5 rounded-full bg-[#654A99] text-white font-bold hover:bg-[#523880] transition shadow-md cursor-pointer">
+            Save Provider
+          </button>
         </div>
-
-        <div class="mt-4 border-t border-line pt-4 flex flex-col gap-3">
-          <div class="flex justify-between items-center">
-            <h4 class="text-[11px] font-bold text-text uppercase tracking-wider">Practice Locations &amp; Destinations</h4>
-            <button type="button" onclick="addPracticeInstance()" class="text-xs bg-primary-soft text-on-primary-container hover:bg-surface-container px-3 py-1.5 rounded-full font-bold transition-all flex items-center gap-1">
-              <span>+ Add Location</span>
-            </button>
-          </div>
-
-          <div id="practice-cards-repeater" class="space-y-3 max-h-60 overflow-y-auto pr-1">
-            <!-- Dynamically Managed Practice Cards Injected Here -->
-          </div>
-        </div>
-
-        <button type="submit" id="hidden-form-submit" class="hidden"></button>
       </form>
 
-      <div class="p-4 border-t border-line bg-surface flex items-center justify-end gap-2">
-        <button type="button" onclick="closeEditProviderModal()" class="px-4 py-2 rounded-full border border-outline text-muted text-xs font-bold hover:bg-surface-container transition">Cancel</button>
-        <button type="button" onclick="document.getElementById('hidden-form-submit').click()" class="px-5 py-2 rounded-full bg-primary text-white text-xs font-bold hover:bg-on-primary-container transition shadow-sm">Save Directory Modifications</button>
-      </div>
     </div>
   </div>
 
-  <!-- Compliance Audit Rationale Modal -->
-  <div id="compliance-rationale-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[60] hidden flex justify-center items-center p-4">
-    <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 border border-line">
-      <h3 class="text-sm font-bold text-text mb-2 uppercase tracking-wider">Operational Reason Required</h3>
-      <p class="text-xs text-muted mb-4 leading-relaxed">
-        This manual modification will be committed to the append-only BRIDGE Audit ledger. Please provide a clear rationale ($\ge 15$ characters).
-      </p>
-
-      <textarea id="audit-rationale" rows="3" class="w-full text-sm p-3 border border-outline rounded-lg focus:outline-none focus:border-primary mb-4" placeholder="Explain the directory change (min 15 chars)..."></textarea>
-
-      <div class="flex justify-end gap-2">
-        <button type="button" onclick="closeRationaleModal()" class="px-4 py-2 rounded-full border border-outline text-muted text-xs font-bold">Cancel</button>
-        <button type="button" id="confirm-commit-btn" class="px-4 py-2 rounded-full bg-primary text-white text-xs font-bold opacity-50 cursor-not-allowed" disabled>Confirm Update</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Global Toast Notification Container -->
-  <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-sm px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
+  <!-- Toast Notification Container -->
+  <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
 
   <script>
-    /* Master Provider Directory Dataset */
-    let providerDatabase = [
+    // Master Dataset compiled directly from Excel sheets
+    let masterProviderDatabase = [
       {
         id: "PROV-000001",
-        name: "Unassigned Provider (Clinic General)",
+        name: "Unassigned Provider",
         legalName: "Unassigned Provider",
-        npi: "",
+        npi: "Missing",
         specialty: "Obstetrics & Gynecology",
-        status: "Review Required",
-        lastVerified: "Jul 10, 2026",
-        goldenTicket: false,
-        hasDiscrepancy: true,
+        status: "Active",
+        lastVerified: "Jul 10, 2026 · NPPES Lookup",
+        clinic: "UT Family Medicine-Jackson",
+        phone: "(731) 423-1932",
+        fax: "(731) 410-0358",
+        state: "Tennessee",
+        notes: "Flags: NPI missing",
         channel: "all",
-        locations: [
-          { name: "UT Family Medicine — Union City", fax: "731-410-0358", phone: "(731) 885-2000", address: "1201 Bishop St, Union City TN 38261" }
-        ]
+        locations: [{ name: "UT Family Medicine-Jackson", fax: "(731) 410-0358", phone: "(731) 423-1932", address: "1201 Bishop St, Jackson TN" }]
       },
       {
-        id: "PROV-000002",
-        name: "Dr. Raymond Aldrich, M.D.",
-        legalName: "Raymond Aldrich",
-        npi: "1215048332",
+        id: "PROV-000488",
+        name: "Andrew Bognanno, M.D.",
+        legalName: "Andrew Bognanno, M.D.",
+        npi: "1295975142",
         specialty: "Obstetrics & Gynecology",
         status: "Active",
-        lastVerified: "Aug 01, 2026",
-        goldenTicket: true,
-        hasDiscrepancy: false,
+        lastVerified: "2026-09-08 · Human Verified",
+        clinic: "UNITED NEIGHBORHOOD HEALTH SERVICES, INC",
+        phone: "6152273000",
+        fax: "6158005545",
+        state: "Tennessee",
+        notes: "Human Reviewed & Backfilled",
         channel: "golden",
-        locations: [
-          { name: "Diana Health — Springfield Clinic", fax: "(615) 384-1234", phone: "(615) 384-5678", address: "502 North Main St, Springfield TN 37172" },
-          { name: "Diana Health — Clarksville Women's Center", fax: "(931) 552-8811", phone: "(931) 552-8800", address: "1810 Alpha Behavioral Way, Clarksville TN 37040" }
-        ]
+        locations: [{ name: "UNITED NEIGHBORHOOD HEALTH SERVICES, INC", fax: "6158005545", phone: "6152273000", address: "419 WELSHWOOD DR, NASHVILLE, TN 37211" }]
       },
       {
-        id: "PROV-000003",
-        name: "Dr. Jeremy Avila, M.D.",
-        legalName: "Jeremy Avila",
-        npi: "1841390291",
-        specialty: "Obstetrics & Gynecology",
-        status: "Active",
-        lastVerified: "Aug 01, 2026",
-        goldenTicket: true,
-        hasDiscrepancy: false,
-        channel: "golden",
-        locations: [
-          { name: "Avila Women's Health Care", fax: "(615) 890-4412", phone: "(615) 890-4400", address: "101 Garland Way, Murfreesboro TN 37129" }
-        ]
-      },
-      {
-        id: "PROV-000004",
-        name: "Dr. Paul Grayson Smith, D.O.",
-        legalName: "Paul Grayson Smith",
-        npi: "1093748201",
+        id: "PROV-000489",
+        name: "Amy Barker",
+        legalName: "Amy Barker",
+        npi: "1710042866",
         specialty: "Maternal & Fetal Medicine",
-        status: "Active",
-        lastVerified: "Aug 04, 2026",
-        goldenTicket: true,
-        hasDiscrepancy: false,
-        channel: "golden",
-        locations: [
-          { name: "Grayson Smith OBGYN Associates", fax: "(615) 327-1100", phone: "(615) 327-1000", address: "2011 Church St, Nashville TN 37203" }
-        ]
+        status: "Review Required",
+        lastVerified: "2026-09-09 · Incomplete Data",
+        clinic: "Springfield Health",
+        phone: "6157914440",
+        fax: "6157914440",
+        state: "Georgia",
+        notes: "Incomplete/Corrupted Data: Missing [Location Address]",
+        channel: "new",
+        locations: [{ name: "Springfield Health Clinic", fax: "6157914440", phone: "6157914440", address: "5755 N POINT PKWY, ALPHARETTA, GA 30022" }]
       },
       {
-        id: "PROV-000005",
-        name: "Dr. Hadeel Al-Shivawi, M.D.",
-        legalName: "Hadeel Al-Shivawi",
-        npi: "1558392019",
+        id: "PROV-000491",
+        name: "Ashlin Paz",
+        legalName: "Ashlin Paz",
+        npi: "1306206081",
+        specialty: "Family Medicine",
+        status: "Active",
+        lastVerified: "2026-09-10 · Verified",
+        clinic: "Sweetwater Practice",
+        phone: "9185864522",
+        fax: "8652138348",
+        state: "Tennessee",
+        notes: "Human Reviewed & Backfilled",
+        channel: "golden",
+        locations: [{ name: "Sweetwater Practice Center", fax: "8652138348", phone: "9185864522", address: "304 WRIGHT ST, SWEETWATER, TN 37874" }]
+      },
+      {
+        id: "PROV-000502",
+        name: "Carla Morrow",
+        legalName: "Carla Morrow DNP-CNM",
+        npi: "1093734535",
+        specialty: "Obstetrics & Gynecology",
+        status: "Soft-Archived",
+        lastVerified: "2026-06-01 · Inactive",
+        clinic: "Fort Worth Birthing & Wellness Center",
+        phone: "8178732737",
+        fax: "8178782735",
+        state: "Texas",
+        notes: "Human Reviewed & Verified Inactive",
+        channel: "archived",
+        locations: [{ name: "Fort Worth Birthing & Wellness Center", fax: "8178782735", phone: "8178732737", address: "1401 HENDERSON ST, FORT WORTH, TX 76102" }]
+      },
+      {
+        id: "PROV-000503",
+        name: "Ali Cocco",
+        legalName: "Ali Cocco",
+        npi: "1366803801",
         specialty: "Pediatrics",
         status: "Soft-Archived",
-        lastVerified: "May 12, 2026",
-        goldenTicket: false,
-        hasDiscrepancy: false,
+        lastVerified: "2026-09-11 · Inactive",
+        clinic: "Vanderbilt Clinic",
+        phone: "6153435700",
+        fax: "6159361106",
+        state: "Tennessee",
+        notes: "Inactive Directory Status",
         channel: "archived",
-        locations: [
-          { name: "Michigan Pediatrics Outpatient", fax: "(313) 554-9921", phone: "(313) 554-9900", address: "400 Woodward Ave, Detroit MI 48226" }
-        ]
+        locations: [{ name: "THE VANDERBILT CLINIC", fax: "6159361106", phone: "6153435700", address: "3601 THE VANDERBILT CLINIC, NASHVILLE, TN 37232" }]
+      },
+      {
+        id: "PROV-000504",
+        name: "Dr. Jessica Walker",
+        legalName: "Jessica Walker Dr.",
+        npi: "1821593427",
+        specialty: "Obstetrics & Gynecology",
+        status: "Active",
+        lastVerified: "2026-09-11 · Verified",
+        clinic: "Seasons for Women",
+        phone: "4238441399",
+        fax: "4238441397",
+        state: "Tennessee",
+        notes: "Human Reviewed & Verified",
+        channel: "golden",
+        locations: [{ name: "Seasons for Women Bristol", fax: "4238441397", phone: "4238441399", address: "320 BRISTOL WEST BLVD, BRISTOL, TN 37620" }]
       }
     ];
 
-    // Populate Dataset for Full Scale
-    for (let i = 6; i <= 447; i++) {
+    // Populate Master Spreadsheet records
+    for (let i = 8; i <= 38; i++) {
       const paddedId = String(i).padStart(6, '0');
-      const isArchived = i % 10 === 0;
-      const isNew = i % 12 === 0;
-      const isGolden = !isArchived && !isNew;
-      const isMichigan = i % 5 === 0;
-
-      providerDatabase.push({
+      masterProviderDatabase.push({
         id: `PROV-${paddedId}`,
-        name: `Dr. Provider Candidate ${i}, M.D.`,
-        legalName: `Provider Candidate ${i}`,
-        npi: isNew ? "" : `${1000000000 + i * 17}`,
-        specialty: i % 3 === 0 ? "Obstetrics & Gynecology" : (i % 2 === 0 ? "Maternal & Fetal Medicine" : "Family Medicine"),
-        status: isArchived ? "Soft-Archived" : (isNew ? "Review Required" : "Active"),
-        lastVerified: "Aug 06, 2026",
-        goldenTicket: isGolden,
-        hasDiscrepancy: false,
-        channel: isArchived ? "archived" : (isNew ? "new" : "golden"),
-        locations: [
-          { 
-            name: `Regional Health Center Location ${i}`, 
-            fax: `(615) 555-${1000 + i}`, 
-            phone: `(615) 555-${2000 + i}`, 
-            address: isMichigan ? `${100 + i} Woodward Ave, Detroit MI 48226` : `${100 + i} Medical Center Pkwy, Nashville TN 37203` 
-          }
-        ]
+        name: `Dr. Candidate Provider ${i}`,
+        legalName: `Candidate Provider ${i}`,
+        npi: `${1000000000 + i * 19}`,
+        specialty: i % 2 === 0 ? "Obstetrics & Gynecology" : "Family Medicine",
+        status: i % 5 === 0 ? "Review Required" : "Active",
+        lastVerified: "Aug 25, 2026",
+        clinic: `Outpatient Center ${i}`,
+        phone: `(615) 555-${1000 + i}`,
+        fax: `(615) 555-${2000 + i}`,
+        state: "Tennessee",
+        notes: "System Bootstrapped Record",
+        channel: i % 5 === 0 ? "new" : "golden",
+        locations: [{ name: `Outpatient Center ${i}`, fax: `(615) 555-${2000 + i}`, phone: `(615) 555-${1000 + i}`, address: `${100 + i} Medical Pkwy, Nashville TN` }]
       });
     }
 
-    /* State Variables */
-    let activeRole = 'administrator';
     let currentChannel = 'all';
     let searchQuery = '';
     let categoryFilter = 'all';
@@ -658,70 +681,13 @@
     let currentPageIndex = 0;
     const PAGE_LIMIT = 10;
     let selectedActiveProvider = null;
-    let practiceRowIndex = 0;
+    let isEditingMode = false;
 
-    /* Render Engine */
     function renderProviderWorkspace() {
-      fetchProviderPageData(currentPageIndex, PAGE_LIMIT, (pageData, totalRecords) => {
-        const maxPages = Math.ceil(totalRecords / PAGE_LIMIT) || 1;
-        const statusElem = document.getElementById('pagination-status');
-        
-        if (totalRecords === 0) {
-          statusElem.innerText = "Showing 0–0 of 0";
-        } else {
-          const startIndex = currentPageIndex * PAGE_LIMIT;
-          const endIndex = Math.min(startIndex + PAGE_LIMIT, totalRecords);
-          statusElem.innerText = `Showing ${startIndex + 1}–${endIndex} of ${totalRecords}`;
-        }
-
-        document.getElementById('prev-page-btn').disabled = (currentPageIndex === 0);
-        document.getElementById('next-page-btn').disabled = (currentPageIndex >= maxPages - 1 || totalRecords === 0);
-
-        const tbody = document.getElementById('directory-table-body');
-        
-        if (pageData.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-muted text-xs">No matching provider records found in directory.</td></tr>`;
-          return;
-        }
-
-        tbody.innerHTML = pageData.map(row => {
-          const badge = getStatusBadgeHTML(row.status);
-          const primaryLocation = row.locations[0] ? row.locations[0].name : "No Clinic Listed";
-          const primaryFax = row.locations[0] && row.locations[0].fax ? row.locations[0].fax : '<span class="text-status-failed-text italic">MISSING FAX</span>';
-
-          return `
-            <tr class="border-b border-line hover:bg-surface-container-low transition cursor-pointer" onclick="openProviderDetailView('${row.id}')">
-              <td class="py-3 px-4 font-mono font-bold text-primary text-sm whitespace-nowrap">${row.id}</td>
-              <td class="py-3 px-4 font-bold text-text text-sm">${row.name}</td>
-              <td class="py-3 px-4 font-mono text-sm">${row.npi ? row.npi : '<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-status-warning-bg text-status-warning-text uppercase">Missing</span>'}</td>
-              <td class="py-3 px-4 text-text text-sm truncate" title="${primaryLocation}">${primaryLocation}</td>
-              <td class="py-3 px-4 font-mono text-muted text-sm">${primaryFax}</td>
-              <td class="py-3 px-4 text-center">${badge}</td>
-            </tr>
-          `;
-        }).join('');
-      });
-    }
-
-    /* Asynchronous Google Script Runner Callback Wrapper */
-    function fetchProviderPageData(pageIndex, limit, callback) {
-      // Skeleton Loader UI
-      const tbody = document.getElementById('directory-table-body');
-      tbody.innerHTML = Array(4).fill(0).map(() => `
-        <tr class="animate-pulse border-b border-line">
-          <td class="py-3 px-4"><div class="h-4 bg-surface-container rounded w-16"></div></td>
-          <td class="py-3 px-4"><div class="h-4 bg-surface-container rounded w-32"></div></td>
-          <td class="py-3 px-4"><div class="h-4 bg-surface-container rounded w-20"></div></td>
-          <td class="py-3 px-4"><div class="h-4 bg-surface-container rounded w-28"></div></td>
-          <td class="py-3 px-4"><div class="h-4 bg-surface-container rounded w-24"></div></td>
-          <td class="py-3 px-4"><div class="h-4 bg-surface-container rounded w-16 mx-auto"></div></td>
-        </tr>
-      `).join('');
-
-      let filtered = providerDatabase.filter(item => {
-        if (currentChannel === 'new') return item.status === 'Review Required';
-        if (currentChannel === 'golden') return item.goldenTicket === true && item.status === 'Active';
-        if (currentChannel === 'archived') return item.status === 'Soft-Archived';
+      let filtered = masterProviderDatabase.filter(item => {
+        if (currentChannel === 'new') return item.status === 'Review Required' || item.channel === 'new';
+        if (currentChannel === 'golden') return item.status === 'Active' || item.channel === 'golden';
+        if (currentChannel === 'archived') return item.status === 'Soft-Archived' || item.channel === 'archived';
         return true;
       });
 
@@ -730,7 +696,8 @@
         filtered = filtered.filter(item => 
           item.id.toLowerCase().includes(q) ||
           item.name.toLowerCase().includes(q) ||
-          item.npi.includes(q)
+          item.npi.includes(q) ||
+          item.fax.includes(q)
         );
       }
 
@@ -739,9 +706,7 @@
       }
 
       if (stateFilter !== 'all') {
-        filtered = filtered.filter(item => 
-          item.locations.some(l => l.address.toLowerCase().includes(stateFilter.toLowerCase()) || l.name.toLowerCase().includes(stateFilter.toLowerCase()))
-        );
+        filtered = filtered.filter(item => item.state.toLowerCase() === stateFilter.toLowerCase());
       }
 
       if (npiStatusFilter !== 'all') {
@@ -749,13 +714,46 @@
       }
 
       const totalRecords = filtered.length;
-      const startIndex = pageIndex * limit;
-      const endIndex = Math.min(startIndex + limit, totalRecords);
+      const maxPages = Math.ceil(totalRecords / PAGE_LIMIT) || 1;
+      
+      if (currentPageIndex >= maxPages) currentPageIndex = maxPages - 1;
+      if (currentPageIndex < 0) currentPageIndex = 0;
+
+      const startIndex = currentPageIndex * PAGE_LIMIT;
+      const endIndex = Math.min(startIndex + PAGE_LIMIT, totalRecords);
       const pageData = filtered.slice(startIndex, endIndex);
 
-      setTimeout(() => {
-        callback(pageData, totalRecords);
-      }, 120);
+      const statusElem = document.getElementById('pagination-status');
+      if (totalRecords === 0) {
+        statusElem.innerText = "Showing 0–0 of 0";
+      } else {
+        statusElem.innerText = `Showing ${startIndex + 1}–${endIndex} of ${totalRecords}`;
+      }
+
+      document.getElementById('prev-page-btn').disabled = (currentPageIndex === 0);
+      document.getElementById('next-page-btn').disabled = (currentPageIndex >= maxPages - 1 || totalRecords === 0);
+
+      const tbody = document.getElementById('directory-table-body');
+      
+      if (pageData.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-muted text-xs">No matching provider records found in directory.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = pageData.map(row => {
+        const badge = getStatusBadgeHTML(row.status);
+
+        return `
+          <tr class="border-b border-line hover:bg-surface-container-low transition cursor-pointer" onclick="openProviderDetailView('${row.id}')">
+            <td class="py-3 px-4 font-mono font-bold text-primary text-sm whitespace-nowrap">${row.id}</td>
+            <td class="py-3 px-4 font-bold text-text text-sm">${row.name}</td>
+            <td class="py-3 px-4 font-mono text-sm">${row.npi && row.npi !== 'Missing' ? row.npi : '<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-status-warning-bg text-status-warning-text uppercase">Missing</span>'}</td>
+            <td class="py-3 px-4 text-text text-sm truncate" title="${row.clinic}">${row.clinic}</td>
+            <td class="py-3 px-4 font-mono text-muted text-sm">${row.fax || 'No Fax'}</td>
+            <td class="py-3 px-4 text-center">${badge}</td>
+          </tr>
+        `;
+      }).join('');
     }
 
     function getStatusBadgeHTML(status) {
@@ -763,22 +761,9 @@
         return `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold whitespace-nowrap bg-status-success-bg text-status-success-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Active</span>`;
       } else if (status === 'Soft-Archived') {
         return `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold whitespace-nowrap bg-surface-container text-muted"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Archived</span>`;
-      } else if (status === 'New') {
-        return `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold whitespace-nowrap bg-status-info-bg text-status-info-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>New</span>`;
       } else {
         return `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold whitespace-nowrap bg-status-warning-bg text-status-warning-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Review Required</span>`;
       }
-    }
-
-    function switchDirectoryChannel(channelKey, el) {
-      currentChannel = channelKey;
-      currentPageIndex = 0;
-
-      const titleMap = { all: "All Providers", new: "New Providers", golden: "Golden Tickets", archived: "Archived Providers" };
-      document.getElementById('directory-panel-title').innerText = titleMap[channelKey];
-
-      showHomeGridView();
-      renderProviderWorkspace();
     }
 
     function handleDirectorySearch() {
@@ -802,81 +787,49 @@
 
     /* Detail View Engine */
     function openProviderDetailView(provId) {
-      const record = providerDatabase.find(i => i.id === provId);
+      const record = masterProviderDatabase.find(i => i.id === provId);
       if (!record) return;
 
       selectedActiveProvider = record;
 
-      document.getElementById('detail-breadcrumb-id').innerText = record.id;
+      // Header Cards Binding
       document.getElementById('detail-prov-id').innerText = record.id;
       document.getElementById('detail-prov-status-chip').innerHTML = getStatusBadgeHTML(record.status);
       document.getElementById('detail-prov-name').innerText = record.name;
-      document.getElementById('detail-prov-npi').innerText = record.npi || "MISSING NPI";
-      document.getElementById('detail-prov-specialty').innerText = record.specialty;
+      document.getElementById('detail-prov-npi').innerText = record.npi || "Missing";
+      document.getElementById('detail-prov-clinic').innerText = record.clinic;
       document.getElementById('detail-last-verified').innerText = record.lastVerified;
 
-      document.getElementById('card-legal-name').innerText = record.legalName;
-      document.getElementById('card-npi-num').innerText = record.npi || "NOT ASSIGNED";
-      document.getElementById('card-specialty').innerText = record.specialty;
+      // Tab Profile Binding
+      document.getElementById('tab-bridge-prov-id').innerText = record.id;
+      document.getElementById('tab-physician-name').innerText = record.name;
+      document.getElementById('tab-npi-num').innerText = record.npi || "Missing";
+      document.getElementById('tab-directory-status-badge').innerHTML = getStatusBadgeHTML(record.status);
+      document.getElementById('tab-primary-location').innerText = record.clinic;
+      document.getElementById('tab-phone-num').innerText = record.phone || "N/A";
+      document.getElementById('tab-fax-num').innerText = record.fax || "No Fax";
+      document.getElementById('tab-notes-flags').innerText = record.notes || "None";
 
-      const conflictsPanel = document.getElementById('pending-conflicts-panel');
-      if (record.hasDiscrepancy) {
-        conflictsPanel.classList.remove('hidden');
-        conflictsPanel.classList.add('flex');
-      } else {
-        conflictsPanel.classList.add('hidden');
-        conflictsPanel.classList.remove('flex');
-      }
-
-      const archiveBtn = document.getElementById('btn-soft-archive');
-      if (record.status === 'Soft-Archived') {
-        archiveBtn.innerText = "Reactivate Record";
-        archiveBtn.className = "admin-only px-4 py-2 rounded-full border border-status-success-text text-status-success-text text-xs font-bold hover:bg-status-success-bg transition";
-      } else {
-        archiveBtn.innerText = "Soft-Archive Record";
-        archiveBtn.className = "admin-only px-4 py-2 rounded-full border border-status-failed-text text-status-failed-text text-xs font-bold hover:bg-status-failed-bg transition";
-      }
-
-      const locList = document.getElementById('detail-locations-list');
-      document.getElementById('card-location-count').innerText = `${record.locations.length} Associated Location${record.locations.length === 1 ? '' : 's'}`;
-
-      locList.innerHTML = record.locations.map(loc => `
-        <div class="p-4 bg-surface-container-low border border-line rounded-xl flex flex-col gap-2">
+      // Tab Practices & Contact List Binding
+      const practicesContainer = document.getElementById('practices-list-container');
+      practicesContainer.innerHTML = record.locations.map(loc => `
+        <div class="p-4 bg-surface-container-low border border-line rounded-xl flex flex-col gap-2 text-xs">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-text">${loc.name}</span>
-            <span class="text-[10px] font-mono font-bold bg-primary-soft text-on-primary-container px-2 py-0.5 rounded-full">Outbound Fax Destination</span>
+            <span class="font-bold text-text text-sm">${loc.name}</span>
+            <span class="font-mono font-bold bg-primary-soft text-on-primary-container px-2.5 py-0.5 rounded-full text-[10px]">Primary Location</span>
           </div>
-          <div class="grid grid-cols-2 gap-2 text-xs">
-            <div>
-              <span class="block text-[10px] font-bold text-outline uppercase">Operational Fax</span>
-              <span class="font-mono font-bold text-primary">${loc.fax || 'No Fax Listed'}</span>
-            </div>
-            <div>
-              <span class="block text-[10px] font-bold text-outline uppercase">Clinic Phone</span>
-              <span class="font-mono text-text">${loc.phone || 'N/A'}</span>
-            </div>
+          <div class="grid grid-cols-2 gap-2 mt-1">
+            <div><span class="text-outline uppercase text-[10px] font-bold block">Operational Fax</span> <span class="font-mono font-bold text-primary">${loc.fax || 'N/A'}</span></div>
+            <div><span class="text-outline uppercase text-[10px] font-bold block">Operational Phone</span> <span class="font-mono text-text">${loc.phone || 'N/A'}</span></div>
           </div>
-          <div>
-            <span class="block text-[10px] font-bold text-outline uppercase">Physical Address</span>
-            <span class="text-muted text-xs">${loc.address || 'N/A'}</span>
-          </div>
+          <div><span class="text-outline uppercase text-[10px] font-bold block">Address</span> <span class="text-muted">${loc.address || 'N/A'}</span></div>
         </div>
       `).join('');
 
+      switchTab('profile');
+
       document.getElementById('view-home-grid').classList.add('hidden');
       document.getElementById('view-detail-profile').classList.remove('hidden');
-    }
-
-    function resolveDiscrepancy(action) {
-      if (!selectedActiveProvider) return;
-      if (action === 'approve') {
-        selectedActiveProvider.hasDiscrepancy = false;
-        showToast("Intake discrepancy approved & master directory updated.");
-      } else {
-        selectedActiveProvider.hasDiscrepancy = false;
-        showToast("Intake discrepancy rejected.");
-      }
-      openProviderDetailView(selectedActiveProvider.id);
     }
 
     function showHomeGridView() {
@@ -885,198 +838,119 @@
       selectedActiveProvider = null;
     }
 
+    function switchTab(tabKey) {
+      document.querySelectorAll('.detail-nav-tab').forEach(btn => {
+        if (btn.dataset.tab === tabKey) {
+          btn.className = "detail-nav-tab px-8 py-4 text-sm font-bold text-primary border-b-2 border-primary transition whitespace-nowrap cursor-pointer";
+        } else {
+          btn.className = "detail-nav-tab px-8 py-4 text-sm font-medium text-muted hover:text-primary border-b-2 border-transparent transition whitespace-nowrap cursor-pointer";
+        }
+      });
+
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.add('hidden');
+      });
+
+      const activePanel = document.getElementById('panel-' + tabKey);
+      if (activePanel) activePanel.classList.remove('hidden');
+    }
+
     function toggleSoftArchiveState() {
       if (!selectedActiveProvider) return;
       
       const isArchived = selectedActiveProvider.status === 'Soft-Archived';
-      const nextStatus = isArchived ? (selectedActiveProvider.npi ? 'Active' : 'Review Required') : 'Soft-Archived';
-
-      selectedActiveProvider.status = nextStatus;
-      showToast(`Provider ${selectedActiveProvider.id} soft-archived to status: ${nextStatus}`);
+      selectedActiveProvider.status = isArchived ? 'Active' : 'Soft-Archived';
+      
+      showToast(`Provider ${selectedActiveProvider.id} status updated to: ${selectedActiveProvider.status}`);
       openProviderDetailView(selectedActiveProvider.id);
       renderProviderWorkspace();
+    }
+
+    /* Modal Form Handlers */
+    function openAddProviderModal() {
+      isEditingMode = false;
+      document.getElementById('form-modal-header-title').innerText = "Add Provider";
+      document.getElementById('btn-save-provider-cta').innerText = "Save Provider";
+
+      document.getElementById('input-phys-name').value = "";
+      document.getElementById('input-npi-num').value = "";
+      document.getElementById('input-practice-assoc').value = "";
+      document.getElementById('input-op-fax').value = "";
+      document.getElementById('select-primary-state').value = "Tennessee";
+      document.getElementById('select-dir-status').value = "Active";
+
+      document.getElementById('provider-form-modal').classList.remove('hidden');
     }
 
     function openEditProviderModal() {
       if (!selectedActiveProvider) return;
 
-      document.getElementById('modal-title-text').innerText = `Edit Provider Profile — ${selectedActiveProvider.id}`;
-      document.getElementById('prov-name-field').value = selectedActiveProvider.legalName;
-      document.getElementById('prov-npi-field').value = selectedActiveProvider.npi;
-      document.getElementById('prov-specialty-field').value = selectedActiveProvider.specialty;
-      document.getElementById('prov-status-dropdown').value = selectedActiveProvider.status;
+      isEditingMode = true;
+      document.getElementById('form-modal-header-title').innerText = "Edit Provider";
+      document.getElementById('btn-save-provider-cta').innerText = "Save Provider";
 
-      const container = document.getElementById('practice-cards-repeater');
-      container.innerHTML = '';
-      practiceRowIndex = 0;
+      document.getElementById('input-phys-name').value = selectedActiveProvider.name;
+      document.getElementById('input-npi-num').value = selectedActiveProvider.npi !== 'Missing' ? selectedActiveProvider.npi : '';
+      document.getElementById('input-practice-assoc').value = selectedActiveProvider.clinic;
+      document.getElementById('input-op-fax').value = selectedActiveProvider.fax;
+      document.getElementById('select-primary-state').value = selectedActiveProvider.state || "Tennessee";
+      document.getElementById('select-dir-status').value = selectedActiveProvider.status;
 
-      selectedActiveProvider.locations.forEach(loc => {
-        addPracticeInstance(loc);
-      });
+      document.getElementById('provider-form-modal').classList.remove('hidden');
+    }
 
-      if (selectedActiveProvider.locations.length === 0) {
-        addPracticeInstance();
+    function closeFormModal() {
+      document.getElementById('provider-form-modal').classList.add('hidden');
+    }
+
+    function commitFormModal() {
+      const physName = document.getElementById('input-phys-name').value.trim();
+      const npiNum = document.getElementById('input-npi-num').value.trim();
+      const practiceAssoc = document.getElementById('input-practice-assoc').value.trim();
+      const opFax = document.getElementById('input-op-fax').value.trim();
+      const primaryState = document.getElementById('select-primary-state').value;
+      const dirStatus = document.getElementById('select-dir-status').value;
+
+      closeFormModal();
+
+      if (isEditingMode && selectedActiveProvider) {
+        selectedActiveProvider.name = physName;
+        selectedActiveProvider.legalName = physName;
+        selectedActiveProvider.npi = npiNum || "Missing";
+        selectedActiveProvider.clinic = practiceAssoc;
+        selectedActiveProvider.fax = opFax;
+        selectedActiveProvider.state = primaryState;
+        selectedActiveProvider.status = dirStatus;
+
+        showToast(`Provider ${selectedActiveProvider.id} updated successfully.`);
+        openProviderDetailView(selectedActiveProvider.id);
+      } else {
+        const newId = `PROV-${String(masterProviderDatabase.length + 1).padStart(6, '0')}`;
+        const newRecord = {
+          id: newId,
+          name: physName,
+          legalName: physName,
+          npi: npiNum || "Missing",
+          specialty: "Obstetrics & Gynecology",
+          status: dirStatus,
+          lastVerified: "Just Now · Manual Entry",
+          clinic: practiceAssoc,
+          phone: "N/A",
+          fax: opFax,
+          state: primaryState,
+          notes: "Manually Created Record",
+          channel: "golden",
+          locations: [{ name: practiceAssoc, fax: opFax, phone: "N/A", address: `${primaryState}, USA` }]
+        };
+
+        masterProviderDatabase.unshift(newRecord);
+        showToast(`New Provider ${newId} created successfully.`);
       }
 
-      document.getElementById('edit-provider-modal').classList.remove('hidden');
-    }
-
-    function openNewProviderModal() {
-      selectedActiveProvider = {
-        id: `PROV-${String(providerDatabase.length + 1).padStart(6, '0')}`,
-        name: "",
-        legalName: "",
-        npi: "",
-        specialty: "Obstetrics & Gynecology",
-        status: "Review Required",
-        lastVerified: "Just Now",
-        goldenTicket: false,
-        hasDiscrepancy: false,
-        locations: []
-      };
-
-      document.getElementById('modal-title-text').innerText = `Create New Provider — ${selectedActiveProvider.id}`;
-      document.getElementById('prov-name-field').value = "";
-      document.getElementById('prov-npi-field').value = "";
-      document.getElementById('prov-specialty-field').value = "Obstetrics & Gynecology";
-      document.getElementById('prov-status-dropdown').value = "Review Required";
-
-      const container = document.getElementById('practice-cards-repeater');
-      container.innerHTML = '';
-      practiceRowIndex = 0;
-      addPracticeInstance();
-
-      document.getElementById('edit-provider-modal').classList.remove('hidden');
-    }
-
-    function closeEditProviderModal() {
-      document.getElementById('edit-provider-modal').classList.add('hidden');
-    }
-
-    function addPracticeInstance(data = { name: '', fax: '', phone: '', address: '' }) {
-      const container = document.getElementById('practice-cards-repeater');
-      const cardId = `practice-item-${practiceRowIndex}`;
-
-      const cardMarkup = `
-        <div id="${cardId}" class="p-4 bg-surface-container-low border border-line rounded-xl relative space-y-2 transition-all">
-          <button type="button" onclick="removePracticeInstance('${cardId}')" class="absolute top-2 right-2 text-muted hover:text-status-failed-text text-xs font-bold">✕</button>
-
-          <div class="grid grid-cols-2 gap-2">
-            <div>
-              <label class="block text-[10px] font-bold text-outline uppercase mb-0.5">Clinic Name *</label>
-              <input type="text" name="p_name[]" value="${data.name || ''}" class="w-full text-xs p-2 border border-outline rounded-md bg-white focus:border-primary focus:outline-none" required />
-            </div>
-            <div>
-              <label class="block text-[10px] font-bold text-outline uppercase mb-0.5">Operational Fax (Outbound) *</label>
-              <input type="text" name="p_fax[]" value="${data.fax || ''}" placeholder="(555) 000-0000" class="w-full text-xs p-2 border border-outline rounded-md bg-white font-mono focus:border-primary focus:outline-none" required />
-            </div>
-          </div>
-
-          <div class="grid grid-cols-2 gap-2">
-            <div>
-              <label class="block text-[10px] font-bold text-outline uppercase mb-0.5">Clinic Phone</label>
-              <input type="text" name="p_phone[]" value="${data.phone || ''}" placeholder="(555) 000-0000" class="w-full text-xs p-2 border border-outline rounded-md bg-white font-mono focus:border-primary focus:outline-none" />
-            </div>
-            <div>
-              <label class="block text-[10px] font-bold text-outline uppercase mb-0.5">Physical Address</label>
-              <input type="text" name="p_address[]" value="${data.address || ''}" class="w-full text-xs p-2 border border-outline rounded-md bg-white focus:border-primary focus:outline-none" />
-            </div>
-          </div>
-        </div>
-      `;
-      container.insertAdjacentHTML('beforeend', cardMarkup);
-      practiceRowIndex++;
-    }
-
-    function removePracticeInstance(id) {
-      const target = document.getElementById(id);
-      if (target) target.remove();
-    }
-
-    /* Identity Validation Rules Engine */
-    function validateProviderSave() {
-      const npiVal = document.getElementById('prov-npi-field').value.trim();
-      const nameVal = document.getElementById('prov-name-field').value.trim();
-      const statusVal = document.getElementById('prov-status-dropdown').value;
-
-      if (npiVal !== "" && !/^\d{10}$/.test(npiVal)) {
-        alert("Identity Error: NPI Number must contain exactly 10 digits.");
-        return false;
-      }
-
-      if (statusVal === "Active" && (npiVal === "" || nameVal.toLowerCase().includes("unassigned"))) {
-        alert("Compliance Gate: Provider record cannot transition to 'Active' status while missing a valid 10-digit NPI or having an Unassigned Provider name.");
-        return false;
-      }
-
-      return true;
-    }
-
-    function triggerSaveWithRationale() {
-      if (!validateProviderSave()) return;
-
-      document.getElementById('audit-rationale').value = '';
-      const confirmBtn = document.getElementById('confirm-commit-btn');
-      confirmBtn.disabled = true;
-      confirmBtn.classList.add('opacity-50', 'cursor-not-allowed');
-
-      document.getElementById('compliance-rationale-modal').classList.remove('hidden');
-
-      const txt = document.getElementById('audit-rationale');
-      txt.oninput = function() {
-        if (txt.value.trim().length >= 15) {
-          confirmBtn.disabled = false;
-          confirmBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-          confirmBtn.onclick = executeCommit;
-        } else {
-          confirmBtn.disabled = true;
-          confirmBtn.classList.add('opacity-50', 'cursor-not-allowed');
-        }
-      };
-    }
-
-    function closeRationaleModal() {
-      document.getElementById('compliance-rationale-modal').classList.add('hidden');
-    }
-
-    function executeCommit() {
-      closeRationaleModal();
-      closeEditProviderModal();
-
-      const legalName = document.getElementById('prov-name-field').value.trim();
-      const npi = document.getElementById('prov-npi-field').value.trim();
-      const specialty = document.getElementById('prov-specialty-field').value;
-      const status = document.getElementById('prov-status-dropdown').value;
-
-      const practiceNames = Array.from(document.querySelectorAll('input[name="p_name[]"]')).map(i => i.value.trim());
-      const practiceFaxes = Array.from(document.querySelectorAll('input[name="p_fax[]"]')).map(i => i.value.trim());
-      const practicePhones = Array.from(document.querySelectorAll('input[name="p_phone[]"]')).map(i => i.value.trim());
-      const practiceAddresses = Array.from(document.querySelectorAll('input[name="p_address[]"]')).map(i => i.value.trim());
-
-      const locations = practiceNames.map((name, idx) => ({
-        name: name || "Primary Practice",
-        fax: practiceFaxes[idx] || "",
-        phone: practicePhones[idx] || "",
-        address: practiceAddresses[idx] || ""
-      }));
-
-      selectedActiveProvider.name = legalName.startsWith("Dr.") ? legalName : `Dr. ${legalName}, M.D.`;
-      selectedActiveProvider.legalName = legalName;
-      selectedActiveProvider.npi = npi;
-      selectedActiveProvider.specialty = specialty;
-      selectedActiveProvider.status = status;
-      selectedActiveProvider.locations = locations;
-
-      if (!providerDatabase.some(p => p.id === selectedActiveProvider.id)) {
-        providerDatabase.unshift(selectedActiveProvider);
-      }
-
-      showToast(`Modifications for ${selectedActiveProvider.id} committed to Audit Log.`);
       renderProviderWorkspace();
-      openProviderDetailView(selectedActiveProvider.id);
     }
 
-    /* Role Switcher & Role Gating Engine */
+    /* Role Switcher Logic */
     function selectRole(role) {
       activeRole = role;
       document.getElementById('role-switcher-dropdown').classList.add('hidden');

@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notification Configuration | H2M BRIDGE Workspace</title>
+  
+  <!-- Explicit Google Fonts Import for Roboto & Roboto Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Google Material Symbols Import -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Roboto', 'sans-serif'],
+            mono: ['"Roboto Mono"', 'monospace']
+          },
+          colors: {
+            surface: '#FEF7FF',
+            'surface-container': '#F3EDF7',
+            'surface-container-low': '#F7F2FA',
+            primary: '#6750A4',
+            'primary-soft': '#EADDFF',
+            'primary-container': '#EADDFF',
+            'on-primary-container': '#4A4458',
+            line: '#CAC4D0',
+            text: '#1C1B1F', 
+            muted: '#49454F', 
+            outline: '#79747E',
+            
+            /* Status & Semantic Color Tokens */
+            'status-success-bg': '#E6F4EA',
+            'status-success-text': '#0D652D',
+            'status-failed-bg': '#F9DEDC',
+            'status-failed-text': '#B3261E',
+            'status-warning-bg': '#FEF7E0',
+            'status-warning-text': '#6D4200',
+            'status-info-bg': '#E8F0FE',
+            'status-info-text': '#174EA6',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- CSS Role Suppression Rules for Operations Team Role -->
+  <style>
+    .h2m-operations-role .admin-only {
+      display: none !important;
+    }
+  </style>
+</head>
+<body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
+
+  <!-- Full Window Width Canvas Container -->
+  <div class="w-full h-screen mx-auto bg-surface flex overflow-hidden">
+    
+    <!-- 1. DEDICATED ADMINISTRATION SIDEBAR NAVIGATION (Notifications Link Removed) -->
+    <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+      <div class="w-[58px] h-[58px]">
+        <img src="https://helptomoms.com/__l5e/assets-v1/923ead63-1849-4075-9845-3e9a00b8b649/help-to-moms-logo.webp" alt="Help to Moms logo" class="w-full h-full object-contain">
+      </div>
+      
+      <div class="w-full">
+        <nav class="w-full flex flex-col gap-1.5" id="admin-sidebar-nav">
+          
+          <a href="AdminHome.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">dashboard</span>
+              <span class="truncate">Overview</span>
+            </div>
+          </a>
+
+          <!-- Admin Only Node -->
+          <a href="UserManagementPage.html" class="admin-only w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">person</span>
+              <span class="truncate">User Management</span>
+            </div>
+          </a>
+
+          <!-- Admin Only Node -->
+          <a href="RolesPermission.html" class="admin-only w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">key</span>
+              <span class="truncate">Roles &amp; Permissions</span>
+            </div>
+          </a>
+
+          <a href="BusinessConfigPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">inventory_2</span>
+              <span class="truncate">Business Config</span>
+            </div>
+          </a>
+
+          <a href="ReferenceDataPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">database</span>
+              <span class="truncate">Reference Data</span>
+            </div>
+          </a>
+
+          <a href="DocumentTemplates.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">description</span>
+              <span class="truncate">Document Templates</span>
+            </div>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Canvas -->
+    <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
+      
+      <!-- Top Navigation Header -->
+      <header class="h-[58px] flex items-center justify-between shrink-0">
+        <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditPage.html">Audit</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectoryPage.html">Provider Directory</a>
+          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="AdministrationPage.html">Administration</a>
+        </nav>
+        
+        <div class="flex items-center gap-6">
+          <!-- Notification Bell Icon -->
+          <div class="relative w-8 h-8 rounded-full flex items-center justify-center text-[#1C1B1F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 cursor-pointer outline-none select-none group">
+            <span class="material-symbols-outlined text-[20px] leading-none select-none text-[#1C1B1F] group-hover:text-primary transition-colors">
+              notifications
+            </span>
+            <span class="absolute -top-0.5 -right-0.5 min-w-[16px] h-[16px] px-1 bg-[#B3261E] text-white rounded-full flex items-center justify-center text-[9px] font-bold leading-none border-2 border-white shadow-xs select-none">
+              14
+            </span>
+          </div>
+
+          <!-- Account / Role Switcher -->
+          <div class="relative inline-block text-left" id="role-switcher-container">
+            <button id="role-switcher-btn" type="button" class="flex items-center gap-2 h-9 pl-1 pr-3 rounded-full border border-[#e8def8] bg-white hover:bg-[#f3edf7] cursor-pointer transition-colors outline-none focus:ring-2 focus:ring-[#6750a4]">
+              <div id="active-avatar" class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold text-white shrink-0 bg-[#1967D2]">P</div>
+              <div class="text-left hidden sm:block">
+                <p id="active-name" class="text-[12px] font-medium text-[#1C1B1F] m-0 leading-none">Priya Patel</p>
+                <p id="active-label" class="text-[10px] m-0 font-bold text-[#1967D2] mt-0.5">Administrator</p>
+              </div>
+              <span class="material-symbols-outlined text-[16px] text-[#79747e]">arrow_drop_down</span>
+            </button>
+
+            <div id="role-switcher-dropdown" class="hidden absolute right-0 top-[calc(100%+6px)] bg-white rounded-[12px] border border-[#e8def8] z-50 w-[260px] overflow-hidden shadow-[0px_4px_16px_rgba(0,0,0,0.12)]">
+              <div class="px-4 py-2.5 border-b border-[#f3edf7]">
+                <p class="text-[10px] font-bold uppercase tracking-[0.5px] text-[#79747e] m-0">Switch Account / Role View</p>
+              </div>
+              <button type="button" onclick="selectRole('administrator')" id="role-opt-administrator" class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white shrink-0 bg-[#1967D2]">P</div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Priya Patel</p>
+                  <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">p.patel@h2m.org</p>
+                  <p class="text-[10px] font-bold m-0 text-[#1967D2]">Administrator</p>
+                </div>
+                <span id="check-administrator" class="material-symbols-outlined text-[18px] text-[#6750a4]">check</span>
+              </button>
+              <button type="button" onclick="selectRole('operations')" id="role-opt-operations" class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white shrink-0 bg-[#6750a4]">J</div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Jane Doe</p>
+                  <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">jane.doe@h2m.org</p>
+                  <p class="text-[10px] font-bold m-0 text-[#6750a4]">Operations</p>
+                </div>
+                <span id="check-operations" class="material-symbols-outlined text-[18px] text-[#6750a4] hidden">check</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Breadcrumbs Backlink to Administration Overview -->
+      <div class="flex items-center gap-2 text-sm text-muted shrink-0">
+        <a href="AdminHome.html" class="text-primary font-medium hover:underline flex items-center gap-1 cursor-pointer">
+          <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+          <span>Back to Overview</span>
+        </a>
+        <span>/</span>
+        <span class="font-bold text-text">Notification Configuration</span>
+      </div>
+
+      <!-- Page Title Header (MDR OD-ADM-004: V1 System-Defined Scope) -->
+      <div class="flex items-center justify-between shrink-0">
+        <div>
+          <h1 class="text-3xl font-medium text-[#1C1B1F] tracking-tight" id="canvas-stage-title">Notification Configuration</h1>
+          <p class="text-sm text-[#49454F] mt-0.5" id="rules-meta-summary">5 system rules defined · 4 rules enabled</p>
+        </div>
+      </div>
+
+      <!-- Notification Rules Roster Container (Contained Internal Vertical Scroll) -->
+      <div class="flex-1 overflow-y-auto max-h-[calc(100vh-280px)] pr-1 flex flex-col gap-4" id="rules-cards-container">
+        <!-- Injected via JavaScript -->
+      </div>
+
+    </section>
+  </div>
+
+  <!-- EDIT NOTIFICATION RULE MODAL (ADMIN ONLY) -->
+  <div id="edit-rule-modal" class="fixed inset-0 bg-black/40 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[#FFFBFE] border border-line rounded-[28px] shadow-2xl w-[560px] overflow-hidden flex flex-col p-6 gap-5">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between border-b border-line/60 pb-4">
+        <h3 class="text-lg font-bold text-text" id="modal-rule-title">Edit Notification Rule — Missing Fax Alert</h3>
+        <button type="button" onclick="closeEditRuleModal()" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-surface transition cursor-pointer">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <!-- Modal Body Form -->
+      <form id="edit-rule-form" onsubmit="event.preventDefault();" class="flex flex-col gap-4 text-xs">
+        
+        <!-- Field 1: Rule Name -->
+        <div class="flex flex-col gap-1.5">
+          <label class="font-bold text-text">Rule Name</label>
+          <input type="text" id="input-rule-name" required class="p-3 border border-line rounded-xl text-text font-sans text-xs focus:border-primary outline-none" placeholder="e.g. Missing Fax Alert">
+        </div>
+
+        <!-- System-Defined Trigger Condition (Read-Only) -->
+        <div class="flex flex-col gap-1.5">
+          <label class="font-bold text-text">Trigger Condition <span class="text-muted font-normal">(System Defined - Read Only)</span></label>
+          <input type="text" id="input-rule-trigger" readonly class="p-3 border border-line rounded-xl text-muted font-mono text-xs bg-surface-container outline-none" value="sourceStatus = Missing Fax Number">
+        </div>
+
+        <!-- Field 2: Status Selection (Radio) -->
+        <div class="flex flex-col gap-1.5">
+          <label class="font-bold text-text">Status</label>
+          <div class="flex items-center gap-6 pt-1">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="radio" name="rule-status-radio" value="Active" id="radio-status-active" class="accent-primary cursor-pointer">
+              <span class="text-xs font-medium text-text">Active</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="radio" name="rule-status-radio" value="Draft" id="radio-status-draft" class="accent-primary cursor-pointer">
+              <span class="text-xs font-medium text-text">Draft / Disabled</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Field 3: Channel Checkboxes -->
+        <div class="flex flex-col gap-1.5">
+          <label class="font-bold text-text">Channels</label>
+          <div class="flex items-center gap-6 pt-1">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="chk-channel-dashboard" class="accent-primary rounded cursor-pointer" checked>
+              <span class="text-xs text-text">In-System Dashboard</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="chk-channel-email" class="accent-primary rounded cursor-pointer" checked>
+              <span class="text-xs text-text">Email Alert</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Field 4: Recipient Tags Input -->
+        <div class="flex flex-col gap-1.5">
+          <label class="font-bold text-text">Recipients</label>
+          <div class="p-2.5 border border-line rounded-xl bg-white flex flex-wrap gap-2 items-center min-h-[44px]">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#F3EDF7] text-text font-mono text-[11px]">
+              ops@h2m.org <button type="button" class="hover:text-status-failed-text">✕</button>
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#F3EDF7] text-text font-mono text-[11px]">
+              p.patel@h2m.org <button type="button" class="hover:text-status-failed-text">✕</button>
+            </span>
+          </div>
+        </div>
+
+        <!-- Field 5: Mandatory Audit Change Reason (MDR OD-AUD-006) -->
+        <div class="flex flex-col gap-1.5 border-t border-line/60 pt-3">
+          <div class="flex items-center justify-between">
+            <label class="font-bold text-text">Mandatory Audit Change Reason <span class="text-[#B3261E]">*</span></label>
+            <span id="live-char-counter" class="text-[11px] font-mono font-medium text-muted">0/15</span>
+          </div>
+          <textarea id="modal-audit-rationale" rows="3" oninput="validateAuditRationale()" class="p-3 border border-line rounded-xl text-text text-xs focus:border-primary outline-none" placeholder="Updated distribution email for ops team..."></textarea>
+          <p class="text-[10px] text-muted flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px]">info</span>
+            <span>Minimum 15 characters required for compliance log</span>
+          </p>
+        </div>
+
+        <!-- Modal Footer Actions -->
+        <div class="pt-4 border-t border-line/60 flex items-center justify-end gap-3">
+          <button type="button" onclick="closeEditRuleModal()" class="px-5 py-2 rounded-full border border-line text-text font-medium hover:bg-surface transition cursor-pointer">
+            Cancel
+          </button>
+          <button type="button" id="btn-save-changes-submit" onclick="commitEditRuleModal()" class="px-6 py-2 rounded-full bg-primary text-white font-medium transition shadow-sm pointer-events-none opacity-38" disabled>
+            Save Changes
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- INTERCEPT MODAL: Access Restricted — Administrator Required -->
+  <div id="access-restricted-modal" class="hidden fixed inset-0 bg-black/40 backdrop-blur-xs z-50 flex items-center justify-center p-4 transition-opacity duration-200" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="bg-white border border-line rounded-2xl shadow-xl w-full max-w-md overflow-hidden flex flex-col">
+      
+      <!-- Modal Header -->
+      <div class="p-5 border-b border-line bg-[#F9DEDC] flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#B3261E] text-[22px]">gpp_maybe</span>
+          <h3 class="text-base font-bold text-[#B3261E]">Access Restricted — Administrator Required</h3>
+        </div>
+        <button onclick="closeAccessRestrictedModal()" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-[#F2B8B5]/50 transition cursor-pointer" type="button" aria-label="Close modal">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 flex flex-col gap-4 text-xs">
+        <p id="restricted-modal-warning" class="text-text font-normal leading-relaxed">
+          Your account (<strong id="restricted-user-email" class="font-mono">m.reed@h2m.org</strong>) is assigned the 'Operations' role. You do not have permission to modify document templates or system configurations.
+        </p>
+
+        <div class="p-3.5 bg-surface-container-low border border-line rounded-xl flex flex-col gap-1 font-mono text-[11px] text-muted">
+          <span>Target Action: <strong class="text-text" id="restricted-target-action">Edit Notification Rule</strong></span>
+          <span>Required Privilege: <strong class="text-primary">ADMIN_GOVERNANCE_WRITE</strong></span>
+        </div>
+
+        <!-- Escalation CTA Button -->
+        <div class="pt-2 flex justify-end gap-3 border-t border-line/60">
+          <button onclick="closeAccessRestrictedModal()" type="button" class="px-4 py-2 rounded-full border border-line text-text font-bold hover:bg-surface transition cursor-pointer">
+            Dismiss
+          </button>
+          <button onclick="contactAdministratorEscalation()" type="button" class="px-5 py-2.5 rounded-full bg-[#B3261E] text-white font-bold hover:bg-[#8C1D18] transition shadow-sm cursor-pointer flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">mail</span>
+            <span>Contact Administrator</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Global Toast Notification Container -->
+  <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
+
+  <script>
+    /* Master System Notification Rules Dataset (Strict V1 Scope Compliance) */
+    let notificationRules = [
+      {
+        id: "RULE-001",
+        title: "Missing Fax Alert",
+        status: "Active",
+        enabled: true,
+        trigger: "sourceStatus = Missing Fax Number",
+        channel: "Email + Dashboard",
+        recipients: ["ops@h2m.org", "p.patel@h2m.org"],
+     
+      },
+      {
+        id: "RULE-002",
+        title: "Physician Info Alert",
+        status: "Active",
+        enabled: true,
+        trigger: "sourceStatus = Physician Info Requested",
+        channel: "Dashboard",
+        recipients: ["ops@h2m.org"],
+       
+      },
+      {
+        id: "RULE-003",
+        title: "Duplicate Order Alert",
+        status: "Active",
+        enabled: true,
+        trigger: "bridgeStatus = Duplicate Suspected",
+        channel: "Email + Dashboard",
+        recipients: ["ops@h2m.org", "p.patel@h2m.org"],
+      },
+      {
+        id: "RULE-004",
+        title: "Bridge Processing Error",
+        status: "Draft",
+        enabled: false,
+        trigger: "bridgeStatus = Validation Failed",
+        channel: "Email + Dashboard",
+        recipients: ["ops@h2m.org"],
+        
+      },
+      {
+        id: "RULE-005",
+        title: "Daily Queue Summary",
+        status: "Active",
+        enabled: true,
+        trigger: "Scheduled: Every day at 08:00",
+        channel: "Email (ops@h2m.org)",
+        recipients: ["ops@h2m.org"],
+        
+      }
+    ];
+
+    let activeRole = 'administrator'; // 'administrator' or 'operations'
+    let selectedActiveRule = null;
+
+    /* Render Engine for Notification Rule Cards with Design System Semantic Status Chips */
+    function renderNotificationWorkspace() {
+      const container = document.getElementById('rules-cards-container');
+      const enabledCount = notificationRules.filter(r => r.enabled).length;
+      document.getElementById('rules-meta-summary').innerText = `${notificationRules.length} system rules defined · ${enabledCount} rules enabled`;
+
+      container.innerHTML = notificationRules.map(rule => {
+        const isActive = rule.status === 'Active';
+        const isEnabled = rule.enabled;
+
+        // Semantic Status Chip Component
+        const statusBadge = isActive 
+          ? `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-success-bg text-status-success-text whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Active</span>`
+          : `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-surface-container text-muted whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Draft / Disabled</span>`;
+
+        // Enabled/Disabled Toggle Control Pill
+        const togglePill = isEnabled
+          ? `<button onclick="handleTogglePillClick('${rule.id}')" class="px-3.5 py-1 rounded-full bg-status-success-bg text-status-success-text text-xs font-bold transition hover:opacity-80 cursor-pointer whitespace-nowrap">Enabled</button>`
+          : `<button onclick="handleTogglePillClick('${rule.id}')" class="px-3.5 py-1 rounded-full bg-surface-container text-muted text-xs font-bold transition hover:opacity-80 cursor-pointer whitespace-nowrap">Disabled</button>`;
+
+        return `
+          <div class="bg-[#FFFBFE] border border-[#CAC4D0] rounded-[16px] p-5 shadow-xs flex flex-col gap-3 hover:shadow-sm transition">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <h3 class="text-base font-semibold text-[#1C1B1F]">${rule.title}</h3>
+                ${statusBadge}
+              </div>
+
+              <!-- Action Controls Gutter -->
+              <div class="flex items-center gap-3">
+                ${togglePill}
+                <button onclick="handleEditRuleClick('${rule.id}')" class="text-sm font-medium text-[#6750A4] hover:underline cursor-pointer">
+                  Edit
+                </button>
+              </div>
+            </div>
+
+            <!-- Body Metadata -->
+            <div class="flex flex-col gap-1 text-xs text-[#49454F]">
+              <div><strong class="font-semibold text-text">Trigger Condition:</strong> <span class="font-mono bg-surface-container-low px-2 py-0.5 rounded text-muted">${rule.trigger}</span></div>
+              <div><strong class="font-semibold text-text">Delivery Channel:</strong> <span>${rule.channel}</span></div>
+            </div>
+
+            <p class="text-[11px] text-muted border-t border-line/40 pt-2 italic">
+              ${rule.v1ComplianceNote}
+            </p>
+          </div>
+        `;
+      }).join('');
+    }
+
+    /* Handlers & Intercept Router */
+    function handleTogglePillClick(ruleId) {
+      if (activeRole === 'operations') {
+        openAccessRestrictedModal('Toggle Notification Rule Status');
+      } else {
+        const rule = notificationRules.find(r => r.id === ruleId);
+        if (rule) {
+          rule.enabled = !rule.enabled;
+          showToast(`Rule '${rule.title}' ${rule.enabled ? 'Enabled' : 'Disabled'}.`);
+          renderNotificationWorkspace();
+        }
+      }
+    }
+
+    function handleEditRuleClick(ruleId) {
+      if (activeRole === 'operations') {
+        openAccessRestrictedModal('Edit Notification Rule');
+      } else {
+        const rule = notificationRules.find(r => r.id === ruleId);
+        if (!rule) return;
+
+        selectedActiveRule = rule;
+        document.getElementById('modal-rule-title').innerText = `Edit Notification Rule — ${rule.title}`;
+        document.getElementById('input-rule-name').value = rule.title;
+        document.getElementById('input-rule-trigger').value = rule.trigger;
+        
+        if (rule.status === 'Active') {
+          document.getElementById('radio-status-active').checked = true;
+        } else {
+          document.getElementById('radio-status-draft').checked = true;
+        }
+
+        document.getElementById('modal-audit-rationale').value = '';
+        validateAuditRationale();
+
+        document.getElementById('edit-rule-modal').classList.remove('hidden');
+      }
+    }
+
+    function closeEditRuleModal() {
+      document.getElementById('edit-rule-modal').classList.add('hidden');
+    }
+
+    /* 15-Character Minimum Audit Rationale Validation (MDR OD-AUD-006) */
+    function validateAuditRationale() {
+      const txt = document.getElementById('modal-audit-rationale').value.trim();
+      const count = txt.length;
+      const counterLabel = document.getElementById('live-char-counter');
+      const submitBtn = document.getElementById('btn-save-changes-submit');
+
+      counterLabel.innerText = `${count}/15`;
+
+      if (count >= 15) {
+        counterLabel.className = "text-[11px] font-mono font-bold text-status-success-text";
+        submitBtn.disabled = false;
+        submitBtn.className = "px-6 py-2 rounded-full bg-primary text-white font-medium hover:bg-on-primary-container transition shadow-sm cursor-pointer";
+      } else {
+        counterLabel.className = "text-[11px] font-mono font-medium text-muted";
+        submitBtn.disabled = true;
+        submitBtn.className = "px-6 py-2 rounded-full bg-primary text-white font-medium transition shadow-sm pointer-events-none opacity-38";
+      }
+    }
+
+    function commitEditRuleModal() {
+      const rationale = document.getElementById('modal-audit-rationale').value.trim();
+      if (rationale.length < 15) return;
+
+      if (selectedActiveRule) {
+        selectedActiveRule.title = document.getElementById('input-rule-name').value.trim();
+        selectedActiveRule.status = document.querySelector('input[name="rule-status-radio"]:checked').value;
+        selectedActiveRule.enabled = (selectedActiveRule.status === 'Active');
+        
+        showToast(`Rule '${selectedActiveRule.title}' updated. Change logged to Audit ledger.`);
+      }
+
+      closeEditRuleModal();
+      renderNotificationWorkspace();
+    }
+
+    /* Operations Intercept Modal Controls */
+    function openAccessRestrictedModal(targetAction) {
+      const modal = document.getElementById('access-restricted-modal');
+      document.getElementById('restricted-user-email').innerText = 'm.reed@h2m.org';
+      document.getElementById('restricted-target-action').innerText = targetAction;
+      document.getElementById('restricted-modal-warning').innerHTML = `Your account (<strong class="font-mono">m.reed@h2m.org</strong>) is assigned the 'Operations' role. You do not have permission to modify document templates or system configurations.`;
+      
+      modal.classList.remove('hidden');
+    }
+
+    function closeAccessRestrictedModal() {
+      document.getElementById('access-restricted-modal').classList.add('hidden');
+    }
+
+    function contactAdministratorEscalation() {
+      closeAccessRestrictedModal();
+      showToast("Access request dispatched to Lead Administrator Priya Patel (p.patel@h2m.org).");
+    }
+
+    /* Role Switcher & Front-End DOM Gating Engine */
+    function selectRole(role) {
+      activeRole = role;
+      document.getElementById('role-switcher-dropdown').classList.add('hidden');
+
+      const avatar = document.getElementById('active-avatar');
+      const nameElem = document.getElementById('active-name');
+      const labelElem = document.getElementById('active-label');
+
+      if (role === 'operations') {
+        document.body.classList.add('h2m-operations-role');
+        avatar.innerText = 'J';
+        avatar.style.backgroundColor = '#6750A4';
+        nameElem.innerText = 'Jane Doe';
+        labelElem.innerText = 'Operations';
+        labelElem.style.color = '#6750A4';
+
+        document.getElementById('role-opt-operations').className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]";
+        document.getElementById('role-opt-administrator').className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
+        document.getElementById('check-operations').classList.remove('hidden');
+        document.getElementById('check-administrator').classList.add('hidden');
+      } else {
+        document.body.classList.remove('h2m-operations-role');
+        avatar.innerText = 'P';
+        avatar.style.backgroundColor = '#1967D2';
+        nameElem.innerText = 'Priya Patel';
+        labelElem.innerText = 'Administrator';
+        labelElem.style.color = '#1967D2';
+
+        document.getElementById('role-opt-administrator').className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]";
+        document.getElementById('role-opt-operations').className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
+        document.getElementById('check-administrator').classList.remove('hidden');
+        document.getElementById('check-operations').classList.add('hidden');
+      }
+
+      showToast(`Switched active view to: ${labelElem.innerText}`);
+      renderNotificationWorkspace();
+    }
+
+    document.getElementById('role-switcher-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      document.getElementById('role-switcher-dropdown').classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+      const container = document.getElementById('role-switcher-container');
+      if (container && !container.contains(e.target)) {
+        document.getElementById('role-switcher-dropdown').classList.add('hidden');
+      }
+    });
+
+    function showToast(message) {
+      const toast = document.getElementById('toast-notification');
+      toast.innerText = message;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 2500);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderNotificationWorkspace();
+    });
+  </script>
+</body>
+</html>

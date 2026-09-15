@@ -73,7 +73,7 @@
 </head>
 <body class="bg-surface text-text font-sans min-h-screen relative overflow-x-hidden antialiased">
 
-  <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
+  <div class="w-[full] min-h-[1024px] mx-auto bg-surface flex">
     
     <!-- ================================================================= -->
     <!-- 1. UNIFIED SIDEBAR NAVIGATION WITH ROLE-BASED NODE SUPPRESSION    -->
@@ -88,8 +88,8 @@
         <nav class="w-full flex flex-col gap-1.5" id="admin-sidebar-nav">
           
           <!-- Node 1: Overview (Viewable by both) -->
-          <a href="AdministrationPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center gap-2.5 bg-primary-soft text-primary font-bold text-sm leading-none transition">
-            <span class="material-symbols-outlined shrink-0 text-primary text-[18px]">dashboard</span>
+          <a href="AdminHome.html" class="w-full h-10 px-3.5 rounded-full flex items-center gap-2.5 bg-primary-soft text-[#4A4458] font-bold text-sm leading-none transition">
+            <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-[18px]">dashboard</span>
             <span class="truncate">Overview</span>
           </a>
 
@@ -216,7 +216,7 @@
         </a>
 
         <!-- Card 2: Roles & Permissions (Admin Only - Hidden for Operations) -->
-        <a href="RolesPermissionsPage.html" class="admin-only bg-white border border-line rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between h-[130px]">
+        <a href="RolesPermission.html" class="admin-only bg-white border border-line rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between h-[130px]">
           <div class="flex items-center gap-3">
             <div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary">
               <span class="material-symbols-outlined text-[20px]">key</span>
@@ -258,7 +258,7 @@
         </a>
 
         <!-- Card 5: Document Templates (Viewable by both) -->
-        <a href="DocumentTemplatesPage.html" class="bg-white border border-line rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between h-[130px]">
+        <a href="DocumentTemplates.html" class="bg-white border border-line rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between h-[130px]">
           <div class="flex items-center gap-3">
             <div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary">
               <span class="material-symbols-outlined text-[20px]">description</span>

@@ -57,21 +57,21 @@
     }
   </style>
 </head>
-<body class="bg-surface text-text font-sans min-h-screen relative overflow-x-hidden antialiased">
+<body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
 
-  <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
+  <!-- Full Window Width Canvas Container -->
+  <div class="w-full h-screen mx-auto bg-surface flex overflow-hidden">
     
     <!-- 1. DEDICATED ADMINISTRATION SIDEBAR NAVIGATION -->
-    <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+    <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
       <div class="w-[58px] h-[58px]">
         <img src="https://helptomoms.com/__l5e/assets-v1/923ead63-1849-4075-9845-3e9a00b8b649/help-to-moms-logo.webp" alt="Help to Moms logo" class="w-full h-full object-contain">
       </div>
       
       <div class="w-full">
-    
         <nav class="w-full flex flex-col gap-1.5" id="admin-sidebar-nav">
           
-          <a href="AdministrationPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+          <a href="AdminHome.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">dashboard</span>
               <span class="truncate">Overview</span>
@@ -87,7 +87,7 @@
           </a>
 
           <!-- Admin Only Node -->
-          <a href="RolesPermissionsPage.html" class="admin-only w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+          <a href="RolesPermission.html" class="admin-only w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">key</span>
               <span class="truncate">Roles &amp; Permissions</span>
@@ -108,34 +108,31 @@
             </div>
           </a>
 
-          <a href="DocumentTemplatesPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#4A4458] bg-primary-soft text-primary font-bold text-sm leading-none transition">
+          <a href="DocumentTemplates.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#4A4458] bg-primary-soft  font-bold text-sm leading-none transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
-              <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-primary text-[18px]">description</span>
+              <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-[18px]">description</span>
               <span class="truncate">Document Templates</span>
             </div>
           </a>
         </nav>
       </div>
-
-      
     </aside>
 
-    <!-- Main Workspace Canvas -->
-    <section class="flex-1 p-8 pb-12 flex flex-col gap-6 overflow-hidden">
+    <!-- Main Workspace Canvas (No Page Scroll) -->
+    <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
       
       <!-- Top Navigation Header -->
-      <header class="h-[58px] flex items-center justify-between">
+      <header class="h-[58px] flex items-center justify-between shrink-0">
         <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditPage.html">Audit</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectoryPage.html">Provider Directory</a>
-          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="AdministrationPage.html">Administration</a>
+          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="AdminHome.html">Administration</a>
         </nav>
         
         <div class="flex items-center gap-6">
-          <div class="relative w-10 h-10 flex items-center justify-center cursor-pointer">
-            <!-- Notification Bell Icon (Standardized Hover Behavior) -->
+          <!-- Notification Bell Icon (Standardized Hover Behavior) -->
           <div class="relative w-8 h-8 rounded-full flex items-center justify-center text-[#1C1B1F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 cursor-pointer outline-none select-none group">
             <span class="material-symbols-outlined text-[20px] leading-none select-none text-[#1C1B1F] group-hover:text-primary transition-colors">
               notifications
@@ -184,23 +181,23 @@
       </header>
 
       <!-- Page Title & CTA -->
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between shrink-0">
         <div>
           <h1 class="text-3xl font-semibold text-text" id="canvas-stage-title">Document Templates</h1>
           <p class="text-xs text-muted mt-0.5">4 templates · 3 active</p>
         </div>
-        <!-- Admin-Only + Upload Template CTA Button (Hidden for Operations) -->
-        <button onclick="openUploadTemplateModal()" class="admin-only px-5 py-2 bg-primary text-white rounded-full text-xs font-medium hover:bg-on-primary-container transition shadow-sm flex items-center gap-2">
+        <!-- Admin-Only + Upload Template CTA Button (text-sm font-medium) -->
+        <button onclick="openUploadTemplateModal()" class="admin-only px-5 py-2 bg-primary text-white rounded-full text-sm font-medium hover:bg-on-primary-container transition shadow-sm flex items-center gap-2 cursor-pointer">
           <span class="material-symbols-outlined text-[18px]">upload_file</span>
-          <span>+ Upload Template</span>
+          <span>Upload Template</span>
         </button>
       </div>
 
-      <!-- Master Document Templates Table Frame -->
-      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex-1 flex flex-col">
+      <!-- Master Document Templates Table Frame (Content-Hugging Container with Internal Scroll) -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0 mb-6">
         
         <!-- Header Controls Row -->
-        <div class="p-5 border-b border-line flex items-center justify-between">
+        <div class="p-5 border-b border-line flex items-center justify-between shrink-0">
           <h2 class="text-xl font-semibold text-text">Outbound Document Templates</h2>
           
           <div class="flex items-center gap-2.5">
@@ -221,7 +218,7 @@
               <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
             </div>
 
-            <!-- Gmail-Style Circular Pagination -->
+            <!-- Gmail-Style Circular Pagination Controls -->
             <div class="flex items-center gap-3 text-xs text-muted pl-2">
               <span id="pagination-status" class="font-medium text-text font-mono select-none">Showing 1–4 of 4</span>
               <div class="flex items-center gap-1 select-none">
@@ -236,8 +233,8 @@
           </div>
         </div>
 
-        <!-- Table Data Body -->
-        <div class="overflow-x-auto flex-1">
+        <!-- Table Body Container (Internal Vertical Scroll Control) -->
+        <div class="overflow-y-auto max-h-[calc(100vh-320px)] h-auto">
           <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1000px]">
             <colgroup>
               <col class="w-[12%]">
@@ -248,7 +245,7 @@
               <col class="w-[12%]">
               <col class="w-[12%]">
             </colgroup>
-            <thead>
+            <thead class="sticky top-0 z-10">
               <tr class="bg-primary text-white text-[11px] font-bold tracking-wider uppercase">
                 <th class="py-3 px-4">TEMPLATE ID</th>
                 <th class="py-3 px-4">NAME</th>
@@ -319,7 +316,7 @@
     </div>
   </div>
 
-  <!-- Version History Modal (Visible to Both; Rollback CTA is .admin-only) -->
+  <!-- Version History Modal -->
   <div id="history-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-[28px] max-w-xl w-full shadow-2xl overflow-hidden flex flex-col p-6 gap-4">
       <div class="flex items-center justify-between border-b border-line pb-3">
@@ -331,9 +328,9 @@
       </div>
 
       <div class="overflow-x-auto">
-        <table class="w-full border-collapse text-left text-xs">
+        <table class="w-full border-collapse text-left text-sm">
           <thead>
-            <tr class="border-b border-line bg-primary text-white font-bold text-[11px]">
+            <tr class="border-b border-line bg-primary text-white font-bold text-[11px] uppercase">
               <th class="py-2.5 px-3">VERSION</th>
               <th class="py-2.5 px-3">STATUS</th>
               <th class="py-2.5 px-3">UPDATED BY</th>
@@ -353,7 +350,7 @@
     </div>
   </div>
 
-  <!-- Document Preview & Fax Retry Modal (View Action Target) -->
+  <!-- Document Preview & Fax Retry Modal -->
   <div id="view-document-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-[28px] max-w-4xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
       
@@ -598,7 +595,7 @@
     let selectedActiveTemplate = null;
     let openActionMenuId = null;
 
-    /* Render Engine */
+    /* Render Engine (All cell texts set to text-sm) */
     function renderTemplateWorkspace() {
       let filtered = templateDatabase;
 
@@ -636,7 +633,7 @@
       const tbody = document.getElementById('template-table-body');
       
       if (pageData.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" class="p-8 text-center text-muted text-xs">No matching document templates found.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="7" class="p-8 text-center text-muted text-sm">No matching document templates found.</td></tr>`;
         return;
       }
 
@@ -650,20 +647,20 @@
           badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-info-bg text-status-info-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Superseded</span>`;
         }
 
-        /* 3-Dot Action Popover Menu matching image_4d3acb.png */
+        /* 3-Dot Action Popover Menu */
         const actionMenuHTML = `
           <div class="relative inline-block text-left">
-            <button onclick="toggleActionMenu(event, '${t.id}')" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors outline-none" title="More options">
+            <button onclick="toggleActionMenu(event, '${t.id}')" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors outline-none cursor-pointer" title="More options">
               <span class="material-symbols-outlined text-[20px]">more_vert</span>
             </button>
             <div id="action-popover-${t.id}" class="hidden absolute right-0 top-full mt-1 bg-white rounded-2xl border border-line z-50 w-32 py-1 shadow-lg">
-              <button onclick="openHistoryModal('${t.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition">
+              <button onclick="openHistoryModal('${t.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
                 <span class="material-symbols-outlined text-[18px] text-muted">history</span> History
               </button>
-              <button onclick="editTemplateItem('${t.id}')" class="admin-only w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text border-t border-line/60 transition">
+              <button onclick="editTemplateItem('${t.id}')" class="admin-only w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text border-t border-line/60 transition cursor-pointer">
                 <span class="material-symbols-outlined text-[18px] text-muted">edit</span> Edit
               </button>
-              <button onclick="openViewDocumentModal('${t.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text border-t border-line/60 transition">
+              <button onclick="openViewDocumentModal('${t.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text border-t border-line/60 transition cursor-pointer">
                 <span class="material-symbols-outlined text-[18px] text-muted">visibility</span> View
               </button>
             </div>
@@ -672,13 +669,13 @@
 
         return `
           <tr class="border-b border-line hover:bg-surface-container-low transition">
-            <td class="py-3 px-4 font-mono font-bold text-primary text-xs whitespace-nowrap">${t.id}</td>
-            <td class="py-3 px-4 font-bold text-text text-sm">${t.name}</td>
-            <td class="py-3 px-4 font-mono text-muted text-xs">${t.version}</td>
-            <td class="py-3 px-4">${badge}</td>
-            <td class="py-3 px-4 font-mono text-xs text-muted">${t.updatedBy}</td>
-            <td class="py-3 px-4 text-xs text-muted whitespace-nowrap">${t.date}</td>
-            <td class="py-3 px-4 text-center">
+            <td class="py-3.5 px-4 font-mono font-bold text-primary text-sm whitespace-nowrap">${t.id}</td>
+            <td class="py-3.5 px-4 font-bold text-text text-sm">${t.name}</td>
+            <td class="py-3.5 px-4 font-mono text-muted text-sm">${t.version}</td>
+            <td class="py-3.5 px-4">${badge}</td>
+            <td class="py-3.5 px-4 font-mono text-sm text-muted">${t.updatedBy}</td>
+            <td class="py-3.5 px-4 text-sm text-muted whitespace-nowrap">${t.date}</td>
+            <td class="py-3.5 px-4 text-center">
               ${actionMenuHTML}
             </td>
           </tr>
@@ -739,14 +736,14 @@
         
         return `
           <tr class="border-b border-line hover:bg-surface-container-low transition">
-            <td class="py-2.5 px-3 font-mono font-bold text-primary">${h.version}</td>
-            <td class="py-2.5 px-3 font-bold ${isCurrentActive ? 'text-status-success-text' : 'text-muted'}">${h.status}</td>
-            <td class="py-2.5 px-3 font-mono text-muted">${h.updatedBy}</td>
-            <td class="py-2.5 px-3 text-muted">${h.date}</td>
-            <td class="py-2.5 px-3 text-center">
+            <td class="py-3 px-3 font-mono font-bold text-primary text-sm">${h.version}</td>
+            <td class="py-3 px-3 font-bold text-sm ${isCurrentActive ? 'text-status-success-text' : 'text-muted'}">${h.status}</td>
+            <td class="py-3 px-3 font-mono text-muted text-sm">${h.updatedBy}</td>
+            <td class="py-3 px-3 text-muted text-sm">${h.date}</td>
+            <td class="py-3 px-3 text-center">
               <div class="flex items-center justify-center gap-2">
-                <button onclick="downloadArchival('${h.version}')" class="px-3 py-1 border border-outline rounded-full text-xs font-bold hover:bg-surface-container transition">Download Archival</button>
-                ${!isCurrentActive ? `<button onclick="rollbackToVersion('${h.version}')" class="admin-only px-3 py-1 bg-primary text-white rounded-full text-xs font-bold hover:bg-on-primary-container transition shadow-sm">Rollback to Version</button>` : ''}
+                <button onclick="downloadArchival('${h.version}')" class="px-3.5 py-1 border border-outline rounded-full text-xs font-bold hover:bg-surface-container transition cursor-pointer">Download Archival</button>
+                ${!isCurrentActive ? `<button onclick="rollbackToVersion('${h.version}')" class="admin-only px-3.5 py-1 bg-primary text-white rounded-full text-xs font-bold hover:bg-on-primary-container transition shadow-sm cursor-pointer">Rollback to Version</button>` : ''}
               </div>
             </td>
           </tr>

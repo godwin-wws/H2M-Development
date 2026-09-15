@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roles & Permissions | H2M BRIDGE Workspace</title>
+  
+  <!-- Google Fonts Import -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Material Symbols Import -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Roboto', 'sans-serif'],
+            mono: ['"Roboto Mono"', 'monospace']
+          },
+          colors: {
+            surface: '#FEF7FF',
+            'surface-container': '#F3EDF7',
+            'surface-container-low': '#F7F2FA',
+            primary: '#6750A4',
+            'primary-soft': '#EADDFF',
+            'primary-container': '#EADDFF',
+            'on-primary-container': '#4A4458',
+            line: '#CAC4D0',
+            text: '#1C1B1F', 
+            muted: '#49454F', 
+            outline: '#79747E',
+            
+            'status-success-bg': '#E6F4EA',
+            'status-success-text': '#0D652D',
+            'status-failed-bg': '#F9DEDC',
+            'status-failed-text': '#B3261E',
+            'status-warning-bg': '#FEF7E0',
+            'status-warning-text': '#6D4200',
+            'status-info-bg': '#E8F0FE',
+            'status-info-text': '#174EA6',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Front-End DOM Gating & Role Suppression Rules -->
+  <style>
+    /* Completely removes restricted DOM elements for Operations Role */
+    .h2m-operations-role .admin-only {
+      display: none !important;
+    }
+  </style>
+</head>
+<body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
+
+  <div class="w-[full] h-screen mx-auto bg-surface flex overflow-hidden">
+    
+    <!-- 1. UNIFIED ADMINISTRATION SIDEBAR NAVIGATION -->
+    <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+      <div class="w-[58px] h-[58px]">
+        <img src="https://helptomoms.com/__l5e/assets-v1/923ead63-1849-4075-9845-3e9a00b8b649/help-to-moms-logo.webp" alt="Help to Moms logo" class="w-full h-full object-contain">
+      </div>
+      
+      <div class="w-full">
+        <nav class="w-full flex flex-col gap-1.5" id="admin-sidebar-nav">
+          
+          <a href="AdminHome.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">dashboard</span>
+              <span class="truncate">Overview</span>
+            </div>
+          </a>
+
+          <!-- Admin Only Node -->
+          <a href="UserManagementPage.html" class="admin-only w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">person</span>
+              <span class="truncate">User Management</span>
+            </div>
+          </a>
+
+          <!-- Admin Only Node (Active Page) -->
+          <a href="RolesPermissionsPage.html" class="admin-only w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-none transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-[18px]">key</span>
+              <span class="truncate">Roles &amp; Permissions</span>
+            </div>
+          </a>
+
+          <a href="BusinessConfigPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">inventory_2</span>
+              <span class="truncate">Business Config</span>
+            </div>
+          </a>
+
+          <a href="ReferenceDataPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">database</span>
+              <span class="truncate">Reference Data</span>
+            </div>
+          </a>
+
+          <a href="DocumentTemplates.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">description</span>
+              <span class="truncate">Document Templates</span>
+            </div>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Canvas -->
+    <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
+      
+      <!-- Top Navigation Header -->
+      <header class="h-[58px] flex items-center justify-between shrink-0">
+        <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditLogs.html">Audit</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectory.html">Provider Directory</a>
+          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="AdminiHome.html">Administration</a>
+        </nav>
+        
+        <div class="flex items-center gap-6">
+          <!-- Notification Bell Icon -->
+          <div class="relative w-8 h-8 rounded-full flex items-center justify-center text-[#1C1B1F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 cursor-pointer outline-none select-none group">
+            <span class="material-symbols-outlined text-[20px] leading-none select-none text-[#1C1B1F] group-hover:text-primary transition-colors">
+              notifications
+            </span>
+            <span class="absolute -top-0.5 -right-0.5 min-w-[16px] h-[16px] px-1 bg-[#B3261E] text-white rounded-full flex items-center justify-center text-[9px] font-bold leading-none border-2 border-white shadow-xs select-none">
+              14
+            </span>
+          </div>
+
+          <!-- Account / Role Switcher -->
+          <div class="relative inline-block text-left" id="role-switcher-container">
+            <button id="role-switcher-btn" type="button" class="flex items-center gap-2 h-9 pl-1 pr-3 rounded-full border border-[#e8def8] bg-white hover:bg-[#f3edf7] cursor-pointer transition-colors outline-none focus:ring-2 focus:ring-[#6750a4]">
+              <div id="active-avatar" class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold text-white shrink-0 bg-[#1967D2]">P</div>
+              <div class="text-left hidden sm:block">
+                <p id="active-name" class="text-[12px] font-medium text-[#1C1B1F] m-0 leading-none">Priya Patel</p>
+                <p id="active-label" class="text-[10px] m-0 font-bold text-[#1967D2] mt-0.5">Administrator</p>
+              </div>
+              <span class="material-symbols-outlined text-[16px] text-[#79747e]">arrow_drop_down</span>
+            </button>
+
+            <div id="role-switcher-dropdown" class="hidden absolute right-0 top-[calc(100%+6px)] bg-white rounded-[12px] border border-[#e8def8] z-50 w-[260px] overflow-hidden shadow-[0px_4px_16px_rgba(0,0,0,0.12)]">
+              <div class="px-4 py-2.5 border-b border-[#f3edf7]">
+                <p class="text-[10px] font-bold uppercase tracking-[0.5px] text-[#79747e] m-0">Switch Account / Role View</p>
+              </div>
+              <button type="button" onclick="selectRole('administrator')" id="role-opt-administrator" class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white shrink-0 bg-[#1967D2]">P</div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Priya Patel</p>
+                  <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">p.patel@h2m.org</p>
+                  <p class="text-[10px] font-bold m-0 text-[#1967D2]">Administrator</p>
+                </div>
+                <span id="check-administrator" class="material-symbols-outlined text-[18px] text-[#6750a4]">check</span>
+              </button>
+              <button type="button" onclick="selectRole('operations')" id="role-opt-operations" class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white shrink-0 bg-[#6750a4]">J</div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Jane Doe</p>
+                  <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">jane.doe@h2m.org</p>
+                  <p class="text-[10px] font-bold m-0 text-[#6750a4]">Operations</p>
+                </div>
+                <span id="check-operations" class="material-symbols-outlined text-[18px] text-[#6750a4] hidden">check</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- VIEW 1: ROLES & PERMISSIONS GRID (Main View) -->
+      <div id="view-roles-overview" class="flex flex-col gap-6 flex-1 shrink-0">
+        
+        <!-- Title & CTA -->
+        <div class="flex items-center justify-between shrink-0">
+          <div>
+            <h1 class="text-3xl font-semibold text-text">Roles &amp; Permissions</h1>
+            <p class="text-xs text-muted mt-0.5">5 roles defined</p>
+          </div>
+          <!-- Create Role Button -->
+          <button onclick="handleActionTrigger('create-role')" class="px-5 py-2.5 bg-primary text-white rounded-full text-sm font-bold hover:bg-on-primary-container transition shadow-sm flex items-center gap-2 cursor-pointer">
+            <span class="material-symbols-outlined text-[18px]">add</span>
+            <span>Create Role</span>
+          </button>
+        </div>
+
+        <!-- Role Cards Grid (Matching Roles & Permissions For Operations.jpg) -->
+        <div class="grid grid-cols-2 gap-6">
+          
+          <!-- Card 1: Admin -->
+          <div class="bg-white border border-line rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-6 hover:shadow-md transition">
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-bold text-text">Admin</h3>
+                <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-[#F3EDF7] text-muted font-mono">2 users</span>
+              </div>
+              <p class="text-xs text-muted">Full system access including configuration.</p>
+            </div>
+            
+            <div class="flex items-center gap-4 text-xs font-bold text-primary pt-2 border-t border-line/40">
+              <button onclick="handleActionTrigger('edit-permissions', 'Admin')" class="hover:underline flex items-center gap-1 cursor-pointer">
+                <span>Edit Permissions</span>
+              </button>
+              <span class="text-line">|</span>
+              <button onclick="openAssignUsersView('Admin')" class="hover:underline flex items-center gap-1 cursor-pointer">
+                <span>Assign User</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2: Operations -->
+          <div class="bg-white border border-line rounded-2xl p-6 shadow-sm flex flex-col justify-between gap-6 hover:shadow-md transition">
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-bold text-text">Operations</h3>
+                <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-[#F3EDF7] text-muted font-mono">2 users</span>
+              </div>
+              <p class="text-xs text-muted">Workspace, Review, Provider Directory.</p>
+            </div>
+            
+            <div class="flex items-center gap-4 text-xs font-bold text-primary pt-2 border-t border-line/40">
+              <button onclick="handleActionTrigger('edit-permissions', 'Operations')" class="hover:underline flex items-center gap-1 cursor-pointer">
+                <span>Edit Permissions</span>
+              </button>
+              <span class="text-line">|</span>
+              <button onclick="openAssignUsersView('Operations')" class="hover:underline flex items-center gap-1 cursor-pointer">
+                <span>Assign User</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- VIEW 2: ASSIGN USERS VIEW (Matching Assign Users For Admin.jpg & Add User Account to Role.jpg) -->
+      <div id="view-assign-users" class="hidden flex-col gap-6 flex-1 shrink-0">
+        
+        <!-- Breadcrumb Back Link -->
+        <div class="flex items-center gap-2 text-sm text-muted shrink-0">
+          <button onclick="closeAssignUsersView()" class="text-primary font-bold hover:underline flex items-center gap-1 cursor-pointer">
+            <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+            <span>Back To Roles</span>
+          </button>
+        </div>
+
+        <!-- Title Header & CTA -->
+        <div class="flex items-center justify-between shrink-0">
+          <div>
+            <h1 id="assign-role-title" class="text-3xl font-semibold text-text">Assign Users — Admin</h1>
+            <p class="text-xs text-muted mt-1">Google Workspace-synced accounts · Toggle to enable/disable role access</p>
+          </div>
+          <button onclick="toggleAddUserInlineCard()" class="px-5 py-2.5 bg-primary text-white rounded-full text-xs font-bold hover:bg-on-primary-container transition shadow-sm flex items-center gap-2 cursor-pointer">
+            <span class="material-symbols-outlined text-[18px]">add</span>
+            <span>Assign User</span>
+          </button>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="flex items-center gap-3 shrink-0">
+          <div class="h-9 w-72 px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 text-muted border-0 shrink-0">
+            <span class="material-symbols-outlined shrink-0 text-[#49454F] text-[20px] select-none">search</span>
+            <input id="assign-search-input" type="search" oninput="renderAssignedUsersList()" class="w-full bg-transparent border-0 outline-none text-xs text-[#1C1B1F] placeholder-[#79747E] focus:ring-0" placeholder="Search by name or email...">
+          </div>
+
+          <div class="relative inline-block">
+            <select id="assign-status-filter" onchange="renderAssignedUsersList()" class="h-9 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white hover:bg-[#F3EDF7] text-xs font-medium text-[#49454F] outline-none transition-colors duration-200 appearance-none cursor-pointer">
+              <option value="all">All Status</option>
+              <option value="enabled">Enabled</option>
+              <option value="disabled">Disabled</option>
+            </select>
+            <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
+          </div>
+        </div>
+
+        <!-- INLINE "ADD USER ACCOUNT TO ROLE" CARD (Matching Add User Account to Role.jpg) -->
+        <div id="inline-add-user-card" class="hidden bg-[#F7F2FA] border border-line rounded-2xl p-6 shadow-sm flex-col gap-4 shrink-0 transition-all">
+          <div>
+            <h3 id="inline-assign-header" class="text-sm font-bold text-primary">Assign a user to Admin</h3>
+            <p class="text-xs text-muted mt-0.5">Select or enter user email</p>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <div class="flex-1">
+              <input type="email" id="input-new-user-email" class="w-full p-3 border border-line rounded-xl text-text font-mono text-xs bg-white focus:border-primary outline-none" placeholder="e.g. new.user@h2m.org">
+              <span class="text-[10px] text-muted mt-1 block">6 users available to assign</span>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button onclick="toggleAddUserInlineCard()" class="px-5 py-2.5 rounded-full border border-line bg-white text-text font-bold text-xs hover:bg-surface transition cursor-pointer">
+                Cancel
+              </button>
+              <button onclick="commitNewUserAssignment()" id="btn-assign-action-cta" class="px-5 py-2.5 rounded-full bg-[#B29BC8] text-white font-bold text-xs hover:bg-primary transition shadow-sm cursor-pointer">
+                Assign to Admin
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Assigned Users List Container -->
+        <div id="assigned-users-container" class="flex flex-col gap-3 overflow-y-auto max-h-[calc(100vh-380px)] shrink-0 pr-1">
+          <!-- Injected via JS -->
+        </div>
+
+      </div>
+
+    </section>
+  </div>
+
+  <!-- INTERCEPT MODAL: Access Restricted — Administrator Required (Matching Operations Guidelines) -->
+  <div id="access-restricted-modal" class="hidden fixed inset-0 bg-black/40 backdrop-blur-xs z-50 flex items-center justify-center p-4 transition-opacity duration-200" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="bg-white border border-line rounded-2xl shadow-xl w-full max-w-md overflow-hidden flex flex-col">
+      
+      <!-- Modal Header -->
+      <div class="p-5 border-b border-line bg-[#F9DEDC] flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#B3261E] text-[22px]">gpp_maybe</span>
+          <h3 class="text-base font-bold text-[#B3261E]">Access Restricted — Administrator Required</h3>
+        </div>
+        <button onclick="closeAccessRestrictedModal()" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-[#F2B8B5]/50 transition cursor-pointer" type="button" aria-label="Close modal">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 flex flex-col gap-4 text-xs">
+        <p id="restricted-modal-warning" class="text-text font-normal leading-relaxed">
+          Your account (<strong id="restricted-user-email" class="font-mono">jane.doe@h2m.org</strong>) is assigned the 'Operations' role. You do not have permission to modify document templates or system configurations.
+        </p>
+
+        <div class="p-3.5 bg-surface-container-low border border-line rounded-xl flex flex-col gap-1 font-mono text-[11px] text-muted">
+          <span>Target Action: <strong class="text-text" id="restricted-target-action">Create System Role</strong></span>
+          <span>Required Privilege: <strong class="text-primary">ADMIN_GOVERNANCE_WRITE</strong></span>
+        </div>
+
+        <!-- Escalation CTA Button -->
+        <div class="pt-2 flex justify-end gap-3 border-t border-line/60">
+          <button onclick="closeAccessRestrictedModal()" type="button" class="px-4 py-2 rounded-full border border-line text-text font-bold hover:bg-surface transition cursor-pointer">
+            Dismiss
+          </button>
+          <button onclick="contactAdministratorEscalation()" type="button" class="px-5 py-2.5 rounded-full bg-[#B3261E] text-white font-bold hover:bg-[#8C1D18] transition shadow-sm cursor-pointer flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">mail</span>
+            <span>Contact Administrator</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
+
+  <script>
+    /* Master User & Role Assignment Database */
+    let assignedUsersData = [
+      { id: "USR-001", name: "Jane Doe", email: "jane.doe@h2m.org", role: "Admin", status: "Active", enabled: true, isSelf: false },
+      { id: "USR-002", name: "vanx", email: "van@h2m.org", role: "Admin", status: "Active", enabled: false, isSelf: false },
+      { id: "USR-003", name: "Michael Reed", email: "m.reed@h2m.org", role: "Operations", status: "Active", enabled: true, isSelf: false },
+      { id: "USR-004", name: "Emily Walsh", email: "e.walsh@h2m.org", role: "Operations", status: "Active", enabled: true, isSelf: false },
+      { id: "USR-005", name: "Priya Patel", email: "p.patel@h2m.org", role: "Admin", status: "Active", enabled: true, isSelf: true }
+    ];
+
+    let activeRole = 'administrator'; // 'administrator' or 'operations'
+    let currentAssignRoleTarget = 'Admin';
+
+    /* Intercept Modal & Action Trigger Router */
+    function handleActionTrigger(actionName, targetRole = '') {
+      if (activeRole === 'operations') {
+        // Intercept action for Operations user and show restricted modal
+        const modal = document.getElementById('access-restricted-modal');
+        document.getElementById('restricted-user-email').innerText = 'jane.doe@h2m.org';
+        document.getElementById('restricted-target-action').innerText = actionName === 'create-role' ? 'Create System Role' : `Edit Permissions (${targetRole})`;
+        document.getElementById('restricted-modal-warning').innerHTML = `Your account (<strong class="font-mono">jane.doe@h2m.org</strong>) is assigned the 'Operations' role. You do not have permission to modify document templates or system configurations.`;
+        
+        modal.classList.remove('hidden');
+      } else {
+        // Admin user executes capability
+        if (actionName === 'create-role') {
+          showToast("Create Role workflow initiated.");
+        } else if (actionName === 'edit-permissions') {
+          showToast(`Opened permission matrix for ${targetRole} role.`);
+        }
+      }
+    }
+
+    function closeAccessRestrictedModal() {
+      document.getElementById('access-restricted-modal').classList.add('hidden');
+    }
+
+    function contactAdministratorEscalation() {
+      closeAccessRestrictedModal();
+      showToast("Access request dispatched to Lead Administrator Priya Patel (p.patel@h2m.org).");
+    }
+
+    /* Assign Users Sub-View Controller */
+    function openAssignUsersView(roleName) {
+      currentAssignRoleTarget = roleName;
+      document.getElementById('assign-role-title').innerText = `Assign Users — ${roleName}`;
+      document.getElementById('inline-assign-header').innerText = `Assign a user to ${roleName}`;
+      document.getElementById('btn-assign-action-cta').innerText = `Assign to ${roleName}`;
+      
+      document.getElementById('view-roles-overview').classList.add('hidden');
+      document.getElementById('view-assign-users').classList.remove('hidden');
+      document.getElementById('view-assign-users').classList.add('flex');
+
+      renderAssignedUsersList();
+    }
+
+    function closeAssignUsersView() {
+      document.getElementById('view-assign-users').classList.add('hidden');
+      document.getElementById('view-assign-users').classList.remove('flex');
+      document.getElementById('view-roles-overview').classList.remove('hidden');
+      document.getElementById('inline-add-user-card').classList.add('hidden');
+    }
+
+    function renderAssignedUsersList() {
+      const search = document.getElementById('assign-search-input').value.trim().toLowerCase();
+      const statusFilter = document.getElementById('assign-status-filter').value;
+
+      let filtered = assignedUsersData.filter(u => u.role === currentAssignRoleTarget);
+
+      if (search) {
+        filtered = filtered.filter(u => u.name.toLowerCase().includes(search) || u.email.toLowerCase().includes(search));
+      }
+
+      if (statusFilter === 'enabled') {
+        filtered = filtered.filter(u => u.enabled === true);
+      } else if (statusFilter === 'disabled') {
+        filtered = filtered.filter(u => u.enabled === false);
+      }
+
+      const container = document.getElementById('assigned-users-container');
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="p-8 text-center text-muted text-xs bg-white border border-line rounded-2xl">No users currently assigned to ${currentAssignRoleTarget} role.</div>`;
+        return;
+      }
+
+      container.innerHTML = filtered.map(u => {
+        const isSelfAdmin = u.isSelf && activeRole === 'administrator';
+
+        return `
+          <div class="bg-white border border-line rounded-2xl p-4 px-6 flex items-center justify-between shadow-xs hover:shadow-sm transition">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs shrink-0">
+                ${u.name.split(' ').map(n => n[0]).join('')}
+              </div>
+              <div class="flex flex-col">
+                <div class="flex items-center gap-2">
+                  <span class="font-bold text-text text-sm">${u.name}</span>
+                  <span class="font-mono text-[10px] text-muted bg-[#F3EDF7] px-2 py-0.5 rounded-full">${u.id}</span>
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-status-success-bg text-status-success-text">
+                    <span class="w-1.5 h-1.5 rounded-full bg-current"></span>${u.status}
+                  </span>
+                </div>
+                <span class="font-mono text-xs text-muted mt-0.5">${u.email}</span>
+              </div>
+            </div>
+
+            <!-- Role Access Toggle Switch (Matching Assign Users For Admin.jpg) -->
+            <div class="flex items-center gap-4">
+              <div class="text-right">
+                <span class="text-[10px] text-muted block uppercase font-bold tracking-wider">Current Role</span>
+                <span class="text-xs font-bold text-text">${u.role}</span>
+              </div>
+
+              <div class="flex items-center gap-2 pl-4 border-l border-line">
+                <span class="text-xs font-bold ${u.enabled ? 'text-text' : 'text-muted'}">${u.enabled ? 'Enabled' : 'Disable'}</span>
+                
+                <button 
+                  type="button" 
+                  onclick="${isSelfAdmin ? "showSelfLockoutWarning()" : `toggleUserRoleAccess('${u.id}')`}" 
+                  class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${u.enabled ? 'bg-primary' : 'bg-line'} ${isSelfAdmin ? 'opacity-40 cursor-not-allowed' : ''}"
+                  role="switch" 
+                  aria-checked="${u.enabled}"
+                >
+                  <span class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out ${u.enabled ? 'translate-x-5' : 'translate-x-0'}"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleUserRoleAccess(userId) {
+      const u = assignedUsersData.find(i => i.id === userId);
+      if (!u) return;
+
+      u.enabled = !u.enabled;
+      showToast(`Role access for ${u.name} set to ${u.enabled ? 'Enabled' : 'Disabled'}.`);
+      renderAssignedUsersList();
+    }
+
+    function showSelfLockoutWarning() {
+      showToast("Safeguard Protection: System blocks Lead Administrator from disabling self-access.");
+    }
+
+    function toggleAddUserInlineCard() {
+      const card = document.getElementById('inline-add-user-card');
+      card.classList.toggle('hidden');
+      card.classList.toggle('flex');
+    }
+
+    function commitNewUserAssignment() {
+      const email = document.getElementById('input-new-user-email').value.trim();
+      if (!email) {
+        showToast("Error: Enter a valid workspace user email address.");
+        return;
+      }
+
+      const newId = `USR-00${assignedUsersData.length + 1}`;
+      assignedUsersData.push({
+        id: newId,
+        name: email.split('@')[0].replace('.', ' '),
+        email: email,
+        role: currentAssignRoleTarget,
+        status: "Active",
+        enabled: true,
+        isSelf: false
+      });
+
+      document.getElementById('input-new-user-email').value = '';
+      toggleAddUserInlineCard();
+      showToast(`Assigned ${email} to ${currentAssignRoleTarget} role.`);
+      renderAssignedUsersList();
+    }
+
+    /* Role Switcher & Front-End DOM Gating Engine */
+    function selectRole(role) {
+      activeRole = role;
+      document.getElementById('role-switcher-dropdown').classList.add('hidden');
+
+      const avatar = document.getElementById('active-avatar');
+      const nameElem = document.getElementById('active-name');
+      const labelElem = document.getElementById('active-label');
+
+      if (role === 'operations') {
+        document.body.classList.add('h2m-operations-role');
+        avatar.innerText = 'J';
+        avatar.style.backgroundColor = '#6750A4';
+        nameElem.innerText = 'Jane Doe';
+        labelElem.innerText = 'Operations';
+        labelElem.style.color = '#6750A4';
+
+        document.getElementById('role-opt-operations').className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]";
+        document.getElementById('role-opt-administrator').className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
+        document.getElementById('check-operations').classList.remove('hidden');
+        document.getElementById('check-administrator').classList.add('hidden');
+      } else {
+        document.body.classList.remove('h2m-operations-role');
+        avatar.innerText = 'P';
+        avatar.style.backgroundColor = '#1967D2';
+        nameElem.innerText = 'Priya Patel';
+        labelElem.innerText = 'Administrator';
+        labelElem.style.color = '#1967D2';
+
+        document.getElementById('role-opt-administrator').className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]";
+        document.getElementById('role-opt-operations').className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
+        document.getElementById('check-administrator').classList.remove('hidden');
+        document.getElementById('check-operations').classList.add('hidden');
+      }
+
+      showToast(`Switched active view to: ${labelElem.innerText}`);
+    }
+
+    document.getElementById('role-switcher-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      document.getElementById('role-switcher-dropdown').classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+      const container = document.getElementById('role-switcher-container');
+      if (container && !container.contains(e.target)) {
+        document.getElementById('role-switcher-dropdown').classList.add('hidden');
+      }
+    });
+
+    function showToast(message) {
+      const toast = document.getElementById('toast-notification');
+      toast.innerText = message;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 2500);
+    }
+  </script>
+</body>
+</html>

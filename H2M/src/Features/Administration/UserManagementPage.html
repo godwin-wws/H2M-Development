@@ -80,7 +80,7 @@
       <div class="w-full">
         <nav class="w-full flex flex-col gap-1.5" id="admin-sidebar-nav">
           
-          <a href="AdministrationPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+          <a href="AdminHome.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">dashboard</span>
               <span class="truncate">Overview</span>
@@ -88,7 +88,7 @@
           </a>
 
           <!-- Admin Only Node -->
-          <a href="UserManagementPage.html" class="admin-only w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-primary font-bold text-sm leading-none transition">
+          <a href="UserManagementPage.html" class="admin-only w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-none transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-primary text-[18px]">person</span>
               <span class="truncate">User Management</span>
@@ -96,7 +96,7 @@
           </a>
 
           <!-- Admin Only Node -->
-          <a href="RolesPermissionsPage.html" class="admin-only w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+          <a href="RolesPermission.html" class="admin-only w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">key</span>
               <span class="truncate">Roles &amp; Permissions</span>
@@ -196,7 +196,7 @@
           <p class="text-xs text-muted mt-0.5">6 users · 5 active</p>
         </div>
         <!-- Admin-Only + Create User Button -->
-        <button onclick="openCreateUserModal()" class="admin-only px-5 py-2 bg-primary text-white rounded-full text-xs font-medium hover:bg-on-primary-container transition shadow-sm flex items-center gap-2 cursor-pointer">
+        <button onclick="openCreateUserModal()" class="admin-only px-5 py-2 bg-primary text-white rounded-full text-sm font-medium hover:bg-on-primary-container transition shadow-sm flex items-center gap-2 cursor-pointer">
           <span class="material-symbols-outlined text-[18px]">person_add</span>
           <span>Create User</span>
         </button>
@@ -249,8 +249,8 @@
           <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1050px]">
             <colgroup>
               <col class="w-[10%]">
+              <col class="w-[10%]">
               <col class="w-[18%]">
-              <col class="w-[22%]">
               <col class="w-[18%]">
               <col class="w-[10%]">
               <col class="w-[14%]">
@@ -421,12 +421,12 @@
 
         return `
           <tr class="border-b border-line hover:bg-surface-container-low transition">
-            <td class="py-3 px-3.5 font-mono font-bold text-primary text-xs whitespace-nowrap">${u.id}</td>
+            <td class="py-3 px-3.5 font-mono font-bold text-primary text-sm whitespace-nowrap">${u.id}</td>
             <td class="py-3 px-3.5 font-bold text-text text-sm truncate" title="${u.name}">${u.name} ${isSelf ? '<span class="text-[10px] text-primary font-mono ml-1">(You)</span>' : ''}</td>
-            <td class="py-3 px-3.5 font-mono text-muted text-xs truncate" title="${u.email}">${u.email}</td>
-            <td class="py-3 px-3.5 truncate"><span class="bg-[#F3EDF7] px-2.5 py-1 rounded-md text-xs font-medium text-text whitespace-nowrap">${u.role}</span></td>
+            <td class="py-3 px-3.5 font-mono text-muted text-sm truncate" title="${u.email}">${u.email}</td>
+            <td class="py-3 px-3.5 truncate"><span class="bg-[#F3EDF7] px-2.5 py-1 rounded-md text-sm font-medium text-text whitespace-nowrap">${u.role}</span></td>
             <td class="py-3 px-3.5">${statusBadge}</td>
-            <td class="py-3 px-3.5 font-mono text-xs text-muted whitespace-nowrap">${u.lastLogin}</td>
+            <td class="py-3 px-3.5 font-mono text-sm text-muted whitespace-nowrap">${u.lastLogin}</td>
             <td class="py-3 px-3.5 text-center">${toggleSwitchHTML}</td>
           </tr>
         `;

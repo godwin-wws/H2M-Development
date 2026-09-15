@@ -23,7 +23,7 @@
             mono: ['"Roboto Mono"', 'monospace']
           },
           colors: {
-            surface: '#FFFBFE',
+            surface: '#FEF7FF',
             'surface-container': '#F3EDF7',
             'surface-container-low': '#F7F2FA',
             primary: '#6750A4',
@@ -57,21 +57,21 @@
     }
   </style>
 </head>
-<body class="bg-surface text-text font-sans min-h-screen relative overflow-x-hidden antialiased">
+<body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
 
-  <div class="w-[1440px] min-h-[1024px] mx-auto bg-surface flex">
+  <!-- Full Window Width Canvas Container -->
+  <div class="w-full h-screen mx-auto bg-surface flex overflow-hidden">
     
     <!-- 1. DEDICATED ADMINISTRATION SIDEBAR NAVIGATION -->
-    <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+    <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
       <div class="w-[58px] h-[58px]">
         <img src="https://helptomoms.com/__l5e/assets-v1/923ead63-1849-4075-9845-3e9a00b8b649/help-to-moms-logo.webp" alt="Help to Moms logo" class="w-full h-full object-contain">
       </div>
       
       <div class="w-full">
-       
         <nav class="w-full flex flex-col gap-1.5" id="admin-sidebar-nav">
           
-          <a href="AdministrationPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+          <a href="AdminHome.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">dashboard</span>
               <span class="truncate">Overview</span>
@@ -87,7 +87,7 @@
           </a>
 
           <!-- Admin Only Node -->
-          <a href="RolesPermissionsPage.html" class="admin-only w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+          <a href="RolesPermission.html" class="admin-only w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">key</span>
               <span class="truncate">Roles &amp; Permissions</span>
@@ -101,7 +101,8 @@
             </div>
           </a>
 
-          <a href="ReferenceDataPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-primary font-bold text-sm leading-none transition">
+          <!-- Active Page -->
+          <a href="ReferenceDataPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-none transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-primary text-[18px]">database</span>
               <span class="truncate">Reference Data</span>
@@ -116,15 +117,13 @@
           </a>
         </nav>
       </div>
-
-      
     </aside>
 
-    <!-- Main Workspace Canvas -->
-    <section class="flex-1 p-8 pb-12 flex flex-col gap-6 overflow-hidden">
+    <!-- Main Workspace Canvas (No Page Scroll) -->
+    <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
       
       <!-- Top Navigation Header -->
-      <header class="h-[58px] flex items-center justify-between">
+      <header class="h-[58px] flex items-center justify-between shrink-0">
         <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
@@ -134,7 +133,7 @@
         </nav>
         
         <div class="flex items-center gap-6">
-         <!-- Notification Bell Icon (Standardized Hover Behavior) -->
+          <!-- Notification Bell Icon (Standardized Hover Behavior) -->
           <div class="relative w-8 h-8 rounded-full flex items-center justify-center text-[#1C1B1F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 cursor-pointer outline-none select-none group">
             <span class="material-symbols-outlined text-[20px] leading-none select-none text-[#1C1B1F] group-hover:text-primary transition-colors">
               notifications
@@ -182,39 +181,26 @@
         </div>
       </header>
 
-      <!-- Page Title & CTA -->
-      <div class="flex items-center justify-between">
+      <!-- Page Title & CTA (Primary button text-sm font-medium) -->
+      <div class="flex items-center justify-between shrink-0">
         <div>
           <h1 class="text-3xl font-semibold text-text" id="canvas-stage-title">Reference Data &amp; Lookups</h1>
           <p class="text-xs text-muted mt-0.5">Global platform lookup registers &amp; state carrier gating</p>
         </div>
-        <!-- Admin-Only + Add Lookup Entry CTA Button (Hidden for Operations) -->
-        <button onclick="openCreateLookupModal()" class="admin-only px-5 py-2 bg-primary text-white rounded-full text-xs font-medium hover:bg-on-primary-container transition shadow-sm flex items-center gap-2">
+        <!-- Admin-Only + Add Lookup Entry CTA Button -->
+        <button onclick="openCreateLookupModal()" class="admin-only px-5 py-2 bg-primary text-white rounded-full text-sm font-medium hover:bg-on-primary-container transition shadow-sm flex items-center gap-2 cursor-pointer">
           <span class="material-symbols-outlined text-[18px]">add_circle</span>
-          <span>+ Add Lookup Entry</span>
+          <span>Add Lookup Entry</span>
         </button>
       </div>
 
-      <!-- Segmented Tab Navigation Container -->
-      <div class="flex items-center justify-between">
-        <div class="inline-flex items-center h-10 border border-outline rounded-full overflow-hidden bg-white p-0">
-          <button id="tab-sub-carriers" onclick="switchLookupTab('carriers')" type="button" class="h-full px-6 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-2 border-r border-outline bg-primary-soft text-on-primary-container">
-            <span>Carriers &amp; Gating</span>
-          </button>
-          <button id="tab-sub-products" onclick="switchLookupTab('products')" type="button" class="h-full px-6 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-2 border-r border-outline bg-transparent text-text hover:bg-surface-container">
-            <span>Supported Products</span>
-          </button>
-          <button id="tab-sub-geographies" onclick="switchLookupTab('geographies')" type="button" class="h-full px-6 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-2 bg-transparent text-text hover:bg-surface-container">
-            <span>Geographies</span>
-          </button>
-        </div>
-      </div>
+      
 
-      <!-- Master Reference Data Table Frame -->
-      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex-1 flex flex-col">
+      <!-- Master Reference Data Table Frame (Content-Hugging Container with Internal Scroll) -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0 mb-6">
         
         <!-- Header Controls Row -->
-        <div class="p-5 border-b border-line flex items-center justify-between">
+        <div class="p-5 border-b border-line flex items-center justify-between shrink-0">
           <h2 class="text-xl font-semibold text-text" id="lookup-panel-title">Carriers &amp; Payer Eligibility Rules</h2>
           
           <div class="flex items-center gap-2.5">
@@ -222,16 +208,6 @@
             <div class="h-9 w-64 px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 text-muted border-0 focus-within:ring-2 focus-within:ring-[#6750A4] shrink-0">
               <span class="material-symbols-outlined shrink-0 text-[#49454F] text-[20px] select-none">search</span>
               <input id="lookup-search" type="search" oninput="handleLookupSearch()" class="w-full bg-transparent border-0 outline-none text-xs text-[#1C1B1F] placeholder-[#79747E] focus:ring-0" placeholder="Search by name, code...">
-            </div>
-
-            <!-- Status Filter Dropdown -->
-            <div class="relative inline-block">
-              <select id="lookup-status-filter" onchange="handleLookupFilter()" class="h-9 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white hover:bg-[#F3EDF7] text-xs font-medium text-[#49454F] outline-none transition-colors duration-200 appearance-none cursor-pointer">
-                <option value="all">All Statuses</option>
-                <option value="Active">Active</option>
-                <option value="Disabled">Disabled</option>
-              </select>
-              <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
             </div>
 
             <!-- Gmail-Style Circular Pagination -->
@@ -249,18 +225,18 @@
           </div>
         </div>
 
-        <!-- Table Data Body -->
-        <div class="overflow-x-auto flex-1">
+        <!-- Table Body Container (Internal Vertical Scroll Control) -->
+        <div class="overflow-y-auto max-h-[calc(100vh-340px)] h-auto">
           <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1050px]">
             <colgroup>
               <col class="w-[12%]">
-              <col class="w-[14%]">
-              <col class="w-[24%]">
+              <col class="w-[16%]">
+              <col class="w-[26%]">
               <col class="w-[24%]">
               <col class="w-[12%]">
-              <col class="w-[7%] admin-only">
+              <col class="w-[10%] admin-only">
             </colgroup>
-            <thead>
+            <thead class="sticky top-0 z-10">
               <tr class="bg-primary text-white text-[11px] font-bold tracking-wider uppercase">
                 <th class="py-3 px-4">CONFIG ID</th>
                 <th class="py-3 px-4">CATEGORY</th>
@@ -280,7 +256,7 @@
     </section>
   </div>
 
-  <!-- Part 4.A: Add/Edit Reference Data Lookup Modal (Admin Only) -->
+  <!-- Add/Edit Reference Data Lookup Modal (Admin Only) -->
   <div id="lookup-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-[28px] max-w-lg w-full shadow-2xl overflow-hidden flex flex-col p-6 gap-4">
       <div class="flex items-center justify-between border-b border-line pb-3">
@@ -377,7 +353,6 @@
     let activeRole = 'administrator';
     let currentLookupTab = 'carriers';
     let searchQuery = '';
-    let statusFilter = 'all';
     let currentPageIndex = 0;
     const PAGE_LIMIT = 6;
     let selectedActiveLookup = null;
@@ -392,18 +367,18 @@
       const pBtn = document.getElementById('tab-sub-products');
       const gBtn = document.getElementById('tab-sub-geographies');
 
-      cBtn.className = "h-full px-6 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-2 border-r border-outline bg-transparent text-text hover:bg-surface-container";
-      pBtn.className = "h-full px-6 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-2 border-r border-outline bg-transparent text-text hover:bg-surface-container";
-      gBtn.className = "h-full px-6 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-2 bg-transparent text-text hover:bg-surface-container";
+      cBtn.className = "h-full px-6 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-2 border-r border-outline bg-transparent text-text hover:bg-surface-container cursor-pointer";
+      pBtn.className = "h-full px-6 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-2 border-r border-outline bg-transparent text-text hover:bg-surface-container cursor-pointer";
+      gBtn.className = "h-full px-6 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-2 bg-transparent text-text hover:bg-surface-container cursor-pointer";
 
       if (tabKey === 'carriers') {
-        cBtn.className = "h-full px-6 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-2 border-r border-outline bg-primary-soft text-on-primary-container";
+        cBtn.className = "h-full px-6 text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 border-r border-outline bg-primary-soft text-on-primary-container cursor-pointer";
         document.getElementById('lookup-panel-title').innerText = "Carriers & Payer Eligibility Rules";
       } else if (tabKey === 'products') {
-        pBtn.className = "h-full px-6 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-2 border-r border-outline bg-primary-soft text-on-primary-container";
+        pBtn.className = "h-full px-6 text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 border-r border-outline bg-primary-soft text-on-primary-container cursor-pointer";
         document.getElementById('lookup-panel-title').innerText = "Supported Products & HCPCS Mappings";
       } else {
-        gBtn.className = "h-full px-6 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-2 bg-primary-soft text-on-primary-container";
+        gBtn.className = "h-full px-6 text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 bg-primary-soft text-on-primary-container cursor-pointer";
         document.getElementById('lookup-panel-title').innerText = "Geographic Regions & ZIP Rules";
       }
 
@@ -421,10 +396,6 @@
           item.name.toLowerCase().includes(q) ||
           item.value.toLowerCase().includes(q)
         );
-      }
-
-      if (statusFilter !== 'all') {
-        filtered = filtered.filter(item => item.status === statusFilter);
       }
 
       const totalRecords = filtered.length;
@@ -455,20 +426,20 @@
 
       tbody.innerHTML = pageData.map(row => {
         const badge = row.status === 'Active' 
-          ? `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-success-bg text-status-success-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Active</span>`
-          : `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-failed-bg text-status-failed-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Disabled</span>`;
+          ? `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-success-bg text-status-success-text whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Active</span>`
+          : `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-failed-bg text-status-failed-text whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Disabled</span>`;
 
         /* 3-Dot Action Popover Menu */
         const actionMenuHTML = `
           <div class="relative inline-block text-left">
-            <button onclick="toggleActionMenu(event, '${row.id}')" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors outline-none" title="More options">
+            <button onclick="toggleActionMenu(event, '${row.id}')" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors outline-none cursor-pointer" title="More options">
               <span class="material-symbols-outlined text-[20px]">more_vert</span>
             </button>
             <div id="action-popover-${row.id}" class="hidden absolute right-0 top-full mt-1 bg-white rounded-xl border border-line z-50 w-32 py-1 shadow-lg">
-              <button onclick="editLookupItem('${row.id}')" class="w-full px-3 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2 text-xs font-medium text-text">
+              <button onclick="editLookupItem('${row.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2 text-xs font-medium text-text cursor-pointer">
                 <span class="material-symbols-outlined text-[16px] text-primary">edit</span> Edit
               </button>
-              <button onclick="toggleLookupStatus('${row.id}')" class="w-full px-3 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2 text-xs font-medium text-text">
+              <button onclick="toggleLookupStatus('${row.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2 text-xs font-medium text-text border-t border-line/60 cursor-pointer">
                 <span class="material-symbols-outlined text-[16px] text-muted">power_settings_new</span> ${row.status === 'Active' ? 'Disable' : 'Enable'}
               </button>
             </div>
@@ -477,12 +448,12 @@
 
         return `
           <tr class="border-b border-line hover:bg-surface-container-low transition">
-            <td class="py-3 px-4 font-mono font-bold text-primary text-xs whitespace-nowrap">${row.id}</td>
-            <td class="py-3 px-4 text-muted text-xs">${row.category}</td>
-            <td class="py-3 px-4 font-bold text-text text-sm">${row.name}</td>
-            <td class="py-3 px-4 font-mono text-text text-xs">${row.value}</td>
-            <td class="py-3 px-4 text-center">${badge}</td>
-            <td class="py-3 px-4 text-center admin-only">
+            <td class="py-3.5 px-4 font-mono font-bold text-primary text-sm whitespace-nowrap">${row.id}</td>
+            <td class="py-3.5 px-4 text-muted text-sm">${row.category}</td>
+            <td class="py-3.5 px-4 font-bold text-text text-sm">${row.name}</td>
+            <td class="py-3.5 px-4 font-mono text-text text-sm">${row.value}</td>
+            <td class="py-3.5 px-4 text-center">${badge}</td>
+            <td class="py-3.5 px-4 text-center admin-only">
               ${actionMenuHTML}
             </td>
           </tr>
@@ -512,12 +483,6 @@
 
     function handleLookupSearch() {
       searchQuery = document.getElementById('lookup-search').value.trim();
-      currentPageIndex = 0;
-      renderLookupWorkspace();
-    }
-
-    function handleLookupFilter() {
-      statusFilter = document.getElementById('lookup-status-filter').value;
       currentPageIndex = 0;
       renderLookupWorkspace();
     }

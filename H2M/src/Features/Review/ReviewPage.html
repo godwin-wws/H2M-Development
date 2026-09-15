@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Review Queue | H2M BRIDGE Workspace</title>
   
+  <!-- Explicit Google Fonts Import for Roboto & Roboto Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -76,7 +77,7 @@
           <!-- Item 2: In Review -->
           <a href="InReview.html" id="side-in-review" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
-              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">edit_note</span>
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">tune</span>
               <span class="truncate">In Review</span>
             </div>
           </a>
@@ -92,7 +93,7 @@
           <!-- Item 4: Review History -->
           <a href="ReviewHistory.html" id="side-history" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
-              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">assignment_turned_in</span>
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">fact_check</span>
               <span class="truncate">Review History</span>
             </div>
           </a>
@@ -109,7 +110,7 @@
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="ReviewPage.html">Review</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditLogs.html">Audit</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectory.html">Provider Directory</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectoryPage.html">Provider Directory</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Administration/AdminHome.html">Administration</a>
         </nav>
         
@@ -389,6 +390,7 @@
       }).join('');
     }
 
+    // Navigation Passing 'tab=pending' Origin Context
     function claimAndNavigate(sourceOrderId) {
       const button = document.getElementById(`btn-claim-${sourceOrderId}`);
       if (button) {
@@ -401,7 +403,7 @@
           target.stage = 'in_review';
           target.claimedBy = 'Jane Doe';
         }
-        window.location.href = `ReviewDetails.html?sourceOrderId=${sourceOrderId}`;
+        window.location.href = `ReviewDetails.html?sourceOrderId=${sourceOrderId}&tab=pending`;
       }, 180);
     }
 

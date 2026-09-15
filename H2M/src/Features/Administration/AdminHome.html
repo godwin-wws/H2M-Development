@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Administration Overview | H2M BRIDGE Workspace</title>
   
-  <!-- Explicit Google Fonts Import for Roboto & Roboto Mono (DSG Section 1) -->
+  <!-- Explicit Google Fonts Import for Roboto & Roboto Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -31,11 +31,11 @@
             'primary-container': '#EADDFF',
             'on-primary-container': '#4A4458',
             line: '#CAC4D0',
-            text: '#1C1B1F', // DSG Reconciled On-Surface Token (#1C1B1F)
-            muted: '#49454F', // DSG On-Surface Variant (#49454F)
+            text: '#1C1B1F', 
+            muted: '#49454F', 
             outline: '#79747E',
             
-            /* DSG Status & Semantic Color Tokens */
+            /* Status & Semantic Color Tokens */
             'status-success-bg': '#E6F4EA',
             'status-success-text': '#0D652D',
             'status-failed-bg': '#F9DEDC',
@@ -50,74 +50,68 @@
     }
   </script>
 
-  <!-- Part 1: Front-End CSS Gating Engine ("Hiding Instead of Disabling") -->
+  <!-- CSS Role Suppression Rules for Operations Team Role -->
   <style>
-    /* Core Gating CSS Rule: Completely removes restricted DOM elements for Operations Role */
     .h2m-operations-role .admin-only {
       display: none !important;
     }
 
-    /* Fallback for visible input panes in shared views */
     .h2m-operations-role .admin-read-only-pane {
       pointer-events: none !important;
-      background-color: #F7F2FA !important; /* M3 surface-container-low */
+      background-color: #F7F2FA !important;
       border-color: #CAC4D0 !important;
       opacity: 0.95;
     }
 
-    /* Suppresses administrative action triggers */
     .h2m-operations-role .admin-action-btn {
       display: none !important;
     }
   </style>
 </head>
-<body class="bg-surface text-text font-sans min-h-screen relative overflow-x-hidden antialiased">
+<body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
 
-  <div class="w-[full] min-h-[1024px] mx-auto bg-surface flex">
+  <div class="w-full h-screen mx-auto bg-surface flex overflow-hidden">
     
-    <!-- ================================================================= -->
-    <!-- 1. UNIFIED SIDEBAR NAVIGATION WITH ROLE-BASED NODE SUPPRESSION    -->
-    <!-- ================================================================= -->
-    <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+    <!-- 1. UNIFIED SIDEBAR NAVIGATION -->
+    <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
       <div class="w-[58px] h-[58px]">
         <img src="https://helptomoms.com/__l5e/assets-v1/923ead63-1849-4075-9845-3e9a00b8b649/help-to-moms-logo.webp" alt="Help to Moms logo" class="w-full h-full object-contain">
       </div>
       
       <div class="w-full">
-      
         <nav class="w-full flex flex-col gap-1.5" id="admin-sidebar-nav">
           
-          <!-- Node 1: Overview (Viewable by both) -->
+          <!-- Node 1: Overview (Active Page) -->
           <a href="AdminHome.html" class="w-full h-10 px-3.5 rounded-full flex items-center gap-2.5 bg-primary-soft text-[#4A4458] font-bold text-sm leading-none transition">
             <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-[18px]">dashboard</span>
             <span class="truncate">Overview</span>
           </a>
 
-          <!-- Node 2: User Management (Admin Only - Hidden for Operations) -->
+          <!-- Node 2: User Management (Admin Only) -->
           <a href="UserManagementPage.html" class="admin-only w-full h-10 px-3.5 rounded-full flex items-center gap-2.5 text-muted text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
             <span class="material-symbols-outlined shrink-0 text-muted text-[18px]">person</span>
             <span class="truncate">User Management</span>
           </a>
 
-          <!-- Node 3: Roles & Permissions (Admin Only - Hidden for Operations) -->
+          <!-- Node 3: Roles & Permissions (Admin Only) -->
           <a href="RolesPermissionsPage.html" class="admin-only w-full h-10 px-3.5 rounded-full flex items-center gap-2.5 text-muted text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
             <span class="material-symbols-outlined shrink-0 text-muted text-[18px]">key</span>
             <span class="truncate">Roles &amp; Permissions</span>
           </a>
 
-          <!-- Node 4: Business Configuration (Viewable by both) -->
+          <!-- Node 4: Business Configuration -->
           <a href="BusinessConfigPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center gap-2.5 text-muted text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
             <span class="material-symbols-outlined shrink-0 text-muted text-[18px]">inventory_2</span>
             <span class="truncate">Business Config</span>
           </a>
 
-          <!-- Node 5: Reference Data / Lookups (Viewable by both) -->
+          <!-- Node 5: Reference Data / Lookups -->
           <a href="ReferenceDataPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center gap-2.5 text-muted text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
             <span class="material-symbols-outlined shrink-0 text-muted text-[18px]">database</span>
             <span class="truncate">Reference Data</span>
           </a>
 
-          <!-- Node 6: Document Templates (Viewable by both) -->
+          <!-- Node 6: Document Templates -->
           <a href="DocumentTemplates.html" class="w-full h-10 px-3.5 rounded-full flex items-center gap-2.5 text-muted text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
             <span class="material-symbols-outlined shrink-0 text-muted text-[18px]">description</span>
             <span class="truncate">Document Templates</span>
@@ -126,23 +120,21 @@
       </div>
     </aside>
 
-    <!-- ================================================================= -->
-    <!-- 2. MAIN ADMINISTRATION WORKSPACE CANVAS                           -->
-    <!-- ================================================================= -->
-    <section class="flex-1 p-8 pb-12 flex flex-col gap-6 overflow-hidden">
+    <!-- 2. MAIN ADMINISTRATION WORKSPACE CANVAS -->
+    <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
       
       <!-- Top Navigation Header -->
-      <header class="h-[58px] flex items-center justify-between">
+      <header class="h-[58px] flex items-center justify-between shrink-0">
         <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditPage.html">Audit</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectory.html">Provider Directory</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectoryPage.html">Provider Directory</a>
           <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="AdminHome.html">Administration</a>
         </nav>
         
         <div class="flex items-center gap-6">
-          <!-- Notification Bell Icon (Standardized Hover Behavior) -->
+          <!-- Notification Bell Icon -->
           <div class="relative w-8 h-8 rounded-full flex items-center justify-center text-[#1C1B1F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 cursor-pointer outline-none select-none group">
             <span class="material-symbols-outlined text-[20px] leading-none select-none text-[#1C1B1F] group-hover:text-primary transition-colors">
               notifications
@@ -191,17 +183,15 @@
       </header>
 
       <!-- Page Main Title Area -->
-      <div>
+      <div class="shrink-0">
         <h1 class="text-3xl font-semibold text-text">Administration</h1>
         <p class="text-xs text-muted mt-0.5">Platform configuration – authorized business users only</p>
       </div>
 
-      <!-- =============================================================== -->
-      <!-- OVERVIEW BENTO GRID (Dynamic DOM Suppression for Operations)     -->
-      <!-- =============================================================== -->
-      <div class="grid grid-cols-4 gap-4" id="admin-bento-grid">
+      <!-- OVERVIEW BENTO GRID -->
+      <div class="grid grid-cols-4 gap-4 overflow-y-auto max-h-[calc(100vh-220px)] pr-1" id="admin-bento-grid">
         
-        <!-- Card 1: User Management (Admin Only - Hidden for Operations) -->
+        <!-- Card 1: User Management (Admin Only) -->
         <a href="UserManagementPage.html" class="admin-only bg-white border border-line rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between h-[130px]">
           <div class="flex items-center gap-3">
             <div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary">
@@ -215,8 +205,8 @@
           <span class="text-xs font-medium text-primary flex items-center gap-1">Manage <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
         </a>
 
-        <!-- Card 2: Roles & Permissions (Admin Only - Hidden for Operations) -->
-        <a href="RolesPermission.html" class="admin-only bg-white border border-line rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between h-[130px]">
+        <!-- Card 2: Roles & Permissions (Admin Only) -->
+        <a href="RolesPermissionsPage.html" class="admin-only bg-white border border-line rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between h-[130px]">
           <div class="flex items-center gap-3">
             <div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary">
               <span class="material-symbols-outlined text-[20px]">key</span>
@@ -229,7 +219,7 @@
           <span class="text-xs font-medium text-primary flex items-center gap-1">Manage <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
         </a>
 
-        <!-- Card 3: Business Configuration (Viewable by both) -->
+        <!-- Card 3: Business Configuration -->
         <a href="BusinessConfigPage.html" class="bg-white border border-line rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between h-[130px]">
           <div class="flex items-center gap-3">
             <div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary">
@@ -243,7 +233,7 @@
           <span class="text-xs font-medium text-primary flex items-center gap-1">Manage <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
         </a>
 
-        <!-- Card 4: Reference Data / Lookups (Viewable by both) -->
+        <!-- Card 4: Reference Data / Lookups -->
         <a href="ReferenceDataPage.html" class="bg-white border border-line rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between h-[130px]">
           <div class="flex items-center gap-3">
             <div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary">
@@ -257,7 +247,7 @@
           <span class="text-xs font-medium text-primary flex items-center gap-1">Manage <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
         </a>
 
-        <!-- Card 5: Document Templates (Viewable by both) -->
+        <!-- Card 5: Document Templates -->
         <a href="DocumentTemplates.html" class="bg-white border border-line rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between h-[130px]">
           <div class="flex items-center gap-3">
             <div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary">
@@ -271,8 +261,8 @@
           <span class="text-xs font-medium text-primary flex items-center gap-1">Manage <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
         </a>
 
-        <!-- Card 6: Notifications (Admin Only - Hidden for Operations) -->
-        <div class="admin-only bg-white border border-line rounded-2xl p-5 shadow-sm flex flex-col justify-between h-[130px]">
+        <!-- Card 6: Notifications (Navigates to NotificationsPage.html) -->
+        <a href="NotificationsPage.html" class="admin-only bg-white border border-line rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between h-[130px]">
           <div class="flex items-center gap-3">
             <div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary">
               <span class="material-symbols-outlined text-[20px]">notifications</span>
@@ -283,10 +273,10 @@
             </div>
           </div>
           <span class="text-xs font-medium text-primary flex items-center gap-1">Manage <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
-        </div>
+        </a>
 
-        <!-- Card 7: Integrations (Admin Only - Triggers Part 1 Integration Modal) -->
-        <div onclick="openIntegrationModal('BlueGoose Ingest API')" class="admin-only bg-white border border-line rounded-2xl p-5 shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between h-[130px]">
+        <!-- Card 7: Integrations (Navigates to IntegrationsPage.html) -->
+        <a href="IntegrationsPage.html" class="admin-only bg-white border border-line rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between h-[130px]">
           <div class="flex items-center gap-3">
             <div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary">
               <span class="material-symbols-outlined text-[20px]">hub</span>
@@ -296,10 +286,10 @@
               <p class="text-[11px] text-muted">4 connected endpoints</p>
             </div>
           </div>
-          <span class="text-xs font-medium text-primary flex items-center gap-1">Configure Endpoint <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
-        </div>
+          <span class="text-xs font-medium text-primary flex items-center gap-1">Manage Endpoints <span class="material-symbols-outlined text-[14px]">arrow_forward</span></span>
+        </a>
 
-        <!-- Card 8: Configuration History (Viewable by both) -->
+        <!-- Card 8: Configuration History -->
         <a href="../Audit/AuditPage.html" class="bg-white border border-line rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between h-[130px]">
           <div class="flex items-center gap-3">
             <div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary">
@@ -318,91 +308,12 @@
     </section>
   </div>
 
-  <!-- ================================================================= -->
-  <!-- PART 1: THE MISSING "INTEGRATION CONFIGURATION" MODAL (Admin Only)-->
-  <!-- ================================================================= -->
-  <div id="integration-config-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-[28px] max-w-md w-full shadow-2xl overflow-hidden flex flex-col p-6 gap-5">
-      
-      <!-- Header -->
-      <div class="flex items-center justify-between border-b border-line pb-3">
-        <h3 class="text-xl font-normal text-text" id="int-modal-title">Configure Integration — BlueGoose</h3>
-        <button onclick="closeIntegrationModal()" class="text-muted hover:text-text font-bold">✕</button>
-      </div>
-
-      <!-- Properties Form -->
-      <div class="flex flex-col gap-4 text-xs">
-        <div>
-          <label class="block font-bold text-outline uppercase mb-1">Endpoint URL</label>
-          <input type="text" id="int-endpoint" value="https://api.bluegoose.io" class="w-full text-xs p-2.5 border border-outline rounded-lg bg-white font-mono focus:border-primary focus:outline-none">
-        </div>
-
-        <div>
-          <label class="block font-bold text-outline uppercase mb-1">API Key / Secret Token</label>
-          <div class="relative">
-            <input id="int-secret" type="password" value="bg_live_998348102938471029384" readonly class="w-full text-xs p-2.5 pr-10 border border-outline rounded-lg bg-white font-mono focus:outline-none select-none">
-            <button type="button" onclick="toggleSecretReveal('int-secret')" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted hover:text-primary transition" title="Decrypt Token">
-              <span class="material-symbols-outlined text-[18px]">visibility</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block font-bold text-outline uppercase mb-1">Timeout (Sec)</label>
-            <input type="number" id="int-timeout" value="30" class="w-full text-xs p-2.5 border border-outline rounded-lg bg-white font-mono focus:border-primary focus:outline-none" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-          </div>
-          <div>
-            <label class="block font-bold text-outline uppercase mb-1">Batch Limit (&le; 50)</label>
-            <input type="number" id="int-batch" value="50" max="50" class="w-full text-xs p-2.5 border border-outline rounded-lg bg-white font-mono focus:border-primary focus:outline-none" oninput="if(this.value>50)this.value=50;">
-          </div>
-        </div>
-
-        <!-- Connection Test Status Area -->
-        <div id="ping-status-area" class="hidden p-2.5 rounded-lg text-xs font-semibold flex items-center gap-2"></div>
-      </div>
-
-      <!-- Actions Gutter -->
-      <div class="flex items-center justify-between pt-2 border-t border-line">
-        <button type="button" onclick="runConnectionPing()" class="px-4 py-2 border border-outline text-primary text-xs font-bold rounded-full hover:bg-surface-container transition">
-          Test Connection
-        </button>
-        <div class="flex items-center gap-2">
-          <button type="button" onclick="closeIntegrationModal()" class="px-4 py-2 border border-outline text-muted text-xs font-bold rounded-full hover:bg-surface-container">Cancel</button>
-          <button type="button" onclick="triggerSaveWithRationale()" class="px-5 py-2 bg-primary text-white text-xs font-bold rounded-full hover:bg-on-primary-container shadow-sm">Save Configuration</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Mandatory Compliance Audit Rationale Modal -->
-  <div id="compliance-rationale-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[60] hidden flex justify-center items-center p-4">
-    <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 border border-line">
-      <h3 class="text-sm font-bold text-text mb-2 uppercase tracking-wider">Operational Reason Required</h3>
-      <p class="text-xs text-muted mb-4 leading-relaxed">
-        This administrative modification will be committed to the append-only BRIDGE Audit ledger. Please provide a clear rationale ($\ge 15$ characters).
-      </p>
-
-      <textarea id="audit-rationale" rows="3" class="w-full text-xs p-3 border border-outline rounded-lg focus:outline-none focus:border-primary mb-4" placeholder="Explain the endpoint/integration change (min 15 chars)..."></textarea>
-
-      <div class="flex justify-end gap-2">
-        <button type="button" onclick="closeRationaleModal()" class="px-4 py-2 rounded-full border border-outline text-muted text-xs font-bold">Cancel</button>
-        <button type="button" id="confirm-commit-btn" class="px-4 py-2 rounded-full bg-primary text-white text-xs font-bold opacity-50 cursor-not-allowed" disabled>Confirm &amp; Log Commit</button>
-      </div>
-    </div>
-  </div>
-
   <!-- Global Toast Notification Container -->
   <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
 
-  <!-- ================================================================= -->
-  <!-- FRONT-END SCRIPTING & SESSION CONTROLLER                          -->
-  <!-- ================================================================= -->
+  <!-- Scripting Controller -->
   <script>
-    // Part 2.1 & 2.2: Google Apps Script & Client DOM Handshake
     window.addEventListener('DOMContentLoaded', () => {
-      // Simulating google.script.run.getActiveUserRole();
       const userContext = { email: "p.patel@h2m.org", role: "Admin" }; 
       initializeRoleGating(userContext);
     });
@@ -415,65 +326,6 @@
         document.body.classList.add('h2m-admin-role');
         document.body.classList.remove('h2m-operations-role');
       }
-    }
-
-    /* Integration Modal Actions */
-    function openIntegrationModal(systemName) {
-      document.getElementById('int-modal-title').innerText = `Configure Integration — ${systemName}`;
-      document.getElementById('ping-status-area').classList.add('hidden');
-      document.getElementById('integration-config-modal').classList.remove('hidden');
-    }
-
-    function closeIntegrationModal() {
-      document.getElementById('integration-config-modal').classList.add('hidden');
-    }
-
-    function toggleSecretReveal(inputId) {
-      const input = document.getElementById(inputId);
-      if (input.type === "password") {
-        input.type = "text";
-        showToast("Credential decrypted for active workspace session.");
-      } else {
-        input.type = "password";
-      }
-    }
-
-    function runConnectionPing() {
-      const area = document.getElementById('ping-status-area');
-      area.className = "p-2.5 rounded-lg text-xs font-semibold flex items-center gap-2 bg-status-success-bg text-status-success-text";
-      area.innerHTML = `<span class="material-symbols-outlined text-[18px]">check_circle</span> 🟢 Connection Successful (Ping: 42ms)`;
-      area.classList.remove('hidden');
-    }
-
-    function triggerSaveWithRationale() {
-      document.getElementById('audit-rationale').value = '';
-      const confirmBtn = document.getElementById('confirm-commit-btn');
-      confirmBtn.disabled = true;
-      confirmBtn.classList.add('opacity-50', 'cursor-not-allowed');
-
-      document.getElementById('compliance-rationale-modal').classList.remove('hidden');
-
-      const txt = document.getElementById('audit-rationale');
-      txt.oninput = function() {
-        if (txt.value.trim().length >= 15) {
-          confirmBtn.disabled = false;
-          confirmBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-          confirmBtn.onclick = executeCommit;
-        } else {
-          confirmBtn.disabled = true;
-          confirmBtn.classList.add('opacity-50', 'cursor-not-allowed');
-        }
-      };
-    }
-
-    function closeRationaleModal() {
-      document.getElementById('compliance-rationale-modal').classList.add('hidden');
-    }
-
-    function executeCommit() {
-      closeRationaleModal();
-      closeIntegrationModal();
-      showToast("Integration parameters committed to append-only Audit Ledger.");
     }
 
     /* Account / Role Switcher Logic */

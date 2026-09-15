@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integration Configuration | H2M BRIDGE Workspace</title>
+  
+  <!-- Explicit Google Fonts Import for Roboto & Roboto Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Google Material Symbols Import -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Roboto', 'sans-serif'],
+            mono: ['"Roboto Mono"', 'monospace']
+          },
+          colors: {
+            surface: '#FEF7FF',
+            'surface-container': '#F3EDF7',
+            'surface-container-low': '#F7F2FA',
+            primary: '#6750A4',
+            'primary-soft': '#EADDFF',
+            'primary-container': '#EADDFF',
+            'on-primary-container': '#4A4458',
+            line: '#CAC4D0',
+            text: '#1C1B1F', 
+            muted: '#49454F', 
+            outline: '#79747E',
+            
+            /* Status & Semantic Color Tokens */
+            'status-success-bg': '#E6F4EA',
+            'status-success-text': '#0D652D',
+            'status-failed-bg': '#F9DEDC',
+            'status-failed-text': '#B3261E',
+            'status-warning-bg': '#FEF7E0',
+            'status-warning-text': '#6D4200',
+            'status-info-bg': '#E8F0FE',
+            'status-info-text': '#174EA6',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .h2m-operations-role .admin-only {
+      display: none !important;
+    }
+  </style>
+</head>
+<body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
+
+  <!-- Full Window Width Canvas Container -->
+  <div class="w-full h-screen mx-auto bg-surface flex overflow-hidden">
+    
+    <!-- 1. DEDICATED ADMINISTRATION SIDEBAR NAVIGATION -->
+    <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+      <div class="w-[58px] h-[58px]">
+        <img src="https://helptomoms.com/__l5e/assets-v1/923ead63-1849-4075-9845-3e9a00b8b649/help-to-moms-logo.webp" alt="Help to Moms logo" class="w-full h-full object-contain">
+      </div>
+      
+      <div class="w-full">
+        <nav class="w-full flex flex-col gap-1.5" id="admin-sidebar-nav">
+          
+          <a href="AdminHome.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">dashboard</span>
+              <span class="truncate">Overview</span>
+            </div>
+          </a>
+
+          <!-- Admin Only Node -->
+          <a href="UserManagementPage.html" class="admin-only w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">person</span>
+              <span class="truncate">User Management</span>
+            </div>
+          </a>
+
+          <!-- Admin Only Node -->
+          <a href="RolesPermissionsPage.html" class="admin-only w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">key</span>
+              <span class="truncate">Roles &amp; Permissions</span>
+            </div>
+          </a>
+
+          <a href="BusinessConfigPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">inventory_2</span>
+              <span class="truncate">Business Config</span>
+            </div>
+          </a>
+
+          <a href="ReferenceDataPage.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">database</span>
+              <span class="truncate">Reference Data</span>
+            </div>
+          </a>
+
+          <a href="DocumentTemplates.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] text-sm font-medium leading-none hover:bg-[#F3EDF7] transition">
+            <div class="flex items-center gap-2.5 min-w-0 flex-1">
+              <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">description</span>
+              <span class="truncate">Document Templates</span>
+            </div>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Canvas -->
+    <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
+      
+      <!-- Top Navigation Header -->
+      <header class="h-[58px] flex items-center justify-between shrink-0">
+        <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditLogs.html">Audit</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectoryPage.html">Provider Directory</a>
+          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="AdminHome.html">Administration</a>
+        </nav>
+        
+        <div class="flex items-center gap-6">
+          <!-- Notification Bell Icon -->
+          <div class="relative w-8 h-8 rounded-full flex items-center justify-center text-[#1C1B1F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 cursor-pointer outline-none select-none group">
+            <span class="material-symbols-outlined text-[20px] leading-none select-none text-[#1C1B1F] group-hover:text-primary transition-colors">
+              notifications
+            </span>
+            <span class="absolute -top-0.5 -right-0.5 min-w-[16px] h-[16px] px-1 bg-[#B3261E] text-white rounded-full flex items-center justify-center text-[9px] font-bold leading-none border-2 border-white shadow-xs select-none">
+              14
+            </span>
+          </div>
+
+          <!-- Account / Role Switcher -->
+          <div class="relative inline-block text-left" id="role-switcher-container">
+            <button id="role-switcher-btn" type="button" class="flex items-center gap-2 h-9 pl-1 pr-3 rounded-full border border-[#e8def8] bg-white hover:bg-[#f3edf7] cursor-pointer transition-colors outline-none focus:ring-2 focus:ring-[#6750a4]">
+              <div id="active-avatar" class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold text-white shrink-0 bg-[#1967D2]">P</div>
+              <div class="text-left hidden sm:block">
+                <p id="active-name" class="text-[12px] font-medium text-[#1C1B1F] m-0 leading-none">Priya Patel</p>
+                <p id="active-label" class="text-[10px] m-0 font-bold text-[#1967D2] mt-0.5">Administrator</p>
+              </div>
+              <span class="material-symbols-outlined text-[16px] text-[#79747e]">arrow_drop_down</span>
+            </button>
+
+            <div id="role-switcher-dropdown" class="hidden absolute right-0 top-[calc(100%+6px)] bg-white rounded-[12px] border border-[#e8def8] z-50 w-[260px] overflow-hidden shadow-[0px_4px_16px_rgba(0,0,0,0.12)]">
+              <div class="px-4 py-2.5 border-b border-[#f3edf7]">
+                <p class="text-[10px] font-bold uppercase tracking-[0.5px] text-[#79747e] m-0">Switch Account / Role View</p>
+              </div>
+              <button type="button" onclick="selectRole('administrator')" id="role-opt-administrator" class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white shrink-0 bg-[#1967D2]">P</div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Priya Patel</p>
+                  <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">p.patel@h2m.org</p>
+                  <p class="text-[10px] font-bold m-0 text-[#1967D2]">Administrator</p>
+                </div>
+                <span id="check-administrator" class="material-symbols-outlined text-[18px] text-[#6750a4]">check</span>
+              </button>
+              <button type="button" onclick="selectRole('operations')" id="role-opt-operations" class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white shrink-0 bg-[#6750a4]">J</div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Jane Doe</p>
+                  <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">jane.doe@h2m.org</p>
+                  <p class="text-[10px] font-bold m-0 text-[#6750a4]">Operations</p>
+                </div>
+                <span id="check-operations" class="material-symbols-outlined text-[18px] text-[#6750a4] hidden">check</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Breadcrumbs Backlink to Administration Overview -->
+      <div class="flex items-center gap-2 text-sm text-muted shrink-0">
+        <a href="AdminHome.html" class="text-primary font-medium hover:underline flex items-center gap-1 cursor-pointer">
+          <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+          <span>Back to Overview</span>
+        </a>
+        <span>/</span>
+        <span class="font-bold text-text">Integrations</span>
+      </div>
+
+      <!-- Page Title & CTA -->
+      <div class="flex items-center justify-between shrink-0">
+        <div>
+          <h1 class="text-3xl font-medium text-[#1C1B1F] tracking-tight" id="canvas-stage-title">Integration Configuration</h1>
+          <p class="text-sm text-[#49454F] mt-0.5" id="integrations-meta-summary">4 integrations · 3 connected</p>
+        </div>
+      </div>
+
+      <!-- Integrations Roster Container (Matching Image 228b6e.png) -->
+      <div class="flex-1 overflow-y-auto max-h-[calc(100vh-280px)] pr-1 flex flex-col gap-4" id="integrations-cards-container">
+        <!-- Injected via JavaScript -->
+      </div>
+
+    </section>
+  </div>
+
+  <!-- CONFIGURE INTEGRATION MODAL (Matching image_228010.png) -->
+  <div id="integration-config-modal" class="fixed inset-0 bg-black/40 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[#FFFBFE] border border-line rounded-[28px] shadow-2xl w-[560px] overflow-hidden flex flex-col p-7 gap-5">
+      
+      <!-- Modal Header -->
+      <div class="flex items-start justify-between border-b border-line/60 pb-3">
+        <h3 class="text-xl font-medium text-[#1C1B1F] leading-tight" id="int-modal-title">Configure Integration — BlueGoose</h3>
+        <button type="button" onclick="closeConfigModal()" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-surface transition cursor-pointer">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <!-- Properties Form -->
+      <form id="integration-form" onsubmit="event.preventDefault();" class="flex flex-col gap-4 text-xs">
+        
+        <!-- Field 1: ENDPOINT URL -->
+        <div class="flex flex-col gap-1.5">
+          <label class="font-bold text-[#79747E] uppercase tracking-wider text-[10px]">Endpoint URL</label>
+          <input type="text" id="int-endpoint" value="api.bluegoose.io" required class="p-3 border border-[#79747E] rounded-xl text-text font-mono text-xs focus:border-primary outline-none">
+        </div>
+
+        <!-- Field 2: API KEY / SECRET TOKEN -->
+        <div class="flex flex-col gap-1.5">
+          <label class="font-bold text-[#79747E] uppercase tracking-wider text-[10px]">API Key / Secret Token</label>
+          <div class="relative">
+            <input id="int-secret" type="password" value="bg_live_998348102938471029384" readonly class="w-full p-3 pr-10 border border-[#79747E] rounded-xl text-text font-mono text-xs focus:outline-none select-none">
+            <button type="button" onclick="toggleSecretReveal('int-secret')" class="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-primary transition cursor-pointer" title="Decrypt Token">
+              <span class="material-symbols-outlined text-[20px]" id="secret-visibility-icon">visibility</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Field 3 & 4: TIMEOUT and BATCH LIMIT -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label class="font-bold text-[#79747E] uppercase tracking-wider text-[10px]">Timeout (Sec)</label>
+            <input type="number" id="int-timeout" value="30" required class="p-3 border border-[#79747E] rounded-xl text-text font-mono text-xs focus:border-primary outline-none" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="font-bold text-[#79747E] uppercase tracking-wider text-[10px]">Batch Limit (&le; 50)</label>
+            <input type="number" id="int-batch" value="50" max="50" required class="p-3 border border-[#79747E] rounded-xl text-text font-mono text-xs focus:border-primary outline-none" oninput="if(this.value>50)this.value=50;">
+          </div>
+        </div>
+
+        <!-- Connection Test Status Area -->
+        <div id="ping-status-area" class="hidden p-3 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all"></div>
+
+        <!-- Mandatory Compliance Audit Reason (MDR OD-AUD-006) -->
+        <div class="flex flex-col gap-1.5 border-t border-line/60 pt-3">
+          <div class="flex items-center justify-between">
+            <label class="font-bold text-text">Mandatory Audit Change Reason <span class="text-[#B3261E]">*</span></label>
+            <span id="live-char-counter" class="text-[11px] font-mono font-medium text-muted">0/15</span>
+          </div>
+          <textarea id="modal-audit-rationale" rows="2" oninput="validateAuditRationale()" class="p-3 border border-line rounded-xl text-text text-xs focus:border-primary outline-none" placeholder="Updated endpoint configuration and secret token..."></textarea>
+        </div>
+
+        <!-- Actions Gutter (Matching image_228010.png) -->
+        <div class="flex items-center justify-between pt-2 border-t border-line/60">
+          <button type="button" onclick="runConnectionPing()" class="px-5 py-2.5 border border-[#79747E] text-primary text-xs font-bold rounded-full hover:bg-surface-container transition cursor-pointer">
+            Test Connection
+          </button>
+          
+          <div class="flex items-center gap-3">
+            <button type="button" onclick="closeConfigModal()" class="px-5 py-2.5 border border-[#79747E] text-text text-xs font-bold rounded-full hover:bg-surface-container transition cursor-pointer">
+              Cancel
+            </button>
+            <button type="button" id="btn-save-config-submit" onclick="commitIntegrationChanges()" class="px-6 py-2.5 bg-primary text-white text-xs font-bold rounded-full transition shadow-sm pointer-events-none opacity-38" disabled>
+              Save Configuration
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Global Toast Notification Container -->
+  <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
+
+  <script>
+    /* Master External System Integrations Dataset (Matching image_228b6e.png) */
+    let integrationsEndpoints = [
+      {
+        id: "INT-001",
+        title: "BlueGoose",
+        type: "Source System",
+        status: "Connected",
+        lastSync: "Jul 22, 2026 15:18",
+        endpoint: "api.bluegoose.io",
+        timeout: 30,
+        batchLimit: 50,
+        secret: "bg_live_998348102938471029384"
+      },
+      {
+        id: "INT-002",
+        title: "Fax Intake Service",
+        type: "Document Fax",
+        status: "Connected",
+        lastSync: "Jul 22, 2026 14:45",
+        endpoint: "fax.h2m-bridge.io",
+        timeout: 15,
+        batchLimit: 25,
+        secret: "fax_pub_0029381029384"
+      },
+      {
+        id: "INT-003",
+        title: "EDI Feed",
+        type: "Data Exchange",
+        status: "Disconnected",
+        lastSync: "Jul 21, 2026 09:00",
+        endpoint: "edi.h2m-bridge.io",
+        timeout: 45,
+        batchLimit: 10,
+        secret: "edi_test_1102938471029"
+      }
+    ];
+
+    let activeRole = 'administrator';
+    let selectedActiveEndpoint = null;
+
+    /* Render Engine for Integration Endpoint Cards (Strict Match to image_228b6e.png) */
+    function renderIntegrationsWorkspace() {
+      const container = document.getElementById('integrations-cards-container');
+      const connectedCount = integrationsEndpoints.filter(i => i.status === 'Connected').length;
+      document.getElementById('integrations-meta-summary').innerText = `${integrationsEndpoints.length} integrations · ${connectedCount} connected`;
+
+      container.innerHTML = integrationsEndpoints.map(item => {
+        const isConnected = item.status === 'Connected';
+
+        // Status Badge Pill
+        const statusBadge = isConnected 
+          ? `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#E6F4EA] text-[#0D652D]"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Connected</span>`
+          : `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#F9DEDC] text-[#B3261E]"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Disconnected</span>`;
+
+        // Secondary Action Button (Test Connection or Reconnect)
+        const secondaryBtn = isConnected
+          ? `<button onclick="runTestPing('${item.id}')" class="text-sm font-medium text-[#6750A4] hover:underline cursor-pointer">Test Connection</button>`
+          : `<button onclick="reconnectEndpoint('${item.id}')" class="px-5 py-2 bg-primary text-white text-xs font-bold rounded-full hover:bg-on-primary-container transition shadow-sm cursor-pointer">Reconnect</button>`;
+
+        return `
+          <div class="bg-[#FFFBFE] border border-[#CAC4D0] rounded-[16px] p-5 shadow-xs flex flex-col gap-3 hover:shadow-sm transition">
+            
+            <!-- Card Header Row -->
+            <div class="flex items-start justify-between">
+              <div class="flex flex-col gap-0.5">
+                <div class="flex items-center gap-3">
+                  <h3 class="text-base font-bold text-[#1C1B1F]">${item.title}</h3>
+                  ${statusBadge}
+                </div>
+                <span class="text-xs text-[#49454F]">Type: ${item.type}</span>
+              </div>
+
+              <div class="text-right flex flex-col items-end">
+                <span class="text-[10px] text-muted uppercase font-bold tracking-wider">Last Sync</span>
+                <span class="text-xs font-mono text-text">${item.lastSync}</span>
+              </div>
+            </div>
+
+            <!-- Endpoint Highlight Inner Container -->
+            <div class="bg-[#F7F2FA] rounded-xl p-3 border border-line/40">
+              <span class="text-xs font-mono text-[#1C1B1F]"><strong class="font-sans uppercase text-[10px] text-muted">ENDPOINT:</strong> ${item.endpoint}</span>
+            </div>
+
+            <!-- Card Actions Row -->
+            <div class="flex items-center gap-4 pt-1">
+              <button onclick="openConfigModal('${item.id}')" class="px-5 py-1.5 border border-[#79747E] text-text text-xs font-bold rounded-full hover:bg-[#F3EDF7] transition cursor-pointer">
+                Configure
+              </button>
+              ${secondaryBtn}
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    function runTestPing(id) {
+      const item = integrationsEndpoints.find(i => i.id === id);
+      if (item) {
+        showToast(`Testing connection to ${item.endpoint}... Ping: 38ms (OK)`);
+      }
+    }
+
+    function reconnectEndpoint(id) {
+      const item = integrationsEndpoints.find(i => i.id === id);
+      if (item) {
+        item.status = "Connected";
+        item.lastSync = "Jul 22, 2026 15:25";
+        showToast(`Re-established API session with ${item.title}.`);
+        renderIntegrationsWorkspace();
+      }
+    }
+
+    /* Configure Modal Controls (Matching image_228010.png) */
+    function openConfigModal(id) {
+      const item = integrationsEndpoints.find(i => i.id === id);
+      if (!item) return;
+
+      selectedActiveEndpoint = item;
+      document.getElementById('int-modal-title').innerText = `Configure Integration — ${item.title}`;
+      document.getElementById('int-endpoint').value = item.endpoint;
+      document.getElementById('int-secret').value = item.secret;
+      document.getElementById('int-timeout').value = item.timeout;
+      document.getElementById('int-batch').value = item.batchLimit;
+      document.getElementById('ping-status-area').classList.add('hidden');
+      document.getElementById('modal-audit-rationale').value = '';
+      
+      validateAuditRationale();
+      document.getElementById('integration-config-modal').classList.remove('hidden');
+    }
+
+    function closeConfigModal() {
+      document.getElementById('integration-config-modal').classList.add('hidden');
+    }
+
+    function toggleSecretReveal(inputId) {
+      const input = document.getElementById(inputId);
+      const icon = document.getElementById('secret-visibility-icon');
+      if (input.type === "password") {
+        input.type = "text";
+        icon.innerText = "visibility_off";
+        showToast("Secret key decrypted for active workspace session.");
+      } else {
+        input.type = "password";
+        icon.innerText = "visibility";
+      }
+    }
+
+    function runConnectionPing() {
+      const area = document.getElementById('ping-status-area');
+      area.className = "p-3 rounded-xl text-xs font-semibold flex items-center gap-2 bg-[#E6F4EA] text-[#0D652D] border border-[#0D652D]/20";
+      area.innerHTML = `<span class="material-symbols-outlined text-[18px]">check_circle</span> 🟢 Connection Successful (Ping: 42ms · TLS 1.3 Handshake Verified)`;
+      area.classList.remove('hidden');
+    }
+
+    /* 15-Character Minimum Audit Rationale Validation (MDR OD-AUD-006) */
+    function validateAuditRationale() {
+      const txt = document.getElementById('modal-audit-rationale').value.trim();
+      const count = txt.length;
+      const counterLabel = document.getElementById('live-char-counter');
+      const submitBtn = document.getElementById('btn-save-config-submit');
+
+      counterLabel.innerText = `${count}/15`;
+
+      if (count >= 15) {
+        counterLabel.className = "text-[11px] font-mono font-bold text-status-success-text";
+        submitBtn.disabled = false;
+        submitBtn.className = "px-6 py-2.5 bg-primary text-white text-xs font-bold rounded-full transition shadow-sm hover:bg-on-primary-container cursor-pointer";
+      } else {
+        counterLabel.className = "text-[11px] font-mono font-medium text-muted";
+        submitBtn.disabled = true;
+        submitBtn.className = "px-6 py-2.5 bg-primary text-white text-xs font-bold rounded-full transition shadow-sm pointer-events-none opacity-38";
+      }
+    }
+
+    function commitIntegrationChanges() {
+      const rationale = document.getElementById('modal-audit-rationale').value.trim();
+      if (rationale.length < 15) return;
+
+      if (selectedActiveEndpoint) {
+        selectedActiveEndpoint.endpoint = document.getElementById('int-endpoint').value.trim();
+        selectedActiveEndpoint.timeout = parseInt(document.getElementById('int-timeout').value) || 30;
+        selectedActiveEndpoint.batchLimit = parseInt(document.getElementById('int-batch').value) || 50;
+
+        showToast(`Configuration for ${selectedActiveEndpoint.title} saved & committed to Audit Log.`);
+      }
+
+      closeConfigModal();
+      renderIntegrationsWorkspace();
+    }
+
+    /* Role Switcher Controller */
+    function selectRole(role) {
+      activeRole = role;
+      document.getElementById('role-switcher-dropdown').classList.add('hidden');
+
+      const avatar = document.getElementById('active-avatar');
+      const nameElem = document.getElementById('active-name');
+      const labelElem = document.getElementById('active-label');
+
+      if (role === 'operations') {
+        document.body.classList.add('h2m-operations-role');
+        avatar.innerText = 'J';
+        avatar.style.backgroundColor = '#6750A4';
+        nameElem.innerText = 'Jane Doe';
+        labelElem.innerText = 'Operations';
+        labelElem.style.color = '#6750A4';
+
+        document.getElementById('role-opt-operations').className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]";
+        document.getElementById('role-opt-administrator').className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
+        document.getElementById('check-operations').classList.remove('hidden');
+        document.getElementById('check-administrator').classList.add('hidden');
+      } else {
+        document.body.classList.remove('h2m-operations-role');
+        avatar.innerText = 'P';
+        avatar.style.backgroundColor = '#1967D2';
+        nameElem.innerText = 'Priya Patel';
+        labelElem.innerText = 'Administrator';
+        labelElem.style.color = '#1967D2';
+
+        document.getElementById('role-opt-administrator').className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]";
+        document.getElementById('role-opt-operations').className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
+        document.getElementById('check-administrator').classList.remove('hidden');
+        document.getElementById('check-operations').classList.add('hidden');
+      }
+
+      showToast(`Switched active workspace view to: ${labelElem.innerText}`);
+      renderIntegrationsWorkspace();
+    }
+
+    document.getElementById('role-switcher-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      document.getElementById('role-switcher-dropdown').classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+      const container = document.getElementById('role-switcher-container');
+      if (container && !container.contains(e.target)) {
+        document.getElementById('role-switcher-dropdown').classList.add('hidden');
+      }
+    });
+
+    function showToast(message) {
+      const toast = document.getElementById('toast-notification');
+      toast.innerText = message;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 2500);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderIntegrationsWorkspace();
+    });
+  </script>
+</body>
+</html>

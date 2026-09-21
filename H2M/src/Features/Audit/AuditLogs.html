@@ -111,9 +111,13 @@
         </nav>
         
         <div class="flex items-center gap-6">
-          <div class="relative w-10 h-10 flex items-center justify-center cursor-pointer">
-            <img src="https://www.figma.com/api/mcp/asset/0e022744-e0d6-4c6f-8546-51c31cf743c4.svg" alt="Notifications" class="w-5 h-5">
-            <span class="absolute top-0 right-0 w-4 h-4 border border-white rounded-full bg-status-failed-text text-white flex items-center justify-center text-[9px] font-bold">14</span>
+          <div class="relative inline-flex items-center justify-center w-9 h-9 cursor-pointer group">
+            <span class="material-symbols-outlined text-[#1C1B1F] text-[24px] group-hover:text-primary transition-colors select-none">
+              notifications
+            </span>
+            <span class="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 bg-[#B3261E] text-white rounded-full flex items-center justify-center text-[10px] font-bold leading-none border-2 border-white shadow-xs select-none">
+              14
+            </span>
           </div>
 
           <div class="relative inline-block text-left" id="role-switcher-container">

@@ -48,11 +48,12 @@
     }
   </script>
 </head>
-<body class="bg-surface text-text font-sans min-h-screen relative overflow-x-hidden antialiased">
+<body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
 
-  <div class="w-[full] min-h-[1024px] mx-auto bg-surface flex">
+  <div class="w-full h-screen mx-auto bg-surface flex overflow-hidden">
     
-    <aside class="w-[224px] min-h-[1024px] p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+    <!-- Unified Sidebar Navigation -->
+    <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
       <div class="w-[58px] h-[58px]">
         <img src="https://helptomoms.com/__l5e/assets-v1/923ead63-1849-4075-9845-3e9a00b8b649/help-to-moms-logo.webp" alt="Help to Moms logo" class="w-full h-full object-contain">
       </div>
@@ -99,23 +100,31 @@
 
     </aside>
 
-    <section class="flex-1 p-8 pb-12 flex flex-col gap-6 overflow-hidden">
+    <!-- Main Workspace Section -->
+    <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden min-w-0">
       
-      <header class="h-[58px] flex items-center justify-between">
+      <!-- Top Navigation Header -->
+      <header class="h-[58px] flex items-center justify-between shrink-0">
         <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
           <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="AuditLogs.html">Audit</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectory.html">Provider Directory</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectoryPage.html">Provider Directory</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Administration/AdminHome.html">Administration</a>
         </nav>
         
         <div class="flex items-center gap-6">
-          <div class="relative w-10 h-10 flex items-center justify-center cursor-pointer">
-            <img src="https://www.figma.com/api/mcp/asset/0e022744-e0d6-4c6f-8546-51c31cf743c4.svg" alt="Notifications" class="w-5 h-5">
-            <span class="absolute top-0 right-0 w-4 h-4 border border-white rounded-full bg-status-failed-text text-white flex items-center justify-center text-[9px] font-bold">14</span>
+          <!-- Notification Bell Icon -->
+          <div class="relative inline-flex items-center justify-center w-9 h-9 cursor-pointer group">
+            <span class="material-symbols-outlined text-[#1C1B1F] text-[24px] group-hover:text-primary transition-colors select-none">
+              notifications
+            </span>
+            <span class="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 bg-[#B3261E] text-white rounded-full flex items-center justify-center text-[10px] font-bold leading-none border-2 border-white shadow-xs select-none">
+              14
+            </span>
           </div>
 
+          <!-- Role Switcher Dropdown -->
           <div class="relative inline-block text-left" id="role-switcher-container">
             <button id="role-switcher-btn" type="button" class="flex items-center gap-2 h-9 pl-1 pr-3 rounded-full border border-[#e8def8] bg-white hover:bg-[#f3edf7] cursor-pointer transition-colors outline-none focus:ring-2 focus:ring-[#6750a4]">
               <div id="active-avatar" class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold text-white shrink-0 bg-[#6750a4]">J</div>
@@ -153,12 +162,14 @@
         </div>
       </header>
 
-      <div>
+      <!-- Page Main Title -->
+      <div class="shrink-0">
         <h1 class="text-3xl font-semibold text-text">Audit</h1>
         <p class="text-xs text-muted mt-0.5">Automated background processing events and system pipeline triggers</p>
       </div>
 
-      <section class="grid grid-cols-3 gap-4">
+      <!-- Stat Cards Grid -->
+      <section class="grid grid-cols-3 gap-4 shrink-0">
         <div class="stat-card border border-line bg-white p-4 hover:shadow-md rounded-2xl shadow-sm text-left flex items-start justify-between">
           <div class="flex flex-col">
             <span class="block text-sm font-bold text-text">Automation Events</span>
@@ -193,38 +204,42 @@
         </div>
       </section>
 
-      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col flex-1">
-        <div class="p-5 border-b border-line flex items-center justify-between">
+      <!-- Table Panel (sm Text Size & Single-Line Chips) -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0 mb-2 w-full">
+        
+        <!-- Controls Header -->
+        <div class="p-5 border-b border-line flex items-center justify-between shrink-0">
           <h2 class="text-xl font-semibold text-text">Automation Events</h2>
           
           <div class="flex items-center gap-2.5">
             <div class="h-9 w-72 px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 text-muted border-0 focus:outline-none shrink-0">
               <span class="material-symbols-outlined text-[#49454F] text-[20px] select-none">search</span>
-              <input id="audit-table-search" type="search" oninput="handleSearchInput()" class="w-full bg-transparent border-0 outline-none text-sm text-text placeholder-muted focus:ring-0" placeholder="Search by Order ID, Actor, Event...">
+              <input id="audit-table-search" type="search" oninput="handleSearchInput()" class="w-full bg-transparent border-0 outline-none text-xs text-text placeholder-muted focus:ring-0" placeholder="Search by Order ID, Actor, Event...">
             </div>
 
             <div class="flex items-center gap-3 text-xs text-muted pl-2">
               <span id="pagination-indicator" class="font-medium text-text font-mono select-none">1 - 3 of 3</span>
               <div class="flex items-center gap-1 select-none">
-                <button id="btn-prev-page" class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] disabled:opacity-20" disabled><span class="material-symbols-outlined text-[20px]">navigate_before</span></button>
-                <button id="btn-next-page" class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] disabled:opacity-20" disabled><span class="material-symbols-outlined text-[20px]">navigate_next</span></button>
+                <button id="btn-prev-page" class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] disabled:opacity-20 cursor-not-allowed" disabled><span class="material-symbols-outlined text-[20px]">navigate_before</span></button>
+                <button id="btn-next-page" class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] disabled:opacity-20 cursor-not-allowed" disabled><span class="material-symbols-outlined text-[20px]">navigate_next</span></button>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="overflow-x-auto">
-          <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1000px]">
+        <!-- Scrollable Table Container -->
+        <div class="overflow-y-auto max-h-[calc(100vh-380px)] h-auto w-full">
+          <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1050px]">
             <colgroup>
               <col class="w-[15%]">
-              <col class="w-[12%]">
+              <col class="w-[11%]">
               <col class="w-[25%]">
               <col class="w-[18%]">
               <col class="w-[18%]">
-              <col class="w-[12%]">
+              <col class="w-[13%]">
             </colgroup>
-            <thead>
-              <tr class="bg-primary text-white text-[11px] font-bold tracking-wider">
+            <thead class="sticky top-0 z-10">
+              <tr class="bg-primary text-white text-[11px] font-bold tracking-wider uppercase">
                 <th class="py-3 px-4">TIMESTAMP</th>
                 <th class="py-3 px-4">EVENT ID</th>
                 <th class="py-3 px-4">ORDER ID</th>
@@ -234,13 +249,16 @@
               </tr>
             </thead>
             <tbody id="audit-table-body">
-              </tbody>
+              <!-- Injected via JS -->
+            </tbody>
           </table>
         </div>
       </section>
 
     </section>
   </div>
+
+  <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
 
   <script>
     const automationDatabase = [
@@ -281,21 +299,21 @@
 
       const tbody = document.getElementById('audit-table-body');
       tbody.innerHTML = visible.map(row => {
-        let badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-status-success-bg text-status-success-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Success</span>`;
+        let badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap bg-status-success-bg text-status-success-text"><span class="w-1.5 h-1.5 rounded-full bg-current shrink-0"></span>Success</span>`;
         if (row.eventOutcome === 'FAILED') {
-          badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-status-failed-bg text-status-failed-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Failed</span>`;
+          badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap bg-status-failed-bg text-status-failed-text"><span class="w-1.5 h-1.5 rounded-full bg-current shrink-0"></span>Failed</span>`;
         } else if (row.eventOutcome === 'PENDING_REVIEW') {
-          badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-status-pending-bg text-status-pending-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Pending Review</span>`;
+          badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap bg-status-pending-bg text-status-pending-text"><span class="w-1.5 h-1.5 rounded-full bg-current shrink-0"></span>Pending Review</span>`;
         }
 
         return `
           <tr class="border-b border-line hover:bg-surface transition">
             <td class="py-3 px-4 font-mono text-muted text-sm whitespace-nowrap">${row.timestamp}</td>
             <td class="py-3 px-4 font-mono font-bold text-primary text-sm whitespace-nowrap">${row.id}</td>
-            <td class="py-3 px-4 font-mono font-bold text-text text-sm truncate">${row.orderId}</td>
-            <td class="py-3 px-4 text-text text-sm font-medium truncate">${row.actor}</td>
-            <td class="py-3 px-4 font-bold text-text text-sm">${row.eventName}</td>
-            <td class="py-3 px-4 text-center">${badge}</td>
+            <td class="py-3 px-4 font-mono font-bold text-text text-sm truncate" title="${row.orderId}">${row.orderId}</td>
+            <td class="py-3 px-4 text-text text-sm font-medium truncate" title="${row.actor}">${row.actor}</td>
+            <td class="py-3 px-4 font-bold text-text text-sm truncate" title="${row.eventName}">${row.eventName}</td>
+            <td class="py-3 px-4 text-center whitespace-nowrap">${badge}</td>
           </tr>
         `;
       }).join('');
@@ -303,6 +321,58 @@
 
     function handleSearchInput() {
       renderTable();
+    }
+
+    /* Account / Role Switcher Logic */
+    let activeRole = 'operations';
+    let roleSwitcherOpen = false;
+
+    const roleData = {
+      operations: { name: 'Jane Doe', email: 'jane.doe@h2m.org', initials: 'J', color: '#6750a4', label: 'Operations' },
+      administrator: { name: 'Priya Patel', email: 'p.patel@h2m.org', initials: 'P', color: '#1967D2', label: 'Administrator' }
+    };
+
+    document.getElementById('role-switcher-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      roleSwitcherOpen = !roleSwitcherOpen;
+      document.getElementById('role-switcher-dropdown').classList.toggle('hidden', !roleSwitcherOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+      const container = document.getElementById('role-switcher-container');
+      if (container && !container.contains(e.target)) {
+        roleSwitcherOpen = false;
+        document.getElementById('role-switcher-dropdown').classList.add('hidden');
+      }
+    });
+
+    function selectRole(role) {
+      activeRole = role;
+      roleSwitcherOpen = false;
+      document.getElementById('role-switcher-dropdown').classList.add('hidden');
+
+      const current = roleData[role];
+      const avatar = document.getElementById('active-avatar');
+      avatar.style.backgroundColor = current.color;
+      avatar.innerText = current.initials;
+
+      document.getElementById('active-name').innerText = current.name;
+      const label = document.getElementById('active-label');
+      label.innerText = current.label;
+      label.style.color = current.color;
+
+      showToast(`Switched to ${current.label} view — ${current.name}`);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast-notification');
+      toast.innerText = message;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 3000);
     }
 
     document.addEventListener('DOMContentLoaded', () => {

@@ -127,8 +127,8 @@
         <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditPage.html">Audit</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectoryPage.html">Provider Directory</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/Audit.html">Audit</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectory.html">Provider Directory</a>
           <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="AdministrationPage.html">Administration</a>
         </nav>
         
@@ -184,7 +184,7 @@
       <!-- Page Title & CTA -->
       <div class="flex items-center justify-between shrink-0">
         <div>
-          <h1 class="text-3xl font-semibold text-text" id="canvas-stage-title">Business Configuration</h1>
+          <h1 class="text-3xl font-semibold text-text" id="canvas-stage-title">Administration</h1>
           <p class="text-xs text-muted mt-0.5">8 configurations · 5 active</p>
         </div>
         <!-- Admin-Only Create Config CTA Button -->
@@ -199,7 +199,7 @@
         
         <!-- Header Controls Row -->
         <div class="p-5 border-b border-line flex items-center justify-between shrink-0">
-          <h2 class="text-xl font-semibold text-text">System Configurations</h2>
+          <h2 class="text-xl font-semibold text-text">Business Configurations</h2>
           
           <div class="flex items-center gap-2.5">
             <!-- M3 Search Bar -->
@@ -341,10 +341,8 @@
   <!-- Mandatory Audit Rationale Modal Overlay -->
   <div id="compliance-rationale-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[60] hidden flex justify-center items-center p-4">
     <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 border border-line">
-      <h3 class="text-sm font-bold text-text mb-2 uppercase tracking-wider">Operational Reason Required</h3>
-      <p class="text-xs text-muted mb-4 leading-relaxed">
-        This configuration modification will be committed to the append-only BRIDGE Audit ledger. Please provide a clear rationale ($\ge 15$ characters).
-      </p>
+      <h3 class="text-sm font-bold text-text mb-2 uppercase tracking-wider">Reason Required</h3>
+      
 
       <textarea id="audit-rationale" rows="3" class="w-full text-xs p-3 border border-outline rounded-lg focus:outline-none focus:border-primary mb-4" placeholder="Explain the threshold/SLA change (min 15 chars)..."></textarea>
 

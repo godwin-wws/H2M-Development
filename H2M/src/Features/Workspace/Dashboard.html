@@ -46,7 +46,7 @@
   </script>
 </head>
 <body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
-  <div class="w-[full] h-screen mx-auto bg-surface flex overflow-hidden">
+  <div class="w-full h-screen mx-auto bg-surface flex overflow-hidden">
     
     <!-- Unified Side Navigation -->
     <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
@@ -89,7 +89,7 @@
     </aside>
 
     <!-- Main Content Area -->
-    <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
+    <section class="flex-1 p-8 pb-8 flex flex-col gap-6 h-full overflow-hidden min-w-0">
       
       <!-- Top Navigation Bar & Global Module Pill -->
       <header class="h-[58px] flex items-center justify-between shrink-0">
@@ -97,12 +97,12 @@
           <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditLogs.html">Audit</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectory.html">Provider Directory</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectoryPage.html">Provider Directory</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Administration/AdminHome.html">Administration</a>
         </nav>
         
         <div class="flex items-center gap-6">
-           <!-- Integrated Material Symbols Notification Bell with Red Badge -->
+          <!-- Notification Bell Icon -->
           <div class="relative inline-flex items-center justify-center w-9 h-9 cursor-pointer group">
             <span class="material-symbols-outlined text-[#1C1B1F] text-[24px] group-hover:text-primary transition-colors select-none">
               notifications
@@ -228,97 +228,115 @@
         </button>
       </section>
 
-      <!-- Orders Panel (Content-Hugging Container with Internal Scroll) -->
-      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0 mb-6">
+      <!-- Recent Orders Section -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col flex-1 min-h-0 w-full">
+        
+        <!-- Controls Row -->
         <div class="p-5 border-b border-line flex flex-col gap-3 shrink-0">
           <h2 class="text-xl font-semibold text-text">Recent Orders</h2>
-          <div class="flex items-center gap-2.5">
-            <!-- Search Bar Component -->
-            <div class="h-9 w-[300px] px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 border-0 focus-within:ring-2 focus-within:ring-[#6750A4] shrink-0">
-              <span class="material-symbols-outlined text-[#49454F] text-[20px] shrink-0 leading-none select-none">search</span>
-              <input 
-                id="table-search" 
-                type="search" 
-                class="w-full bg-transparent border-0 outline-none text-xs text-[#1C1B1F] placeholder-[#79747E] focus:ring-0" 
-                placeholder="Search by ID, name, email..."
-              >
-            </div>
-
-            <!-- Insurance Filter Dropdown -->
-            <div class="relative inline-block">
-              <select id="insurance-filter" class="h-8 pl-4 pr-8 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
-                <option value="all">Insurance</option>
-                <option>United Healthcare Community Plan</option>
-                <option>Anthem Blue Cross</option>
-                <option>Wellpoint</option>
-                <option>TennCare</option>
-                <option>CoverKids</option>
-              </select>
-              <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
-            </div>
-
-            <!-- State Filter Dropdown -->
-            <div class="relative inline-block">
-              <select id="state-filter" class="h-8 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
-                <option value="all">State</option>
-                <option>Tennessee</option>
-                <option>Michigan</option>
-                <option>Ohio</option>
-              </select>
-              <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
-            </div>
-
-            <!-- M3 Circular Pagination Controls -->
-            <div class="flex items-center gap-3 text-xs text-muted ml-auto">
-              <span id="pagination-status" class="font-medium text-text font-mono select-none">Showing 1-10 of 14</span>
-              <div class="flex items-center gap-1 select-none">
-                <button 
-                  id="prev-page-btn" 
-                  onclick="changePage(-1)" 
-                  class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 outline-none disabled:opacity-20 disabled:hover:bg-transparent disabled:cursor-not-allowed"
-                  title="Previous page"
+          
+          <div class="flex items-center justify-between w-full gap-2">
+            <div class="flex items-center gap-2.5 flex-wrap">
+              <!-- Search Bar -->
+              <div class="h-9 w-[200px] lg:w-[240px] px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 border-0 focus-within:ring-2 focus-within:ring-[#6750A4] shrink-0">
+                <span class="material-symbols-outlined text-[#49454F] text-[20px] shrink-0 leading-none select-none">search</span>
+                <input 
+                  id="table-search" 
+                  type="search" 
+                  class="w-full bg-transparent border-0 outline-none text-xs text-[#1C1B1F] placeholder-[#79747E] focus:ring-0" 
+                  placeholder="Search by ID, name, email..."
                 >
-                  <span class="material-symbols-outlined text-[20px] leading-none select-none">navigate_before</span>
-                </button>
-                <button 
-                  id="next-page-btn" 
-                  onclick="changePage(1)" 
-                  class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 outline-none disabled:opacity-38 disabled:hover:bg-transparent disabled:cursor-not-allowed"
-                  title="Next page"
-                >
-                  <span class="material-symbols-outlined text-[20px] leading-none select-none">navigate_next</span>
-                </button>
+              </div>
+
+              <!-- Insurance Filter Dropdown -->
+              <div class="relative inline-block">
+                <select id="insurance-filter" class="h-8 pl-3 pr-7 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
+                  <option value="all">Insurance</option>
+                  <option>United Healthcare Community Plan</option>
+                  <option>Anthem Blue Cross</option>
+                  <option>Wellpoint</option>
+                  <option>TennCare</option>
+                  <option>CoverKids</option>
+                </select>
+                <span class="material-symbols-outlined pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-[#49454F] text-[18px] select-none">arrow_drop_down</span>
+              </div>
+
+              <!-- State Filter Dropdown -->
+              <div class="relative inline-block">
+                <select id="state-filter" class="h-8 pl-3 pr-7 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
+                  <option value="all">State</option>
+                  <option>Tennessee</option>
+                  <option>Michigan</option>
+                  <option>Ohio</option>
+                </select>
+                <span class="material-symbols-outlined pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-[#49454F] text-[18px] select-none">arrow_drop_down</span>
+              </div>
+
+              <!-- Date Filter Dropdown -->
+              <div class="relative inline-block">
+                <select id="date-filter" class="h-8 pl-3 pr-7 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
+                  <option value="all">Date</option>
+                  <option value="today">Today</option>
+                  <option value="7days">Last 7 Days</option>
+                  <option value="30days">Last 30 Days</option>
+                </select>
+                <span class="material-symbols-outlined pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-[#49454F] text-[18px] select-none">arrow_drop_down</span>
               </div>
             </div>
+
+            <!-- Far Right: "View all" Action Link -->
+            <a href="WorkQueue.html" class="text-xs font-bold text-primary hover:underline cursor-pointer flex items-center gap-1 select-none shrink-0">
+              View all
+            </a>
           </div>
         </div>
 
-        <!-- Table Container (Dynamic Content Hugging with Internal Scroll) -->
-        <div class="overflow-y-auto max-h-[calc(100vh-380px)] h-auto">
-          <table class="w-full border-collapse text-left text-sm table-fixed min-w-[900px]">
-            <colgroup>
-              <col class="w-[13%]">
-              <col class="w-[16%]">
-              <col class="w-[12%]">
-              <col class="w-[27%]">
-              <col class="w-[18%]">
-              <col class="w-[14%]">
-            </colgroup>
-            <thead class="sticky top-0 z-10">
-              <tr class="bg-primary text-white text-[11px] font-bold tracking-wider">
-                <th class="py-3 px-3">ORDER ID</th>
-                <th class="py-3 px-3">PATIENT NAME</th>
-                <th class="py-3 px-3">DOB</th>
-                <th class="py-3 px-3">PROVIDER</th>
-                <th class="py-3 px-3">STATUS</th>
-                <th class="py-3 px-3">DATE</th>
-              </tr>
-            </thead>
-            <tbody id="order-body">
-              <!-- Injected via JS -->
-            </tbody>
-          </table>
+        <!-- Table Container Structure (Header Fixed, Body Scrolls Vertically Below Header) -->
+        <div class="flex-1 flex flex-col min-h-0 w-full overflow-hidden">
+          
+          <!-- Fixed Table Header matching image_a1b540.png -->
+          <div class="bg-primary text-white shrink-0 w-full">
+            <table class="w-full border-collapse text-left text-xs table-fixed">
+              <colgroup>
+                <col class="w-[14%]">
+                <col class="w-[18%]">
+                <col class="w-[12%]">
+                <col class="w-[28%]">
+                <col class="w-[18%]">
+                <col class="w-[10%]">
+              </colgroup>
+              <thead>
+                <tr class="text-[11px] font-bold tracking-wider uppercase">
+                  <th class="py-3 px-3">ORDER ID</th>
+                  <th class="py-3 px-3">PATIENT NAME</th>
+                  <th class="py-3 px-3">DOB</th>
+                  <th class="py-3 px-3">PROVIDER</th>
+                  <th class="py-3 px-3">STATUS / QUEUE</th>
+                  <th class="py-3 px-3">RECEIVED DATE</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+
+          <!-- Internal Scrollable Table Body -->
+          <div class="flex-1 overflow-y-auto w-full">
+            <table class="w-full border-collapse text-left text-sm table-fixed">
+              <colgroup>
+                <col class="w-[14%]">
+                <col class="w-[18%]">
+                <col class="w-[12%]">
+                <col class="w-[28%]">
+                <col class="w-[18%]">
+                <col class="w-[10%]">
+              </colgroup>
+              <tbody id="order-body">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+
         </div>
+
       </section>
     </section>
   </div>
@@ -327,26 +345,23 @@
   <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
 
   <script>
+    /* Dataset Matching image_a1b540.png Schema */
     const orders = [
-      { id: 'ORD-000867', firstName: 'Brianna', lastName: 'Treadway', dob: '03/16/2006', provider: 'Diana Health, Springfield Tennessee', product: 'Momcozy Double Wearable Breast Pump', insurance: 'United Healthcare Community Plan', sourceStatus: 'Prescription Requested', statusClass: 'bg-blue-bg text-blue', date: '10/27/2025' },
-      { id: 'ORD-000868', firstName: 'Laura', lastName: 'Mabry', dob: '11/11/1988', provider: 'Provider not listed', product: 'Pregnancy Support Kit', insurance: 'Anthem Blue Cross', sourceStatus: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '07/11/2026' },
-      { id: 'ORD-000869', firstName: 'Madison', lastName: 'Chilcutt', dob: '01/12/2004', provider: 'Provider not listed', product: 'Pregnancy Support Kit', insurance: 'United Healthcare Community Plan', sourceStatus: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '10/21/2025' },
-      { id: 'ORD-000870', firstName: 'Sari', lastName: 'Gutierrez', dob: '03/03/2000', provider: 'Baptist Medical Group Women\'s Health Center of Union City', product: 'Momcozy Double Wearable Breast Pump', insurance: 'United Healthcare Community Plan', sourceStatus: 'Prescription Requested', statusClass: 'bg-blue-bg text-blue', date: '02/05/2026' },
-      { id: 'ORD-000871', firstName: 'Sinthia', lastName: 'Abrego', dob: '11/04/1989', provider: 'Provider not listed', product: 'Pregnancy Support Kit', insurance: 'Wellpoint', sourceStatus: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '03/08/2026' },
-      { id: 'ORD-000872', firstName: 'Suheda', lastName: 'Begum', dob: '06/24/2001', provider: 'KHOSHABA, AUDISHO', product: 'Momcozy Double Wearable Breast Pump', insurance: 'Blue Cross Community Health', sourceStatus: 'Prescription Requested', statusClass: 'bg-blue-bg text-blue', date: '02/12/2026' },
-      { id: 'ORD-000873', firstName: 'Leticia', lastName: 'Delarosa', dob: '10/24/2001', provider: 'Dr Hadeel', product: 'Pregnancy Support Kit', insurance: 'Michigan Medicaid', sourceStatus: 'Prescription Requested', statusClass: 'bg-blue-bg text-blue', date: '01/25/2026' },
-      { id: 'ORD-000874', firstName: 'Hayley', lastName: 'Gow', dob: '11/26/1999', provider: 'Provider not listed', product: 'Pregnancy Support Kit', insurance: 'Wellpoint', sourceStatus: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '04/28/2026' },
-      { id: 'ORD-000875', firstName: 'Doris', lastName: 'Manchame', dob: '04/11/2002', provider: 'Provider not listed', product: 'Pregnancy Support Kit', insurance: '6 Degrees Health', sourceStatus: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '11/04/2025' },
-      { id: 'ORD-000876', firstName: 'Peyton', lastName: 'Tockey', dob: '02/18/1994', provider: 'Dr. Jeremy Avila', product: 'Momcozy Double Wearable Breast Pump', insurance: 'United Healthcare Community Plan', sourceStatus: 'Prescription Requested', statusClass: 'bg-blue-bg text-blue', date: '06/02/2026' },
-      { id: 'ORD-000877', firstName: 'Leah', lastName: 'Garcia', dob: '04/19/1996', provider: 'Crowe, Women\'s OB Nashville', product: 'Momcozy Double Wearable Breast Pump', insurance: 'Anthem Blue Cross', sourceStatus: 'Missing Fax Number', statusClass: 'bg-red-bg text-red', date: '08/01/2026' },
-      { id: 'ORD-000878', firstName: 'Sarah', lastName: 'Albertson', dob: '08/28/2002', provider: 'Dr. Paul Grayson Smith, D.O', product: 'Rumble Tuff EZ Express with Classic', insurance: 'TennCare', sourceStatus: 'Missing Fax Number', statusClass: 'bg-red-bg text-red', date: '05/27/2026' },
-      { id: 'ORD-000884', firstName: 'Linda', lastName: 'Winland', dob: '05/23/1996', provider: 'Amanda Haney, Diana Health', product: 'Momcozy Double Wearable Breast Pump | S12 Pro', insurance: 'TennCare', sourceStatus: 'Missing Fax Number', statusClass: 'bg-red-bg text-red', date: '06/11/2026' },
-      { id: 'ORD-000886', firstName: 'Stefany', lastName: 'Sanchez', dob: '10/07/1998', provider: 'Whitney Bean 1928 Alcoa Hwy Suite B-127, Knoxville, TN', product: 'Spectra S2 Plus Premier double electric breast pump', insurance: 'CoverKids', sourceStatus: 'Missing Fax Number', statusClass: 'bg-red-bg text-red', date: '09/16/2025' }
+      { id: 'ORD-000867', patientName: 'Brianna Treadway', dob: '03/16/2006', provider: 'Diana Health, Springfield Tennessee', sourceStatus: 'Prescription Requested', statusClass: 'bg-blue-bg text-blue', date: '10/27/2025', insurance: 'United Healthcare Community Plan' },
+      { id: 'ORD-000868', patientName: 'Laura Mabry', dob: '11/11/1988', provider: 'Provider not listed', sourceStatus: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '07/11/2026', insurance: 'Anthem Blue Cross' },
+      { id: 'ORD-000869', patientName: 'Madison Chilcutt', dob: '01/12/2004', provider: 'Provider not listed', sourceStatus: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '10/21/2025', insurance: 'United Healthcare Community Plan' },
+      { id: 'ORD-000870', patientName: 'Sari Gutierrez', dob: '03/03/2000', provider: 'Baptist Medical Group Women\'s Health Center of Union City', sourceStatus: 'Prescription Requested', statusClass: 'bg-blue-bg text-blue', date: '02/05/2026', insurance: 'United Healthcare Community Plan' },
+      { id: 'ORD-000871', patientName: 'Sinthia Abrego', dob: '11/04/1989', provider: 'Provider not listed', sourceStatus: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '03/08/2026', insurance: 'Wellpoint' },
+      { id: 'ORD-000872', patientName: 'Suheda Begum', dob: '06/24/2001', provider: 'KHOSHABA, AUDISHO', sourceStatus: 'Prescription Requested', statusClass: 'bg-blue-bg text-blue', date: '02/12/2026', insurance: 'Blue Cross Community Health' },
+      { id: 'ORD-000873', patientName: 'Leticia Delarosa', dob: '10/24/2001', provider: 'Dr Hadeel', sourceStatus: 'Prescription Requested', statusClass: 'bg-blue-bg text-blue', date: '01/25/2026', insurance: 'Michigan Medicaid' },
+      { id: 'ORD-000874', patientName: 'Hayley Gow', dob: '11/26/1999', provider: 'Provider not listed', sourceStatus: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '04/28/2026', insurance: 'Wellpoint' },
+      { id: 'ORD-000875', patientName: 'Doris Manchame', dob: '04/11/2002', provider: 'Provider not listed', sourceStatus: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '11/04/2025', insurance: '6 Degrees Health' },
+      { id: 'ORD-000876', patientName: 'Peyton Tockey', dob: '02/18/1994', provider: 'Dr. Jeremy Avila', sourceStatus: 'Prescription Requested', statusClass: 'bg-blue-bg text-blue', date: '06/02/2026', insurance: 'United Healthcare Community Plan' },
+      { id: 'ORD-000877', patientName: 'Leah Garcia', dob: '04/19/1996', provider: 'Crowe, Women\'s OB Nashville', sourceStatus: 'Missing Fax Number', statusClass: 'bg-red-bg text-red', date: '06/01/2026', insurance: 'Anthem Blue Cross' },
+      { id: 'ORD-000878', patientName: 'Sarah Albertson', dob: '08/28/2002', provider: 'Dr. Paul Grayson Smith, D.O', sourceStatus: 'Missing Fax Number', statusClass: 'bg-red-bg text-red', date: '06/27/2026', insurance: 'TennCare' }
     ];
 
     let activeFilter = 'all';
-    let currentPage = 1;
-    const pageSize = 10;
 
     function updateStatCounts() {
       document.getElementById('count-all').innerText = orders.length;
@@ -361,56 +376,31 @@
       const query = document.getElementById('table-search').value.trim().toLowerCase();
       const insurance = document.getElementById('insurance-filter').value;
       const state = document.getElementById('state-filter').value;
-      const stateByInsurance = {'United Healthcare Community Plan': 'Tennessee', 'Anthem Blue Cross': 'Ohio', Wellpoint: 'Michigan', 'Blue Cross Community Health': 'Ohio', 'Michigan Medicaid': 'Michigan', '6 Degrees Health': 'Tennessee', TennCare: 'Tennessee', CoverKids: 'Tennessee'};
+      const stateByInsurance = {'United Healthcare Community Plan': 'Tennessee', 'Anthem Blue Cross': 'Ohio', Wellpoint: 'Michigan', 'Blue Cross Community Health': 'Ohio', 'Michigan Medicaid': 'Michigan', '6 Degrees Health': 'Tennessee', TennCare: 'Tennessee'};
 
       const filtered = orders.filter(order => {
         const matchesFilter = activeFilter === 'all' || order.sourceStatus === activeFilter;
-        const matchesInsurance = insurance === 'all' || order.insurance === insurance;
+        const matchesInsurance = insurance === 'all' || order.insurance.includes(insurance);
         const matchesState = state === 'all' || stateByInsurance[order.insurance] === state;
         const matchesQuery = !query || Object.values(order).join(' ').toLowerCase().includes(query);
         return matchesFilter && matchesInsurance && matchesState && matchesQuery;
       });
 
-      const totalRecords = filtered.length;
-      const totalPages = Math.ceil(totalRecords / pageSize) || 1;
-      
-      if (currentPage > totalPages) currentPage = totalPages;
-      if (currentPage < 1) currentPage = 1;
-
-      const startIndex = (currentPage - 1) * pageSize;
-      const endIndex = Math.min(startIndex + pageSize, totalRecords);
-      const visible = filtered.slice(startIndex, endIndex);
-
-      const statusElem = document.getElementById('pagination-status');
-      if (totalRecords === 0) {
-        statusElem.innerText = "Showing 0-0 of 0";
-      } else {
-        statusElem.innerText = `Showing ${startIndex + 1}-${endIndex} of ${totalRecords}`;
-      }
-
-      document.getElementById('prev-page-btn').disabled = (currentPage <= 1);
-      document.getElementById('next-page-btn').disabled = (currentPage >= totalPages || totalRecords === 0);
-
-      document.getElementById('order-body').innerHTML = visible.length ? visible.map(order => `
+      document.getElementById('order-body').innerHTML = filtered.length ? filtered.map(order => `
         <tr class="border-b border-line hover:bg-[#F3EDF7]/50 transition">
-          <td class="p-3"><a class="font-mono font-bold text-primary hover:underline text-sm" href="OrderDetails/OrderDetailsView.html?orderId=${order.id}&origin=dashboard">${order.id}</a></td>
-          <td class="p-3 text-text font-medium text-sm">${order.firstName} ${order.lastName}</td>
-          <td class="p-3 text-muted text-sm">${order.dob}</td>
-          <td class="p-3 text-text text-sm truncate" title="${order.provider}">${order.provider}</td>
-          <td class="p-3">
+          <td class="py-3 px-3"><a class="font-mono font-bold text-primary hover:underline text-sm truncate block" href="OrderDetails/OrderDetailsView.html?orderId=${order.id}&origin=dashboard">${order.id}</a></td>
+          <td class="py-3 px-3 text-text font-medium text-sm truncate">${order.patientName}</td>
+          <td class="py-3 px-3 text-muted text-sm font-mono whitespace-nowrap">${order.dob}</td>
+          <td class="py-3 px-3 text-text text-sm truncate" title="${order.provider}">${order.provider}</td>
+          <td class="py-3 px-3">
             <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap ${order.statusClass}">
-              <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-current shrink-0"></span>
               ${order.sourceStatus}
             </span>
           </td>
-          <td class="p-3 text-muted text-sm">${order.date}</td>
+          <td class="py-3 px-3 text-muted text-sm font-mono whitespace-nowrap">${order.date}</td>
         </tr>
       `).join('') : `<tr><td class="p-8 text-center text-muted text-sm" colspan="6">No orders match the current search and status filter.</td></tr>`;
-    }
-
-    function changePage(direction) {
-      currentPage += direction;
-      renderOrders();
     }
 
     document.querySelectorAll('.stat-card').forEach(btn => {
@@ -421,23 +411,14 @@
         btn.className = "stat-card border-2 border-primary bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 outline-none cursor-pointer";
         
         activeFilter = btn.dataset.filter;
-        currentPage = 1;
         renderOrders();
       });
     });
 
-    document.getElementById('table-search').addEventListener('input', () => {
-      currentPage = 1;
-      renderOrders();
-    });
-    document.getElementById('insurance-filter').addEventListener('change', () => {
-      currentPage = 1;
-      renderOrders();
-    });
-    document.getElementById('state-filter').addEventListener('change', () => {
-      currentPage = 1;
-      renderOrders();
-    });
+    document.getElementById('table-search').addEventListener('input', renderOrders);
+    document.getElementById('insurance-filter').addEventListener('change', renderOrders);
+    document.getElementById('state-filter').addEventListener('change', renderOrders);
+    document.getElementById('date-filter').addEventListener('change', renderOrders);
 
     /* Role Switcher Logic */
     let activeRole = 'operations';

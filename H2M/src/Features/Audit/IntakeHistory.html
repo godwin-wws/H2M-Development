@@ -52,7 +52,7 @@
 </head>
 <body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
 
-  <div class="w-[full] h-screen mx-auto bg-surface flex overflow-hidden">
+  <div class="w-full h-screen mx-auto bg-surface flex overflow-hidden">
     
     <!-- Sidebar Navigation -->
     <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
@@ -108,7 +108,7 @@
     </aside>
 
     <!-- Main Workspace Canvas -->
-    <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
+    <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden min-w-0">
       
       <!-- Top Navigation Header -->
       <header class="h-[58px] flex items-center justify-between shrink-0">
@@ -116,7 +116,7 @@
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Workspace/Dashboard.html">Workspace</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
           <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="AuditLogs.html">Audit</a>
-          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectory.html">Provider Directory</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectoryPage.html">Provider Directory</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Administration/AdminHome.html">Administration</a>
         </nav>
         
@@ -206,8 +206,8 @@
         </div>
       </section>
 
-      <!-- Main Audit Data Table Frame (Hugs Content) -->
-      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0">
+      <!-- Main Audit Data Table Frame (Hugs Content with Balanced Column Spacing) -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0 w-full mb-2">
         <div class="p-5 border-b border-line flex items-center justify-between shrink-0">
           <h2 class="text-xl font-semibold text-text">Intake History</h2>
           
@@ -220,23 +220,23 @@
             <div class="flex items-center gap-3 text-xs text-muted pl-2">
               <span id="pagination-indicator" class="font-medium text-text font-mono select-none">1 - 8 of 8</span>
               <div class="flex items-center gap-1 select-none">
-                <button id="btn-prev-page" class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] disabled:opacity-20" disabled><span class="material-symbols-outlined text-[20px]">navigate_before</span></button>
-                <button id="btn-next-page" class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] disabled:opacity-20" disabled><span class="material-symbols-outlined text-[20px]">navigate_next</span></button>
+                <button id="btn-prev-page" class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] disabled:opacity-20 cursor-not-allowed" disabled><span class="material-symbols-outlined text-[20px]">navigate_before</span></button>
+                <button id="btn-next-page" class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] disabled:opacity-20 cursor-not-allowed" disabled><span class="material-symbols-outlined text-[20px]">navigate_next</span></button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Table Container (Internal Vertical Scroll) -->
-        <div class="overflow-y-auto max-h-[calc(100vh-380px)] h-auto">
-          <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1000px]">
+        <!-- Scrollable Table Container (Evenly Proportionate Columns) -->
+        <div class="overflow-y-auto max-h-[calc(100vh-380px)] h-auto w-full">
+          <table class="w-full border-collapse text-left text-sm table-fixed">
             <colgroup>
-              <col class="w-[15%]">
-              <col class="w-[12%]">
-              <col class="w-[25%]">
+              <col class="w-[17%]">
+              <col class="w-[13%]">
+              <col class="w-[28%]">
               <col class="w-[18%]">
-              <col class="w-[18%]">
-              <col class="w-[12%]">
+              <col class="w-[14%]">
+              <col class="w-[10%]">
             </colgroup>
             <thead class="sticky top-0 z-10">
               <tr class="bg-primary text-white text-[11px] font-bold tracking-wider uppercase">
@@ -467,18 +467,18 @@
 
       const tbody = document.getElementById('audit-table-body');
       tbody.innerHTML = visible.map(row => {
-        let badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap bg-status-success-bg text-status-success-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Success</span>`;
+        let badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-status-success-bg text-status-success-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Success</span>`;
         if (row.eventOutcome === 'FAILED') {
-          badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap bg-status-failed-bg text-status-failed-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Failed</span>`;
+          badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-status-failed-bg text-status-failed-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Failed</span>`;
         }
 
         return `
           <tr class="border-b border-line hover:bg-surface transition cursor-pointer" onclick="openAuditDetailModal('${row.id}')">
             <td class="py-3 px-4 font-mono text-muted text-sm whitespace-nowrap">${row.timestamp}</td>
             <td class="py-3 px-4 font-mono font-bold text-primary text-sm whitespace-nowrap">${row.id}</td>
-            <td class="py-3 px-4 font-mono font-bold text-text text-sm truncate">${row.orderId}</td>
-            <td class="py-3 px-4 text-text text-sm font-medium truncate">${row.actor}</td>
-            <td class="py-3 px-4 font-bold text-text text-sm">${row.eventName}</td>
+            <td class="py-3 px-4 font-mono font-bold text-text text-sm truncate" title="${row.orderId}">${row.orderId}</td>
+            <td class="py-3 px-4 text-text text-sm font-medium truncate" title="${row.actor}">${row.actor}</td>
+            <td class="py-3 px-4 font-bold text-text text-sm truncate" title="${row.eventName}">${row.eventName}</td>
             <td class="py-3 px-4 text-center">${badge}</td>
           </tr>
         `;
@@ -499,9 +499,9 @@
       document.getElementById('modal-timestamp').innerText = record.timestamp;
       document.getElementById('modal-event-name').innerText = record.eventName;
       
-      let badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap bg-status-success-bg text-status-success-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Success</span>`;
+      let badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-status-success-bg text-status-success-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Success</span>`;
       if (record.eventOutcome === 'FAILED') {
-        badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap bg-status-failed-bg text-status-failed-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Failed</span>`;
+        badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-status-failed-bg text-status-failed-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Failed</span>`;
       }
       document.getElementById('modal-outcome-container').innerHTML = badge;
       

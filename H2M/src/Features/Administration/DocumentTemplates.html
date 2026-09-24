@@ -268,33 +268,34 @@
       <div class="flex items-center justify-between border-b border-line pb-3">
         <div>
           <h3 class="text-xl font-bold text-text">Upload New Document Template</h3>
-          <p class="text-xs text-muted mt-0.5">New templates are saved as <strong class="text-text">v1.0 Draft</strong></p>
+          
         </div>
         <button onclick="closeUploadTemplateModal()" class="text-muted hover:text-text font-bold">✕</button>
       </div>
 
       <form id="upload-template-form" onsubmit="event.preventDefault(); triggerSaveWithRationale();" class="flex flex-col gap-3 text-xs">
         <div>
-          <label class="block font-bold text-outline uppercase mb-1">Template Name *</label>
+          <label class="block font-bold text-text uppercase mb-1">Template Name *</label>
           <input type="text" id="tpl-name-field" required class="w-full p-2.5 border border-outline rounded-lg focus:border-primary focus:outline-none" placeholder="e.g. Physician Follow-up Request">
         </div>
 
-        <div>
-          <label class="block font-bold text-outline uppercase mb-1">Template Category</label>
-          <select id="tpl-category-field" class="w-full p-2.5 border border-outline rounded-lg focus:border-primary focus:outline-none">
+        <div class="relative">
+          <select id="tpl-category-field" class="w-full p-2.5 pr-8 border border-outline rounded-lg bg-white text-xs font-medium text-text outline-none focus:border-primary transition appearance-none cursor-pointer">
             <option value="Intake">Intake</option>
             <option value="Review">Review</option>
             <option value="Outbound Fax">Outbound Fax</option>
           </select>
+          <span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
         </div>
+      
 
         <div>
-          <label class="block font-bold text-outline uppercase mb-1">Google Drive PDF Link</label>
+          <label class="block font-bold text-text uppercase mb-1">Google Drive Link</label>
           <input type="url" id="tpl-drive-field" class="w-full p-2.5 border border-outline rounded-lg focus:border-primary focus:outline-none" placeholder="https://drive.google.com/file/d/1A0XETn97NPBccF7MxHUoRTVz2WibeUYj/preview">
         </div>
 
         <div>
-          <label class="block font-bold text-outline uppercase mb-1">Template File</label>
+          <label class="block font-bold text-text uppercase mb-1">Template File</label>
           <div class="border-2 border-dashed border-line rounded-xl p-6 text-center flex flex-col items-center justify-center gap-1 bg-surface-container-low cursor-pointer hover:bg-surface-container transition">
             <span class="material-symbols-outlined text-[32px] text-muted">upload_file</span>
             <span class="font-bold text-text">Drag &amp; drop or click to select file</span>
@@ -302,10 +303,7 @@
           </div>
         </div>
 
-        <div class="p-2.5 bg-status-info-bg rounded-lg text-status-info-text flex items-center gap-2">
-          <span class="material-symbols-outlined text-[18px]">info</span>
-          <span>Version auto-set to <strong>v1.0 Draft</strong></span>
-        </div>
+      
 
         <button type="submit" id="hidden-tpl-submit" class="hidden"></button>
       </form>
@@ -317,7 +315,7 @@
     </div>
   </div>
 
-  <!-- Version History Modal (Proportionate Column Widths for Zero Horizontal Scroll) -->
+  <!-- Version History Modal (Proportionate Column Widths + Left-Aligned Header + Icon Actions) -->
   <div id="history-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-[28px] max-w-2xl w-full shadow-2xl overflow-hidden flex flex-col p-6 gap-4">
       <div class="flex items-center justify-between border-b border-line pb-3">
@@ -331,11 +329,11 @@
       <div class="w-full overflow-hidden">
         <table class="w-full border-collapse text-left text-sm table-fixed">
           <colgroup>
-            <col class="w-[16%]">
             <col class="w-[18%]">
-            <col class="w-[26%]">
-            <col class="w-[18%]">
-            <col class="w-[22%]">
+            <col class="w-[20%]">
+            <col class="w-[28%]">
+            <col class="w-[20%]">
+            <col class="w-[14%]">
           </colgroup>
           <thead>
             <tr class="border-b border-line bg-primary text-white font-bold text-[11px] uppercase">
@@ -343,7 +341,7 @@
               <th class="py-2.5 px-3">STATUS</th>
               <th class="py-2.5 px-3">UPDATED BY</th>
               <th class="py-2.5 px-3">CHANGE DATE</th>
-              <th class="py-2.5 px-3 text-center">ACTIONS</th>
+              <th class="py-2.5 px-3 text-left">ACTIONS</th>
             </tr>
           </thead>
           <tbody id="history-table-body">
@@ -467,8 +465,7 @@
             <span class="material-symbols-outlined text-[18px]">replay</span>
             <span>Retry Outbound Fax</span>
           </button>
-          <span class="text-[10px] text-center text-muted block">Audit reason will be logged to the immutable audit trail</span>
-
+          
         </div>
 
       </div>
@@ -601,7 +598,7 @@
         `;
 
         return `
-<tr class="border-b last:border-b-0 border-line hover:bg-surface-container-low transition">
+          <tr class="border-b last:border-b-0 border-line hover:bg-surface-container-low transition">
             <td class="py-3.5 px-4 font-mono font-bold text-primary text-sm whitespace-nowrap">${t.id}</td>
             <td class="py-3.5 px-4 font-bold text-text text-sm">${t.name}</td>
             <td class="py-3.5 px-4 font-mono text-muted text-sm">${t.version}</td>
@@ -673,10 +670,12 @@
             <td class="py-3 px-3 font-bold text-sm whitespace-nowrap ${isCurrentActive ? 'text-status-success-text' : 'text-muted'}">${h.status}</td>
             <td class="py-3 px-3 font-mono text-muted text-xs truncate" title="${h.updatedBy}">${h.updatedBy}</td>
             <td class="py-3 px-3 text-muted text-xs whitespace-nowrap">${h.date}</td>
-            <td class="py-3 px-3 text-center">
-              <div class="flex items-center justify-center gap-1.5 flex-nowrap">
-                <button onclick="downloadArchival('${h.version}')" class="px-2.5 py-1 border border-outline rounded-full text-[11px] font-bold hover:bg-surface-container transition cursor-pointer whitespace-nowrap">Download</button>
-                ${!isCurrentActive ? `<button onclick="rollbackToVersion('${h.version}')" class="admin-only px-2.5 py-1 bg-primary text-white rounded-full text-[11px] font-bold hover:bg-on-primary-container transition shadow-sm cursor-pointer whitespace-nowrap">Rollback</button>` : ''}
+            <td class="py-3 px-3 text-left">
+              <div class="flex items-center justify-start gap-1.5 flex-nowrap">
+                <button onclick="downloadArchival('${h.version}')" class="w-8 h-8 rounded-full flex items-center justify-center border border-outline hover:bg-surface-container transition cursor-pointer text-muted" title="Download Archival">
+                  <span class="material-symbols-outlined text-[18px]">download</span>
+                </button>
+                ${!isCurrentActive ? `<button onclick="rollbackToVersion('${h.version}')" class="admin-only w-8 h-8 rounded-full flex items-center justify-center bg-primary text-white hover:bg-on-primary-container transition shadow-sm cursor-pointer" title="Rollback to Version"><span class="material-symbols-outlined text-[18px]">settings_backup_restore</span></button>` : ''}
               </div>
             </td>
           </tr>

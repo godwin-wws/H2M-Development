@@ -119,7 +119,7 @@
       </div>
     </aside>
 
-    <!-- Main Workspace Canvas (No Page Scroll) -->
+    <!-- Main Workspace Canvas -->
     <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
       
       <!-- Top Navigation Header -->
@@ -133,7 +133,6 @@
         </nav>
         
         <div class="flex items-center gap-6">
-          <!-- Notification Bell Icon (Standardized Hover Behavior) -->
           <div class="relative w-8 h-8 rounded-full flex items-center justify-center text-[#1C1B1F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 cursor-pointer outline-none select-none group">
             <span class="material-symbols-outlined text-[20px] leading-none select-none text-[#1C1B1F] group-hover:text-primary transition-colors">
               notifications
@@ -143,7 +142,7 @@
             </span>
           </div>
 
-          <!-- Account / Role Switcher -->
+          <!-- Role Switcher -->
           <div class="relative inline-block text-left" id="role-switcher-container">
             <button id="role-switcher-btn" type="button" class="flex items-center gap-2 h-9 pl-1 pr-3 rounded-full border border-[#e8def8] bg-white hover:bg-[#f3edf7] cursor-pointer transition-colors outline-none focus:ring-2 focus:ring-[#6750a4]">
               <div id="active-avatar" class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold text-white shrink-0 bg-[#1967D2]">P</div>
@@ -181,23 +180,21 @@
         </div>
       </header>
 
-      <!-- Page Title & CTA (Primary button text-sm font-medium) -->
+      <!-- Page Title & CTA (Corrected per PRD: + Add Reference Entry) -->
       <div class="flex items-center justify-between shrink-0">
         <div>
           <h1 class="text-3xl font-semibold text-text" id="canvas-stage-title">Administration</h1>
-          <p class="text-xs text-muted mt-0.5">Global platform lookup registers &amp; state carrier gating</p>
+          <p class="text-xs text-muted mt-0.5">5 master lookup tables</p>
         </div>
-        <!-- Admin-Only + Add Lookup Entry CTA Button -->
+        <!-- Admin-Only + Add Reference Entry Button -->
         <button onclick="openCreateLookupModal()" class="admin-only px-5 py-2 bg-primary text-white rounded-full text-sm font-medium hover:bg-on-primary-container transition shadow-sm flex items-center gap-2 cursor-pointer">
           <span class="material-symbols-outlined text-[18px]">add_circle</span>
-          <span>Add Lookup Entry</span>
+          <span>Add Reference Data</span>
         </button>
       </div>
 
-      
-
-      <!-- Master Reference Data Table Frame (Content-Hugging Container with Internal Scroll) -->
-      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0 mb-6">
+      <!-- Master Reference Data Catalog Table Frame -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm flex flex-col h-auto shrink-0 mb-6">
         
         <!-- Header Controls Row -->
         <div class="p-5 border-b border-line flex items-center justify-between shrink-0">
@@ -207,12 +204,12 @@
             <!-- M3 Search Bar -->
             <div class="h-9 w-64 px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 text-muted border-0 focus-within:ring-2 focus-within:ring-[#6750A4] shrink-0">
               <span class="material-symbols-outlined shrink-0 text-[#49454F] text-[20px] select-none">search</span>
-              <input id="lookup-search" type="search" oninput="handleLookupSearch()" class="w-full bg-transparent border-0 outline-none text-xs text-[#1C1B1F] placeholder-[#79747E] focus:ring-0" placeholder="Search by name, code...">
+              <input id="lookup-search" type="search" oninput="handleLookupSearch()" class="w-full bg-transparent border-0 outline-none text-xs text-[#1C1B1F] placeholder-[#79747E] focus:ring-0" placeholder="Search tables, codes...">
             </div>
 
             <!-- Gmail-Style Circular Pagination -->
             <div class="flex items-center gap-3 text-xs text-muted pl-2">
-              <span id="pagination-status" class="font-medium text-text font-mono select-none">Showing 1–6 of 6</span>
+              <span id="pagination-status" class="font-medium text-text font-mono select-none">Showing 1–5 of 5</span>
               <div class="flex items-center gap-1 select-none">
                 <button id="prev-page-btn" onclick="changePage(-1)" class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 outline-none disabled:opacity-20 disabled:hover:bg-transparent disabled:cursor-not-allowed" title="Previous page">
                   <span class="material-symbols-outlined text-[20px] leading-none select-none">navigate_before</span>
@@ -225,29 +222,29 @@
           </div>
         </div>
 
-        <!-- Table Body Container (Internal Vertical Scroll Control) -->
-        <div class="overflow-y-auto max-h-[calc(100vh-340px)] h-auto">
-          <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1050px]">
+        <!-- Table Body Container -->
+        <div class="overflow-visible max-h-[calc(100vh-320px)] h-auto">
+          <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1000px]">
             <colgroup>
+              <col class="w-[14%]">
+              <col class="w-[30%]">
               <col class="w-[12%]">
-              <col class="w-[16%]">
-              <col class="w-[26%]">
               <col class="w-[24%]">
-              <col class="w-[12%]">
+              <col class="w-[10%]">
               <col class="w-[10%] admin-only">
             </colgroup>
-            <thead class="sticky top-0 z-10">
+            <thead>
               <tr class="bg-primary text-white text-[11px] font-bold tracking-wider uppercase">
-                <th class="py-3 px-4">CONFIG ID</th>
-                <th class="py-3 px-4">CATEGORY</th>
-                <th class="py-3 px-4">LOOKUP NAME</th>
-                <th class="py-3 px-4">VALUE / MAPPING</th>
+                <th class="py-3 px-4">TABLE ID</th>
+                <th class="py-3 px-4">LOOKUP TABLE NAME</th>
+                <th class="py-3 px-4">ENTRIES</th>
+                <th class="py-3 px-4">LAST UPDATED</th>
                 <th class="py-3 px-4 text-center">STATUS</th>
                 <th class="py-3 px-4 text-center admin-only">ACTIONS</th>
               </tr>
             </thead>
             <tbody id="lookup-table-body">
-              <!-- Dynamically Injected via JS -->
+              <!-- Injected via JS -->
             </tbody>
           </table>
         </div>
@@ -256,47 +253,29 @@
     </section>
   </div>
 
-  <!-- Add/Edit Reference Data Lookup Modal (Admin Only) -->
+  <!-- Add/Edit Reference Entry Modal (Admin Only) -->
   <div id="lookup-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-[28px] max-w-lg w-full shadow-2xl overflow-hidden flex flex-col p-6 gap-4">
       <div class="flex items-center justify-between border-b border-line pb-3">
-        <h3 class="text-xl font-bold text-text" id="lookup-modal-title">Edit Reference Lookup</h3>
+        <h3 class="text-xl font-bold text-text" id="lookup-modal-title">Edit Reference Entry</h3>
         <button onclick="closeLookupModal()" class="text-muted hover:text-text font-bold">✕</button>
       </div>
 
       <form id="lookup-form" onsubmit="event.preventDefault(); triggerSaveWithRationale();" class="flex flex-col gap-3 text-xs">
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="block font-bold text-outline uppercase mb-1">Config ID *</label>
+            <label class="block font-bold text-outline uppercase mb-1">Table ID *</label>
             <input type="text" id="cfg-id-field" readonly class="w-full p-2.5 border border-outline rounded-lg bg-surface-container font-mono text-muted focus:outline-none">
           </div>
           <div>
-            <label class="block font-bold text-outline uppercase mb-1">Category *</label>
+            <label class="block font-bold text-outline uppercase mb-1">Master Table *</label>
             <input type="text" id="cfg-category-field" required class="w-full p-2.5 border border-outline rounded-lg bg-white focus:border-primary focus:outline-none">
           </div>
         </div>
 
         <div>
-          <label class="block font-bold text-outline uppercase mb-1">Lookup Name *</label>
-          <input type="text" id="cfg-name-field" required class="w-full p-2.5 border border-outline rounded-lg bg-white focus:border-primary focus:outline-none" placeholder="e.g. Spectra S2 Plus or TennCare Medicaid">
-        </div>
-
-        <div id="product-specific-fields" class="flex flex-col gap-3">
-          <div>
-            <label class="block font-bold text-outline uppercase mb-1">HCPCS Billing Code (Alphanumeric Uppercase)</label>
-            <input type="text" id="cfg-hcpcs-field" class="w-full p-2.5 border border-outline rounded-lg bg-white font-mono uppercase focus:border-primary focus:outline-none" placeholder="e.g. E0603" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '')">
-          </div>
-          <div>
-            <label class="block font-bold text-outline uppercase mb-1">Default Inbound Quantity</label>
-            <input type="number" id="cfg-qty-field" value="1" min="1" class="w-full p-2.5 border border-outline rounded-lg bg-white font-mono focus:border-primary focus:outline-none">
-          </div>
-        </div>
-
-        <div id="carrier-specific-fields" class="hidden flex-col gap-3">
-          <div>
-            <label class="block font-bold text-outline uppercase mb-1">2-Letter State Abbreviation</label>
-            <input type="text" id="cfg-state-field" maxlength="2" class="w-full p-2.5 border border-outline rounded-lg bg-white font-mono uppercase focus:border-primary focus:outline-none" placeholder="e.g. TN" oninput="this.value = this.value.toUpperCase().replace(/[^A-Z]/g, '')">
-          </div>
+          <label class="block font-bold text-outline uppercase mb-1">Entry Name / Code *</label>
+          <input type="text" id="cfg-name-field" required class="w-full p-2.5 border border-outline rounded-lg bg-white focus:border-primary focus:outline-none" placeholder="e.g. TennCare Medicaid or E0603">
         </div>
 
         <div>
@@ -312,7 +291,48 @@
 
       <div class="flex items-center justify-end gap-2 pt-2 border-t border-line">
         <button type="button" onclick="closeLookupModal()" class="px-4 py-2 border border-outline text-xs font-bold text-muted rounded-full hover:bg-surface-container">Cancel</button>
-        <button type="button" onclick="document.getElementById('hidden-lookup-submit').click()" class="px-5 py-2 bg-primary text-white text-xs font-bold rounded-full hover:bg-on-primary-container shadow-sm">Save Lookup Entry</button>
+        <button type="button" onclick="document.getElementById('hidden-lookup-submit').click()" class="px-5 py-2 bg-primary text-white text-xs font-bold rounded-full hover:bg-on-primary-container shadow-sm">Save Entry</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audit History & Rollback Modal Overlay -->
+  <div id="history-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-[28px] max-w-2xl w-full shadow-2xl overflow-hidden flex flex-col p-6 gap-4">
+      <div class="flex items-center justify-between border-b border-line pb-3">
+        <div>
+          <h3 class="text-lg font-bold text-text" id="history-modal-title">Table Audit History — REF-001</h3>
+          <p class="text-xs text-muted" id="history-modal-subtitle">Insurance Plans (Payers)</p>
+        </div>
+        <button onclick="closeHistoryModal()" class="text-muted hover:text-text font-bold">✕</button>
+      </div>
+
+      <div class="w-full overflow-hidden">
+        <table class="w-full border-collapse text-left text-sm table-fixed">
+          <colgroup>
+            <col class="w-[18%]">
+            <col class="w-[20%]">
+            <col class="w-[28%]">
+            <col class="w-[20%]">
+            <col class="w-[14%]">
+          </colgroup>
+          <thead>
+            <tr class="border-b border-line bg-primary text-white font-bold text-[11px] uppercase">
+              <th class="py-2.5 px-3">VERSION</th>
+              <th class="py-2.5 px-3">STATUS</th>
+              <th class="py-2.5 px-3">UPDATED BY</th>
+              <th class="py-2.5 px-3">CHANGE DATE</th>
+              <th class="py-2.5 px-3 text-left">ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody id="history-table-body">
+            <!-- Injected via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flex justify-end pt-2 border-t border-line">
+        <button onclick="closeHistoryModal()" class="px-5 py-2 border border-outline rounded-full text-xs font-bold text-muted hover:bg-surface-container">Close</button>
       </div>
     </div>
   </div>
@@ -339,62 +359,85 @@
 
   <!-- Scripting Controller -->
   <script>
-    /* Master Reference Lookup Dataset (Zero-Padded CFG-###### Format) */
+    /* Exact 5 Approved Master Reference Tables per PRD / SRS */
     let referenceDatabase = [
-      { id: "CFG-000104", category: "Products", name: "Spectra S2 Plus Breast Pump", value: "HCPCS: E0603", hcpcs: "E0603", qty: 1, state: "", status: "Active", tab: "products" },
-      { id: "CFG-000105", category: "Carriers", name: "TennCare Medicaid", value: "State: TN Only", hcpcs: "", qty: 1, state: "TN", status: "Active", tab: "carriers" },
-      { id: "CFG-000106", category: "Carriers", name: "Coverkids Blue Care", value: "State: TN Only", hcpcs: "", qty: 1, state: "TN", status: "Active", tab: "carriers" },
-      { id: "CFG-000107", category: "Geographies", name: "Tennessee Region 1", value: "ZIP Range 37000-37999", hcpcs: "", qty: 1, state: "TN", status: "Active", tab: "geographies" },
-      { id: "CFG-000108", category: "Products", name: "Medela Pump in Style", value: "HCPCS: E0603", hcpcs: "E0603", qty: 1, state: "", status: "Active", tab: "products" },
-      { id: "CFG-000109", category: "Carriers", name: "Michigan Medicaid (Wellpoint)", value: "State: MI Only", hcpcs: "", qty: 1, state: "MI", status: "Disabled", tab: "carriers" }
+      { 
+        id: "REF-001", 
+        name: "Insurance Plans (Payers)", 
+        entries: 24, 
+        lastUpdated: "Jul 15, 2026", 
+        updatedBy: "p.patel@h2m.org", 
+        status: "Active",
+        history: [
+          { version: "v1.2", status: "Active", updatedBy: "p.patel@h2m.org", date: "Jul 15, 2026" },
+          { version: "v1.1", status: "Superseded", updatedBy: "p.patel@h2m.org", date: "Jun 01, 2026" },
+          { version: "v1.0", status: "Superseded", updatedBy: "m.reed@h2m.org", date: "Jan 10, 2026" }
+        ]
+      },
+      { 
+        id: "REF-002", 
+        name: "State Codes", 
+        entries: 50, 
+        lastUpdated: "Jul 10, 2026", 
+        updatedBy: "p.patel@h2m.org", 
+        status: "Active",
+        history: [
+          { version: "v1.0", status: "Active", updatedBy: "p.patel@h2m.org", date: "Jul 10, 2026" }
+        ]
+      },
+      { 
+        id: "REF-003", 
+        name: "HCPCS Codes", 
+        entries: 8, 
+        lastUpdated: "Jun 28, 2026", 
+        updatedBy: "m.reed@h2m.org", 
+        status: "Active",
+        history: [
+          { version: "v1.1", status: "Active", updatedBy: "m.reed@h2m.org", date: "Jun 28, 2026" }
+        ]
+      },
+      { 
+        id: "REF-004", 
+        name: "Diagnosis Codes (ICD-10)", 
+        entries: 12, 
+        lastUpdated: "May 20, 2026", 
+        updatedBy: "e.walsh@h2m.org", 
+        status: "Active",
+        history: [
+          { version: "v1.0", status: "Active", updatedBy: "e.walsh@h2m.org", date: "May 20, 2026" }
+        ]
+      },
+      { 
+        id: "REF-005", 
+        name: "DME Categories (Products)", 
+        entries: 6, 
+        lastUpdated: "Apr 15, 2026", 
+        updatedBy: "p.patel@h2m.org", 
+        status: "Active",
+        history: [
+          { version: "v1.0", status: "Active", updatedBy: "p.patel@h2m.org", date: "Apr 15, 2026" }
+        ]
+      }
     ];
 
     /* State Variables */
     let activeRole = 'administrator';
-    let currentLookupTab = 'carriers';
     let searchQuery = '';
     let currentPageIndex = 0;
-    const PAGE_LIMIT = 6;
+    const PAGE_LIMIT = 5;
     let selectedActiveLookup = null;
     let openActionMenuId = null;
 
-    /* Sub-Tab Switcher for Lookups */
-    function switchLookupTab(tabKey) {
-      currentLookupTab = tabKey;
-      currentPageIndex = 0;
-
-      const cBtn = document.getElementById('tab-sub-carriers');
-      const pBtn = document.getElementById('tab-sub-products');
-      const gBtn = document.getElementById('tab-sub-geographies');
-
-      cBtn.className = "h-full px-6 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-2 border-r border-outline bg-transparent text-text hover:bg-surface-container cursor-pointer";
-      pBtn.className = "h-full px-6 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-2 border-r border-outline bg-transparent text-text hover:bg-surface-container cursor-pointer";
-      gBtn.className = "h-full px-6 text-sm font-medium transition-all duration-200 flex items-center justify-center gap-2 bg-transparent text-text hover:bg-surface-container cursor-pointer";
-
-      if (tabKey === 'carriers') {
-        cBtn.className = "h-full px-6 text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 border-r border-outline bg-primary-soft text-on-primary-container cursor-pointer";
-        document.getElementById('lookup-panel-title').innerText = "Carriers & Payer Eligibility Rules";
-      } else if (tabKey === 'products') {
-        pBtn.className = "h-full px-6 text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 border-r border-outline bg-primary-soft text-on-primary-container cursor-pointer";
-        document.getElementById('lookup-panel-title').innerText = "Supported Products & HCPCS Mappings";
-      } else {
-        gBtn.className = "h-full px-6 text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 bg-primary-soft text-on-primary-container cursor-pointer";
-        document.getElementById('lookup-panel-title').innerText = "Geographic Regions & ZIP Rules";
-      }
-
-      renderLookupWorkspace();
-    }
-
     /* Render Engine */
     function renderLookupWorkspace() {
-      let filtered = referenceDatabase.filter(item => item.tab === currentLookupTab);
+      let filtered = referenceDatabase;
 
       if (searchQuery) {
         const q = searchQuery.toLowerCase();
         filtered = filtered.filter(item => 
           item.id.toLowerCase().includes(q) ||
           item.name.toLowerCase().includes(q) ||
-          item.value.toLowerCase().includes(q)
+          item.updatedBy.toLowerCase().includes(q)
         );
       }
 
@@ -420,7 +463,7 @@
       const tbody = document.getElementById('lookup-table-body');
       
       if (pageData.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-muted text-xs">No matching reference lookups found.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-muted text-xs">No matching reference tables found.</td></tr>`;
         return;
       }
 
@@ -429,29 +472,32 @@
           ? `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-success-bg text-status-success-text whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Active</span>`
           : `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-failed-bg text-status-failed-text whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Disabled</span>`;
 
-        /* 3-Dot Action Popover Menu */
+        /* 3-Dot Action Popover Menu (Edit, History, Rollback) */
         const actionMenuHTML = `
           <div class="relative inline-block text-left">
             <button onclick="toggleActionMenu(event, '${row.id}')" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors outline-none cursor-pointer" title="More options">
               <span class="material-symbols-outlined text-[20px]">more_vert</span>
             </button>
-            <div id="action-popover-${row.id}" class="hidden absolute right-0 top-full mt-1 bg-white rounded-xl border border-line z-50 w-32 py-1 shadow-lg">
-              <button onclick="editLookupItem('${row.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2 text-xs font-medium text-text cursor-pointer">
-                <span class="material-symbols-outlined text-[16px] text-primary">edit</span> Edit
+            <div id="action-popover-${row.id}" class="hidden absolute right-2 bottom-full mb-1 bg-white rounded-2xl border border-line z-50 w-36 py-1 shadow-xl">
+              <button onclick="editLookupItem('${row.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
+                <span class="material-symbols-outlined text-[18px] text-muted">edit</span> Edit
               </button>
-              <button onclick="toggleLookupStatus('${row.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2 text-xs font-medium text-text border-t border-line/60 cursor-pointer">
-                <span class="material-symbols-outlined text-[16px] text-muted">power_settings_new</span> ${row.status === 'Active' ? 'Disable' : 'Enable'}
+              <button onclick="openHistoryModal('${row.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text border-t border-line/60 transition cursor-pointer">
+                <span class="material-symbols-outlined text-[18px] text-muted">history</span> History
+              </button>
+              <button onclick="rollbackLookupItem('${row.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text border-t border-line/60 transition cursor-pointer">
+                <span class="material-symbols-outlined text-[18px] text-muted">settings_backup_restore</span> Rollback
               </button>
             </div>
           </div>
         `;
 
         return `
-          <tr class="border-b border-line hover:bg-surface-container-low transition">
+          <tr class="border-b last:border-b-0 border-line hover:bg-surface-container-low transition">
             <td class="py-3.5 px-4 font-mono font-bold text-primary text-sm whitespace-nowrap">${row.id}</td>
-            <td class="py-3.5 px-4 text-muted text-sm">${row.category}</td>
             <td class="py-3.5 px-4 font-bold text-text text-sm">${row.name}</td>
-            <td class="py-3.5 px-4 font-mono text-text text-sm">${row.value}</td>
+            <td class="py-3.5 px-4 font-mono text-muted text-sm">${row.entries} entries</td>
+            <td class="py-3.5 px-4 text-xs text-muted whitespace-nowrap">${row.lastUpdated} · <span class="font-mono text-text">${row.updatedBy}</span></td>
             <td class="py-3.5 px-4 text-center">${badge}</td>
             <td class="py-3.5 px-4 text-center admin-only">
               ${actionMenuHTML}
@@ -499,63 +545,33 @@
       if (!item) return;
 
       selectedActiveLookup = item;
-      document.getElementById('lookup-modal-title').innerText = `Edit Reference Lookup — ${item.id}`;
+      document.getElementById('lookup-modal-title').innerText = `Edit Reference Entry — ${item.id}`;
       document.getElementById('cfg-id-field').value = item.id;
-      document.getElementById('cfg-category-field').value = item.category;
+      document.getElementById('cfg-category-field').value = item.name;
       document.getElementById('cfg-name-field').value = item.name;
-      document.getElementById('cfg-hcpcs-field').value = item.hcpcs || '';
-      document.getElementById('cfg-qty-field').value = item.qty || 1;
-      document.getElementById('cfg-state-field').value = item.state || '';
       document.getElementById('cfg-status-field').value = item.status;
-
-      if (currentLookupTab === 'products') {
-        document.getElementById('product-specific-fields').classList.remove('hidden');
-        document.getElementById('carrier-specific-fields').classList.add('hidden');
-      } else if (currentLookupTab === 'carriers') {
-        document.getElementById('product-specific-fields').classList.add('hidden');
-        document.getElementById('carrier-specific-fields').classList.remove('hidden');
-      } else {
-        document.getElementById('product-specific-fields').classList.add('hidden');
-        document.getElementById('carrier-specific-fields').classList.add('hidden');
-      }
 
       document.getElementById('lookup-modal').classList.remove('hidden');
     }
 
     function openCreateLookupModal() {
       closeAllActionMenus();
-      const nextId = `CFG-000${referenceDatabase.length + 105}`;
+      const nextId = `REF-00${referenceDatabase.length + 1}`;
       selectedActiveLookup = {
         id: nextId,
-        category: currentLookupTab === 'products' ? 'Products' : (currentLookupTab === 'carriers' ? 'Carriers' : 'Geographies'),
         name: "",
-        value: "",
-        hcpcs: "",
-        qty: 1,
-        state: "",
+        entries: 0,
+        lastUpdated: "Jul 22, 2026",
+        updatedBy: activeRole === 'administrator' ? "p.patel@h2m.org" : "jane.doe@h2m.org",
         status: "Active",
-        tab: currentLookupTab
+        history: []
       };
 
-      document.getElementById('lookup-modal-title').innerText = `Add Lookup Entry — ${nextId}`;
+      document.getElementById('lookup-modal-title').innerText = `Add Reference Entry — ${nextId}`;
       document.getElementById('cfg-id-field').value = nextId;
-      document.getElementById('cfg-category-field').value = selectedActiveLookup.category;
+      document.getElementById('cfg-category-field').value = "";
       document.getElementById('cfg-name-field').value = "";
-      document.getElementById('cfg-hcpcs-field').value = "";
-      document.getElementById('cfg-qty-field').value = 1;
-      document.getElementById('cfg-state-field').value = "";
       document.getElementById('cfg-status-field').value = "Active";
-
-      if (currentLookupTab === 'products') {
-        document.getElementById('product-specific-fields').classList.remove('hidden');
-        document.getElementById('carrier-specific-fields').classList.add('hidden');
-      } else if (currentLookupTab === 'carriers') {
-        document.getElementById('product-specific-fields').classList.add('hidden');
-        document.getElementById('carrier-specific-fields').classList.remove('hidden');
-      } else {
-        document.getElementById('product-specific-fields').classList.add('hidden');
-        document.getElementById('carrier-specific-fields').classList.add('hidden');
-      }
 
       document.getElementById('lookup-modal').classList.remove('hidden');
     }
@@ -564,12 +580,56 @@
       document.getElementById('lookup-modal').classList.add('hidden');
     }
 
-    function toggleLookupStatus(cfgId) {
+    function openHistoryModal(refId) {
       closeAllActionMenus();
-      const item = referenceDatabase.find(i => i.id === cfgId);
+      const item = referenceDatabase.find(i => i.id === refId);
       if (!item) return;
 
+      document.getElementById('history-modal-title').innerText = `Audit History — ${item.id}`;
+      document.getElementById('history-modal-subtitle').innerText = item.name;
+
+      const tbody = document.getElementById('history-table-body');
+      tbody.innerHTML = item.history.map(h => {
+        const isCurrentActive = h.status === 'Active';
+        return `
+          <tr class="border-b border-line hover:bg-surface-container-low transition">
+            <td class="py-3 px-3 font-mono font-bold text-primary text-sm whitespace-nowrap">${h.version}</td>
+            <td class="py-3 px-3 font-bold text-sm whitespace-nowrap ${isCurrentActive ? 'text-status-success-text' : 'text-muted'}">${h.status}</td>
+            <td class="py-3 px-3 font-mono text-muted text-xs truncate" title="${h.updatedBy}">${h.updatedBy}</td>
+            <td class="py-3 px-3 text-muted text-xs whitespace-nowrap">${h.date}</td>
+            <td class="py-3 px-3 text-left">
+              <div class="flex items-center justify-start gap-1.5 flex-nowrap">
+                <button onclick="downloadArchival('${h.version}')" class="w-8 h-8 rounded-full flex items-center justify-center border border-outline hover:bg-surface-container transition cursor-pointer text-muted" title="Download Audit History">
+                  <span class="material-symbols-outlined text-[18px]">download</span>
+                </button>
+                ${!isCurrentActive ? `<button onclick="rollbackToVersion('${h.version}')" class="admin-only w-8 h-8 rounded-full flex items-center justify-center bg-primary text-white hover:bg-on-primary-container transition shadow-sm cursor-pointer" title="Rollback to Version"><span class="material-symbols-outlined text-[18px]">settings_backup_restore</span></button>` : ''}
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      document.getElementById('history-modal').classList.remove('hidden');
+    }
+
+    function closeHistoryModal() {
+      document.getElementById('history-modal').classList.add('hidden');
+    }
+
+    function rollbackLookupItem(refId) {
+      closeAllActionMenus();
+      const item = referenceDatabase.find(i => i.id === refId);
+      if (!item) return;
       selectedActiveLookup = item;
+      triggerSaveWithRationale();
+    }
+
+    function downloadArchival(version) {
+      showToast(`Downloading historical reference table version ${version} PDF...`);
+    }
+
+    function rollbackToVersion(version) {
+      closeHistoryModal();
       triggerSaveWithRationale();
     }
 
@@ -605,27 +665,17 @@
 
       if (selectedActiveLookup) {
         if (document.getElementById('cfg-name-field').value.trim() !== '') {
-          selectedActiveLookup.category = document.getElementById('cfg-category-field').value.trim();
           selectedActiveLookup.name = document.getElementById('cfg-name-field').value.trim();
-          selectedActiveLookup.hcpcs = document.getElementById('cfg-hcpcs-field').value.trim();
-          selectedActiveLookup.qty = parseInt(document.getElementById('cfg-qty-field').value) || 1;
-          selectedActiveLookup.state = document.getElementById('cfg-state-field').value.trim();
           selectedActiveLookup.status = document.getElementById('cfg-status-field').value;
-
-          if (currentLookupTab === 'products') {
-            selectedActiveLookup.value = `HCPCS: ${selectedActiveLookup.hcpcs || 'N/A'}`;
-          } else if (currentLookupTab === 'carriers') {
-            selectedActiveLookup.value = `State: ${selectedActiveLookup.state || 'N/A'} Only`;
-          }
+          selectedActiveLookup.lastUpdated = "Jul 22, 2026";
+          selectedActiveLookup.updatedBy = activeRole === 'administrator' ? "p.patel@h2m.org" : "jane.doe@h2m.org";
 
           if (!referenceDatabase.some(i => i.id === selectedActiveLookup.id)) {
             referenceDatabase.unshift(selectedActiveLookup);
           }
-        } else {
-          selectedActiveLookup.status = selectedActiveLookup.status === 'Active' ? 'Disabled' : 'Active';
         }
 
-        showToast(`Reference lookup ${selectedActiveLookup.id} committed to Audit Log.`);
+        showToast(`Reference entry ${selectedActiveLookup.id} committed to Audit Log.`);
       }
 
       renderLookupWorkspace();

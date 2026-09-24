@@ -184,7 +184,7 @@
       <div class="flex items-center justify-between shrink-0">
         <div>
           <h1 class="text-3xl font-semibold text-text" id="canvas-stage-title">Administration</h1>
-          <p class="text-xs text-muted mt-0.5">4 templates · 3 active</p>
+          <p class="text-xs text-muted mt-0.5" id="template-count-subtitle">1 template · 1 active</p>
         </div>
         <button onclick="openUploadTemplateModal()" class="admin-only px-5 py-2 bg-primary text-white rounded-full text-sm font-medium hover:bg-on-primary-container transition shadow-sm flex items-center gap-2 cursor-pointer">
           <span class="material-symbols-outlined text-[18px]">upload_file</span>
@@ -193,7 +193,7 @@
       </div>
 
       <!-- Master Document Templates Table Frame -->
-      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0 mb-6">
+      <section class="bg-white border border-line rounded-2xl shadow-sm flex flex-col h-auto shrink-0 mb-6">
         
         <!-- Header Controls Row -->
         <div class="p-5 border-b border-line flex items-center justify-between shrink-0">
@@ -216,7 +216,7 @@
             </div>
 
             <div class="flex items-center gap-3 text-xs text-muted pl-2">
-              <span id="pagination-status" class="font-medium text-text font-mono select-none">Showing 1–4 of 4</span>
+              <span id="pagination-status" class="font-medium text-text font-mono select-none">Showing 1–1 of 1</span>
               <div class="flex items-center gap-1 select-none">
                 <button id="prev-page-btn" onclick="changePage(-1)" class="w-8 h-8 rounded-full flex items-center justify-center text-[#49454F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 outline-none disabled:opacity-20 disabled:hover:bg-transparent disabled:cursor-not-allowed" title="Previous page">
                   <span class="material-symbols-outlined text-[20px] leading-none select-none">navigate_before</span>
@@ -230,7 +230,7 @@
         </div>
 
         <!-- Table Body Container -->
-        <div class="overflow-y-auto max-h-[calc(100vh-320px)] h-auto">
+        <div class="overflow-visible max-h-[calc(100vh-320px)] h-auto">
           <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1000px]">
             <colgroup>
               <col class="w-[12%]">
@@ -241,7 +241,7 @@
               <col class="w-[12%]">
               <col class="w-[12%]">
             </colgroup>
-            <thead class="sticky top-0 z-10">
+            <thead>
               <tr class="bg-primary text-white text-[11px] font-bold tracking-wider uppercase">
                 <th class="py-3 px-4">TEMPLATE ID</th>
                 <th class="py-3 px-4">NAME</th>
@@ -317,9 +317,9 @@
     </div>
   </div>
 
-  <!-- Version History Modal -->
+  <!-- Version History Modal (Proportionate Column Widths for Zero Horizontal Scroll) -->
   <div id="history-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-[28px] max-w-xl w-full shadow-2xl overflow-hidden flex flex-col p-6 gap-4">
+    <div class="bg-white rounded-[28px] max-w-2xl w-full shadow-2xl overflow-hidden flex flex-col p-6 gap-4">
       <div class="flex items-center justify-between border-b border-line pb-3">
         <div>
           <h3 class="text-lg font-bold text-text" id="history-modal-title">Version History — TPL-001</h3>
@@ -328,8 +328,15 @@
         <button onclick="closeHistoryModal()" class="text-muted hover:text-text font-bold">✕</button>
       </div>
 
-      <div class="overflow-x-auto">
-        <table class="w-full border-collapse text-left text-sm">
+      <div class="w-full overflow-hidden">
+        <table class="w-full border-collapse text-left text-sm table-fixed">
+          <colgroup>
+            <col class="w-[16%]">
+            <col class="w-[18%]">
+            <col class="w-[26%]">
+            <col class="w-[18%]">
+            <col class="w-[22%]">
+          </colgroup>
           <thead>
             <tr class="border-b border-line bg-primary text-white font-bold text-[11px] uppercase">
               <th class="py-2.5 px-3">VERSION</th>
@@ -491,7 +498,7 @@
 
   <!-- Scripting Controller -->
   <script>
-    /* Master Document Templates Dataset with Google Drive PDF Link Integrated */
+    /* Single Master Document Template Record */
     let templateDatabase = [
       { 
         id: "TPL-001", 
@@ -500,48 +507,11 @@
         status: "Active", 
         updatedBy: "jane.doe", 
         date: "Jul 01, 2026",
-        // 📌 INTEGRATED YOUR SPECIFIED GOOGLE DRIVE PDF LINK
         drivePdfLink: "https://drive.google.com/file/d/1A0XETn97NPBccF7MxHUoRTVz2WibeUYj/preview", 
         history: [
           { version: "v2.1", status: "Active", updatedBy: "jane.doe@h2m.org", date: "Jul 01, 2026", reason: "Updated header branding & NPI field alignment" },
           { version: "v1.4", status: "Superseded", updatedBy: "p.patel@h2m.org", date: "Jun 15, 2026", reason: "Added secondary practice address tag" },
           { version: "v1.0", status: "Superseded", updatedBy: "m.reed@h2m.org", date: "Jan 10, 2026", reason: "Initial baseline template upload" }
-        ]
-      },
-      { 
-        id: "TPL-002", 
-        name: "Physician Verification Form", 
-        version: "v1.4", 
-        status: "Active", 
-        updatedBy: "e.walsh", 
-        date: "Jun 15, 2026",
-        drivePdfLink: "https://drive.google.com/file/d/1A0XETn97NPBccF7MxHUoRTVz2WibeUYj/preview",
-        history: [
-          { version: "v1.4", status: "Active", updatedBy: "e.walsh@h2m.org", date: "Jun 15, 2026", reason: "Added mandatory NPI validation block" }
-        ]
-      },
-      { 
-        id: "TPL-003", 
-        name: "Missing Fax Notice", 
-        version: "v1.0", 
-        status: "Draft", 
-        updatedBy: "m.reed", 
-        date: "Jul 20, 2026",
-        drivePdfLink: "", 
-        history: [
-          { version: "v1.0", status: "Draft", updatedBy: "m.reed@h2m.org", date: "Jul 20, 2026", reason: "Draft template for missing fax routing" }
-        ]
-      },
-      { 
-        id: "TPL-004", 
-        name: "Order Rejection Notice", 
-        version: "v3.0", 
-        status: "Active", 
-        updatedBy: "p.patel", 
-        date: "May 30, 2026",
-        drivePdfLink: "", 
-        history: [
-          { version: "v3.0", status: "Active", updatedBy: "p.patel@h2m.org", date: "May 30, 2026", reason: "Standardized rejection reason codes" }
         ]
       }
     ];
@@ -572,6 +542,9 @@
       }
 
       const totalRecords = filtered.length;
+      const activeCount = templateDatabase.filter(item => item.status === 'Active').length;
+      document.getElementById('template-count-subtitle').innerText = `${templateDatabase.length} template · ${activeCount} active`;
+
       const maxPages = Math.ceil(totalRecords / PAGE_LIMIT) || 1;
       if (currentPageIndex >= maxPages) currentPageIndex = maxPages - 1;
       if (currentPageIndex < 0) currentPageIndex = 0;
@@ -607,13 +580,13 @@
           badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-info-bg text-status-info-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Superseded</span>`;
         }
 
-        /* 3-Dot Action Popover Menu */
+        /* 3-Dot Action Popover Menu - Positioned upward to avoid container overflow clip */
         const actionMenuHTML = `
           <div class="relative inline-block text-left">
             <button onclick="toggleActionMenu(event, '${t.id}')" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors outline-none cursor-pointer" title="More options">
               <span class="material-symbols-outlined text-[20px]">more_vert</span>
             </button>
-            <div id="action-popover-${t.id}" class="hidden absolute right-0 top-full mt-1 bg-white rounded-2xl border border-line z-50 w-32 py-1 shadow-lg">
+            <div id="action-popover-${t.id}" class="hidden absolute right-2 bottom-full mb-1 bg-white rounded-2xl border border-line z-50 w-32 py-1 shadow-xl">
               <button onclick="openHistoryModal('${t.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
                 <span class="material-symbols-outlined text-[18px] text-muted">history</span> History
               </button>
@@ -628,7 +601,7 @@
         `;
 
         return `
-          <tr class="border-b border-line hover:bg-surface-container-low transition">
+<tr class="border-b last:border-b-0 border-line hover:bg-surface-container-low transition">
             <td class="py-3.5 px-4 font-mono font-bold text-primary text-sm whitespace-nowrap">${t.id}</td>
             <td class="py-3.5 px-4 font-bold text-text text-sm">${t.name}</td>
             <td class="py-3.5 px-4 font-mono text-muted text-sm">${t.version}</td>
@@ -696,14 +669,14 @@
         
         return `
           <tr class="border-b border-line hover:bg-surface-container-low transition">
-            <td class="py-3 px-3 font-mono font-bold text-primary text-sm">${h.version}</td>
-            <td class="py-3 px-3 font-bold text-sm ${isCurrentActive ? 'text-status-success-text' : 'text-muted'}">${h.status}</td>
-            <td class="py-3 px-3 font-mono text-muted text-sm">${h.updatedBy}</td>
-            <td class="py-3 px-3 text-muted text-sm">${h.date}</td>
+            <td class="py-3 px-3 font-mono font-bold text-primary text-sm whitespace-nowrap">${h.version}</td>
+            <td class="py-3 px-3 font-bold text-sm whitespace-nowrap ${isCurrentActive ? 'text-status-success-text' : 'text-muted'}">${h.status}</td>
+            <td class="py-3 px-3 font-mono text-muted text-xs truncate" title="${h.updatedBy}">${h.updatedBy}</td>
+            <td class="py-3 px-3 text-muted text-xs whitespace-nowrap">${h.date}</td>
             <td class="py-3 px-3 text-center">
-              <div class="flex items-center justify-center gap-2">
-                <button onclick="downloadArchival('${h.version}')" class="px-3.5 py-1 border border-outline rounded-full text-xs font-bold hover:bg-surface-container transition cursor-pointer">Download Archival</button>
-                ${!isCurrentActive ? `<button onclick="rollbackToVersion('${h.version}')" class="admin-only px-3.5 py-1 bg-primary text-white rounded-full text-xs font-bold hover:bg-on-primary-container transition shadow-sm cursor-pointer">Rollback to Version</button>` : ''}
+              <div class="flex items-center justify-center gap-1.5 flex-nowrap">
+                <button onclick="downloadArchival('${h.version}')" class="px-2.5 py-1 border border-outline rounded-full text-[11px] font-bold hover:bg-surface-container transition cursor-pointer whitespace-nowrap">Download</button>
+                ${!isCurrentActive ? `<button onclick="rollbackToVersion('${h.version}')" class="admin-only px-2.5 py-1 bg-primary text-white rounded-full text-[11px] font-bold hover:bg-on-primary-container transition shadow-sm cursor-pointer whitespace-nowrap">Rollback</button>` : ''}
               </div>
             </td>
           </tr>
@@ -726,7 +699,6 @@
       document.getElementById('preview-modal-subtitle').innerText = `ORD-000214 · ${item.name} ${item.version}`;
       document.getElementById('preview-banner-title').innerText = `PREVIEW — ${item.name} ${item.version}`;
       
-      /* Dynamic Google Drive Viewer Embed Logic */
       const pdfContainer = document.getElementById('pdf-viewer-container');
       if (item.drivePdfLink && item.drivePdfLink.trim() !== "") {
         pdfContainer.innerHTML = `<iframe src="${item.drivePdfLink}" class="w-full h-full border-0 rounded-b-2xl" allow="autoplay"></iframe>`;

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workspace Dashboard | H2M BRIDGE</title>
+  
+  <!-- Explicit Google Fonts Import for Roboto & Roboto Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Google Material Symbols Import -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Roboto', 'sans-serif'],
+            mono: ['"Roboto Mono"', 'monospace']
+          },
+          colors: {
+            surface: '#FEF7FF',
+            primary: '#6750A4',
+            'primary-soft': '#EADDFF',
+            line: '#CAC4D0',
+            text: '#1D1B20',
+            muted: '#79747E',
+            'blue-bg': '#E8F0FE',
+            blue: '#174EA6',
+            'amber-bg': '#FEF7E0',
+            amber: '#6D4200',
+            'purple-bg': '#EADDFF',
+            purple: '#4A4458',
+            'green-bg': '#E6F4EA',
+            green: '#0D652D',
+            'red-bg': '#F9DEDC',
+            red: '#B3261E',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
+  <div class="w-full h-screen mx-auto bg-surface flex overflow-hidden">
+    
+    <!-- Unified Side Navigation -->
+    <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
+      <div class="w-[58px] h-[58px]">
+        <img src="https://helptomoms.com/__l5e/assets-v1/923ead63-1849-4075-9845-3e9a00b8b649/help-to-moms-logo.webp" alt="Help to Moms logo" class="w-full h-full object-contain">
+      </div>
+      <nav class="w-full flex flex-col gap-1.5" id="workspace-sidebar-nav">
+        <!-- Active Dashboard Page -->
+        <a href="Dashboard.html" id="nav-dashboard" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-[20px] transition">
+          <div class="flex items-center gap-2.5 min-w-0 flex-1">
+            <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-[18px]">dashboard</span>
+            <span class="truncate">Dashboard</span>
+          </div>
+        </a>
+
+        <!-- Inactive Work Queues Page -->
+        <a href="WorkQueue.html" id="nav-work-queue" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+          <div class="flex items-center gap-2.5 min-w-0 flex-1">
+            <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">format_list_bulleted</span>
+            <span class="truncate">Work Queues</span>
+          </div>
+        </a>
+
+        <!-- Inactive Order Search Page -->
+        <a href="OrderSearch.html" id="nav-order-search" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+          <div class="flex items-center gap-2.5 min-w-0 flex-1">
+            <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">search</span>
+            <span class="truncate">Order Search</span>
+          </div>
+        </a>
+
+        <!-- Inactive Alerts & Exceptions Page -->
+        <a href="Alerts.html" id="nav-alerts-exceptions" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#49454f] hover:bg-[#F3EDF7] text-sm font-medium leading-[20px] transition">
+          <div class="flex items-center gap-2.5 min-w-0 flex-1">
+            <span class="material-symbols-outlined shrink-0 text-[#49454f] text-[18px]">notifications</span>
+            <span class="truncate">Alerts &amp; Exceptions</span>
+          </div>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <section class="flex-1 p-8 pb-8 flex flex-col gap-6 h-full overflow-hidden min-w-0">
+      
+      <!-- Top Navigation Bar & Global Module Pill -->
+      <header class="h-[58px] flex items-center justify-between shrink-0">
+        <nav class="flex gap-2 p-1.5 bg-white rounded-full shadow-sm border-0 focus:outline-none">
+          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="Dashboard.html">Workspace</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditLogs.html">Audit</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectoryPage.html">Provider Directory</a>
+          <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Administration/AdminHome.html">Administration</a>
+        </nav>
+        
+        <div class="flex items-center gap-6">
+          <!-- Notification Bell Icon -->
+          <div class="relative inline-flex items-center justify-center w-9 h-9 cursor-pointer group">
+            <span class="material-symbols-outlined text-[#1C1B1F] text-[24px] group-hover:text-primary transition-colors select-none">
+              notifications
+            </span>
+            <span class="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 bg-[#B3261E] text-white rounded-full flex items-center justify-center text-[10px] font-bold leading-none border-2 border-white shadow-xs select-none">
+              14
+            </span>
+          </div>
+
+          <!-- Account / Role Switcher -->
+          <div class="relative inline-block text-left" id="role-switcher-container">
+            <button
+              id="role-switcher-btn"
+              type="button"
+              class="flex items-center gap-2 h-9 pl-1 pr-3 rounded-full border border-[#e8def8] bg-white hover:bg-[#f3edf7] cursor-pointer transition-colors outline-none focus:ring-2 focus:ring-[#6750a4]"
+            >
+              <div id="active-avatar" class="w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-bold text-white shrink-0 bg-[#6750a4]">
+                J
+              </div>
+              <div class="text-left hidden sm:block">
+                <p id="active-name" class="text-[12px] font-medium text-[#1C1B1F] m-0 leading-none">Jane Doe</p>
+                <p id="active-label" class="text-[10px] m-0 font-bold text-[#6750a4] mt-0.5">Operations</p>
+              </div>
+              <span class="material-symbols-outlined text-[16px] text-[#79747e]">arrow_drop_down</span>
+            </button>
+
+            <!-- Dropdown Menu -->
+            <div
+              id="role-switcher-dropdown"
+              class="hidden absolute right-0 top-[calc(100%+6px)] bg-white rounded-[12px] border border-[#e8def8] z-50 w-[260px] overflow-hidden shadow-[0px_4px_16px_rgba(0,0,0,0.12)]"
+            >
+              <div class="px-4 py-2.5 border-b border-[#f3edf7]">
+                <p class="text-[10px] font-bold uppercase tracking-[0.5px] text-[#79747e] m-0">Switch Account / Role View</p>
+              </div>
+              
+              <button
+                type="button"
+                onclick="selectRole('operations')"
+                id="role-opt-operations"
+                class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]"
+              >
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white shrink-0 bg-[#6750a4]">J</div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Jane Doe</p>
+                  <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">jane.doe@h2m.org</p>
+                  <p class="text-[10px] font-bold m-0 text-[#6750a4]">Operations</p>
+                </div>
+                <span id="check-operations" class="material-symbols-outlined text-[18px] text-[#6750a4]">check</span>
+              </button>
+
+              <button
+                type="button"
+                onclick="selectRole('administrator')"
+                id="role-opt-administrator"
+                class="w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]"
+              >
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-bold text-white shrink-0 bg-[#1967D2]">P</div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-[13px] font-medium text-[#1C1B1F] m-0">Priya Patel</p>
+                  <p class="text-[11px] m-0 font-mono text-[#79747e] truncate">p.patel@h2m.org</p>
+                  <p class="text-[10px] font-bold m-0 text-[#1967D2]">Administrator</p>
+                </div>
+                <span id="check-administrator" class="material-symbols-outlined text-[18px] text-[#6750a4] hidden">check</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Title -->
+      <div class="shrink-0">
+        <h1 class="text-3xl font-semibold text-text">Workspace Dashboard</h1>
+      </div>
+
+      <!-- Stat Cards Grid -->
+      <section class="grid grid-cols-4 gap-4 shrink-0">
+        <!-- Card 1: All Orders -->
+        <button class="stat-card border-2 border-primary bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 outline-none cursor-pointer" data-filter="all">
+          <div class="flex items-center justify-between">
+            <div class="w-9 h-9 rounded-xl bg-[#F3EDF7] flex items-center justify-center text-[#6750A4]">
+              <span class="material-symbols-outlined text-[20px]">grid_view</span>
+            </div>
+            <span class="text-3xl font-extrabold text-[#4F378A]" id="count-all">0</span>
+          </div>
+          <span class="block mt-4 text-sm font-bold text-text">All Orders</span>
+          <span class="block mt-1 text-[11px] text-muted">Live Google Sheet Sync</span>
+        </button>
+
+        <!-- Card 2: Prescription Requested -->
+        <button class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md outline-none cursor-pointer" data-filter="Prescription Requested">
+          <div class="flex items-center justify-between">
+            <div class="w-9 h-9 rounded-xl bg-blue-bg flex items-center justify-center text-blue">
+              <span class="material-symbols-outlined text-[20px]">assignment</span>
+            </div>
+            <span class="text-3xl font-extrabold text-blue" id="count-rx">0</span>
+          </div>
+          <span class="block mt-4 text-sm font-bold text-text">Prescription Requested</span>
+          <span class="block mt-1 text-[11px] text-blue font-medium">Awaiting Rx from provider</span>
+        </button>
+
+        <!-- Card 3: Missing Fax Number -->
+        <button class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md outline-none cursor-pointer" data-filter="Missing Fax Number">
+          <div class="flex items-center justify-between">
+            <div class="w-9 h-9 rounded-xl bg-red-bg flex items-center justify-center text-red">
+              <span class="material-symbols-outlined text-[20px]">warning</span>
+            </div>
+            <span class="text-3xl font-extrabold text-red" id="count-fax">0</span>
+          </div>
+          <span class="block mt-4 text-sm font-bold text-text">Missing Fax Number</span>
+          <span class="block mt-1 text-[11px] text-red font-medium">Action required — hard stop</span>
+        </button>
+
+        <!-- Card 4: Physician Info Requested -->
+        <button class="stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md outline-none cursor-pointer" data-filter="Physician Info Requested">
+          <div class="flex items-center justify-between">
+            <div class="w-9 h-9 rounded-xl bg-amber-bg flex items-center justify-center text-amber">
+              <span class="material-symbols-outlined text-[20px]">person</span>
+            </div>
+            <span class="text-3xl font-extrabold text-[#6D4200]" id="count-physician">0</span>
+          </div>
+          <span class="block mt-4 text-sm font-bold text-text">Physician Info Requested</span>
+          <span class="block mt-1 text-[11px] text-[#6D4200] font-medium">Provider details needed</span>
+        </button>
+      </section>
+
+      <!-- Recent Orders Section -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col flex-1 min-h-0 w-full">
+        
+        <!-- Controls Row -->
+        <div class="p-5 border-b border-line flex flex-col gap-3 shrink-0">
+          <h2 class="text-xl font-semibold text-text">Recent Orders</h2>
+          
+          <div class="flex items-center justify-between w-full gap-2">
+            <div class="flex items-center gap-2.5 flex-wrap">
+              <!-- Search Bar -->
+              <div class="h-9 w-[200px] lg:w-[240px] px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 border-0 focus-within:ring-2 focus-within:ring-[#6750A4] shrink-0">
+                <span class="material-symbols-outlined text-[#49454F] text-[20px] shrink-0 leading-none select-none">search</span>
+                <input 
+                  id="table-search" 
+                  type="search" 
+                  class="w-full bg-transparent border-0 outline-none text-xs text-[#1C1B1F] placeholder-[#79747E] focus:ring-0" 
+                  placeholder="Search by ID, name, email..."
+                >
+              </div>
+
+              <!-- Insurance Filter Dropdown -->
+              <div class="relative inline-block">
+                <select id="insurance-filter" class="h-8 pl-3 pr-7 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
+                  <option value="all">Insurance</option>
+                  <option>United Healthcare Community Plan</option>
+                  <option>Anthem Blue Cross</option>
+                  <option>Wellpoint</option>
+                  <option>TennCare</option>
+                  <option>CoverKids</option>
+                </select>
+                <span class="material-symbols-outlined pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-[#49454F] text-[18px] select-none">arrow_drop_down</span>
+              </div>
+
+              <!-- State Filter Dropdown -->
+              <div class="relative inline-block">
+                <select id="state-filter" class="h-8 pl-3 pr-7 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
+                  <option value="all">State</option>
+                  <option>Tennessee</option>
+                  <option>Michigan</option>
+                  <option>Ohio</option>
+                </select>
+                <span class="material-symbols-outlined pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-[#49454F] text-[18px] select-none">arrow_drop_down</span>
+              </div>
+
+              <!-- Date Filter Dropdown -->
+              <div class="relative inline-block">
+                <select id="date-filter" class="h-8 pl-3 pr-7 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
+                  <option value="all">Date</option>
+                  <option value="today">Today</option>
+                  <option value="7days">Last 7 Days</option>
+                  <option value="30days">Last 30 Days</option>
+                </select>
+                <span class="material-symbols-outlined pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-[#49454F] text-[18px] select-none">arrow_drop_down</span>
+              </div>
+            </div>
+
+            <!-- Far Right: "View all" Action Link -->
+            <a href="WorkQueue.html" class="text-xs font-bold text-primary hover:underline cursor-pointer flex items-center gap-1 select-none shrink-0">
+              View all
+            </a>
+          </div>
+        </div>
+
+        <!-- Table Container Structure -->
+        <div class="flex-1 flex flex-col min-h-0 w-full overflow-hidden">
+          
+          <!-- Fixed Table Header -->
+          <div class="bg-primary text-white shrink-0 w-full">
+            <table class="w-full border-collapse text-left text-xs table-fixed">
+              <colgroup>
+                <col class="w-[14%]">
+                <col class="w-[18%]">
+                <col class="w-[12%]">
+                <col class="w-[28%]">
+                <col class="w-[18%]">
+                <col class="w-[10%]">
+              </colgroup>
+              <thead>
+                <tr class="text-[11px] font-bold tracking-wider uppercase">
+                  <th class="py-3 px-3">ORDER ID</th>
+                  <th class="py-3 px-3">PATIENT NAME</th>
+                  <th class="py-3 px-3">DOB</th>
+                  <th class="py-3 px-3">PROVIDER</th>
+                  <th class="py-3 px-3">STATUS / QUEUE</th>
+                  <th class="py-3 px-3">RECEIVED DATE</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+
+          <!-- Internal Scrollable Table Body -->
+          <div class="flex-1 overflow-y-auto w-full">
+            <table class="w-full border-collapse text-left text-sm table-fixed">
+              <colgroup>
+                <col class="w-[14%]">
+                <col class="w-[18%]">
+                <col class="w-[12%]">
+                <col class="w-[28%]">
+                <col class="w-[18%]">
+                <col class="w-[10%]">
+              </colgroup>
+              <tbody id="order-body">
+                <!-- Dynamically Injected From Google Sheet -->
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+      </section>
+    </section>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
+
+  <script>
+    // Live Spreadsheet Array
+    let orders = [];
+    let activeFilter = 'all';
+
+    const SHEET_ID = '1ZYjsOLkxL4-5sonSV1qkFD5-r4EjF6EFstXnRPfhKdI';
+    const GID = '2009079991';
+    const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${GID}`;
+
+    /**
+     * Fetch Live Google Sheet Records
+     */
+    function fetchGoogleSheetData() {
+      // Check if running inside Google Apps Script container
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        google.script.run
+          .withSuccessHandler(function(backendData) {
+            orders = backendData;
+            renderOrders();
+            showToast("Synced live data from Google Sheet.");
+          })
+          .withFailureHandler(function(err) {
+            console.error("Apps Script Error:", err);
+            fetchViaGViz();
+          })
+          .getDashboardSheetData();
+      } else {
+        fetchViaGViz();
+      }
+    }
+
+    /**
+     * Direct Fetch using Google Sheets Visualization Endpoint
+     */
+    function fetchViaGViz() {
+      fetch(SHEET_URL)
+        .then(res => res.text())
+        .then(txt => {
+          // Parse Google Visualization JSON response
+          const jsonString = txt.substring(txt.indexOf('{'), txt.lastIndexOf('}') + 1);
+          const rawData = JSON.parse(jsonString);
+          const rows = rawData.table.rows;
+
+          orders = rows.map(r => {
+            const c = r.c;
+            const status = c[4] && c[4].v ? c[4].v.toString().trim() : '';
+
+            var statusClass = 'bg-blue-bg text-blue';
+            if (status === 'Missing Fax Number') {
+              statusClass = 'bg-red-bg text-red';
+            } else if (status === 'Physician Info Requested') {
+              statusClass = 'bg-amber-bg text-amber';
+            } else if (status === 'RX Pending') {
+              statusClass = 'bg-purple-bg text-purple';
+            }
+
+            return {
+              id: c[0] && c[0].v ? c[0].v.toString().trim() : '',
+              patientName: c[1] && c[1].v ? c[1].v.toString().trim() : '',
+              dob: c[2] && c[2].f ? c[2].f : (c[2] && c[2].v ? c[2].v.toString() : ''),
+              provider: c[3] && c[3].v ? c[3].v.toString().trim() : '',
+              sourceStatus: status,
+              statusClass: statusClass,
+              date: c[5] && c[5].f ? c[5].f : (c[5] && c[5].v ? c[5].v.toString() : ''),
+              insurance: c[6] && c[6].v ? c[6].v.toString().trim() : ''
+            };
+          }).filter(item => item.id !== ''); // Remove empty rows
+
+          // Reverse array so the last updated row appears first
+          orders.reverse();
+          
+          renderOrders();
+          showToast("Live data synced from Google Sheet.");
+        })
+        .catch(err => {
+          console.error("GViz Fetch Error:", err);
+          document.getElementById('order-body').innerHTML = `<tr><td class="p-8 text-center text-red font-bold text-sm" colspan="6">Error loading data from Google Sheet. Ensure sheet permissions are public.</td></tr>`;
+        });
+    }
+
+    function updateStatCounts() {
+      document.getElementById('count-all').innerText = orders.length;
+      document.getElementById('count-rx').innerText = orders.filter(o => o.sourceStatus === 'Prescription Requested' || o.sourceStatus === 'RX Pending').length;
+      document.getElementById('count-fax').innerText = orders.filter(o => o.sourceStatus === 'Missing Fax Number').length;
+      document.getElementById('count-physician').innerText = orders.filter(o => o.sourceStatus === 'Physician Info Requested').length;
+    }
+
+    function renderOrders() {
+      updateStatCounts();
+
+      const query = document.getElementById('table-search').value.trim().toLowerCase();
+      const insurance = document.getElementById('insurance-filter').value;
+      const state = document.getElementById('state-filter').value;
+      const stateByInsurance = {'United Healthcare Community Plan': 'Tennessee', 'Anthem Blue Cross': 'Ohio', Wellpoint: 'Michigan', 'Blue Cross Community Health': 'Ohio', 'Michigan Medicaid': 'Michigan', '6 Degrees Health': 'Tennessee', TennCare: 'Tennessee', CoverKids: 'Tennessee'};
+
+      const filtered = orders.filter(order => {
+        const matchesFilter = activeFilter === 'all' || order.sourceStatus === activeFilter;
+        const matchesInsurance = insurance === 'all' || (order.insurance && order.insurance.includes(insurance));
+        const matchesState = state === 'all' || stateByInsurance[order.insurance] === state;
+        const matchesQuery = !query || Object.values(order).join(' ').toLowerCase().includes(query);
+        return matchesFilter && matchesInsurance && matchesState && matchesQuery;
+      });
+
+      document.getElementById('order-body').innerHTML = filtered.length ? filtered.map(order => `
+        <tr class="border-b border-line hover:bg-[#F3EDF7]/50 transition">
+          <td class="py-3 px-3"><a class="font-mono font-bold text-primary hover:underline text-sm truncate block" href="OrderDetails/OrderDetailsView.html?orderId=${order.id}&origin=dashboard">${order.id}</a></td>
+          <td class="py-3 px-3 text-text font-medium text-sm truncate">${order.patientName}</td>
+          <td class="py-3 px-3 text-muted text-sm font-mono whitespace-nowrap">${order.dob}</td>
+          <td class="py-3 px-3 text-text text-sm truncate" title="${order.provider}">${order.provider}</td>
+          <td class="py-3 px-3">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap ${order.statusClass}">
+              <span class="w-1.5 h-1.5 rounded-full bg-current shrink-0"></span>
+              ${order.sourceStatus}
+            </span>
+          </td>
+          <td class="py-3 px-3 text-muted text-sm font-mono whitespace-nowrap">${order.date}</td>
+        </tr>
+      `).join('') : `<tr><td class="p-8 text-center text-muted text-sm" colspan="6">${orders.length === 0 ? 'Loading records from Google Sheet...' : 'No orders match the current search and status filter.'}</td></tr>`;
+    }
+
+    document.querySelectorAll('.stat-card').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.stat-card').forEach(c => {
+          c.className = "stat-card border border-line bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 hover:shadow-md hover:bg-[#FDFBFE] outline-none cursor-pointer";
+        });
+        btn.className = "stat-card border-2 border-primary bg-white p-4 rounded-2xl shadow-sm text-left transition-all duration-200 outline-none cursor-pointer";
+        
+        activeFilter = btn.dataset.filter;
+        renderOrders();
+      });
+    });
+
+    document.getElementById('table-search').addEventListener('input', renderOrders);
+    document.getElementById('insurance-filter').addEventListener('change', renderOrders);
+    document.getElementById('state-filter').addEventListener('change', renderOrders);
+    document.getElementById('date-filter').addEventListener('change', renderOrders);
+
+    /* Role Switcher Logic */
+    let activeRole = 'operations';
+    let roleSwitcherOpen = false;
+
+    const roleData = {
+      operations: { name: 'Jane Doe', email: 'jane.doe@h2m.org', initials: 'J', color: '#6750a4', label: 'Operations' },
+      administrator: { name: 'Priya Patel', email: 'p.patel@h2m.org', initials: 'P', color: '#1967D2', label: 'Administrator' }
+    };
+
+    document.getElementById('role-switcher-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      roleSwitcherOpen = !roleSwitcherOpen;
+      document.getElementById('role-switcher-dropdown').classList.toggle('hidden', !roleSwitcherOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+      const container = document.getElementById('role-switcher-container');
+      if (container && !container.contains(e.target)) {
+        roleSwitcherOpen = false;
+        document.getElementById('role-switcher-dropdown').classList.add('hidden');
+      }
+    });
+
+    function selectRole(role) {
+      activeRole = role;
+      roleSwitcherOpen = false;
+      document.getElementById('role-switcher-dropdown').classList.add('hidden');
+
+      const current = roleData[role];
+      const avatar = document.getElementById('active-avatar');
+      avatar.style.backgroundColor = current.color;
+      avatar.innerText = current.initials;
+
+      document.getElementById('active-name').innerText = current.name;
+      const label = document.getElementById('active-label');
+      label.innerText = current.label;
+      label.style.color = current.color;
+
+      const opsBtn = document.getElementById('role-opt-operations');
+      const adminBtn = document.getElementById('role-opt-administrator');
+      const checkOps = document.getElementById('check-operations');
+      const checkAdmin = document.getElementById('check-administrator');
+
+      if (role === 'operations') {
+        opsBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]";
+        adminBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
+        checkOps.classList.remove('hidden');
+        checkAdmin.classList.add('hidden');
+      } else {
+        adminBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-[#f3edf7]";
+        opsBtn.className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
+        checkAdmin.classList.remove('hidden');
+        checkOps.classList.add('hidden');
+      }
+
+      showToast(`Switched to ${current.label} view — ${current.name}`);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast-notification');
+      toast.innerText = message;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 3000);
+    }
+
+    // Initialize Fetch on Page Load
+    window.addEventListener('DOMContentLoaded', function() {
+      fetchGoogleSheetData();
+    });
+  </script>
+</body>
+</html>

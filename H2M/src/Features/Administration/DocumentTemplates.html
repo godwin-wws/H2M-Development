@@ -108,7 +108,7 @@
             </div>
           </a>
 
-          <a href="DocumentTemplates.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#4A4458] bg-primary-soft  font-bold text-sm leading-none transition">
+          <a href="DocumentTemplates.html" class="w-full h-10 px-3.5 rounded-full flex items-center justify-between text-[#4A4458] bg-primary-soft font-bold text-sm leading-none transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-[18px]">description</span>
               <span class="truncate">Document Templates</span>
@@ -118,7 +118,7 @@
       </div>
     </aside>
 
-    <!-- Main Workspace Canvas (No Page Scroll) -->
+    <!-- Main Workspace Canvas -->
     <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
       
       <!-- Top Navigation Header -->
@@ -132,7 +132,7 @@
         </nav>
         
         <div class="flex items-center gap-6">
-          <!-- Notification Bell Icon (Standardized Hover Behavior) -->
+          <!-- Notification Bell Icon -->
           <div class="relative w-8 h-8 rounded-full flex items-center justify-center text-[#1C1B1F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 cursor-pointer outline-none select-none group">
             <span class="material-symbols-outlined text-[20px] leading-none select-none text-[#1C1B1F] group-hover:text-primary transition-colors">
               notifications
@@ -186,14 +186,13 @@
           <h1 class="text-3xl font-semibold text-text" id="canvas-stage-title">Administration</h1>
           <p class="text-xs text-muted mt-0.5">4 templates · 3 active</p>
         </div>
-        <!-- Admin-Only + Upload Template CTA Button (text-sm font-medium) -->
         <button onclick="openUploadTemplateModal()" class="admin-only px-5 py-2 bg-primary text-white rounded-full text-sm font-medium hover:bg-on-primary-container transition shadow-sm flex items-center gap-2 cursor-pointer">
           <span class="material-symbols-outlined text-[18px]">upload_file</span>
           <span>Upload Template</span>
         </button>
       </div>
 
-      <!-- Master Document Templates Table Frame (Content-Hugging Container with Internal Scroll) -->
+      <!-- Master Document Templates Table Frame -->
       <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0 mb-6">
         
         <!-- Header Controls Row -->
@@ -201,13 +200,11 @@
           <h2 class="text-xl font-semibold text-text">Document Templates</h2>
           
           <div class="flex items-center gap-2.5">
-            <!-- M3 Search Bar -->
             <div class="h-9 w-64 px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 text-muted border-0 focus-within:ring-2 focus-within:ring-[#6750A4] shrink-0">
               <span class="material-symbols-outlined shrink-0 text-[#49454F] text-[20px] select-none">search</span>
               <input id="template-search" type="search" oninput="handleTemplateSearch()" class="w-full bg-transparent border-0 outline-none text-xs text-[#1C1B1F] placeholder-[#79747E] focus:ring-0" placeholder="Search templates...">
             </div>
 
-            <!-- Status Filter Dropdown -->
             <div class="relative inline-block">
               <select id="status-filter" onchange="handleTemplateFilter()" class="h-9 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white hover:bg-[#F3EDF7] text-xs font-medium text-[#49454F] outline-none transition-colors duration-200 appearance-none cursor-pointer">
                 <option value="all">All Statuses</option>
@@ -218,7 +215,6 @@
               <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
             </div>
 
-            <!-- Gmail-Style Circular Pagination Controls -->
             <div class="flex items-center gap-3 text-xs text-muted pl-2">
               <span id="pagination-status" class="font-medium text-text font-mono select-none">Showing 1–4 of 4</span>
               <div class="flex items-center gap-1 select-none">
@@ -233,7 +229,7 @@
           </div>
         </div>
 
-        <!-- Table Body Container (Internal Vertical Scroll Control) -->
+        <!-- Table Body Container -->
         <div class="overflow-y-auto max-h-[calc(100vh-320px)] h-auto">
           <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1000px]">
             <colgroup>
@@ -266,7 +262,7 @@
     </section>
   </div>
 
-  <!-- Upload Template Modal (Admin Only) -->
+  <!-- Upload Template Modal -->
   <div id="upload-template-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-[28px] max-w-lg w-full shadow-2xl overflow-hidden flex flex-col p-6 gap-4">
       <div class="flex items-center justify-between border-b border-line pb-3">
@@ -290,6 +286,11 @@
             <option value="Review">Review</option>
             <option value="Outbound Fax">Outbound Fax</option>
           </select>
+        </div>
+
+        <div>
+          <label class="block font-bold text-outline uppercase mb-1">Google Drive PDF Link</label>
+          <input type="url" id="tpl-drive-field" class="w-full p-2.5 border border-outline rounded-lg focus:border-primary focus:outline-none" placeholder="https://drive.google.com/file/d/1A0XETn97NPBccF7MxHUoRTVz2WibeUYj/preview">
         </div>
 
         <div>
@@ -352,7 +353,7 @@
 
   <!-- Document Preview & Fax Retry Modal -->
   <div id="view-document-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-[28px] max-w-4xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+    <div class="bg-white rounded-[28px] max-w-5xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
       
       <!-- Modal Header -->
       <div class="p-6 pb-4 border-b border-line flex items-center justify-between">
@@ -369,64 +370,18 @@
       </div>
 
       <!-- Split Canvas Body -->
-      <div class="p-6 overflow-y-auto grid grid-cols-2 gap-6 bg-surface-container-low">
+      <div class="p-6 overflow-y-auto grid grid-cols-2 gap-6 bg-surface-container-low min-h-[500px]">
         
-        <!-- Left Pane: Document Preview Shell -->
-        <div class="bg-white border border-line rounded-2xl overflow-hidden shadow-sm flex flex-col">
-          <div class="bg-primary text-white text-[11px] font-bold px-4 py-2.5 flex items-center justify-between">
+        <!-- Left Pane: Dynamic Google Drive PDF Viewer Container -->
+        <div class="bg-white border border-line rounded-2xl overflow-hidden shadow-sm flex flex-col h-[520px]">
+          <div class="bg-primary text-white text-[11px] font-bold px-4 py-2.5 flex items-center justify-between shrink-0">
             <span id="preview-banner-title">PREVIEW — Prescription Request Letter v2.1</span>
-            <span class="font-mono text-primary-soft">PDF · 1 page</span>
+            <span class="font-mono text-primary-soft">Google Drive Viewer</span>
           </div>
 
-          <div class="p-6 flex flex-col gap-4 text-xs">
-            <div class="flex items-center gap-3 border-b border-line pb-3">
-              <div class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center font-bold">H2M</div>
-              <div>
-                <p class="font-bold text-text">H2M BRIDGE — Outbound Document</p>
-                <p class="text-[10px] text-muted">Generated: 2026-08-24 14:52 UTC</p>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-3 text-[11px]">
-              <div>
-                <span class="block text-outline font-bold">ORDER ID</span>
-                <span class="font-mono font-bold text-primary">ORD-000214</span>
-              </div>
-              <div>
-                <span class="block text-outline font-bold">PATIENT</span>
-                <span class="font-bold text-text">Robert Martinez</span>
-              </div>
-              <div>
-                <span class="block text-outline font-bold">DOB</span>
-                <span class="font-mono text-text">1962-04-18</span>
-              </div>
-              <div>
-                <span class="block text-outline font-bold">PRODUCT</span>
-                <span class="text-text">CPAP Machine</span>
-              </div>
-              <div>
-                <span class="block text-outline font-bold">PHYSICIAN</span>
-                <span class="text-text">Dr. Sarah Chen</span>
-              </div>
-              <div>
-                <span class="block text-outline font-bold">NPI</span>
-                <span class="font-mono text-text">1234567890</span>
-              </div>
-            </div>
-
-            <div class="flex flex-col gap-1.5 pt-2">
-              <span class="text-[10px] font-bold text-outline uppercase">Clinical Justification</span>
-              <div class="h-2 bg-surface-container rounded-full w-full"></div>
-              <div class="h-2 bg-surface-container rounded-full w-5/6"></div>
-              <div class="h-2 bg-surface-container rounded-full w-4/6"></div>
-            </div>
-
-            <div class="mt-4 pt-4 border-t border-dashed border-line text-center">
-              <div class="h-12 border border-dashed border-line rounded-lg flex items-center justify-center text-muted italic text-[11px]">
-                Signature block
-              </div>
-              <span class="block text-[10px] font-bold text-outline uppercase mt-1">Ordering Physician Signature</span>
-            </div>
+          <!-- Dynamic PDF Viewer Container -->
+          <div class="flex-1 w-full h-full bg-slate-100 flex items-center justify-center relative" id="pdf-viewer-container">
+            <!-- Injected Dynamically by JS -->
           </div>
         </div>
 
@@ -536,7 +491,7 @@
 
   <!-- Scripting Controller -->
   <script>
-    /* Master Document Templates Dataset */
+    /* Master Document Templates Dataset with Google Drive PDF Link Integrated */
     let templateDatabase = [
       { 
         id: "TPL-001", 
@@ -545,6 +500,8 @@
         status: "Active", 
         updatedBy: "jane.doe", 
         date: "Jul 01, 2026",
+        // 📌 INTEGRATED YOUR SPECIFIED GOOGLE DRIVE PDF LINK
+        drivePdfLink: "https://drive.google.com/file/d/1A0XETn97NPBccF7MxHUoRTVz2WibeUYj/preview", 
         history: [
           { version: "v2.1", status: "Active", updatedBy: "jane.doe@h2m.org", date: "Jul 01, 2026", reason: "Updated header branding & NPI field alignment" },
           { version: "v1.4", status: "Superseded", updatedBy: "p.patel@h2m.org", date: "Jun 15, 2026", reason: "Added secondary practice address tag" },
@@ -558,6 +515,7 @@
         status: "Active", 
         updatedBy: "e.walsh", 
         date: "Jun 15, 2026",
+        drivePdfLink: "https://drive.google.com/file/d/1A0XETn97NPBccF7MxHUoRTVz2WibeUYj/preview",
         history: [
           { version: "v1.4", status: "Active", updatedBy: "e.walsh@h2m.org", date: "Jun 15, 2026", reason: "Added mandatory NPI validation block" }
         ]
@@ -569,6 +527,7 @@
         status: "Draft", 
         updatedBy: "m.reed", 
         date: "Jul 20, 2026",
+        drivePdfLink: "", 
         history: [
           { version: "v1.0", status: "Draft", updatedBy: "m.reed@h2m.org", date: "Jul 20, 2026", reason: "Draft template for missing fax routing" }
         ]
@@ -580,6 +539,7 @@
         status: "Active", 
         updatedBy: "p.patel", 
         date: "May 30, 2026",
+        drivePdfLink: "", 
         history: [
           { version: "v3.0", status: "Active", updatedBy: "p.patel@h2m.org", date: "May 30, 2026", reason: "Standardized rejection reason codes" }
         ]
@@ -595,7 +555,7 @@
     let selectedActiveTemplate = null;
     let openActionMenuId = null;
 
-    /* Render Engine (All cell texts set to text-sm) */
+    /* Render Engine */
     function renderTemplateWorkspace() {
       let filtered = templateDatabase;
 
@@ -766,6 +726,20 @@
       document.getElementById('preview-modal-subtitle').innerText = `ORD-000214 · ${item.name} ${item.version}`;
       document.getElementById('preview-banner-title').innerText = `PREVIEW — ${item.name} ${item.version}`;
       
+      /* Dynamic Google Drive Viewer Embed Logic */
+      const pdfContainer = document.getElementById('pdf-viewer-container');
+      if (item.drivePdfLink && item.drivePdfLink.trim() !== "") {
+        pdfContainer.innerHTML = `<iframe src="${item.drivePdfLink}" class="w-full h-full border-0 rounded-b-2xl" allow="autoplay"></iframe>`;
+      } else {
+        pdfContainer.innerHTML = `
+          <div class="flex flex-col items-center justify-center gap-2 text-muted p-6 text-center">
+            <span class="material-symbols-outlined text-[48px]">picture_as_pdf</span>
+            <p class="font-bold text-text text-sm">No PDF Preview Available</p>
+            <p class="text-xs">Add a Google Drive embed link (ending in /preview) to view this document live.</p>
+          </div>
+        `;
+      }
+
       const reasonInput = document.getElementById('retry-audit-reason');
       reasonInput.value = '';
       
@@ -813,11 +787,13 @@
         status: "Draft",
         updatedBy: activeRole === 'administrator' ? "p.patel" : "jane.doe",
         date: "Jul 22, 2026",
+        drivePdfLink: "",
         history: []
       };
 
       document.getElementById('tpl-name-field').value = '';
       document.getElementById('tpl-category-field').value = 'Intake';
+      document.getElementById('tpl-drive-field').value = '';
       document.getElementById('upload-template-modal').classList.remove('hidden');
     }
 
@@ -867,6 +843,13 @@
       if (selectedActiveTemplate) {
         if (document.getElementById('tpl-name-field').value.trim() !== '') {
           selectedActiveTemplate.name = document.getElementById('tpl-name-field').value.trim();
+          
+          let driveInput = document.getElementById('tpl-drive-field').value.trim();
+          if (driveInput.includes('/view')) {
+            driveInput = driveInput.replace(/\/view.*$/, '/preview');
+          }
+          selectedActiveTemplate.drivePdfLink = driveInput;
+
           selectedActiveTemplate.history.unshift({
             version: "v1.0",
             status: "Draft",
@@ -886,7 +869,7 @@
       renderTemplateWorkspace();
     }
 
-    /* Role Switcher & Role Gating Engine */
+    /* Role Switcher Logic */
     function selectRole(role) {
       activeRole = role;
       document.getElementById('role-switcher-dropdown').classList.add('hidden');

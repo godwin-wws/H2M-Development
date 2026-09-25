@@ -472,21 +472,21 @@
           ? `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-success-bg text-status-success-text whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Active</span>`
           : `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-failed-bg text-status-failed-text whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Disabled</span>`;
 
-        /* 3-Dot Action Popover Menu (Edit, History, Rollback) */
+        /* 3-Dot Action Popover Menu (Hierarchy: Edit -> History -> Delete) */
         const actionMenuHTML = `
           <div class="relative inline-block text-left">
             <button onclick="toggleActionMenu(event, '${row.id}')" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors outline-none cursor-pointer" title="More options">
               <span class="material-symbols-outlined text-[20px]">more_vert</span>
             </button>
             <div id="action-popover-${row.id}" class="hidden absolute right-2 bottom-full mb-1 bg-white rounded-2xl border border-line z-50 w-36 py-1 shadow-xl">
-              <button onclick="editLookupItem('${row.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
+              <button onclick="editLookupItem('${row.id}')" class="first:border-t-0 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
                 <span class="material-symbols-outlined text-[18px] text-muted">edit</span> Edit
               </button>
-              <button onclick="openHistoryModal('${row.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text border-t border-line/60 transition cursor-pointer">
+              <button onclick="openHistoryModal('${row.id}')" class="first:border-t-0 border-t border-line/60 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
                 <span class="material-symbols-outlined text-[18px] text-muted">history</span> History
               </button>
-              <button onclick="rollbackLookupItem('${row.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text border-t border-line/60 transition cursor-pointer">
-                <span class="material-symbols-outlined text-[18px] text-muted">settings_backup_restore</span> Rollback
+              <button onclick="deleteLookupItem('${row.id}')" class="admin-only first:border-t-0 border-t border-line/60 w-full px-3.5 py-2 text-left hover:bg-[#FDECEA] flex items-center gap-2.5 text-xs font-medium text-status-failed-text transition cursor-pointer">
+                <span class="material-symbols-outlined text-[18px]">delete</span> Delete
               </button>
             </div>
           </div>
@@ -580,6 +580,31 @@
       document.getElementById('lookup-modal').classList.add('hidden');
     }
 
+    function deleteLookupItem(refId) {
+      closeAllActionMenus();
+      const itemIndex = referenceDatabase.findIndex(i => i.id === refId);
+      if (itemIndex === -1) return;
+
+      const item = referenceDatabase[itemIndex];
+      const confirmed = window.confirm(`Delete reference table "${item.name}" (${item.id})?\n\nThis will remove the lookup table entry.`);
+      if (!confirmed) return;
+
+      referenceDatabase.splice(itemIndex, 1);
+      selectedActiveLookup = null;
+
+      const filteredCount = referenceDatabase.filter(r => {
+        return !searchQuery || 
+          r.id.toLowerCase().includes(searchQuery.toLowerCase()) || 
+          r.name.toLowerCase().includes(searchQuery.toLowerCase());
+      }).length;
+
+      const maxPages = Math.ceil(filteredCount / PAGE_LIMIT) || 1;
+      if (currentPageIndex >= maxPages) currentPageIndex = maxPages - 1;
+
+      renderLookupWorkspace();
+      showToast(`Reference entry ${item.id} deleted.`);
+    }
+
     function openHistoryModal(refId) {
       closeAllActionMenus();
       const item = referenceDatabase.find(i => i.id === refId);
@@ -614,14 +639,6 @@
 
     function closeHistoryModal() {
       document.getElementById('history-modal').classList.add('hidden');
-    }
-
-    function rollbackLookupItem(refId) {
-      closeAllActionMenus();
-      const item = referenceDatabase.find(i => i.id === refId);
-      if (!item) return;
-      selectedActiveLookup = item;
-      triggerSaveWithRationale();
     }
 
     function downloadArchival(version) {

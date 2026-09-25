@@ -69,6 +69,7 @@
 </head>
 <body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
 
+  <!-- Full Window Width Canvas Container -->
   <div class="w-full h-screen mx-auto bg-surface flex overflow-hidden">
     
     <!-- 1. UNIFIED ADMINISTRATION SIDEBAR NAVIGATION -->
@@ -202,7 +203,7 @@
         </button>
       </div>
 
-      <!-- Master User Roster Table Panel (Re-balanced Columns to Prevent Overlap) -->
+      <!-- Master User Roster Table Panel -->
       <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0 mb-6">
         
         <!-- Toolbar Header Controls -->
@@ -536,7 +537,7 @@
       renderUserWorkspace();
     }
 
-    /* Role Switcher Logic */
+    /* Role Switcher Engine with Automated Barred Redirection for Operations */
     function selectRole(role) {
       activeRole = role;
       document.getElementById('role-switcher-dropdown').classList.add('hidden');
@@ -557,6 +558,14 @@
         document.getElementById('role-opt-administrator').className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
         document.getElementById('check-operations').classList.remove('hidden');
         document.getElementById('check-administrator').classList.add('hidden');
+
+        // 🔒 ROLE GATING ROUTER: User Management is Barred for Operations -> Redirects to AdminHome.html
+        showToast("Access Restricted: User Management is barred for Operations. Redirecting to Overview...");
+        setTimeout(() => {
+          window.location.href = "AdminHome.html";
+        }, 1200);
+        return;
+
       } else {
         document.body.classList.remove('h2m-operations-role');
         avatar.innerText = 'P';
@@ -599,6 +608,11 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      // 🔒 DIRECT NAVIGATION SAFEGUARD: Redirect Operations users away from barred page
+      if (activeRole === 'operations') {
+        window.location.href = "AdminHome.html";
+        return;
+      }
       renderUserWorkspace();
     });
   </script>

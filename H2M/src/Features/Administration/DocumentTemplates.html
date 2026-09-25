@@ -207,7 +207,7 @@
 
             <div class="relative inline-block">
               <select id="status-filter" onchange="handleTemplateFilter()" class="h-9 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white hover:bg-[#F3EDF7] text-xs font-medium text-[#49454F] outline-none transition-colors duration-200 appearance-none cursor-pointer">
-                <option value="all">All Statuses</option>
+                <option value="all">All Status</option>
                 <option value="Active">Active</option>
                 <option value="Draft">Draft</option>
                 <option value="Superseded">Superseded</option>
@@ -268,7 +268,6 @@
       <div class="flex items-center justify-between border-b border-line pb-3">
         <div>
           <h3 class="text-xl font-bold text-text">Upload New Document Template</h3>
-          
         </div>
         <button onclick="closeUploadTemplateModal()" class="text-muted hover:text-text font-bold">✕</button>
       </div>
@@ -287,7 +286,6 @@
           </select>
           <span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
         </div>
-      
 
         <div>
           <label class="block font-bold text-text uppercase mb-1">Google Drive Link</label>
@@ -303,8 +301,6 @@
           </div>
         </div>
 
-      
-
         <button type="submit" id="hidden-tpl-submit" class="hidden"></button>
       </form>
 
@@ -315,7 +311,7 @@
     </div>
   </div>
 
-  <!-- Version History Modal (Proportionate Column Widths + Left-Aligned Header + Icon Actions) -->
+  <!-- Version History Modal -->
   <div id="history-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-[28px] max-w-2xl w-full shadow-2xl overflow-hidden flex flex-col p-6 gap-4">
       <div class="flex items-center justify-between border-b border-line pb-3">
@@ -577,25 +573,25 @@
           badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-info-bg text-status-info-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Superseded</span>`;
         }
 
-        /* 3-Dot Action Popover Menu - Hierarchy: Delete -> View -> History */
-const actionMenuHTML = `
-  <div class="relative inline-block text-left">
-    <button onclick="toggleActionMenu(event, '${t.id}')" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors outline-none cursor-pointer" title="More options">
-      <span class="material-symbols-outlined text-[20px]">more_vert</span>
-    </button>
-    <div id="action-popover-${t.id}" class="hidden absolute right-2 bottom-full mb-1 bg-white rounded-2xl border border-line z-50 w-32 py-1 shadow-xl">
-      <button onclick="deleteTemplateItem('${t.id}')" class="admin-only w-full px-3.5 py-2 text-left hover:bg-[#FDECEA] flex items-center gap-2.5 text-xs font-medium text-status-failed-text transition cursor-pointer">
-        <span class="material-symbols-outlined text-[18px]">delete</span> Delete
-      </button>
-      <button onclick="openViewDocumentModal('${t.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text border-t border-line/60 transition cursor-pointer">
-        <span class="material-symbols-outlined text-[18px] text-muted">visibility</span> View
-      </button>
-      <button onclick="openHistoryModal('${t.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text border-t border-line/60 transition cursor-pointer">
-        <span class="material-symbols-outlined text-[18px] text-muted">history</span> History
-      </button>
-    </div>
-  </div>
-`;
+        /* 3-Dot Action Popover Menu - Hierarchy: View -> History -> Delete with first:border-t-0 */
+        const actionMenuHTML = `
+          <div class="relative inline-block text-left">
+            <button onclick="toggleActionMenu(event, '${t.id}')" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors outline-none cursor-pointer" title="More options">
+              <span class="material-symbols-outlined text-[20px]">more_vert</span>
+            </button>
+            <div id="action-popover-${t.id}" class="hidden absolute right-2 bottom-full mb-1 bg-white rounded-2xl border border-line z-50 w-32 py-1 shadow-xl">
+              <button onclick="openViewDocumentModal('${t.id}')" class="first:border-t-0 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
+                <span class="material-symbols-outlined text-[18px] text-muted">visibility</span> View
+              </button>
+              <button onclick="openHistoryModal('${t.id}')" class="first:border-t-0 border-t border-line/60 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
+                <span class="material-symbols-outlined text-[18px] text-muted">history</span> History
+              </button>
+              <button onclick="deleteTemplateItem('${t.id}')" class="admin-only first:border-t-0 border-t border-line/60 w-full px-3.5 py-2 text-left hover:bg-[#FDECEA] flex items-center gap-2.5 text-xs font-medium text-status-failed-text transition cursor-pointer">
+                <span class="material-symbols-outlined text-[18px]">delete</span> Delete
+              </button>
+            </div>
+          </div>
+        `;
 
         return `
           <tr class="border-b last:border-b-0 border-line hover:bg-surface-container-low transition">
@@ -780,10 +776,8 @@ const actionMenuHTML = `
 
       const item = templateDatabase[itemIndex];
 
-      // Delete does not require the operational rationale modal.
-      // The rationale is reserved for rollback/audit-controlled actions.
       const confirmed = window.confirm(
-        `Delete template "${item.name}" (${item.id})?\\n\\nThis action will remove the template from the current template list.`
+        `Delete template "${item.name}" (${item.id})?\n\nThis action will remove the template from the current template list.`
       );
 
       if (!confirmed) return;
@@ -791,7 +785,6 @@ const actionMenuHTML = `
       templateDatabase.splice(itemIndex, 1);
       selectedActiveTemplate = null;
 
-      // Keep pagination valid after deletion.
       const filteredCount = templateDatabase.filter(t => {
         const matchesSearch =
           !searchQuery ||
@@ -935,6 +928,14 @@ const actionMenuHTML = `
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      // Direct navigation check for Operations role
+      if (activeRole === 'operations') {
+        const currentPath = window.location.pathname.toLowerCase();
+        if (currentPath.includes('usermanagement') || currentPath.includes('rolespermission')) {
+          window.location.href = "AdminHome.html";
+          return;
+        }
+      }
       renderTemplateWorkspace();
     });
   </script>

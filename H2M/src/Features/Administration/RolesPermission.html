@@ -85,7 +85,7 @@
           </a>
 
           <!-- Admin Only Node (Active Page) -->
-          <a href="RolesPermissionsPage.html" class="admin-only w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-none transition">
+          <a href="RolesPermissions.html" class="admin-only w-full h-10 px-3.5 rounded-full flex items-center justify-between bg-primary-soft text-[#4A4458] font-bold text-sm leading-none transition">
             <div class="flex items-center gap-2.5 min-w-0 flex-1">
               <span class="material-symbols-outlined shrink-0 text-[#4A4458] text-[18px]">key</span>
               <span class="truncate">Roles &amp; Permissions</span>
@@ -126,7 +126,7 @@
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Review/ReviewPage.html">Review</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../Audit/AuditLogs.html">Audit</a>
           <a class="h-9 px-4 rounded-full flex items-center text-primary text-sm font-medium hover:bg-primary-soft transition" href="../ProviderDirectory/ProviderDirectory.html">Provider Directory</a>
-          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="AdminiHome.html">Administration</a>
+          <a class="h-9 px-4 rounded-full flex items-center bg-primary text-white text-sm font-medium shadow-sm" href="AdminHome.html">Administration</a>
         </nav>
         
         <div class="flex items-center gap-6">
@@ -184,16 +184,11 @@
         <!-- Breadcrumbs, Title & Custom Role Deferred Badge -->
         <div class="flex items-center justify-between shrink-0">
           <div>
-          
             <h1 class="text-3xl font-semibold text-text">Roles &amp; Permissions</h1>
-          
           </div>
-
-          <!-- Custom Roles Deferred Informational Badge -->
-        
         </div>
 
-        <!-- 2-Card Catalog Layout (rp.png) -->
+        <!-- 2-Card Catalog Layout -->
         <div class="grid grid-cols-2 gap-6">
           
           <!-- Card 1: Platform Administrator (Admin) -->
@@ -203,7 +198,6 @@
                 <h3 class="text-base font-bold text-text">Admin (Platform Administrator)</h3>
                 <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-[#F3EDF7] text-muted font-mono">2 users</span>
               </div>
-        
             </div>
             
             <div class="flex items-center gap-4 text-xs font-bold pt-3 border-t border-line/40">
@@ -211,10 +205,10 @@
                 <span class="material-symbols-outlined text-[16px]">visibility</span>
                 <span>View Permissions</span>
               </button>
-              <button onclick="openAssignUsersView('Admin')" class="px-4 py-2 rounded-full bg-primary text-white hover:bg-on-primary-container transition shadow-xs cursor-pointer flex items-center gap-1.5">
+              <a href="viewusers.html?role=Admin" class="px-4 py-2 rounded-full bg-primary text-white hover:bg-on-primary-container transition shadow-xs cursor-pointer flex items-center gap-1.5">
                 <span class="material-symbols-outlined text-[16px]">group</span>
                 <span>View Users</span>
-              </button>
+              </a>
             </div>
           </div>
 
@@ -225,7 +219,6 @@
                 <h3 class="text-base font-bold text-text">Operations (Operations Team)</h3>
                 <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-[#F3EDF7] text-muted font-mono">2 users</span>
               </div>
-             
             </div>
             
             <div class="flex items-center gap-4 text-xs font-bold pt-3 border-t border-line/40">
@@ -233,84 +226,13 @@
                 <span class="material-symbols-outlined text-[16px]">visibility</span>
                 <span>View Permissions</span>
               </button>
-              <button onclick="openAssignUsersView('Operations')" class="px-4 py-2 rounded-full bg-primary text-white hover:bg-on-primary-container transition shadow-xs cursor-pointer flex items-center gap-1.5">
+              <a href="viewusers.html?role=Operations" class="px-4 py-2 rounded-full bg-primary text-white hover:bg-on-primary-container transition shadow-xs cursor-pointer flex items-center gap-1.5">
                 <span class="material-symbols-outlined text-[16px]">group</span>
                 <span>View Users</span>
-              </button>
+              </a>
             </div>
           </div>
 
-        </div>
-
-      </div>
-
-      <!-- VIEW 2: ASSIGN USERS VIEW -->
-      <div id="view-assign-users" class="hidden flex-col gap-6 flex-1 shrink-0">
-        
-        <!-- Breadcrumb Back Link -->
-        <div class="flex items-center gap-2 text-sm text-muted shrink-0">
-          <button onclick="closeAssignUsersView()" class="text-primary font-bold hover:underline flex items-center gap-1 cursor-pointer">
-            <span class="material-symbols-outlined text-[16px]">arrow_back</span>
-            <span>Back To Roles & Permissions</span>
-          </button>
-        </div>
-
-        <!-- Title Header & CTA -->
-        <div class="flex items-center justify-between shrink-0">
-          <div>
-            <h1 id="assign-role-title" class="text-3xl font-semibold text-text">Assign Users — Admin</h1>
-           
-          </div>
-          <button onclick="toggleAddUserInlineCard()" class="px-5 py-2.5 bg-primary text-white rounded-full text-xs font-bold hover:bg-on-primary-container transition shadow-sm flex items-center gap-2 cursor-pointer">
-            <span class="material-symbols-outlined text-[18px]">add</span>
-            <span>Assign User</span>
-          </button>
-        </div>
-
-        <!-- Filter Controls -->
-        <div class="flex items-center gap-3 shrink-0">
-          <div class="h-9 w-72 px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 text-muted border-0 shrink-0">
-            <span class="material-symbols-outlined shrink-0 text-[#49454F] text-[20px] select-none">search</span>
-            <input id="assign-search-input" type="search" oninput="renderAssignedUsersList()" class="w-full bg-transparent border-0 outline-none text-xs text-[#1C1B1F] placeholder-[#79747E] focus:ring-0" placeholder="Search by name or email...">
-          </div>
-
-          <div class="relative inline-block">
-            <select id="assign-status-filter" onchange="renderAssignedUsersList()" class="h-9 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white hover:bg-[#F3EDF7] text-xs font-medium text-[#49454F] outline-none transition-colors duration-200 appearance-none cursor-pointer">
-              <option value="all">All Status</option>
-              <option value="enabled">Enabled</option>
-              <option value="disabled">Disabled</option>
-            </select>
-            <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
-          </div>
-        </div>
-
-        <!-- INLINE "ADD USER ACCOUNT TO ROLE" CARD -->
-        <div id="inline-add-user-card" class="hidden bg-[#F7F2FA] border border-line rounded-2xl p-6 shadow-sm flex-col gap-4 shrink-0 transition-all">
-          <div>
-            <h3 id="inline-assign-header" class="text-sm font-bold text-primary">Assign a user to Admin</h3>
-            <p class="text-xs text-muted mt-0.5">Select or enter user email</p>
-          </div>
-
-          <div class="flex items-center gap-4">
-            <div class="flex-1">
-              <input type="email" id="input-new-user-email" class="w-full p-3 border border-line rounded-xl text-text font-mono text-xs bg-white focus:border-primary outline-none" placeholder="e.g. new.user@h2m.org">
-              <span class="text-[10px] text-muted mt-1 block">6 users available to assign</span>
-            </div>
-
-            <div class="flex items-center gap-3">
-              <button onclick="toggleAddUserInlineCard()" class="px-5 py-2.5 rounded-full border border-line bg-white text-text font-bold text-xs hover:bg-surface transition cursor-pointer">
-                Cancel
-              </button>
-              <button onclick="commitNewUserAssignment()" id="btn-assign-action-cta" class="px-5 py-2.5 rounded-full bg-[#B29BC8] text-white font-bold text-xs hover:bg-primary transition shadow-sm cursor-pointer">
-                Assign to Admin
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Assigned Users List Container -->
-        <div id="assigned-users-container" class="flex flex-col gap-3 overflow-y-auto max-h-[calc(100vh-380px)] shrink-0 pr-1">
-          <!-- Injected via JS -->
         </div>
 
       </div>
@@ -415,17 +337,7 @@
       ]
     };
 
-    /* Master User & Role Assignment Database */
-    let assignedUsersData = [
-      { id: "USR-001", name: "Jane Doe", email: "jane.doe@h2m.org", role: "Admin", status: "Active", enabled: true, isSelf: false },
-      { id: "USR-002", name: "vanx", email: "van@h2m.org", role: "Admin", status: "Active", enabled: false, isSelf: false },
-      { id: "USR-003", name: "Michael Reed", email: "m.reed@h2m.org", role: "Operations", status: "Active", enabled: true, isSelf: false },
-      { id: "USR-004", name: "Emily Walsh", email: "e.walsh@h2m.org", role: "Operations", status: "Active", enabled: true, isSelf: false },
-      { id: "USR-005", name: "Priya Patel", email: "p.patel@h2m.org", role: "Admin", status: "Active", enabled: true, isSelf: true }
-    ];
-
     let activeRole = 'administrator';
-    let currentAssignRoleTarget = 'Admin';
 
     /* Read-Only Capability Matrix Modal Controls */
     function openViewPermissionsModal(roleName) {
@@ -451,23 +363,6 @@
       document.getElementById('view-permissions-modal').classList.add('hidden');
     }
 
-    function handleActionTrigger(actionName, targetRole = '') {
-      if (activeRole === 'operations') {
-        const modal = document.getElementById('access-restricted-modal');
-        document.getElementById('restricted-user-email').innerText = 'jane.doe@h2m.org';
-        document.getElementById('restricted-target-action').innerText = actionName === 'create-role' ? 'Create System Role' : `Edit Permissions (${targetRole})`;
-        document.getElementById('restricted-modal-warning').innerHTML = `Your account (<strong class="font-mono">jane.doe@h2m.org</strong>) is assigned the 'Operations' role. You do not have permission to modify document templates or system configurations.`;
-        
-        modal.classList.remove('hidden');
-      } else {
-        if (actionName === 'create-role') {
-          showToast("Custom role creation is deferred out of Version 1 scope (MDR OD-ADM-001).");
-        } else if (actionName === 'edit-permissions') {
-          openViewPermissionsModal(targetRole);
-        }
-      }
-    }
-
     function closeAccessRestrictedModal() {
       document.getElementById('access-restricted-modal').classList.add('hidden');
     }
@@ -477,140 +372,7 @@
       showToast("Access request dispatched to Lead Administrator Priya Patel (p.patel@h2m.org).");
     }
 
-    /* Assign Users Sub-View Controller */
-    function openAssignUsersView(roleName) {
-      currentAssignRoleTarget = roleName;
-      document.getElementById('assign-role-title').innerText = `Assign Users — ${roleName}`;
-      document.getElementById('inline-assign-header').innerText = `Assign a user to ${roleName}`;
-      document.getElementById('btn-assign-action-cta').innerText = `Assign to ${roleName}`;
-      
-      document.getElementById('view-roles-overview').classList.add('hidden');
-      document.getElementById('view-assign-users').classList.remove('hidden');
-      document.getElementById('view-assign-users').classList.add('flex');
-
-      renderAssignedUsersList();
-    }
-
-    function closeAssignUsersView() {
-      document.getElementById('view-assign-users').classList.add('hidden');
-      document.getElementById('view-assign-users').classList.remove('flex');
-      document.getElementById('view-roles-overview').classList.remove('hidden');
-      document.getElementById('inline-add-user-card').classList.add('hidden');
-    }
-
-    function renderAssignedUsersList() {
-      const search = document.getElementById('assign-search-input').value.trim().toLowerCase();
-      const statusFilter = document.getElementById('assign-status-filter').value;
-
-      let filtered = assignedUsersData.filter(u => u.role === currentAssignRoleTarget);
-
-      if (search) {
-        filtered = filtered.filter(u => u.name.toLowerCase().includes(search) || u.email.toLowerCase().includes(search));
-      }
-
-      if (statusFilter === 'enabled') {
-        filtered = filtered.filter(u => u.enabled === true);
-      } else if (statusFilter === 'disabled') {
-        filtered = filtered.filter(u => u.enabled === false);
-      }
-
-      const container = document.getElementById('assigned-users-container');
-
-      if (filtered.length === 0) {
-        container.innerHTML = `<div class="p-8 text-center text-muted text-xs bg-white border border-line rounded-2xl">No users currently assigned to ${currentAssignRoleTarget} role.</div>`;
-        return;
-      }
-
-      container.innerHTML = filtered.map(u => {
-        const isSelfAdmin = u.isSelf && activeRole === 'administrator';
-
-        return `
-          <div class="bg-white border border-line rounded-2xl p-4 px-6 flex items-center justify-between shadow-xs hover:shadow-sm transition">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs shrink-0">
-                ${u.name.split(' ').map(n => n[0]).join('')}
-              </div>
-              <div class="flex flex-col">
-                <div class="flex items-center gap-2">
-                  <span class="font-bold text-text text-sm">${u.name}</span>
-                  <span class="font-mono text-[10px] text-muted bg-[#F3EDF7] px-2 py-0.5 rounded-full">${u.id}</span>
-                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-status-success-bg text-status-success-text">
-                    <span class="w-1.5 h-1.5 rounded-full bg-current"></span>${u.status}
-                  </span>
-                </div>
-                <span class="font-mono text-xs text-muted mt-0.5">${u.email}</span>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4">
-              <div class="text-right">
-                <span class="text-[10px] text-muted block uppercase font-bold tracking-wider">Current Role</span>
-                <span class="text-xs font-bold text-text">${u.role}</span>
-              </div>
-
-              <div class="flex items-center gap-2 pl-4 border-l border-line">
-                <span class="text-xs font-bold ${u.enabled ? 'text-text' : 'text-muted'}">${u.enabled ? 'Enabled' : 'Disable'}</span>
-                
-                <button 
-                  type="button" 
-                  onclick="${isSelfAdmin ? "showSelfLockoutWarning()" : `toggleUserRoleAccess('${u.id}')`}" 
-                  class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${u.enabled ? 'bg-primary' : 'bg-line'} ${isSelfAdmin ? 'opacity-40 cursor-not-allowed' : ''}"
-                  role="switch" 
-                  aria-checked="${u.enabled}"
-                >
-                  <span class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out ${u.enabled ? 'translate-x-5' : 'translate-x-0'}"></span>
-                </button>
-              </div>
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function toggleUserRoleAccess(userId) {
-      const u = assignedUsersData.find(i => i.id === userId);
-      if (!u) return;
-
-      u.enabled = !u.enabled;
-      showToast(`Role access for ${u.name} set to ${u.enabled ? 'Enabled' : 'Disabled'}.`);
-      renderAssignedUsersList();
-    }
-
-    function showSelfLockoutWarning() {
-      showToast("Safeguard Protection: System blocks Lead Administrator from disabling self-access.");
-    }
-
-    function toggleAddUserInlineCard() {
-      const card = document.getElementById('inline-add-user-card');
-      card.classList.toggle('hidden');
-      card.classList.toggle('flex');
-    }
-
-    function commitNewUserAssignment() {
-      const email = document.getElementById('input-new-user-email').value.trim();
-      if (!email) {
-        showToast("Error: Enter a valid workspace user email address.");
-        return;
-      }
-
-      const newId = `USR-00${assignedUsersData.length + 1}`;
-      assignedUsersData.push({
-        id: newId,
-        name: email.split('@')[0].replace('.', ' '),
-        email: email,
-        role: currentAssignRoleTarget,
-        status: "Active",
-        enabled: true,
-        isSelf: false
-      });
-
-      document.getElementById('input-new-user-email').value = '';
-      toggleAddUserInlineCard();
-      showToast(`Assigned ${email} to ${currentAssignRoleTarget} role.`);
-      renderAssignedUsersList();
-    }
-
-    /* Role Switcher & Front-End DOM Gating Engine */
+    /* Role Switcher Engine with Automated Barred Redirection for Operations */
     function selectRole(role) {
       activeRole = role;
       document.getElementById('role-switcher-dropdown').classList.add('hidden');
@@ -631,6 +393,14 @@
         document.getElementById('role-opt-administrator').className = "w-full flex items-center gap-3 px-4 py-3 text-left border-none cursor-pointer transition-colors bg-white hover:bg-[#fef7ff]";
         document.getElementById('check-operations').classList.remove('hidden');
         document.getElementById('check-administrator').classList.add('hidden');
+
+        // 🔒 ROLE GATING ROUTER: Roles & Permissions is Barred for Operations -> Redirects to AdminHome.html
+        showToast("Access Restricted: Roles & Permissions is barred for Operations. Redirecting to Overview...");
+        setTimeout(() => {
+          window.location.href = "AdminHome.html";
+        }, 1200);
+        return;
+
       } else {
         document.body.classList.remove('h2m-operations-role');
         avatar.innerText = 'P';
@@ -670,6 +440,14 @@
         toast.classList.add('opacity-0');
       }, 2500);
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 🔒 DIRECT NAVIGATION SAFEGUARD: Redirect Operations users away from barred page
+      if (activeRole === 'operations') {
+        window.location.href = "AdminHome.html";
+        return;
+      }
+    });
   </script>
 </body>
 </html>

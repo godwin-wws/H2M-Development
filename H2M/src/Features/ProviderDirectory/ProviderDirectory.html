@@ -59,7 +59,7 @@
 </head>
 <body class="bg-surface text-text font-sans h-screen overflow-hidden antialiased">
 
-  <div class="w-[full] h-screen mx-auto bg-surface flex overflow-hidden">
+  <div class="w-full h-screen mx-auto bg-surface flex overflow-hidden">
     
     <!-- 1. Dedicated Provider Directory Secondary Navigation Sidebar -->
     <aside class="w-[224px] h-full p-7 px-4 bg-white border-r border-line flex flex-col items-center gap-7 shrink-0">
@@ -168,13 +168,13 @@
         </div>
       </header>
 
-      <!-- Page Header & Action -->
+      <!-- Page Header & Action (Accessible to Both Admin & Operations) -->
       <div class="flex items-center justify-between shrink-0">
         <div>
           <h1 class="text-3xl font-semibold text-text" id="canvas-stage-title">Provider Directory</h1>
         </div>
-        <!-- Admin-Only CTA -->
-        <button onclick="openAddProviderModal()" class="admin-only px-5 py-2 bg-primary text-white rounded-full text-sm font-medium hover:bg-on-primary-container transition shadow-sm flex items-center gap-2 cursor-pointer">
+        <!-- Enabled for Operations & Admin Role -->
+        <button onclick="openAddProviderModal()" class="px-5 py-2 bg-primary text-white rounded-full text-sm font-medium hover:bg-on-primary-container transition shadow-sm flex items-center gap-2 cursor-pointer">
           <span class="material-symbols-outlined text-[18px]">add_circle</span>
           <span>Add New Provider</span>
         </button>
@@ -189,7 +189,7 @@
             <div class="flex flex-col">
               <span class="block text-sm font-bold text-text">Total Physician Records</span>
               <span class="text-3xl font-extrabold text-text mt-3" id="kpi-total-provs">461</span>
-              <span class="block mt-1 text-[11px] text-muted">Unique PROV-###### Index Entries</span>
+              <span class="block mt-1 text-[11px] text-muted">Unique Provider IDs</span>
             </div>
             <div class="w-9 h-9 rounded-xl bg-surface-container text-primary flex items-center justify-center shrink-0">
               <span class="material-symbols-outlined text-[20px]">badge</span>
@@ -219,7 +219,7 @@
           </div>
         </section>
 
-        <!-- Master Directory Table Panel (Added mb-6 for Bottom Screen Clearance) -->
+        <!-- Master Directory Table Panel -->
         <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0 mb-6">
           
           <div class="p-5 border-b border-line flex items-center justify-between shrink-0">
@@ -276,7 +276,7 @@
             </div>
           </div>
 
-          <!-- Internal Scroll Area with Balanced Max-Height -->
+          <!-- Internal Scroll Area -->
           <div class="overflow-y-auto max-h-[calc(100vh-410px)] h-auto">
             <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1050px]">
               <colgroup>
@@ -325,10 +325,12 @@
             </div>
 
             <div class="flex items-center gap-3">
+              <!-- Soft-Archive remains Admin-Only for Governance -->
               <button id="btn-soft-archive" onclick="toggleSoftArchiveState()" class="admin-only px-4 py-2 rounded-full border border-line text-text text-sm font-bold hover:bg-surface transition cursor-pointer">
                 Soft-Archive Record
               </button>
-              <button onclick="openEditProviderModal()" class="admin-only px-5 py-2 rounded-full bg-primary text-white text-sm font-bold hover:bg-on-primary-container transition shadow-sm cursor-pointer">
+              <!-- Edit Profile accessible to Operations & Admin -->
+              <button onclick="openEditProviderModal()" class="px-5 py-2 rounded-full bg-primary text-white text-sm font-bold hover:bg-on-primary-container transition shadow-sm cursor-pointer">
                 Edit Provider Profile
               </button>
             </div>
@@ -535,8 +537,8 @@
   <!-- Toast Notification Container -->
   <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
 
+  <!-- Scripting Controller -->
   <script>
-    // Master Dataset compiled directly from Excel sheets
     let masterProviderDatabase = [
       {
         id: "PROV-000001",
@@ -652,7 +654,6 @@
       }
     ];
 
-    // Populate Master Spreadsheet records
     for (let i = 8; i <= 38; i++) {
       const paddedId = String(i).padStart(6, '0');
       masterProviderDatabase.push({
@@ -792,7 +793,6 @@
 
       selectedActiveProvider = record;
 
-      // Header Cards Binding
       document.getElementById('detail-prov-id').innerText = record.id;
       document.getElementById('detail-prov-status-chip').innerHTML = getStatusBadgeHTML(record.status);
       document.getElementById('detail-prov-name').innerText = record.name;
@@ -800,7 +800,6 @@
       document.getElementById('detail-prov-clinic').innerText = record.clinic;
       document.getElementById('detail-last-verified').innerText = record.lastVerified;
 
-      // Tab Profile Binding
       document.getElementById('tab-bridge-prov-id').innerText = record.id;
       document.getElementById('tab-physician-name').innerText = record.name;
       document.getElementById('tab-npi-num').innerText = record.npi || "Missing";
@@ -810,7 +809,6 @@
       document.getElementById('tab-fax-num').innerText = record.fax || "No Fax";
       document.getElementById('tab-notes-flags').innerText = record.notes || "None";
 
-      // Tab Practices & Contact List Binding
       const practicesContainer = document.getElementById('practices-list-container');
       practicesContainer.innerHTML = record.locations.map(loc => `
         <div class="p-4 bg-surface-container-low border border-line rounded-xl flex flex-col gap-2 text-xs">

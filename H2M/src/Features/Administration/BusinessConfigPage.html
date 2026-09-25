@@ -133,7 +133,7 @@
         </nav>
         
         <div class="flex items-center gap-6">
-          <!-- Notification Bell Icon (Standardized Hover Behavior) -->
+          <!-- Notification Bell Icon -->
           <div class="relative w-8 h-8 rounded-full flex items-center justify-center text-[#1C1B1F] hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors duration-200 cursor-pointer outline-none select-none group">
             <span class="material-symbols-outlined text-[20px] leading-none select-none text-[#1C1B1F] group-hover:text-primary transition-colors">
               notifications
@@ -185,17 +185,17 @@
       <div class="flex items-center justify-between shrink-0">
         <div>
           <h1 class="text-3xl font-semibold text-text" id="canvas-stage-title">Administration</h1>
-          <p class="text-xs text-muted mt-0.5">8 configurations · 5 active</p>
+          <p class="text-xs text-muted mt-0.5">8 configurations · 6 active</p>
         </div>
         <!-- Admin-Only Create Config CTA Button -->
         <button onclick="openCreateConfigModal()" class="admin-only px-5 py-2 bg-primary text-white rounded-full text-sm font-medium hover:bg-on-primary-container transition shadow-sm flex items-center gap-2 cursor-pointer">
           <span class="material-symbols-outlined text-[18px]">add_circle</span>
-          <span>Create Config</span>
+          <span>Create Configuration</span>
         </button>
       </div>
 
-      <!-- Master Business Configuration Table Frame (Content-Hugging Container with Internal Scroll) -->
-      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col h-auto shrink-0 mb-6">
+      <!-- Master Business Configuration Table Frame -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm flex flex-col flex-1 min-h-0 overflow-visible relative">
         
         <!-- Header Controls Row -->
         <div class="p-5 border-b border-line flex items-center justify-between shrink-0">
@@ -212,10 +212,9 @@
             <div class="relative inline-block">
               <select id="category-filter" onchange="handleConfigFilter()" class="h-9 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white hover:bg-[#F3EDF7] text-xs font-medium text-[#49454F] outline-none transition-colors duration-200 appearance-none cursor-pointer">
                 <option value="all">Category</option>
-                <option value="SLA">SLA</option>
                 <option value="Processing">Processing</option>
-                <option value="Notifications">Notifications</option>
                 <option value="Integrations">Integrations</option>
+                <option value="Notifications">Notifications</option>
                 <option value="Security">Security</option>
               </select>
               <span class="material-symbols-outlined pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
@@ -247,31 +246,31 @@
           </div>
         </div>
 
-        <!-- Table Body Container (Internal Vertical Scroll Control) -->
-        <div class="overflow-y-auto max-h-[calc(100vh-320px)] h-auto">
-          <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1050px]">
+        <!-- Scrollable Table Body Container (Optimized Proportions to prevent Text Collision) -->
+        <div class="flex-1 overflow-y-auto min-h-0 rounded-b-2xl">
+          <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1080px]">
             <colgroup>
+              <col class="w-[9%]">
+              <col class="w-[11%]">
+              <col class="w-[21%]">
               <col class="w-[10%]">
-              <col class="w-[12%]">
-              <col class="w-[22%]">
-              <col class="w-[12%]">
-              <col class="w-[8%]">
-              <col class="w-[12%]">
-              <col class="w-[11%]">
-              <col class="w-[11%]">
-              <col class="w-[8%] admin-only">
+              <col class="w-[7%]">
+              <col class="w-[10%]">
+              <col class="w-[18%]">
+              <col class="w-[14%]">
+              <col class="w-[10%]">
             </colgroup>
-            <thead class="sticky top-0 z-10">
-              <tr class="bg-primary text-white text-[11px] font-bold tracking-wider uppercase">
-                <th class="py-3 px-4">CONFIG ID</th>
-                <th class="py-3 px-4">CATEGORY</th>
-                <th class="py-3 px-4">NAME</th>
-                <th class="py-3 px-4">VALUE</th>
-                <th class="py-3 px-4">VERSION</th>
-                <th class="py-3 px-4">STATUS</th>
-                <th class="py-3 px-4">UPDATED BY</th>
-                <th class="py-3 px-4">DATE</th>
-                <th class="py-3 px-4 text-center admin-only">ACTIONS</th>
+            <thead>
+              <tr class="bg-primary text-white text-[11px] font-bold tracking-wider uppercase sticky top-0 z-10">
+                <th class="py-3 px-3">CONFIG ID</th>
+                <th class="py-3 px-3">CATEGORY</th>
+                <th class="py-3 px-3">NAME</th>
+                <th class="py-3 px-3">VALUE</th>
+                <th class="py-3 px-3">VERSION</th>
+                <th class="py-3 px-3">STATUS</th>
+                <th class="py-3 px-3">UPDATED BY</th>
+                <th class="py-3 px-3">DATE</th>
+                <th class="py-3 px-3 text-center">ACTIONS</th>
               </tr>
             </thead>
             <tbody id="config-table-body">
@@ -284,15 +283,60 @@
     </section>
   </div>
 
-  <!-- Add/Edit Business Configuration Modal -->
-  <div id="config-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-[16px] max-w-md w-full shadow-2xl overflow-hidden flex flex-col p-6 gap-4">
+  <!-- ACTION 1: READ-ONLY VIEW MODAL -->
+  <div id="view-config-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-[24px] max-w-lg w-full shadow-2xl overflow-hidden flex flex-col p-6 gap-4 border border-line">
       <div class="flex items-center justify-between border-b border-line pb-3">
-        <h3 class="text-lg font-bold text-text" id="config-modal-title">Edit Business Configuration</h3>
+        <h3 class="text-lg font-bold text-text" id="view-modal-title">View Business Configuration — CFG-001</h3>
+        <button onclick="closeViewConfigModal()" class="text-muted hover:text-text font-bold">✕</button>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 text-xs">
+        <div class="p-3 bg-surface-container-low rounded-xl border border-line/60">
+          <span class="block text-[10px] font-bold uppercase text-outline">Config ID</span>
+          <span id="view-cfg-id" class="font-mono font-bold text-primary text-sm">CFG-001</span>
+        </div>
+        <div class="p-3 bg-surface-container-low rounded-xl border border-line/60">
+          <span class="block text-[10px] font-bold uppercase text-outline">Category</span>
+          <span id="view-cfg-cat" class="font-medium text-text text-sm">Processing</span>
+        </div>
+        <div class="p-3 bg-surface-container-low rounded-xl border border-line/60 col-span-2">
+          <span class="block text-[10px] font-bold uppercase text-outline">Setting Name</span>
+          <span id="view-cfg-name" class="font-bold text-text text-sm">Attachment File Cap (MB)</span>
+        </div>
+        <div class="p-3 bg-surface-container-low rounded-xl border border-line/60">
+          <span class="block text-[10px] font-bold uppercase text-outline">Current Value</span>
+          <span id="view-cfg-val" class="font-mono font-bold text-text text-base">20</span>
+        </div>
+        <div class="p-3 bg-surface-container-low rounded-xl border border-line/60">
+          <span class="block text-[10px] font-bold uppercase text-outline">Active Version</span>
+          <span id="view-cfg-ver" class="font-mono font-bold text-text text-sm">v1.2</span>
+        </div>
+        <div class="p-3 bg-surface-container-low rounded-xl border border-line/60">
+          <span class="block text-[10px] font-bold uppercase text-outline">Status</span>
+          <div id="view-cfg-status" class="mt-1"></div>
+        </div>
+        <div class="p-3 bg-surface-container-low rounded-xl border border-line/60">
+          <span class="block text-[10px] font-bold uppercase text-outline">Last Updated By</span>
+          <span id="view-cfg-user" class="font-mono text-muted text-xs">jane.doe@h2m.org</span>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end pt-3 border-t border-line">
+        <button type="button" onclick="closeViewConfigModal()" class="px-6 py-2 bg-primary text-white text-xs font-bold rounded-full hover:bg-on-primary-container shadow-sm cursor-pointer">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTION 2: EDIT MODAL (ADMIN ONLY WITH AUDIT GATE) -->
+  <div id="config-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-[24px] max-w-lg w-full shadow-2xl overflow-hidden flex flex-col p-6 gap-4 border border-line">
+      <div class="flex items-center justify-between border-b border-line pb-3">
+        <h3 class="text-lg font-bold text-text" id="config-modal-title">Edit Business Configuration — CFG-001</h3>
         <button onclick="closeConfigModal()" class="text-muted hover:text-text font-bold">✕</button>
       </div>
 
-      <form id="config-form" onsubmit="event.preventDefault(); triggerSaveWithRationale();" class="flex flex-col gap-3 text-xs">
+      <form id="config-form" onsubmit="event.preventDefault(); commitEditModal();" class="flex flex-col gap-3.5 text-xs">
         <div>
           <label class="block font-bold text-outline uppercase mb-1">Config ID *</label>
           <input type="text" id="cfg-id-field" readonly class="w-full p-2.5 border border-outline rounded-lg bg-surface-container font-mono text-muted focus:outline-none">
@@ -301,17 +345,16 @@
         <div>
           <label class="block font-bold text-outline uppercase mb-1">Category *</label>
           <select id="cfg-category-field" class="w-full p-2.5 border border-outline rounded-lg bg-white focus:border-primary focus:outline-none">
-            <option value="SLA">SLA</option>
             <option value="Processing">Processing</option>
-            <option value="Notifications">Notifications</option>
             <option value="Integrations">Integrations</option>
+            <option value="Notifications">Notifications</option>
             <option value="Security">Security</option>
           </select>
         </div>
 
         <div>
           <label class="block font-bold text-outline uppercase mb-1">Setting Name *</label>
-          <input type="text" id="cfg-name-field" required class="w-full p-2.5 border border-outline rounded-lg bg-white focus:border-primary focus:outline-none" placeholder="e.g. Missing Fax SLA (days)">
+          <input type="text" id="cfg-name-field" required class="w-full p-2.5 border border-outline rounded-lg bg-white focus:border-primary focus:outline-none" placeholder="e.g. Attachment File Cap (MB)">
         </div>
 
         <div>
@@ -328,27 +371,85 @@
           </select>
         </div>
 
-        <button type="submit" id="hidden-cfg-submit" class="hidden"></button>
-      </form>
+        <!-- Mandatory Version Change Reason with Live Character Counter (AUD-008) -->
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label class="block font-bold text-text uppercase">Version Change Reason * <span class="text-status-failed-text text-[10px]">(Min 15 chars)</span></label>
+            <span id="edit-char-counter" class="text-[10px] font-mono text-muted">0/15 chars</span>
+          </div>
+          <textarea id="edit-audit-rationale" rows="3" oninput="validateEditModalRationale()" class="w-full p-2.5 border border-outline rounded-lg bg-white focus:border-primary focus:outline-none text-xs" placeholder="Explain the operational rationale for this configuration change..."></textarea>
+        </div>
 
-      <div class="flex items-center justify-end gap-2 pt-2 border-t border-line">
-        <button type="button" onclick="closeConfigModal()" class="px-4 py-2 border border-outline text-xs font-bold text-muted rounded-full hover:bg-surface-container">Cancel</button>
-        <button type="button" onclick="document.getElementById('hidden-cfg-submit').click()" class="px-5 py-2 bg-primary text-white text-xs font-bold rounded-full hover:bg-on-primary-container shadow-sm">Save Configuration</button>
+        <div class="flex items-center justify-end gap-2 pt-3 border-t border-line">
+          <button type="button" onclick="closeConfigModal()" class="px-4 py-2 border border-outline text-xs font-bold text-muted rounded-full hover:bg-surface-container cursor-pointer">Cancel</button>
+          <button type="submit" id="btn-save-edit-cfg" class="px-5 py-2 bg-primary text-white text-xs font-bold rounded-full opacity-50 cursor-not-allowed transition" disabled>Publish New Version</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ACTION 3: ITEM-SCOPED VERSION HISTORY MODAL (No Download Button) -->
+  <div id="item-history-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-[28px] max-w-3xl w-full shadow-2xl overflow-hidden flex flex-col p-6 gap-4 border border-line">
+      <div class="flex items-center justify-between border-b border-line pb-3">
+        <div>
+          <h3 class="text-lg font-bold text-text" id="item-history-modal-title">Version History — CFG-001</h3>
+          <p class="text-xs text-muted" id="item-history-modal-subtitle">Attachment File Cap (MB)</p>
+        </div>
+        <button onclick="closeItemHistoryModal()" class="text-muted hover:text-text font-bold">✕</button>
+      </div>
+
+      <div class="w-full overflow-x-auto max-h-[50vh]">
+        <table class="w-full border-collapse text-left text-xs table-fixed">
+          <colgroup>
+            <col class="w-[12%]">
+            <col class="w-[14%]">
+            <col class="w-[14%]">
+            <col class="w-[18%]">
+            <col class="w-[18%]">
+            <col class="w-[24%]">
+            <col class="w-[12%] admin-only">
+          </colgroup>
+          <thead>
+            <tr class="border-b border-line bg-primary text-white font-bold text-[11px] uppercase">
+              <th class="py-2.5 px-3">VERSION</th>
+              <th class="py-2.5 px-3">PREV VALUE</th>
+              <th class="py-2.5 px-3">NEW VALUE</th>
+              <th class="py-2.5 px-3">UPDATED BY</th>
+              <th class="py-2.5 px-3">DATE / TIME</th>
+              <th class="py-2.5 px-3">AUDIT REASON</th>
+              <th class="py-2.5 px-3 text-center admin-only">ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody id="item-history-table-body">
+            <!-- Injected via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flex justify-end pt-2 border-t border-line">
+        <button onclick="closeItemHistoryModal()" class="px-5 py-2 border border-outline rounded-full text-xs font-bold text-muted hover:bg-surface-container cursor-pointer">Close</button>
       </div>
     </div>
   </div>
 
-  <!-- Mandatory Audit Rationale Modal Overlay -->
+  <!-- Mandatory Rollback Audit Rationale Modal Overlay -->
   <div id="compliance-rationale-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[60] hidden flex justify-center items-center p-4">
     <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 border border-line">
-      <h3 class="text-sm font-bold text-text mb-2 uppercase tracking-wider">Reason Required</h3>
-      
+      <h3 class="text-sm font-bold text-text mb-2 uppercase tracking-wider">Operational Rollback Reason Required</h3>
+      <p class="text-xs text-muted mb-4 leading-relaxed">
+        This rollback action will restore historical parameters and write an append-only event to PM-008 Audit Logs.
+      </p>
 
-      <textarea id="audit-rationale" rows="3" class="w-full text-xs p-3 border border-outline rounded-lg focus:outline-none focus:border-primary mb-4" placeholder="Explain the threshold/SLA change (min 15 chars)..."></textarea>
+      <div class="flex items-center justify-between mb-1">
+        <label class="block text-[10px] font-bold text-text uppercase">Audit Rationale Note *</label>
+        <span id="rollback-char-counter" class="text-[10px] font-mono text-muted">0/15 chars</span>
+      </div>
+      <textarea id="rollback-audit-rationale" rows="3" oninput="validateRollbackRationale()" class="w-full text-xs p-3 border border-outline rounded-lg focus:outline-none focus:border-primary mb-4" placeholder="Explain why this setting is being rolled back (min 15 chars)..."></textarea>
 
       <div class="flex justify-end gap-2">
-        <button type="button" onclick="closeRationaleModal()" class="px-4 py-2 rounded-full border border-outline text-muted text-xs font-bold">Cancel</button>
-        <button type="button" id="confirm-commit-btn" class="px-4 py-2 rounded-full bg-primary text-white text-xs font-bold opacity-50 cursor-not-allowed" disabled>Confirm &amp; Log Commit</button>
+        <button type="button" onclick="closeRollbackRationaleModal()" class="px-4 py-2 rounded-full border border-outline text-muted text-xs font-bold cursor-pointer">Cancel</button>
+        <button type="button" id="confirm-rollback-btn" class="px-4 py-2 rounded-full bg-primary text-white text-xs font-bold opacity-50 cursor-not-allowed" disabled>Confirm &amp; Log Rollback</button>
       </div>
     </div>
   </div>
@@ -358,29 +459,128 @@
 
   <!-- Scripting Controller -->
   <script>
-    /* Master Business Configuration Dataset */
+    /* Master Business Configuration Dataset (Sanitized V1 Active Scope) */
     let configDatabase = [
-      { id: "CFG-001", category: "SLA", name: "Missing Fax SLA (days)", value: "3", version: "v1.2", status: "Active", updatedBy: "jane.doe", date: "Jul 15, 2026" },
-      { id: "CFG-002", category: "SLA", name: "Physician Info SLA (days)", value: "5", version: "v1.1", status: "Active", updatedBy: "p.patel", date: "Jul 10, 2026" },
-      { id: "CFG-003", category: "Processing", name: "Max Retry Attempts", value: "3", version: "v1.0", status: "Active", updatedBy: "m.reed", date: "Jun 20, 2026" },
-      { id: "CFG-004", category: "Notifications", name: "Alert Email Recipients", value: "ops@h2m.org", version: "v2.0", status: "Draft", updatedBy: "e.walsh", date: "Jul 22, 2026" },
-      { id: "CFG-005", category: "Processing", name: "Batch Processing Window", value: "00:00–06:00", version: "v1.3", status: "Active", updatedBy: "jane.doe", date: "Jul 01, 2026" },
-      { id: "CFG-006", category: "Integrations", name: "BlueGoose API Timeout (s)", value: "30", version: "v1.0", status: "Superseded", updatedBy: "p.patel", date: "May 15, 2026" },
-      { id: "CFG-007", category: "SLA", name: "Prescription Request SLA", value: "7", version: "v1.0", status: "Draft", updatedBy: "e.walsh", date: "Jul 22, 2026" },
-      { id: "CFG-008", category: "Security", name: "Session Timeout (min)", value: "30", version: "v2.1", status: "Active", updatedBy: "p.patel", date: "Jun 01, 2026" }
+      { 
+        id: "CFG-001", 
+        category: "Processing", 
+        name: "Attachment File Cap (MB)", 
+        value: "20", 
+        version: "v1.2", 
+        status: "Active", 
+        updatedBy: "jane.doe@h2m.org", 
+        date: "Jul 15, 2026",
+        history: [
+          { version: "v1.2", prevVal: "10", newVal: "20", updatedBy: "jane.doe@h2m.org", date: "Jul 15, 2026", reason: "Expanded file cap for hi-res clinical scans" },
+          { version: "v1.1", prevVal: "5", newVal: "10", updatedBy: "p.patel@h2m.org", date: "Jun 10, 2026", reason: "Increased attachment threshold per intake requirement" },
+          { version: "v1.0", prevVal: "0", newVal: "5", updatedBy: "m.reed@h2m.org", date: "May 01, 2026", reason: "Initial baseline attachment threshold" }
+        ]
+      },
+      { 
+        id: "CFG-002", 
+        category: "Integrations", 
+        name: "Fax Retry Backoff (min)", 
+        value: "5,15,45", 
+        version: "v1.1", 
+        status: "Active", 
+        updatedBy: "p.patel@h2m.org", 
+        date: "Jul 10, 2026",
+        history: [
+          { version: "v1.1", prevVal: "5,10,20", newVal: "5,15,45", updatedBy: "p.patel@h2m.org", date: "Jul 10, 2026", reason: "Optimized retry backoff intervals for tele-fax lines" }
+        ]
+      },
+      { 
+        id: "CFG-003", 
+        category: "Processing", 
+        name: "Max Retry Attempts", 
+        value: "3", 
+        version: "v1.0", 
+        status: "Active", 
+        updatedBy: "m.reed@h2m.org", 
+        date: "Jun 20, 2026",
+        history: [
+          { version: "v1.0", prevVal: "0", newVal: "3", updatedBy: "m.reed@h2m.org", date: "Jun 20, 2026", reason: "Baseline system retry limit set to 3" }
+        ]
+      },
+      { 
+        id: "CFG-004", 
+        category: "Notifications", 
+        name: "Alert Email Recipients", 
+        value: "ops@h2m.org", 
+        version: "v2.0", 
+        status: "Draft", 
+        updatedBy: "e.walsh@h2m.org", 
+        date: "Jul 22, 2026",
+        history: [
+          { version: "v2.0", prevVal: "alerts@h2m.org", newVal: "ops@h2m.org", updatedBy: "e.walsh@h2m.org", date: "Jul 22, 2026", reason: "Drafting group mailbox transition" }
+        ]
+      },
+      { 
+        id: "CFG-005", 
+        category: "Processing", 
+        name: "Batch Processing Window", 
+        value: "00:00–06:00", 
+        version: "v1.3", 
+        status: "Active", 
+        updatedBy: "jane.doe@h2m.org", 
+        date: "Jul 01, 2026",
+        history: [
+          { version: "v1.3", prevVal: "01:00-05:00", newVal: "00:00–06:00", updatedBy: "jane.doe@h2m.org", date: "Jul 01, 2026", reason: "Expanded window for overnight intake sync" }
+        ]
+      },
+      { 
+        id: "CFG-006", 
+        category: "Integrations", 
+        name: "BlueGoose API Timeout (s)", 
+        value: "30", 
+        version: "v1.0", 
+        status: "Superseded", 
+        updatedBy: "p.patel@h2m.org", 
+        date: "May 15, 2026",
+        history: [
+          { version: "v1.0", prevVal: "0", newVal: "30", updatedBy: "p.patel@h2m.org", date: "May 15, 2026", reason: "Initial API gateway timeout threshold" }
+        ]
+      },
+      { 
+        id: "CFG-007", 
+        category: "Processing", 
+        name: "Intake Polling Frequency (min)", 
+        value: "5", 
+        version: "v1.0", 
+        status: "Active", 
+        updatedBy: "e.walsh@h2m.org", 
+        date: "Jul 22, 2026",
+        history: [
+          { version: "v1.0", prevVal: "0", newVal: "5", updatedBy: "e.walsh@h2m.org", date: "Jul 22, 2026", reason: "Synchronized intake polling frequency" }
+        ]
+      },
+      { 
+        id: "CFG-008", 
+        category: "Security", 
+        name: "Session Timeout (min)", 
+        value: "30", 
+        version: "v2.1", 
+        status: "Active", 
+        updatedBy: "p.patel@h2m.org", 
+        date: "Jun 01, 2026",
+        history: [
+          { version: "v2.1", prevVal: "60", newVal: "30", updatedBy: "p.patel@h2m.org", date: "Jun 01, 2026", reason: "Hardened session inactivity timeout per security policy" }
+        ]
+      }
     ];
 
     /* State Variables */
-    let activeRole = 'administrator';
+    let activeRole = 'administrator'; // 'administrator' or 'operations'
     let searchQuery = '';
     let categoryFilter = 'all';
     let statusFilter = 'all';
     let currentPageIndex = 0;
     const PAGE_LIMIT = 8;
     let selectedActiveConfig = null;
+    let selectedRollbackVersion = null;
     let openActionMenuId = null;
 
-    /* Render Engine (All cell texts set to text-sm) */
+    /* Render Engine */
     function renderConfigWorkspace() {
       let filtered = configDatabase;
 
@@ -427,7 +627,7 @@
         return;
       }
 
-      tbody.innerHTML = pageData.map(c => {
+      tbody.innerHTML = pageData.map((c, index) => {
         let badge = '';
         if (c.status === 'Active') {
           badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-success-bg text-status-success-text whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Active</span>`;
@@ -437,60 +637,37 @@
           badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-info-bg text-status-info-text whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Superseded</span>`;
         }
 
-        /* Action Popover Menu Items based on row status */
-        let actionMenuItems = '';
-        if (c.status === 'Draft') {
-          actionMenuItems = `
-            <button onclick="editConfigItem('${c.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
-              <span class="material-symbols-outlined text-[18px] text-primary">edit</span> Edit
-            </button>
-            <button onclick="triggerAction('Validate', '${c.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text border-t border-line/60 transition cursor-pointer">
-              <span class="material-symbols-outlined text-[18px] text-primary">fact_check</span> Validate
-            </button>
-            <button onclick="triggerAction('Activate', '${c.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text border-t border-line/60 transition cursor-pointer">
-              <span class="material-symbols-outlined text-[18px] text-primary">task_alt</span> Activate
-            </button>
-          `;
-        } else if (c.status === 'Superseded') {
-          actionMenuItems = `
-            <button onclick="editConfigItem('${c.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
-              <span class="material-symbols-outlined text-[18px] text-primary">edit</span> Edit
-            </button>
-          `;
-        } else {
-          actionMenuItems = `
-            <button onclick="editConfigItem('${c.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
-              <span class="material-symbols-outlined text-[18px] text-primary">edit</span> Edit
-            </button>
-            <button onclick="triggerAction('Rollback', '${c.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text border-t border-line/60 transition cursor-pointer">
-              <span class="material-symbols-outlined text-[18px] text-muted">history_toggle_off</span> Rollback
-            </button>
-          `;
-        }
-
-        /* Material 3 Three-Dot Menu Button & Floating Popover Container */
+        /* 3-Dot Action Popover Order: Edit -> View -> History */
         const actionMenuHTML = `
           <div class="relative inline-block text-left">
             <button onclick="toggleActionMenu(event, '${c.id}')" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors outline-none cursor-pointer" title="More options">
               <span class="material-symbols-outlined text-[20px]">more_vert</span>
             </button>
-            <div id="action-popover-${c.id}" class="hidden absolute right-0 top-full mt-1 bg-white rounded-2xl border border-line z-50 w-36 py-1 shadow-lg">
-              ${actionMenuItems}
+            <div id="action-popover-${c.id}" class="hidden absolute right-2 z-[100] w-32 py-1 bg-white rounded-2xl border border-line shadow-xl">
+              <button onclick="openEditConfigModal('${c.id}')" class="admin-only first:border-t-0 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
+                <span class="material-symbols-outlined text-[18px] text-muted">edit</span> Edit
+              </button>
+              <button onclick="openViewConfigModal('${c.id}')" class="first:border-t-0 border-t border-line/60 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
+                <span class="material-symbols-outlined text-[18px] text-muted">visibility</span> View
+              </button>
+              <button onclick="openItemHistoryModal('${c.id}')" class="first:border-t-0 border-t border-line/60 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
+                <span class="material-symbols-outlined text-[18px] text-muted">history</span> History
+              </button>
             </div>
           </div>
         `;
 
         return `
-          <tr class="border-b border-line hover:bg-surface-container-low transition">
-            <td class="py-3.5 px-4 font-mono font-bold text-primary text-sm whitespace-nowrap">${c.id}</td>
-            <td class="py-3.5 px-4 text-muted text-sm">${c.category}</td>
-            <td class="py-3.5 px-4 font-bold text-text text-sm">${c.name}</td>
-            <td class="py-3.5 px-4 font-mono text-text text-sm">${c.value}</td>
-            <td class="py-3.5 px-4 font-mono text-muted text-sm">${c.version}</td>
-            <td class="py-3.5 px-4">${badge}</td>
-            <td class="py-3.5 px-4 font-mono text-sm text-muted">${c.updatedBy}</td>
-            <td class="py-3.5 px-4 font-mono text-sm text-muted whitespace-nowrap">${c.date}</td>
-            <td class="py-3.5 px-4 text-center admin-only">
+          <tr class="border-b last:border-b-0 border-line hover:bg-surface-container-low transition">
+            <td class="py-3.5 px-3 font-mono font-bold text-primary text-sm whitespace-nowrap">${c.id}</td>
+            <td class="py-3.5 px-3 text-muted text-sm truncate">${c.category}</td>
+            <td class="py-3.5 px-3 font-bold text-text text-sm truncate" title="${c.name}">${c.name}</td>
+            <td class="py-3.5 px-3 font-mono text-text text-sm truncate">${c.value}</td>
+            <td class="py-3.5 px-3 font-mono text-muted text-sm">${c.version}</td>
+            <td class="py-3.5 px-3">${badge}</td>
+            <td class="py-3.5 px-3 font-mono text-xs text-muted truncate pr-3" title="${c.updatedBy}">${c.updatedBy}</td>
+            <td class="py-3.5 px-3 font-mono text-xs text-muted whitespace-nowrap">${c.date}</td>
+            <td class="py-3.5 px-3 text-center">
               ${actionMenuHTML}
             </td>
           </tr>
@@ -498,15 +675,25 @@
       }).join('');
     }
 
-    /* Action Popover Toggle Engine */
+    /* Smart Dynamic Action Popover Placement Engine */
     function toggleActionMenu(e, id) {
       e.stopPropagation();
       closeAllActionMenus();
+      
       const popover = document.getElementById(`action-popover-${id}`);
-      if (popover) {
-        popover.classList.remove('hidden');
-        openActionMenuId = id;
+      if (!popover) return;
+
+      const itemIndex = configDatabase.findIndex(i => i.id === id);
+      
+      // Top 2 rows pop DOWNWARD to avoid top header clipping; remaining rows pop UPWARD
+      if (itemIndex < 2) {
+        popover.className = "hidden absolute right-2 top-full mt-1 z-[100] w-32 py-1 bg-white rounded-2xl border border-line shadow-xl";
+      } else {
+        popover.className = "hidden absolute right-2 bottom-full mb-1 z-[100] w-32 py-1 bg-white rounded-2xl border border-line shadow-xl";
       }
+
+      popover.classList.remove('hidden');
+      openActionMenuId = id;
     }
 
     function closeAllActionMenus() {
@@ -537,8 +724,34 @@
       renderConfigWorkspace();
     }
 
-    /* Modal Controls */
-    function editConfigItem(cfgId) {
+    /* 1. ACTION 1: READ-ONLY VIEW MODAL */
+    function openViewConfigModal(cfgId) {
+      closeAllActionMenus();
+      const item = configDatabase.find(i => i.id === cfgId);
+      if (!item) return;
+
+      document.getElementById('view-modal-title').innerText = `View Business Configuration — ${item.id}`;
+      document.getElementById('view-cfg-id').innerText = item.id;
+      document.getElementById('view-cfg-cat').innerText = item.category;
+      document.getElementById('view-cfg-name').innerText = item.name;
+      document.getElementById('view-cfg-val').innerText = item.value;
+      document.getElementById('view-cfg-ver').innerText = item.version;
+      document.getElementById('view-cfg-user').innerText = item.updatedBy;
+
+      const badge = item.status === 'Active' 
+        ? `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-success-bg text-status-success-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Active</span>`
+        : `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-info-bg text-status-info-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>${item.status}</span>`;
+      
+      document.getElementById('view-cfg-status').innerHTML = badge;
+      document.getElementById('view-config-modal').classList.remove('hidden');
+    }
+
+    function closeViewConfigModal() {
+      document.getElementById('view-config-modal').classList.add('hidden');
+    }
+
+    /* 2. ACTION 2: EDIT MODAL (ADMIN ONLY WITH AUDIT GATE) */
+    function openEditConfigModal(cfgId) {
       closeAllActionMenus();
       const item = configDatabase.find(i => i.id === cfgId);
       if (!item) return;
@@ -550,7 +763,9 @@
       document.getElementById('cfg-name-field').value = item.name;
       document.getElementById('cfg-value-field').value = item.value;
       document.getElementById('cfg-status-field').value = item.status;
+      document.getElementById('edit-audit-rationale').value = '';
 
+      validateEditModalRationale();
       document.getElementById('config-modal').classList.remove('hidden');
     }
 
@@ -559,22 +774,25 @@
       const nextId = `CFG-00${configDatabase.length + 1}`;
       selectedActiveConfig = {
         id: nextId,
-        category: "SLA",
+        category: "Processing",
         name: "",
         value: "",
         version: "v1.0",
         status: "Draft",
-        updatedBy: activeRole === 'administrator' ? "p.patel" : "jane.doe",
-        date: "Jul 22, 2026"
+        updatedBy: activeRole === 'administrator' ? "p.patel@h2m.org" : "jane.doe@h2m.org",
+        date: "Jul 22, 2026",
+        history: []
       };
 
       document.getElementById('config-modal-title').innerText = `Create Business Configuration — ${nextId}`;
       document.getElementById('cfg-id-field').value = nextId;
-      document.getElementById('cfg-category-field').value = "SLA";
+      document.getElementById('cfg-category-field').value = "Processing";
       document.getElementById('cfg-name-field').value = "";
       document.getElementById('cfg-value-field').value = "";
       document.getElementById('cfg-status-field').value = "Draft";
+      document.getElementById('edit-audit-rationale').value = '';
 
+      validateEditModalRationale();
       document.getElementById('config-modal').classList.remove('hidden');
     }
 
@@ -582,58 +800,147 @@
       document.getElementById('config-modal').classList.add('hidden');
     }
 
-    function triggerAction(actionName, cfgId) {
+    function validateEditModalRationale() {
+      const txt = document.getElementById('edit-audit-rationale').value.trim();
+      const len = txt.length;
+      document.getElementById('edit-char-counter').innerText = `${len}/15 chars`;
+
+      const btn = document.getElementById('btn-save-edit-cfg');
+      if (len >= 15) {
+        btn.disabled = false;
+        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+      } else {
+        btn.disabled = true;
+        btn.classList.add('opacity-50', 'cursor-not-allowed');
+      }
+    }
+
+    function commitEditModal() {
+      if (!selectedActiveConfig) return;
+
+      const newName = document.getElementById('cfg-name-field').value.trim();
+      const newVal = document.getElementById('cfg-value-field').value.trim();
+      const newCat = document.getElementById('cfg-category-field').value;
+      const newStatus = document.getElementById('cfg-status-field').value;
+      const rationale = document.getElementById('edit-audit-rationale').value.trim();
+
+      if (newName && newVal) {
+        const prevVal = selectedActiveConfig.value;
+        selectedActiveConfig.category = newCat;
+        selectedActiveConfig.name = newName;
+        selectedActiveConfig.value = newVal;
+        selectedActiveConfig.status = newStatus;
+        selectedActiveConfig.date = "Jul 22, 2026";
+        selectedActiveConfig.updatedBy = activeRole === 'administrator' ? "p.patel@h2m.org" : "jane.doe@h2m.org";
+
+        // Push new snapshot to item history
+        if (!selectedActiveConfig.history) selectedActiveConfig.history = [];
+        selectedActiveConfig.history.unshift({
+          version: selectedActiveConfig.version || "v1.0",
+          prevVal: prevVal,
+          newVal: newVal,
+          updatedBy: selectedActiveConfig.updatedBy,
+          date: selectedActiveConfig.date,
+          reason: rationale
+        });
+
+        if (!configDatabase.some(i => i.id === selectedActiveConfig.id)) {
+          configDatabase.unshift(selectedActiveConfig);
+        }
+
+        showToast(`Configuration ${selectedActiveConfig.id} updated & committed to Audit Log.`);
+      }
+
+      closeConfigModal();
+      renderConfigWorkspace();
+    }
+
+    /* 3. ACTION 3: ITEM-SCOPED VERSION HISTORY MODAL */
+    function openItemHistoryModal(cfgId) {
       closeAllActionMenus();
       const item = configDatabase.find(i => i.id === cfgId);
       if (!item) return;
 
       selectedActiveConfig = item;
-      triggerSaveWithRationale();
+      document.getElementById('item-history-modal-title').innerText = `Version History — ${item.id}`;
+      document.getElementById('item-history-modal-subtitle').innerText = item.name;
+
+      const historyData = item.history && item.history.length > 0 ? item.history : [
+        { version: item.version, prevVal: "-", newVal: item.value, updatedBy: item.updatedBy, date: item.date, reason: "Initial baseline configuration" }
+      ];
+
+      const tbody = document.getElementById('item-history-table-body');
+      tbody.innerHTML = historyData.map(h => {
+        const isCurrentActive = h.version === item.version && item.status === 'Active';
+
+        return `
+          <tr class="border-b border-line hover:bg-surface-container-low transition">
+            <td class="py-2.5 px-3 font-mono font-bold text-primary text-xs whitespace-nowrap">${h.version}</td>
+            <td class="py-2.5 px-3 font-mono text-muted text-xs whitespace-nowrap">${h.prevVal}</td>
+            <td class="py-2.5 px-3 font-mono font-bold text-text text-xs whitespace-nowrap">${h.newVal}</td>
+            <td class="py-2.5 px-3 font-mono text-muted text-[11px] truncate" title="${h.updatedBy}">${h.updatedBy}</td>
+            <td class="py-2.5 px-3 text-muted text-[11px] whitespace-nowrap">${h.date}</td>
+            <td class="py-2.5 px-3 text-text text-xs italic truncate" title="${h.reason}">${h.reason}</td>
+            <td class="py-2.5 px-3 text-center admin-only">
+              ${isCurrentActive 
+                ? `<span class="text-[10px] font-bold text-status-success-text">Active</span>` 
+                : `<button onclick="triggerRollbackConfirmation('${h.version}')" class="w-7 h-7 rounded-full inline-flex items-center justify-center bg-primary text-white hover:bg-on-primary-container transition shadow-xs cursor-pointer" title="Rollback to Version"><span class="material-symbols-outlined text-[16px]">settings_backup_restore</span></button>`
+              }
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      document.getElementById('item-history-modal').classList.remove('hidden');
     }
 
-    /* Compliance Audit Rationale Gating */
-    function triggerSaveWithRationale() {
-      document.getElementById('audit-rationale').value = '';
-      const confirmBtn = document.getElementById('confirm-commit-btn');
-      confirmBtn.disabled = true;
-      confirmBtn.classList.add('opacity-50', 'cursor-not-allowed');
+    function closeItemHistoryModal() {
+      document.getElementById('item-history-modal').classList.add('hidden');
+    }
 
+    /* Rollback Execution & Compliance Rationale */
+    function triggerRollbackConfirmation(version) {
+      selectedRollbackVersion = version;
+      document.getElementById('rollback-audit-rationale').value = '';
+      validateRollbackRationale();
       document.getElementById('compliance-rationale-modal').classList.remove('hidden');
-
-      const txt = document.getElementById('audit-rationale');
-      txt.oninput = function() {
-        if (txt.value.trim().length >= 15) {
-          confirmBtn.disabled = false;
-          confirmBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-          confirmBtn.onclick = executeCommit;
-        } else {
-          confirmBtn.disabled = true;
-          confirmBtn.classList.add('opacity-50', 'cursor-not-allowed');
-        }
-      };
     }
 
-    function closeRationaleModal() {
+    function closeRollbackRationaleModal() {
       document.getElementById('compliance-rationale-modal').classList.add('hidden');
     }
 
-    function executeCommit() {
-      closeRationaleModal();
-      closeConfigModal();
+    function validateRollbackRationale() {
+      const txt = document.getElementById('rollback-audit-rationale').value.trim();
+      const len = txt.length;
+      document.getElementById('rollback-char-counter').innerText = `${len}/15 chars`;
 
-      if (selectedActiveConfig) {
-        if (document.getElementById('cfg-name-field').value.trim() !== '') {
-          selectedActiveConfig.category = document.getElementById('cfg-category-field').value;
-          selectedActiveConfig.name = document.getElementById('cfg-name-field').value.trim();
-          selectedActiveConfig.value = document.getElementById('cfg-value-field').value.trim();
-          selectedActiveConfig.status = document.getElementById('cfg-status-field').value;
+      const btn = document.getElementById('confirm-rollback-btn');
+      if (len >= 15) {
+        btn.disabled = false;
+        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+        btn.onclick = executeRollbackCommit;
+      } else {
+        btn.disabled = true;
+        btn.classList.add('opacity-50', 'cursor-not-allowed');
+      }
+    }
 
-          if (!configDatabase.some(i => i.id === selectedActiveConfig.id)) {
-            configDatabase.unshift(selectedActiveConfig);
-          }
+    function executeRollbackCommit() {
+      closeRollbackRationaleModal();
+      closeItemHistoryModal();
+
+      if (selectedActiveConfig && selectedRollbackVersion) {
+        const targetSnapshot = selectedActiveConfig.history.find(h => h.version === selectedRollbackVersion);
+        if (targetSnapshot) {
+          selectedActiveConfig.value = targetSnapshot.newVal;
+          selectedActiveConfig.version = targetSnapshot.version;
+          selectedActiveConfig.status = "Active";
+          selectedActiveConfig.date = "Jul 22, 2026";
+          selectedActiveConfig.updatedBy = activeRole === 'administrator' ? "p.patel@h2m.org" : "jane.doe@h2m.org";
         }
 
-        showToast(`Configuration ${selectedActiveConfig.id} updated & committed to Audit Log.`);
+        showToast(`Configuration ${selectedActiveConfig.id} rolled back to ${selectedRollbackVersion}.`);
       }
 
       renderConfigWorkspace();

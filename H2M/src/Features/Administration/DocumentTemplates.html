@@ -577,25 +577,25 @@
           badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-info-bg text-status-info-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Superseded</span>`;
         }
 
-        /* 3-Dot Action Popover Menu - Positioned upward to avoid container overflow clip */
-        const actionMenuHTML = `
-          <div class="relative inline-block text-left">
-            <button onclick="toggleActionMenu(event, '${t.id}')" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors outline-none cursor-pointer" title="More options">
-              <span class="material-symbols-outlined text-[20px]">more_vert</span>
-            </button>
-            <div id="action-popover-${t.id}" class="hidden absolute right-2 bottom-full mb-1 bg-white rounded-2xl border border-line z-50 w-32 py-1 shadow-xl">
-              <button onclick="openHistoryModal('${t.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
-                <span class="material-symbols-outlined text-[18px] text-muted">history</span> History
-              </button>
-              <button onclick="editTemplateItem('${t.id}')" class="admin-only w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text border-t border-line/60 transition cursor-pointer">
-                <span class="material-symbols-outlined text-[18px] text-muted">edit</span> Edit
-              </button>
-              <button onclick="openViewDocumentModal('${t.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text border-t border-line/60 transition cursor-pointer">
-                <span class="material-symbols-outlined text-[18px] text-muted">visibility</span> View
-              </button>
-            </div>
-          </div>
-        `;
+        /* 3-Dot Action Popover Menu - Hierarchy: Delete -> View -> History */
+const actionMenuHTML = `
+  <div class="relative inline-block text-left">
+    <button onclick="toggleActionMenu(event, '${t.id}')" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors outline-none cursor-pointer" title="More options">
+      <span class="material-symbols-outlined text-[20px]">more_vert</span>
+    </button>
+    <div id="action-popover-${t.id}" class="hidden absolute right-2 bottom-full mb-1 bg-white rounded-2xl border border-line z-50 w-32 py-1 shadow-xl">
+      <button onclick="deleteTemplateItem('${t.id}')" class="admin-only w-full px-3.5 py-2 text-left hover:bg-[#FDECEA] flex items-center gap-2.5 text-xs font-medium text-status-failed-text transition cursor-pointer">
+        <span class="material-symbols-outlined text-[18px]">delete</span> Delete
+      </button>
+      <button onclick="openViewDocumentModal('${t.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text border-t border-line/60 transition cursor-pointer">
+        <span class="material-symbols-outlined text-[18px] text-muted">visibility</span> View
+      </button>
+      <button onclick="openHistoryModal('${t.id}')" class="w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text border-t border-line/60 transition cursor-pointer">
+        <span class="material-symbols-outlined text-[18px] text-muted">history</span> History
+      </button>
+    </div>
+  </div>
+`;
 
         return `
           <tr class="border-b last:border-b-0 border-line hover:bg-surface-container-low transition">
@@ -772,13 +772,45 @@
       document.getElementById('upload-template-modal').classList.add('hidden');
     }
 
-    function editTemplateItem(tplId) {
+    function deleteTemplateItem(tplId) {
       closeAllActionMenus();
-      const item = templateDatabase.find(i => i.id === tplId);
-      if (!item) return;
 
-      selectedActiveTemplate = item;
-      triggerSaveWithRationale();
+      const itemIndex = templateDatabase.findIndex(i => i.id === tplId);
+      if (itemIndex === -1) return;
+
+      const item = templateDatabase[itemIndex];
+
+      // Delete does not require the operational rationale modal.
+      // The rationale is reserved for rollback/audit-controlled actions.
+      const confirmed = window.confirm(
+        `Delete template "${item.name}" (${item.id})?\\n\\nThis action will remove the template from the current template list.`
+      );
+
+      if (!confirmed) return;
+
+      templateDatabase.splice(itemIndex, 1);
+      selectedActiveTemplate = null;
+
+      // Keep pagination valid after deletion.
+      const filteredCount = templateDatabase.filter(t => {
+        const matchesSearch =
+          !searchQuery ||
+          t.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          t.name.toLowerCase().includes(searchQuery.toLowerCase());
+
+        const matchesStatus =
+          statusFilter === 'all' || t.status === statusFilter;
+
+        return matchesSearch && matchesStatus;
+      }).length;
+
+      const maxPages = Math.ceil(filteredCount / PAGE_LIMIT) || 1;
+      if (currentPageIndex >= maxPages) {
+        currentPageIndex = maxPages - 1;
+      }
+
+      renderTemplateWorkspace();
+      showToast(`Template ${item.id} deleted.`);
     }
 
     /* Compliance Audit Rationale Gating */

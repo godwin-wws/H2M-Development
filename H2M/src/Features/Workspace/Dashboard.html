@@ -27,7 +27,7 @@
             primary: '#6750A4',
             'primary-soft': '#EADDFF',
             line: '#CAC4D0',
-            text: '#1D1B20',
+            text: '#1C1B1F',
             muted: '#79747E',
             'blue-bg': '#E8F0FE',
             blue: '#174EA6',
@@ -229,14 +229,14 @@
       </section>
 
       <!-- Recent Orders Section -->
-      <section class="bg-white border border-line rounded-2xl shadow-sm overflow-hidden flex flex-col flex-1 min-h-0 w-full">
+      <section class="bg-white border border-line rounded-2xl shadow-sm flex flex-col flex-1 min-h-0 w-full overflow-visible">
         
         <!-- Controls Row -->
         <div class="p-5 border-b border-line flex flex-col gap-3 shrink-0">
           <h2 class="text-xl font-semibold text-text">Recent Orders</h2>
           
-          <div class="flex items-center justify-between w-full gap-2">
-            <div class="flex items-center gap-2.5 flex-wrap">
+          <div class="flex items-center justify-between w-full gap-2 overflow-visible">
+            <div class="flex items-center gap-2.5 flex-wrap overflow-visible">
               <!-- Search Bar -->
               <div class="h-9 w-[200px] lg:w-[240px] px-3.5 bg-[#F3EDF7] rounded-full flex items-center gap-2 border-0 focus-within:ring-2 focus-within:ring-[#6750A4] shrink-0">
                 <span class="material-symbols-outlined text-[#49454F] text-[20px] shrink-0 leading-none select-none">search</span>
@@ -248,40 +248,109 @@
                 >
               </div>
 
-              <!-- Insurance Filter Dropdown -->
-              <div class="relative inline-block">
-                <select id="insurance-filter" class="h-8 pl-3 pr-7 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
-                  <option value="all">Insurance</option>
-                  <option>United Healthcare Community Plan</option>
-                  <option>Anthem Blue Cross</option>
-                  <option>Wellpoint</option>
-                  <option>TennCare</option>
-                  <option>CoverKids</option>
-                </select>
-                <span class="material-symbols-outlined pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-[#49454F] text-[18px] select-none">arrow_drop_down</span>
+              <!-- SEARCHABLE PLACEHOLDER DROPDOWN 1: INSURANCE -->
+              <div class="relative inline-block text-left overflow-visible" id="dd-container-insurance">
+                <button 
+                  type="button" 
+                  onclick="toggleCustomDropdown('insurance')"
+                  class="h-8 pl-3 pr-2 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] hover:bg-[#F3EDF7] transition flex items-center gap-1.5 cursor-pointer outline-none focus:ring-2 focus:ring-[#6750a4]"
+                >
+                  <span id="dd-label-insurance" class="truncate max-w-[140px]">Insurance</span>
+                  <span class="material-symbols-outlined text-[#49454F] text-[18px] shrink-0">arrow_drop_down</span>
+                </button>
+
+                <!-- Floating Dropdown Search Popover -->
+                <div id="dd-menu-insurance" class="hidden absolute left-0 top-[calc(100%+4px)] z-50 w-64 bg-white border border-[#CAC4D0] rounded-xl shadow-xl overflow-hidden p-2 flex flex-col gap-1.5">
+                  <!-- Search Input Box matching image_fde5b8.png -->
+                  <div class="relative flex items-center px-2 py-1 border border-[#1976D2] rounded-lg bg-white">
+                    <input 
+                      type="text" 
+                      id="dd-search-insurance" 
+                      oninput="filterCustomDropdownOptions('insurance')" 
+                      placeholder="Select Insurance" 
+                      class="w-full text-xs text-[#1C1B1F] placeholder-[#79747E] bg-transparent outline-none pr-5 font-sans"
+                    >
+                    <span class="material-symbols-outlined text-[#79747E] text-[16px] absolute right-2 pointer-events-none">search</span>
+                  </div>
+
+                  <!-- Options List -->
+                  <div id="dd-list-insurance" class="max-h-48 overflow-y-auto flex flex-col text-xs text-[#1C1B1F]">
+                    <button type="button" onclick="selectCustomOption('insurance', 'all', 'Insurance')" class="px-3 py-2 text-left hover:bg-[#F3EDF7] rounded-md font-medium transition">All</button>
+                    <button type="button" onclick="selectCustomOption('insurance', 'United Healthcare Community Plan', 'United Healthcare')" class="px-3 py-2 text-left hover:bg-[#F3EDF7] rounded-md font-medium transition">United Healthcare Community Plan</button>
+                    <button type="button" onclick="selectCustomOption('insurance', 'Anthem Blue Cross', 'Anthem Blue Cross')" class="px-3 py-2 text-left hover:bg-[#F3EDF7] rounded-md font-medium transition">Anthem Blue Cross</button>
+                    <button type="button" onclick="selectCustomOption('insurance', 'Wellpoint', 'Wellpoint')" class="px-3 py-2 text-left hover:bg-[#F3EDF7] rounded-md font-medium transition">Wellpoint</button>
+                    <button type="button" onclick="selectCustomOption('insurance', 'TennCare', 'TennCare')" class="px-3 py-2 text-left hover:bg-[#F3EDF7] rounded-md font-medium transition">TennCare</button>
+                    <button type="button" onclick="selectCustomOption('insurance', 'CoverKids', 'CoverKids')" class="px-3 py-2 text-left hover:bg-[#F3EDF7] rounded-md font-medium transition">CoverKids</button>
+                  </div>
+                </div>
               </div>
 
-              <!-- State Filter Dropdown -->
-              <div class="relative inline-block">
-                <select id="state-filter" class="h-8 pl-3 pr-7 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
-                  <option value="all">State</option>
-                  <option>Tennessee</option>
-                  <option>Michigan</option>
-                  <option>Ohio</option>
-                </select>
-                <span class="material-symbols-outlined pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-[#49454F] text-[18px] select-none">arrow_drop_down</span>
+              <!-- SEARCHABLE PLACEHOLDER DROPDOWN 2: STATE -->
+              <div class="relative inline-block text-left overflow-visible" id="dd-container-state">
+                <button 
+                  type="button" 
+                  onclick="toggleCustomDropdown('state')"
+                  class="h-8 pl-3 pr-2 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] hover:bg-[#F3EDF7] transition flex items-center gap-1.5 cursor-pointer outline-none focus:ring-2 focus:ring-[#6750a4]"
+                >
+                  <span id="dd-label-state" class="truncate max-w-[120px]">State</span>
+                  <span class="material-symbols-outlined text-[#49454F] text-[18px] shrink-0">arrow_drop_down</span>
+                </button>
+
+                <!-- Floating Dropdown Search Popover -->
+                <div id="dd-menu-state" class="hidden absolute left-0 top-[calc(100%+4px)] z-50 w-56 bg-white border border-[#CAC4D0] rounded-xl shadow-xl overflow-hidden p-2 flex flex-col gap-1.5">
+                  <div class="relative flex items-center px-2 py-1 border border-[#1976D2] rounded-lg bg-white">
+                    <input 
+                      type="text" 
+                      id="dd-search-state" 
+                      oninput="filterCustomDropdownOptions('state')" 
+                      placeholder="Select State" 
+                      class="w-full text-xs text-[#1C1B1F] placeholder-[#79747E] bg-transparent outline-none pr-5 font-sans"
+                    >
+                    <span class="material-symbols-outlined text-[#79747E] text-[16px] absolute right-2 pointer-events-none">search</span>
+                  </div>
+
+                  <div id="dd-list-state" class="max-h-48 overflow-y-auto flex flex-col text-xs text-[#1C1B1F]">
+                    <button type="button" onclick="selectCustomOption('state', 'all', 'State')" class="px-3 py-2 text-left hover:bg-[#F3EDF7] rounded-md font-medium transition">All</button>
+                    <button type="button" onclick="selectCustomOption('state', 'Tennessee', 'Tennessee')" class="px-3 py-2 text-left hover:bg-[#F3EDF7] rounded-md font-medium transition">Tennessee</button>
+                    <button type="button" onclick="selectCustomOption('state', 'Michigan', 'Michigan')" class="px-3 py-2 text-left hover:bg-[#F3EDF7] rounded-md font-medium transition">Michigan</button>
+                    <button type="button" onclick="selectCustomOption('state', 'Ohio', 'Ohio')" class="px-3 py-2 text-left hover:bg-[#F3EDF7] rounded-md font-medium transition">Ohio</button>
+                  </div>
+                </div>
               </div>
 
-              <!-- Date Filter Dropdown -->
-              <div class="relative inline-block">
-                <select id="date-filter" class="h-8 pl-3 pr-7 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] outline-none hover:bg-[#F3EDF7] transition appearance-none cursor-pointer">
-                  <option value="all">Date</option>
-                  <option value="today">Today</option>
-                  <option value="7days">Last 7 Days</option>
-                  <option value="30days">Last 30 Days</option>
-                </select>
-                <span class="material-symbols-outlined pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 text-[#49454F] text-[18px] select-none">arrow_drop_down</span>
+              <!-- SEARCHABLE PLACEHOLDER DROPDOWN 3: DATE -->
+              <div class="relative inline-block text-left overflow-visible" id="dd-container-date">
+                <button 
+                  type="button" 
+                  onclick="toggleCustomDropdown('date')"
+                  class="h-8 pl-3 pr-2 border border-[#79747E] rounded-lg bg-white text-xs font-medium text-[#49454f] hover:bg-[#F3EDF7] transition flex items-center gap-1.5 cursor-pointer outline-none focus:ring-2 focus:ring-[#6750a4]"
+                >
+                  <span id="dd-label-date" class="truncate max-w-[120px]">Date</span>
+                  <span class="material-symbols-outlined text-[#49454F] text-[18px] shrink-0">arrow_drop_down</span>
+                </button>
+
+                <!-- Floating Dropdown Search Popover -->
+                <div id="dd-menu-date" class="hidden absolute left-0 top-[calc(100%+4px)] z-50 w-56 bg-white border border-[#CAC4D0] rounded-xl shadow-xl overflow-hidden p-2 flex flex-col gap-1.5">
+                  <div class="relative flex items-center px-2 py-1 border border-[#1976D2] rounded-lg bg-white">
+                    <input 
+                      type="text" 
+                      id="dd-search-date" 
+                      oninput="filterCustomDropdownOptions('date')" 
+                      placeholder="Select Date" 
+                      class="w-full text-xs text-[#1C1B1F] placeholder-[#79747E] bg-transparent outline-none pr-5 font-sans"
+                    >
+                    <span class="material-symbols-outlined text-[#79747E] text-[16px] absolute right-2 pointer-events-none">search</span>
+                  </div>
+
+                  <div id="dd-list-date" class="max-h-48 overflow-y-auto flex flex-col text-xs text-[#1C1B1F]">
+                    <button type="button" onclick="selectCustomOption('date', 'all', 'Date')" class="px-3 py-2 text-left hover:bg-[#F3EDF7] rounded-md font-medium transition">All</button>
+                    <button type="button" onclick="selectCustomOption('date', 'today', 'Today')" class="px-3 py-2 text-left hover:bg-[#F3EDF7] rounded-md font-medium transition">Today</button>
+                    <button type="button" onclick="selectCustomOption('date', '7days', 'Last 7 Days')" class="px-3 py-2 text-left hover:bg-[#F3EDF7] rounded-md font-medium transition">Last 7 Days</button>
+                    <button type="button" onclick="selectCustomOption('date', '30days', 'Last 30 Days')" class="px-3 py-2 text-left hover:bg-[#F3EDF7] rounded-md font-medium transition">Last 30 Days</button>
+                  </div>
+                </div>
               </div>
+
             </div>
 
             <!-- Far Right: "View all" Action Link -->
@@ -291,10 +360,10 @@
           </div>
         </div>
 
-        <!-- Table Container Structure (Header Fixed, Body Scrolls Vertically Below Header) -->
+        <!-- Table Container Structure -->
         <div class="flex-1 flex flex-col min-h-0 w-full overflow-hidden">
           
-          <!-- Fixed Table Header matching image_a1b540.png -->
+          <!-- Fixed Table Header -->
           <div class="bg-primary text-white shrink-0 w-full">
             <table class="w-full border-collapse text-left text-xs table-fixed">
               <colgroup>
@@ -345,7 +414,7 @@
   <div id="toast-notification" class="fixed bottom-5 right-5 bg-[#1C1B1F] text-white text-xs px-4 py-2.5 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50"></div>
 
   <script>
-    /* Dataset Matching image_a1b540.png Schema */
+    /* Dataset Matching Schema */
     const orders = [
       { id: 'ORD-000867', patientName: 'Brianna Treadway', dob: '03/16/2006', provider: 'Diana Health, Springfield Tennessee', sourceStatus: 'Prescription Requested', statusClass: 'bg-blue-bg text-blue', date: '10/27/2025', insurance: 'United Healthcare Community Plan' },
       { id: 'ORD-000868', patientName: 'Laura Mabry', dob: '11/11/1988', provider: 'Provider not listed', sourceStatus: 'Physician Info Requested', statusClass: 'bg-amber-bg text-amber', date: '07/11/2026', insurance: 'Anthem Blue Cross' },
@@ -362,6 +431,9 @@
     ];
 
     let activeFilter = 'all';
+    let selectedCustomInsurance = 'all';
+    let selectedCustomState = 'all';
+    let selectedCustomDate = 'all';
 
     function updateStatCounts() {
       document.getElementById('count-all').innerText = orders.length;
@@ -374,14 +446,12 @@
       updateStatCounts();
 
       const query = document.getElementById('table-search').value.trim().toLowerCase();
-      const insurance = document.getElementById('insurance-filter').value;
-      const state = document.getElementById('state-filter').value;
       const stateByInsurance = {'United Healthcare Community Plan': 'Tennessee', 'Anthem Blue Cross': 'Ohio', Wellpoint: 'Michigan', 'Blue Cross Community Health': 'Ohio', 'Michigan Medicaid': 'Michigan', '6 Degrees Health': 'Tennessee', TennCare: 'Tennessee'};
 
       const filtered = orders.filter(order => {
         const matchesFilter = activeFilter === 'all' || order.sourceStatus === activeFilter;
-        const matchesInsurance = insurance === 'all' || order.insurance.includes(insurance);
-        const matchesState = state === 'all' || stateByInsurance[order.insurance] === state;
+        const matchesInsurance = selectedCustomInsurance === 'all' || order.insurance.includes(selectedCustomInsurance);
+        const matchesState = selectedCustomState === 'all' || stateByInsurance[order.insurance] === selectedCustomState;
         const matchesQuery = !query || Object.values(order).join(' ').toLowerCase().includes(query);
         return matchesFilter && matchesInsurance && matchesState && matchesQuery;
       });
@@ -403,6 +473,67 @@
       `).join('') : `<tr><td class="p-8 text-center text-muted text-sm" colspan="6">No orders match the current search and status filter.</td></tr>`;
     }
 
+    /* CUSTOM SEARCHABLE DROPDOWN ENGINE */
+    function toggleCustomDropdown(type) {
+      const menu = document.getElementById(`dd-menu-${type}`);
+      const isHidden = menu.classList.contains('hidden');
+      
+      closeAllCustomDropdowns();
+      
+      if (isHidden) {
+        menu.classList.remove('hidden');
+        const searchInput = document.getElementById(`dd-search-${type}`);
+        if (searchInput) {
+          searchInput.value = '';
+          filterCustomDropdownOptions(type);
+          setTimeout(() => searchInput.focus(), 50);
+        }
+      }
+    }
+
+    function closeAllCustomDropdowns() {
+      ['insurance', 'state', 'date'].forEach(type => {
+        const menu = document.getElementById(`dd-menu-${type}`);
+        if (menu) menu.classList.add('hidden');
+      });
+    }
+
+    function selectCustomOption(type, value, displayLabel) {
+      if (type === 'insurance') selectedCustomInsurance = value;
+      if (type === 'state') selectedCustomState = value;
+      if (type === 'date') selectedCustomDate = value;
+
+      document.getElementById(`dd-label-${type}`).innerText = displayLabel;
+      closeAllCustomDropdowns();
+      renderOrders();
+    }
+
+    function filterCustomDropdownOptions(type) {
+      const query = document.getElementById(`dd-search-${type}`).value.trim().toLowerCase();
+      const list = document.getElementById(`dd-list-${type}`);
+      const buttons = list.querySelectorAll('button');
+
+      buttons.forEach(btn => {
+        const text = btn.innerText.toLowerCase();
+        if (!query || text.includes(query)) {
+          btn.style.display = 'block';
+        } else {
+          btn.style.display = 'none';
+        }
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      const isDropdownClick = ['insurance', 'state', 'date'].some(type => {
+        const container = document.getElementById(`dd-container-${type}`);
+        return container && container.contains(e.target);
+      });
+
+      if (!isDropdownClick) {
+        closeAllCustomDropdowns();
+      }
+    });
+
     document.querySelectorAll('.stat-card').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.stat-card').forEach(c => {
@@ -416,9 +547,6 @@
     });
 
     document.getElementById('table-search').addEventListener('input', renderOrders);
-    document.getElementById('insurance-filter').addEventListener('change', renderOrders);
-    document.getElementById('state-filter').addEventListener('change', renderOrders);
-    document.getElementById('date-filter').addEventListener('change', renderOrders);
 
     /* Role Switcher Logic */
     let activeRole = 'operations';

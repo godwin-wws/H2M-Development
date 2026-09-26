@@ -119,7 +119,7 @@
       </div>
     </aside>
 
-    <!-- Main Workspace Canvas (No Page Scroll) -->
+    <!-- Main Workspace Canvas -->
     <section class="flex-1 p-8 pb-6 flex flex-col gap-6 h-full overflow-hidden">
       
       <!-- Top Navigation Header -->
@@ -194,8 +194,8 @@
         </button>
       </div>
 
-      <!-- Master Business Configuration Table Frame -->
-      <section class="bg-white border border-line rounded-2xl shadow-sm flex flex-col flex-1 min-h-0 overflow-visible relative">
+      <!-- Master Business Configuration Table Frame (Dynamic Hugging Content Frame) -->
+      <section class="bg-white border border-line rounded-2xl shadow-sm flex flex-col h-auto shrink-0 mb-6 overflow-visible relative max-h-[calc(100vh-220px)]">
         
         <!-- Header Controls Row -->
         <div class="p-5 border-b border-line flex items-center justify-between shrink-0">
@@ -246,8 +246,8 @@
           </div>
         </div>
 
-        <!-- Scrollable Table Body Container (Optimized Proportions to prevent Text Collision) -->
-        <div class="flex-1 overflow-y-auto min-h-0 rounded-b-2xl">
+        <!-- Scrollable Table Body Container (Hugs Content, Scrollbar aligns directly with rows) -->
+        <div class="max-h-[calc(100vh-320px)] h-auto overflow-y-auto rounded-b-2xl">
           <table class="w-full border-collapse text-left text-sm table-fixed min-w-[1080px]">
             <colgroup>
               <col class="w-[9%]">
@@ -260,8 +260,8 @@
               <col class="w-[14%]">
               <col class="w-[10%]">
             </colgroup>
-            <thead>
-              <tr class="bg-primary text-white text-[11px] font-bold tracking-wider uppercase sticky top-0 z-10">
+            <thead class="sticky top-0 z-10">
+              <tr class="bg-primary text-white text-[11px] font-bold tracking-wider uppercase">
                 <th class="py-3 px-3">CONFIG ID</th>
                 <th class="py-3 px-3">CATEGORY</th>
                 <th class="py-3 px-3">NAME</th>
@@ -637,18 +637,18 @@
           badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-info-bg text-status-info-text whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Superseded</span>`;
         }
 
-        /* 3-Dot Action Popover Order: Edit -> View -> History */
+        /* 3-Dot Action Popover Order: View -> Edit -> History */
         const actionMenuHTML = `
           <div class="relative inline-block text-left">
             <button onclick="toggleActionMenu(event, '${c.id}')" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors outline-none cursor-pointer" title="More options">
               <span class="material-symbols-outlined text-[20px]">more_vert</span>
             </button>
             <div id="action-popover-${c.id}" class="hidden absolute right-2 z-[100] w-32 py-1 bg-white rounded-2xl border border-line shadow-xl">
-              <button onclick="openEditConfigModal('${c.id}')" class="admin-only first:border-t-0 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
-                <span class="material-symbols-outlined text-[18px] text-muted">edit</span> Edit
-              </button>
-              <button onclick="openViewConfigModal('${c.id}')" class="first:border-t-0 border-t border-line/60 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
+              <button onclick="openViewConfigModal('${c.id}')" class="first:border-t-0 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
                 <span class="material-symbols-outlined text-[18px] text-muted">visibility</span> View
+              </button>
+              <button onclick="openEditConfigModal('${c.id}')" class="admin-only first:border-t-0 border-t border-line/60 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
+                <span class="material-symbols-outlined text-[18px] text-muted">edit</span> Edit
               </button>
               <button onclick="openItemHistoryModal('${c.id}')" class="first:border-t-0 border-t border-line/60 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
                 <span class="material-symbols-outlined text-[18px] text-muted">history</span> History

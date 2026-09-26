@@ -231,7 +231,7 @@
               <col class="w-[12%]">
               <col class="w-[24%]">
               <col class="w-[10%]">
-              <col class="w-[10%] admin-only">
+              <col class="w-[10%]">
             </colgroup>
             <thead>
               <tr class="bg-primary text-white text-[11px] font-bold tracking-wider uppercase">
@@ -240,7 +240,7 @@
                 <th class="py-3 px-4">ENTRIES</th>
                 <th class="py-3 px-4">LAST UPDATED</th>
                 <th class="py-3 px-4 text-center">STATUS</th>
-                <th class="py-3 px-4 text-center admin-only">ACTIONS</th>
+                <th class="py-3 px-4 text-center">ACTIONS</th>
               </tr>
             </thead>
             <tbody id="lookup-table-body">
@@ -251,6 +251,58 @@
       </section>
 
     </section>
+  </div>
+
+  <!-- READ-ONLY REFERENCE TABLE ENTRIES VIEW MODAL (WITH GLOBAL EXPORT) -->
+  <div id="view-entries-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-[28px] max-w-3xl w-full shadow-2xl overflow-hidden flex flex-col p-6 gap-4 border border-line max-h-[85vh]">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between border-b border-line pb-3">
+        <div>
+          <h3 class="text-lg font-bold text-text" id="entries-modal-title">Reference Entries — REF-001</h3>
+          <p class="text-xs text-muted" id="entries-modal-subtitle">Insurance Plans (Payers) · 24 total entries</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <!-- Global Export Button -->
+          <button onclick="exportTableEntries()" class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-full hover:bg-on-primary-container transition shadow-sm flex items-center gap-1.5 cursor-pointer">
+            <span class="material-symbols-outlined text-[16px]">file_download</span>
+            <span>Export Entries</span>
+          </button>
+          <button onclick="closeViewEntriesModal()" class="text-muted hover:text-text font-bold text-base">✕</button>
+        </div>
+      </div>
+
+      <!-- Entries Table -->
+      <div class="flex-1 overflow-y-auto min-h-[300px]">
+        <table class="w-full border-collapse text-left text-xs table-fixed">
+          <colgroup>
+            <col class="w-[15%]">
+            <col class="w-[20%]">
+            <col class="w-[35%]">
+            <col class="w-[18%]">
+            <col class="w-[12%]">
+          </colgroup>
+          <thead class="sticky top-0 z-10">
+            <tr class="bg-primary text-white font-bold text-[11px] uppercase border-b border-line">
+              <th class="py-2.5 px-3">ENTRY ID</th>
+              <th class="py-2.5 px-3">CODE / VALUE</th>
+              <th class="py-2.5 px-3">DISPLAY NAME</th>
+              <th class="py-2.5 px-3">CATEGORY</th>
+              <th class="py-2.5 px-3 text-center">STATUS</th>
+            </tr>
+          </thead>
+          <tbody id="view-entries-table-body">
+            <!-- Injected via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="flex justify-end pt-3 border-t border-line">
+        <button onclick="closeViewEntriesModal()" class="px-6 py-2 border border-outline rounded-full text-xs font-bold text-muted hover:bg-surface-container cursor-pointer">Close</button>
+      </div>
+    </div>
   </div>
 
   <!-- Add/Edit Reference Entry Modal (Admin Only) -->
@@ -341,10 +393,7 @@
   <div id="compliance-rationale-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[60] hidden flex justify-center items-center p-4">
     <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 border border-line">
       <h3 class="text-sm font-bold text-text mb-2 uppercase tracking-wider">Operational Reason Required</h3>
-      <p class="text-xs text-muted mb-4 leading-relaxed">
-        This reference data modification will be committed to the append-only BRIDGE Audit ledger. Please provide a clear rationale ($\ge 15$ characters).
-      </p>
-
+      
       <textarea id="audit-rationale" rows="3" class="w-full text-xs p-3 border border-outline rounded-lg focus:outline-none focus:border-primary mb-4" placeholder="Explain the lookup change (min 15 chars)..."></textarea>
 
       <div class="flex justify-end gap-2">
@@ -420,6 +469,34 @@
       }
     ];
 
+    /* Sample 24 Payer Entries Dataset for REF-001 */
+    const payerEntriesDataset = [
+      { id: "PAY-001", code: "UHC_COMM", name: "United Healthcare Community Plan", category: "Medicaid Managed Care", status: "Active" },
+      { id: "PAY-002", code: "BCBS_TN", name: "BlueCross BlueShield of Tennessee", category: "Commercial", status: "Active" },
+      { id: "PAY-003", code: "TENNCARE", name: "TennCare Medicaid", category: "State Medicaid", status: "Active" },
+      { id: "PAY-[#004]", code: "WELLPOINT", name: "Wellpoint Tennessee", category: "Medicaid Managed Care", status: "Active" },
+      { id: "PAY-[#005]", code: "COVERKIDS", name: "CoverKids Children's Health", category: "State CHIP Program", status: "Active" },
+      { id: "PAY-006", code: "HUMANA_COMM", name: "Humana ChoiceCare Commercial", category: "Commercial", status: "Active" },
+      { id: "PAY-007", code: "AETNA_MED", name: "Aetna Better Health of Tennessee", category: "Medicaid Managed Care", status: "Active" },
+      { id: "PAY-008", code: "CIGNA_HEALTH", name: "Cigna HealthCare Commercial", category: "Commercial", status: "Active" },
+      { id: "PAY-009", code: "MOLINA_HEALTH", name: "Molina Healthcare of Tennessee", category: "Medicaid Managed Care", status: "Active" },
+      { id: "PAY-010", code: "AMERIGROUP", name: "Amerigroup Community Care", category: "Medicaid Managed Care", status: "Active" },
+      { id: "PAY-011", code: "MEDICARE_B", name: "Medicare Part B (Noridian)", category: "Federal Medicare", status: "Active" },
+      { id: "PAY-012", code: "TRICARE_EAST", name: "TRICARE East Region (Humana Military)", category: "Federal Military", status: "Active" },
+      { id: "PAY-013", code: "UNITED_COMM_KY", name: "United Healthcare Community Plan (KY)", category: "Out-of-State Medicaid", status: "Active" },
+      { id: "PAY-014", code: "ANTHEM_BCBS_OH", name: "Anthem BCBS Ohio", category: "Commercial", status: "Active" },
+      { id: "PAY-015", code: "CARESOURCE", name: "CareSource Evidence Care", category: "Medicaid Managed Care", status: "Active" },
+      { id: "PAY-016", code: "PASSPORT_HEALTH", name: "Passport Health Plan", category: "Medicaid Managed Care", status: "Active" },
+      { id: "PAY-017", code: "VALLEY_HEALTH", name: "Valley Health Plan", category: "Commercial Regional", status: "Active" },
+      { id: "PAY-018", code: "WELLCARE_ADV", name: "Wellcare Medicare Advantage", category: "Medicare Advantage", status: "Active" },
+      { id: "PAY-019", code: "MICHIGAN_MEDICAID", name: "Michigan Department of Health (Medicaid)", category: "Out-of-State Medicaid", status: "Active" },
+      { id: "PAY-020", code: "CHAMPUX", name: "CHAMPVA Civilian Health Program", category: "Federal VA", status: "Active" },
+      { id: "PAY-021", code: "KAISER_PERM", name: "Kaiser Permanente Mid-Atlantic", category: "HMO / Managed Care", status: "Active" },
+      { id: "PAY-022", code: "6_DEGREES", name: "6 Degrees Health Self-Funded", category: "Third-Party Administrator", status: "Active" },
+      { id: "PAY-023", code: "WORKERS_COMP", name: "Tennessee Workers' Compensation Bureau", category: "Workers Comp", status: "Active" },
+      { id: "PAY-024", code: "SELF_PAY_SLIDE", name: "Self-Pay Sliding Scale", category: "Self-Pay Baseline", status: "Disabled" }
+    ];
+
     /* State Variables */
     let activeRole = 'administrator';
     let searchQuery = '';
@@ -472,21 +549,21 @@
           ? `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-success-bg text-status-success-text whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Active</span>`
           : `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-failed-bg text-status-failed-text whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Disabled</span>`;
 
-        /* 3-Dot Action Popover Menu (Hierarchy: Edit -> History -> Delete) */
+        /* 3-Dot Action Popover Menu (Order: View -> Edit -> History) */
         const actionMenuHTML = `
           <div class="relative inline-block text-left">
             <button onclick="toggleActionMenu(event, '${row.id}')" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors outline-none cursor-pointer" title="More options">
               <span class="material-symbols-outlined text-[20px]">more_vert</span>
             </button>
             <div id="action-popover-${row.id}" class="hidden absolute right-2 bottom-full mb-1 bg-white rounded-2xl border border-line z-50 w-36 py-1 shadow-xl">
-              <button onclick="editLookupItem('${row.id}')" class="first:border-t-0 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
+              <button onclick="openViewEntriesModal('${row.id}')" class="first:border-t-0 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
+                <span class="material-symbols-outlined text-[18px] text-muted">visibility</span> View
+              </button>
+              <button onclick="editLookupItem('${row.id}')" class="admin-only first:border-t-0 border-t border-line/60 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
                 <span class="material-symbols-outlined text-[18px] text-muted">edit</span> Edit
               </button>
               <button onclick="openHistoryModal('${row.id}')" class="first:border-t-0 border-t border-line/60 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
                 <span class="material-symbols-outlined text-[18px] text-muted">history</span> History
-              </button>
-              <button onclick="deleteLookupItem('${row.id}')" class="admin-only first:border-t-0 border-t border-line/60 w-full px-3.5 py-2 text-left hover:bg-[#FDECEA] flex items-center gap-2.5 text-xs font-medium text-status-failed-text transition cursor-pointer">
-                <span class="material-symbols-outlined text-[18px]">delete</span> Delete
               </button>
             </div>
           </div>
@@ -499,7 +576,7 @@
             <td class="py-3.5 px-4 font-mono text-muted text-sm">${row.entries} entries</td>
             <td class="py-3.5 px-4 text-xs text-muted whitespace-nowrap">${row.lastUpdated} · <span class="font-mono text-text">${row.updatedBy}</span></td>
             <td class="py-3.5 px-4 text-center">${badge}</td>
-            <td class="py-3.5 px-4 text-center admin-only">
+            <td class="py-3.5 px-4 text-center">
               ${actionMenuHTML}
             </td>
           </tr>
@@ -539,6 +616,60 @@
     }
 
     /* Modal Controls */
+    function openViewEntriesModal(refId) {
+      closeAllActionMenus();
+      const item = referenceDatabase.find(i => i.id === refId);
+      if (!item) return;
+
+      selectedActiveLookup = item;
+      document.getElementById('entries-modal-title').innerText = `Reference Entries — ${item.id}`;
+      document.getElementById('entries-modal-subtitle').innerText = `${item.name} · ${item.entries} total entries`;
+
+      let entriesToRender = [];
+      if (refId === 'REF-001') {
+        entriesToRender = payerEntriesDataset;
+      } else {
+        // Dynamically build mock entries up to item.entries count for other tables
+        for (let i = 1; i <= item.entries; i++) {
+          const num = i < 10 ? `00${i}` : i < 100 ? `0${i}` : `${i}`;
+          entriesToRender.push({
+            id: `ENT-${num}`,
+            code: `${item.name.substring(0, 3).toUpperCase()}_${num}`,
+            name: `${item.name} Item Entry #${i}`,
+            category: "Standard Value",
+            status: "Active"
+          });
+        }
+      }
+
+      const tbody = document.getElementById('view-entries-table-body');
+      tbody.innerHTML = entriesToRender.map(e => `
+        <tr class="border-b border-line hover:bg-surface-container-low transition">
+          <td class="py-2.5 px-3 font-mono font-bold text-primary text-xs whitespace-nowrap">${e.id}</td>
+          <td class="py-2.5 px-3 font-mono text-text text-xs whitespace-nowrap">${e.code}</td>
+          <td class="py-2.5 px-3 font-bold text-text text-xs truncate" title="${e.name}">${e.name}</td>
+          <td class="py-2.5 px-3 text-muted text-xs whitespace-nowrap">${e.category}</td>
+          <td class="py-2.5 px-3 text-center">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold ${e.status === 'Active' ? 'bg-status-success-bg text-status-success-text' : 'bg-status-failed-bg text-status-failed-text'}">
+              <span class="w-1.5 h-1.5 rounded-full bg-current"></span>${e.status}
+            </span>
+          </td>
+        </tr>
+      `).join('');
+
+      document.getElementById('view-entries-modal').classList.remove('hidden');
+    }
+
+    function closeViewEntriesModal() {
+      document.getElementById('view-entries-modal').classList.add('hidden');
+    }
+
+    function exportTableEntries() {
+      if (selectedActiveLookup) {
+        showToast(`Exporting all ${selectedActiveLookup.entries} entries for ${selectedActiveLookup.id} (${selectedActiveLookup.name}) to CSV...`);
+      }
+    }
+
     function editLookupItem(cfgId) {
       closeAllActionMenus();
       const item = referenceDatabase.find(i => i.id === cfgId);
@@ -580,31 +711,6 @@
       document.getElementById('lookup-modal').classList.add('hidden');
     }
 
-    function deleteLookupItem(refId) {
-      closeAllActionMenus();
-      const itemIndex = referenceDatabase.findIndex(i => i.id === refId);
-      if (itemIndex === -1) return;
-
-      const item = referenceDatabase[itemIndex];
-      const confirmed = window.confirm(`Delete reference table "${item.name}" (${item.id})?\n\nThis will remove the lookup table entry.`);
-      if (!confirmed) return;
-
-      referenceDatabase.splice(itemIndex, 1);
-      selectedActiveLookup = null;
-
-      const filteredCount = referenceDatabase.filter(r => {
-        return !searchQuery || 
-          r.id.toLowerCase().includes(searchQuery.toLowerCase()) || 
-          r.name.toLowerCase().includes(searchQuery.toLowerCase());
-      }).length;
-
-      const maxPages = Math.ceil(filteredCount / PAGE_LIMIT) || 1;
-      if (currentPageIndex >= maxPages) currentPageIndex = maxPages - 1;
-
-      renderLookupWorkspace();
-      showToast(`Reference entry ${item.id} deleted.`);
-    }
-
     function openHistoryModal(refId) {
       closeAllActionMenus();
       const item = referenceDatabase.find(i => i.id === refId);
@@ -624,10 +730,7 @@
             <td class="py-3 px-3 text-muted text-xs whitespace-nowrap">${h.date}</td>
             <td class="py-3 px-3 text-left">
               <div class="flex items-center justify-start gap-1.5 flex-nowrap">
-                <button onclick="downloadArchival('${h.version}')" class="w-8 h-8 rounded-full flex items-center justify-center border border-outline hover:bg-surface-container transition cursor-pointer text-muted" title="Download Audit History">
-                  <span class="material-symbols-outlined text-[18px]">download</span>
-                </button>
-                ${!isCurrentActive ? `<button onclick="rollbackToVersion('${h.version}')" class="admin-only w-8 h-8 rounded-full flex items-center justify-center bg-primary text-white hover:bg-on-primary-container transition shadow-sm cursor-pointer" title="Rollback to Version"><span class="material-symbols-outlined text-[18px]">settings_backup_restore</span></button>` : ''}
+                ${!isCurrentActive ? `<button onclick="rollbackToVersion('${h.version}')" class="admin-only w-8 h-8 rounded-full flex items-center justify-center bg-primary text-white hover:bg-on-primary-container transition shadow-sm cursor-pointer" title="Rollback to Version"><span class="material-symbols-outlined text-[18px]">settings_backup_restore</span></button>` : '<span class="text-xs font-bold text-status-success-text">Active</span>'}
               </div>
             </td>
           </tr>
@@ -639,10 +742,6 @@
 
     function closeHistoryModal() {
       document.getElementById('history-modal').classList.add('hidden');
-    }
-
-    function downloadArchival(version) {
-      showToast(`Downloading historical reference table version ${version} PDF...`);
     }
 
     function rollbackToVersion(version) {

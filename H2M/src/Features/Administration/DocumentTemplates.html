@@ -207,7 +207,7 @@
 
             <div class="relative inline-block">
               <select id="status-filter" onchange="handleTemplateFilter()" class="h-9 pl-3.5 pr-8 border border-[#79747E] rounded-lg bg-white hover:bg-[#F3EDF7] text-xs font-medium text-[#49454F] outline-none transition-colors duration-200 appearance-none cursor-pointer">
-                <option value="all">All Status</option>
+                <option value="all">All Statuses</option>
                 <option value="Active">Active</option>
                 <option value="Draft">Draft</option>
                 <option value="Superseded">Superseded</option>
@@ -307,6 +307,55 @@
       <div class="flex items-center justify-end gap-2 pt-2 border-t border-line">
         <button type="button" onclick="closeUploadTemplateModal()" class="px-4 py-2 border border-outline text-xs font-bold text-muted rounded-full hover:bg-surface-container">Cancel</button>
         <button type="button" onclick="document.getElementById('hidden-tpl-submit').click()" class="px-5 py-2 bg-primary text-white text-xs font-bold rounded-full hover:bg-on-primary-container shadow-sm">Upload &amp; Save Draft</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Document Template Modal -->
+  <div id="edit-template-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-[28px] max-w-lg w-full shadow-2xl overflow-hidden flex flex-col p-6 gap-4">
+      <div class="flex items-center justify-between border-b border-line pb-3">
+        <div>
+          <h3 class="text-xl font-bold text-text">Edit Document Template</h3>
+        </div>
+        <button onclick="closeEditTemplateModal()" class="text-muted hover:text-text font-bold">✕</button>
+      </div>
+
+      <form id="edit-template-form" onsubmit="event.preventDefault(); triggerSaveWithRationale();" class="flex flex-col gap-3 text-xs">
+        <div>
+          <label class="block font-bold text-text uppercase mb-1">Template Name *</label>
+          <input type="text" id="edit-tpl-name-field" required class="w-full p-2.5 border border-outline rounded-lg focus:border-primary focus:outline-none" placeholder="e.g. Physician Follow-up Request">
+        </div>
+
+        <div class="relative">
+          <select id="edit-tpl-category-field" class="w-full p-2.5 pr-8 border border-outline rounded-lg bg-white text-xs font-medium text-text outline-none focus:border-primary transition appearance-none cursor-pointer">
+            <option value="Intake">Intake</option>
+            <option value="Review">Review</option>
+            <option value="Outbound Fax">Outbound Fax</option>
+          </select>
+          <span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-[#49454F] text-[20px] select-none">arrow_drop_down</span>
+        </div>
+
+        <div>
+          <label class="block font-bold text-text uppercase mb-1">Google Drive Link</label>
+          <input type="url" id="edit-tpl-drive-field" class="w-full p-2.5 border border-outline rounded-lg focus:border-primary focus:outline-none" placeholder="https://drive.google.com/file/d/1A0XETn97NPBccF7MxHUoRTVz2WibeUYj/preview">
+        </div>
+
+        <div>
+          <label class="block font-bold text-text uppercase mb-1">Template File</label>
+          <div class="border-2 border-dashed border-line rounded-xl p-6 text-center flex flex-col items-center justify-center gap-1 bg-surface-container-low cursor-pointer hover:bg-surface-container transition">
+            <span class="material-symbols-outlined text-[32px] text-muted">upload_file</span>
+            <span class="font-bold text-text">Drag &amp; drop or click to replace file</span>
+            <span class="text-[10px] text-muted">Supports .docx, .pdf</span>
+          </div>
+        </div>
+
+        <button type="submit" id="hidden-edit-tpl-submit" class="hidden"></button>
+      </form>
+
+      <div class="flex items-center justify-end gap-2 pt-2 border-t border-line">
+        <button type="button" onclick="closeEditTemplateModal()" class="px-4 py-2 border border-outline text-xs font-bold text-muted rounded-full hover:bg-surface-container">Cancel</button>
+        <button type="button" onclick="document.getElementById('hidden-edit-tpl-submit').click()" class="px-5 py-2 bg-primary text-white text-xs font-bold rounded-full hover:bg-on-primary-container shadow-sm">Save Changes</button>
       </div>
     </div>
   </div>
@@ -473,9 +522,6 @@
   <div id="compliance-rationale-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[60] hidden flex justify-center items-center p-4">
     <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 border border-line">
       <h3 class="text-sm font-bold text-text mb-2 uppercase tracking-wider">Operational Reason Required</h3>
-      <p class="text-xs text-muted mb-4 leading-relaxed">
-        This template governance action will be committed to the append-only BRIDGE Audit ledger. Please provide a clear rationale ($\ge 15$ characters).
-      </p>
 
       <textarea id="audit-rationale" rows="3" class="w-full text-xs p-3 border border-outline rounded-lg focus:outline-none focus:border-primary mb-4" placeholder="Explain the template update/upload (min 15 chars)..."></textarea>
 
@@ -573,7 +619,7 @@
           badge = `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-status-info-bg text-status-info-text"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Superseded</span>`;
         }
 
-        /* 3-Dot Action Popover Menu - Hierarchy: View -> History -> Delete with first:border-t-0 */
+        /* 3-Dot Action Popover Menu - Hierarchy: View -> Edit -> History */
         const actionMenuHTML = `
           <div class="relative inline-block text-left">
             <button onclick="toggleActionMenu(event, '${t.id}')" class="w-8 h-8 rounded-full flex items-center justify-center text-muted hover:bg-[#F3EDF7] active:bg-[#E8DEF8] transition-colors outline-none cursor-pointer" title="More options">
@@ -583,11 +629,11 @@
               <button onclick="openViewDocumentModal('${t.id}')" class="first:border-t-0 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
                 <span class="material-symbols-outlined text-[18px] text-muted">visibility</span> View
               </button>
+              <button onclick="editTemplateItem('${t.id}')" class="admin-only first:border-t-0 border-t border-line/60 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
+                <span class="material-symbols-outlined text-[18px] text-muted">edit</span> Edit
+              </button>
               <button onclick="openHistoryModal('${t.id}')" class="first:border-t-0 border-t border-line/60 w-full px-3.5 py-2 text-left hover:bg-[#F3EDF7] flex items-center gap-2.5 text-xs font-medium text-text transition cursor-pointer">
                 <span class="material-symbols-outlined text-[18px] text-muted">history</span> History
-              </button>
-              <button onclick="deleteTemplateItem('${t.id}')" class="admin-only first:border-t-0 border-t border-line/60 w-full px-3.5 py-2 text-left hover:bg-[#FDECEA] flex items-center gap-2.5 text-xs font-medium text-status-failed-text transition cursor-pointer">
-                <span class="material-symbols-outlined text-[18px]">delete</span> Delete
               </button>
             </div>
           </div>
@@ -768,42 +814,22 @@
       document.getElementById('upload-template-modal').classList.add('hidden');
     }
 
-    function deleteTemplateItem(tplId) {
+    /* Open Edit Modal with Pre-populated Data */
+    function editTemplateItem(tplId) {
       closeAllActionMenus();
+      const item = templateDatabase.find(i => i.id === tplId);
+      if (!item) return;
 
-      const itemIndex = templateDatabase.findIndex(i => i.id === tplId);
-      if (itemIndex === -1) return;
+      selectedActiveTemplate = item;
+      document.getElementById('edit-tpl-name-field').value = item.name;
+      document.getElementById('edit-tpl-category-field').value = 'Intake';
+      document.getElementById('edit-tpl-drive-field').value = item.drivePdfLink || '';
+      
+      document.getElementById('edit-template-modal').classList.remove('hidden');
+    }
 
-      const item = templateDatabase[itemIndex];
-
-      const confirmed = window.confirm(
-        `Delete template "${item.name}" (${item.id})?\n\nThis action will remove the template from the current template list.`
-      );
-
-      if (!confirmed) return;
-
-      templateDatabase.splice(itemIndex, 1);
-      selectedActiveTemplate = null;
-
-      const filteredCount = templateDatabase.filter(t => {
-        const matchesSearch =
-          !searchQuery ||
-          t.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          t.name.toLowerCase().includes(searchQuery.toLowerCase());
-
-        const matchesStatus =
-          statusFilter === 'all' || t.status === statusFilter;
-
-        return matchesSearch && matchesStatus;
-      }).length;
-
-      const maxPages = Math.ceil(filteredCount / PAGE_LIMIT) || 1;
-      if (currentPageIndex >= maxPages) {
-        currentPageIndex = maxPages - 1;
-      }
-
-      renderTemplateWorkspace();
-      showToast(`Template ${item.id} deleted.`);
+    function closeEditTemplateModal() {
+      document.getElementById('edit-template-modal').classList.add('hidden');
     }
 
     /* Compliance Audit Rationale Gating */
@@ -835,12 +861,17 @@
     function executeCommit() {
       closeRationaleModal();
       closeUploadTemplateModal();
+      closeEditTemplateModal();
 
       if (selectedActiveTemplate) {
-        if (document.getElementById('tpl-name-field').value.trim() !== '') {
-          selectedActiveTemplate.name = document.getElementById('tpl-name-field').value.trim();
+        const editName = document.getElementById('edit-tpl-name-field').value.trim();
+        const uploadName = document.getElementById('tpl-name-field').value.trim();
+        const targetName = editName || uploadName;
+
+        if (targetName !== '') {
+          selectedActiveTemplate.name = targetName;
           
-          let driveInput = document.getElementById('tpl-drive-field').value.trim();
+          let driveInput = (document.getElementById('edit-tpl-drive-field').value || document.getElementById('tpl-drive-field').value).trim();
           if (driveInput.includes('/view')) {
             driveInput = driveInput.replace(/\/view.*$/, '/preview');
           }
